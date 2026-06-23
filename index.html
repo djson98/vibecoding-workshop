@@ -326,25 +326,38 @@ em.s { font-style: normal; font-weight: 600; letter-spacing: -0.01em; color: var
 }
 .chat-flow {
   display: grid;
-  gap: clamp(0.75rem, 1.4vh, 1rem);
-  width: min(100%, 980px);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(150px, auto));
+  gap: clamp(0.9rem, 1.8vw, 1.4rem);
+  width: min(100%, 1280px);
+  align-items: stretch;
 }
 .chat-bubble {
-  max-width: 72%;
+  max-width: none;
   background: var(--bg-elev);
-  padding: clamp(0.9rem, 1.6vw, 1.25rem);
+  padding: clamp(1.05rem, 1.8vw, 1.5rem);
   color: var(--ink);
-  font-size: clamp(1.05rem, 1.65vw, 1.35rem);
+  font-size: clamp(1.05rem, 1.55vw, 1.35rem);
   line-height: 1.35;
   font-weight: 700;
+  min-height: clamp(130px, 18vh, 190px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .chat-bubble.user {
-  justify-self: end;
+  grid-column: 2;
+  justify-self: stretch;
 }
 .chat-bubble.agent {
-  justify-self: start;
+  grid-column: 1;
+  justify-self: stretch;
   background: var(--accent-soft);
 }
+.chat-flow .chat-bubble:nth-child(1) { grid-row: 1; grid-column: 2; }
+.chat-flow .chat-bubble:nth-child(2) { grid-row: 1; grid-column: 1; }
+.chat-flow .chat-bubble:nth-child(3) { grid-row: 2; grid-column: 2; }
+.chat-flow .chat-bubble:nth-child(4) { grid-row: 2; grid-column: 1; }
 .chat-speaker {
   display: block;
   font-family: 'JetBrains Mono', monospace;
@@ -354,10 +367,10 @@ em.s { font-style: normal; font-weight: 600; letter-spacing: -0.01em; color: var
   margin-bottom: 0.35rem;
 }
 .maintenance-chat {
-  width: min(100%, 1060px);
+  width: min(100%, 1280px);
 }
 .maintenance-chat .chat-bubble {
-  max-width: 78%;
+  max-width: none;
 }
 .maintenance-chat .chat-bubble.agent {
   background: var(--accent-soft);
@@ -1536,7 +1549,7 @@ em.s { font-style: normal; font-weight: 600; letter-spacing: -0.01em; color: var
   z-index: 2;
   left: 0;
   top: 0;
-  width: min(260px, 25vw);
+  width: min(270px, 24vw);
   grid-template-columns: 1fr;
   align-content: start;
   max-width: none;
@@ -1544,16 +1557,20 @@ em.s { font-style: normal; font-weight: 600; letter-spacing: -0.01em; color: var
 }
 .requirement-preview {
   background: transparent;
-  min-height: clamp(500px, 75vh, 800px);
+  height: clamp(520px, 76vh, 820px);
+  min-height: 0;
   padding: 0;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-end;
+  overflow: hidden;
 }
 .requirement-preview img {
-  width: 100%;
-  height: clamp(490px, 75vh, 800px);
-  object-fit: contain;
+  width: calc(100% - min(286px, 25vw));
+  height: auto;
+  max-width: none;
+  min-width: 0;
+  object-fit: initial;
   object-position: top center;
   display: block;
 }
@@ -1662,6 +1679,13 @@ em.s { font-style: normal; font-weight: 600; letter-spacing: -0.01em; color: var
     position: static;
     width: 100%;
     margin-bottom: 1rem;
+  }
+  .requirement-preview {
+    height: auto;
+    overflow: visible;
+  }
+  .requirement-preview img {
+    width: 100%;
   }
   .requirement-list {
     grid-template-columns: 1fr;
