@@ -1594,12 +1594,10 @@ em.s { font-style: normal; font-weight: 600; letter-spacing: -0.01em; color: var
   position: absolute;
   top: 0;
   left: min(300px, 26vw);
-  width: calc(100% - min(300px, 26vw));
+  width: auto;
   height: auto;
-  max-width: none;
-  min-width: 0;
-  object-fit: initial;
-  object-position: top center;
+  max-width: calc((100% - min(300px, 26vw)) / 1.18);
+  max-height: calc(100% / 1.18);
   display: block;
   transform: scale(1.18);
   transform-origin: top left;
@@ -1718,6 +1716,8 @@ em.s { font-style: normal; font-weight: 600; letter-spacing: -0.01em; color: var
   .requirement-preview img {
     position: static;
     width: 100%;
+    max-width: 100%;
+    max-height: none;
     transform: none;
   }
   .requirement-list {
