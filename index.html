@@ -1267,6 +1267,26 @@ em.s { font-style: normal; font-weight: 600; letter-spacing: -0.01em; color: var
   max-height: calc(100vh - 4rem);
   object-fit: contain;
 }
+.video-slide .slide-content {
+  justify-content: center;
+  align-items: stretch;
+  padding: clamp(1rem, 2vh, 1.5rem) var(--slide-padding);
+}
+.video-frame {
+  width: 100%;
+  height: clamp(520px, 76vh, 820px);
+  background: var(--bg-elev);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.video-frame video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
 .news-strip .slide-content {
   justify-content: center;
   align-items: stretch;
@@ -1974,7 +1994,7 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
       <span class="details">dongjuson@hai.kangwon.ac.kr</span>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">01</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">01</span><span class="sep">/</span><span>34</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -1985,7 +2005,7 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
     <div class="outcome-tagline">Human AI Interaction Lab</div>
     <a class="outcome-url" href="https://hai.kangwon.ac.kr/" target="_blank" rel="noopener">https://hai.kangwon.ac.kr/</a>
   </div>
-  <div class="footer-mark"><span class="index">02</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">02</span><span class="sep">/</span><span>34</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -1997,7 +2017,7 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
     <div class="section-sub">// talk → build → check → fix</div>
   </div>
   <div class="section-rule"></div>
-  <div class="footer-mark"><span class="index">03</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">03</span><span class="sep">/</span><span>34</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -2026,7 +2046,7 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
       </div>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">04</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">04</span><span class="sep">/</span><span>34</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -2036,7 +2056,7 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
       <img src="assets/vibe-coding.gif" alt="Traditional Coding versus Vibe Coding comparison" />
     </div>
   </div>
-  <div class="footer-mark"><span class="index">05</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">05</span><span class="sep">/</span><span>34</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -2061,7 +2081,7 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
       </div>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">06</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">06</span><span class="sep">/</span><span>34</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -2071,7 +2091,7 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
       <img src="assets/codex-explain-codebase-example.png" alt="Codex 터미널에서 코드베이스 설명을 요청하는 화면" />
     </div>
   </div>
-  <div class="footer-mark"><span class="index">07</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">07</span><span class="sep">/</span><span>34</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -2079,39 +2099,22 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
   <div class="slide-content">
     <h2 class="scenario-heading"><span>전에 썼던 이력서를 잃어버렸어요.</span><span class="question">어떻게 찾아야 할까요?</span></h2>
   </div>
-  <div class="footer-mark"><span class="index">08</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">08</span><span class="sep">/</span><span>34</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
-<section class="slide image-slide news-single" data-cat="scenario/resume-search-result">
+<section class="slide video-slide" data-cat="scenario/resume-demo-video">
   <div class="slide-content">
-    <div class="image-frame">
-      <img src="assets/codex-resume-search-example.png" alt="Codex가 이력서 파일을 찾는 대화 예시" />
+    <div class="video-frame">
+      <video src="assets/resume-demo.mp4" controls muted playsinline preload="metadata"></video>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">09</span><span class="sep">/</span><span>35</span></div>
-  <div class="brand-mark">vibe-coding-lab</div>
-</section>
-
-<section class="slide terminal-pair" data-cat="scenario/resume-open-result">
-  <div class="slide-content">
-    <div class="terminal-grid">
-      <div class="terminal-shot">
-        <div class="terminal-label">Codex</div>
-        <img src="assets/codex-resume-open-result.png" alt="Codex가 이력서 폴더를 찾아 연 대화 예시" />
-      </div>
-      <div class="terminal-shot">
-        <div class="terminal-label">Finder</div>
-        <img src="assets/finder-resume-result.png" alt="Finder에서 열린 이력서 폴더 예시" />
-      </div>
-    </div>
-  </div>
-  <div class="footer-mark"><span class="index">10</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">09</span><span class="sep">/</span><span>34</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
 <section class="slide agent-tools card-overview-slide" data-cat="vibe/agent-tools">
-  <div class="slide-meta"><span class="dash">─</span><span class="num">11</span><span class="cat">vibe / agent tools</span></div>
+  <div class="slide-meta"><span class="dash">─</span><span class="num">10</span><span class="cat">vibe / agent tools</span></div>
   <div class="slide-content">
     <h2 class="slide-title">AI는 답변만 하는 것을 넘어 <span class="accent">도구를 사용합니다</span>.</h2>
 
@@ -2138,7 +2141,7 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
       </div>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">11</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">10</span><span class="sep">/</span><span>34</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -2148,12 +2151,12 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
       <img src="assets/news-coding-revolution.png" alt="AI가 불러온 코딩의 혁명 기사 스크린샷" />
     </div>
   </div>
-  <div class="footer-mark"><span class="index">12</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">11</span><span class="sep">/</span><span>34</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
 <section class="slide card-overview-slide" data-cat="vibe/chatgpt-vs-agent">
-  <div class="slide-meta"><span class="dash">─</span><span class="num">13</span><span class="cat">vibe / chatgpt → agent</span></div>
+  <div class="slide-meta"><span class="dash">─</span><span class="num">12</span><span class="cat">vibe / chatgpt → agent</span></div>
   <div class="slide-content">
     <h2 class="slide-title">패러다임의 변화: 대답하는 AI에서 <span class="accent">일하는 AI</span>로</h2>
 
@@ -2170,7 +2173,7 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
       </div>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">13</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">12</span><span class="sep">/</span><span>34</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -2180,12 +2183,12 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
       <img src="assets/andre-karpathy-vibe-coding.jpg" alt="안드레 카파시 나도 개발 안해 영상 썸네일" />
     </div>
   </div>
-  <div class="footer-mark"><span class="index">14</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">13</span><span class="sep">/</span><span>34</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
 <section class="slide" data-cat="vibe/roles">
-  <div class="slide-meta"><span class="dash">─</span><span class="num">15</span><span class="cat">vibe / roles + limits</span></div>
+  <div class="slide-meta"><span class="dash">─</span><span class="num">14</span><span class="cat">vibe / roles + limits</span></div>
   <div class="slide-content">
     <h2 class="slide-title">사람과 AI의 역할</h2>
 
@@ -2220,12 +2223,12 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
       </div>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">15</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">14</span><span class="sep">/</span><span>34</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
 <section class="slide curriculum-slide" data-cat="intro/curriculum">
-  <div class="slide-meta"><span class="dash">─</span><span class="num">16</span><span class="cat">intro / curriculum</span></div>
+  <div class="slide-meta"><span class="dash">─</span><span class="num">15</span><span class="cat">intro / curriculum</span></div>
   <div class="slide-content">
     <h2 class="slide-title"><span class="accent">5주 로드맵</span> 한눈에 보기</h2>
     <div class="curriculum-grid">
@@ -2257,23 +2260,23 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
     </div>
 
   </div>
-  <div class="footer-mark"><span class="index">16</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">15</span><span class="sep">/</span><span>34</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
 <section class="slide section-divider" data-cat="section/homepage-components">
-  <div class="slide-meta"><span class="dash">─</span><span class="num">17</span><span class="cat">section/homepage-components</span></div>
+  <div class="slide-meta"><span class="dash">─</span><span class="num">16</span><span class="cat">section/homepage-components</span></div>
   <div class="slide-content">
     <div class="section-num">02 ━━ Section</div>
     <h2 class="section-title">연구실 홈페이지</h2>
   </div>
   <div class="section-rule"></div>
-  <div class="footer-mark"><span class="index">17</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">16</span><span class="sep">/</span><span>34</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
 <section class="slide visitor-types card-overview-slide" data-cat="homepage/visitors">
-  <div class="slide-meta"><span class="dash">─</span><span class="num">18</span><span class="cat">homepage / visitors</span></div>
+  <div class="slide-meta"><span class="dash">─</span><span class="num">17</span><span class="cat">homepage / visitors</span></div>
   <div class="slide-content">
     <h2 class="slide-title"><span class="accent">누가</span> 연구실 홈페이지를 볼까요?</h2>
 
@@ -2295,12 +2298,12 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
       </div>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">18</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">17</span><span class="sep">/</span><span>34</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
 <section class="slide production-methods card-overview-slide" data-cat="methods/production-options">
-  <div class="slide-meta"><span class="dash">─</span><span class="num">19</span><span class="cat">methods / production options</span></div>
+  <div class="slide-meta"><span class="dash">─</span><span class="num">18</span><span class="cat">methods / production options</span></div>
   <div class="slide-content">
     <h2 class="slide-title">홈페이지 <span class="accent">제작 방법</span></h2>
 
@@ -2335,24 +2338,24 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
       </tbody>
     </table>
   </div>
-  <div class="footer-mark"><span class="index">19</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">18</span><span class="sep">/</span><span>34</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
 <section class="slide section-divider" data-cat="section/maintenance-motto">
-  <div class="slide-meta"><span class="dash">─</span><span class="num">20</span><span class="cat">section/maintenance-motto</span></div>
+  <div class="slide-meta"><span class="dash">─</span><span class="num">19</span><span class="cat">section/maintenance-motto</span></div>
   <div class="slide-content">
     <div class="section-num">03 ━━ Section</div>
     <h2 class="section-title">어떤 방식으로 만들든 <span class="accent">유지보수는 계속 필요합니다</span></h2>
     <div class="section-sub">// 그래서 바이브코딩으로 쉽게 하자</div>
   </div>
   <div class="section-rule"></div>
-  <div class="footer-mark"><span class="index">20</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">19</span><span class="sep">/</span><span>34</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
 <section class="slide" data-cat="why/good-vs-bad">
-  <div class="slide-meta"><span class="dash">─</span><span class="num">21</span><span class="cat">why / good vs bad</span></div>
+  <div class="slide-meta"><span class="dash">─</span><span class="num">20</span><span class="cat">why / good vs bad</span></div>
   <div class="slide-content">
     <h2 class="slide-title"><span class="accent">두 종류</span>의 연구실 홈페이지</h2>
     <div class="versus">
@@ -2378,7 +2381,7 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
       </div>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">21</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">20</span><span class="sep">/</span><span>34</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -2387,7 +2390,7 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
     <h2 class="scenario-heading"><span class="question">한 학기가 지나면 홈페이지는 어떻게 바뀌어야 할까요?</span></h2>
     <p class="scenario-sub">졸업생이 나가고, 신입생이 들어오고, 논문이 게재되고, 뉴스가 쌓이고, 연락처가 바뀌고...</p>
   </div>
-  <div class="footer-mark"><span class="index">22</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">21</span><span class="sep">/</span><span>34</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -2411,7 +2414,7 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
       </div>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">23</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">22</span><span class="sep">/</span><span>34</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -2441,12 +2444,12 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
       </div>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">24</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">23</span><span class="sep">/</span><span>34</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
 <section class="slide automation-example card-overview-slide" data-cat="automation/publications">
-  <div class="slide-meta"><span class="dash">─</span><span class="num">25</span><span class="cat">automation / publications</span></div>
+  <div class="slide-meta"><span class="dash">─</span><span class="num">24</span><span class="cat">automation / publications</span></div>
   <div class="slide-content">
     <h2 class="slide-title"><span class="accent">예시 1.</span> 새 논문이 올라오면 홈페이지도 업데이트</h2>
 
@@ -2465,12 +2468,12 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
     <div class="automation-command">“구글 스콜라에서 새 논문을 확인해서 Publications 페이지에 반영해줘.”</div>
     <div class="automation-note">AI가 정해둔 때마다 확인하고, 새 논문이 보이면 홈페이지를 다시 고칩니다.</div>
   </div>
-  <div class="footer-mark"><span class="index">25</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">24</span><span class="sep">/</span><span>34</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
 <section class="slide automation-example card-overview-slide" data-cat="automation/members">
-  <div class="slide-meta"><span class="dash">─</span><span class="num">26</span><span class="cat">automation / members</span></div>
+  <div class="slide-meta"><span class="dash">─</span><span class="num">25</span><span class="cat">automation / members</span></div>
   <div class="slide-content">
     <h2 class="slide-title"><span class="accent">예시 2.</span> 멤버 정보가 바뀌면 People 페이지도 업데이트</h2>
 
@@ -2489,24 +2492,24 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
     <div class="automation-command">“구글 시트의 멤버 정보를 읽어서 People 페이지를 최신 상태로 바꿔줘.”</div>
     <div class="automation-note">AI가 시트를 확인하다가 바뀐 내용이 있으면 People 페이지를 다시 고칩니다.</div>
   </div>
-  <div class="footer-mark"><span class="index">26</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">25</span><span class="sep">/</span><span>34</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
 <section class="slide section-divider" data-cat="section/homepage-materials">
-  <div class="slide-meta"><span class="dash">─</span><span class="num">27</span><span class="cat">section / materials</span></div>
+  <div class="slide-meta"><span class="dash">─</span><span class="num">26</span><span class="cat">section / materials</span></div>
   <div class="slide-content">
     <h2 class="slide-title">연구실 홈페이지 <span class="accent">구성요소</span></h2>
     <a class="section-resource-link" href="https://raw.githubusercontent.com/HAI-lab-KNU/HAI-lab-KNU.github.io/main/%ED%99%88%ED%8E%98%EC%9D%B4%EC%A7%80_%ED%95%84%EC%9A%94%EC%A0%95%EB%B3%B4.txt" target="_blank" rel="noreferrer">
       https://raw.githubusercontent.com/HAI-lab-KNU/HAI-lab-KNU.github.io/main/%ED%99%88%ED%8E%98%EC%9D%B4%EC%A7%80_%ED%95%84%EC%9A%94%EC%A0%95%EB%B3%B4.txt
     </a>
   </div>
-  <div class="footer-mark"><span class="index">27</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">26</span><span class="sep">/</span><span>34</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
 <section class="slide top-title-slide" data-cat="structure/sections">
-  <div class="slide-meta"><span class="dash">─</span><span class="num">28</span><span class="cat">structure / sections</span></div>
+  <div class="slide-meta"><span class="dash">─</span><span class="num">27</span><span class="cat">structure / sections</span></div>
   <div class="slide-content">
     <h2 class="slide-title">홈페이지에 필요한 <span class="accent">재료</span></h2>
     <p class="lead muted">AI가 대신 만들 수 있게, 먼저 어떤 정보가 필요한지만 확인합니다.</p>
@@ -2539,12 +2542,12 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
       </div>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">28</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">27</span><span class="sep">/</span><span>34</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
 <section class="slide top-title-slide requirement-slide" data-cat="requirements/home">
-  <div class="slide-meta"><span class="dash">─</span><span class="num">29</span><span class="cat">requirements / home</span></div>
+  <div class="slide-meta"><span class="dash">─</span><span class="num">28</span><span class="cat">requirements / home</span></div>
   <div class="slide-content">
     <div class="requirement-label">Home</div>
     <h2 class="slide-title">메인 페이지에 필요한 정보</h2>
@@ -2561,12 +2564,12 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
       </div>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">29</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">28</span><span class="sep">/</span><span>34</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
 <section class="slide top-title-slide requirement-slide" data-cat="requirements/members">
-  <div class="slide-meta"><span class="dash">─</span><span class="num">30</span><span class="cat">requirements / members</span></div>
+  <div class="slide-meta"><span class="dash">─</span><span class="num">29</span><span class="cat">requirements / members</span></div>
   <div class="slide-content">
     <div class="requirement-label">Members</div>
     <h2 class="slide-title">연구원 소개에 필요한 정보</h2>
@@ -2583,12 +2586,12 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
       </div>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">30</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">29</span><span class="sep">/</span><span>34</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
 <section class="slide top-title-slide requirement-slide" data-cat="requirements/projects">
-  <div class="slide-meta"><span class="dash">─</span><span class="num">31</span><span class="cat">requirements / projects</span></div>
+  <div class="slide-meta"><span class="dash">─</span><span class="num">30</span><span class="cat">requirements / projects</span></div>
   <div class="slide-content">
     <div class="requirement-label">Projects</div>
     <h2 class="slide-title">연구 프로젝트에 필요한 정보</h2>
@@ -2605,12 +2608,12 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
       </div>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">31</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">30</span><span class="sep">/</span><span>34</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
 <section class="slide top-title-slide requirement-slide" data-cat="requirements/publications">
-  <div class="slide-meta"><span class="dash">─</span><span class="num">32</span><span class="cat">requirements / publications</span></div>
+  <div class="slide-meta"><span class="dash">─</span><span class="num">31</span><span class="cat">requirements / publications</span></div>
   <div class="slide-content">
     <div class="requirement-label">Publications</div>
     <h2 class="slide-title">논문/출판물에 필요한 정보</h2>
@@ -2627,12 +2630,12 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
       </div>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">32</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">31</span><span class="sep">/</span><span>34</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
 <section class="slide top-title-slide requirement-slide" data-cat="requirements/other-pages">
-  <div class="slide-meta"><span class="dash">─</span><span class="num">33</span><span class="cat">requirements / other pages</span></div>
+  <div class="slide-meta"><span class="dash">─</span><span class="num">32</span><span class="cat">requirements / other pages</span></div>
   <div class="slide-content">
     <div class="requirement-label">Other Pages</div>
     <h2 class="slide-title">그 밖에 필요한 정보</h2>
@@ -2667,24 +2670,24 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
       </div>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">33</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">32</span><span class="sep">/</span><span>34</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
 <section class="slide section-divider" data-cat="section/next-week">
-  <div class="slide-meta"><span class="dash">─</span><span class="num">34</span><span class="cat">section/next-week</span></div>
+  <div class="slide-meta"><span class="dash">─</span><span class="num">33</span><span class="cat">section/next-week</span></div>
   <div class="slide-content">
     <div class="section-num">06 ━━ Section</div>
     <h2 class="section-title">다음 주 준비물</h2>
     <div class="section-sub">// 4 things, ~30 minutes total</div>
   </div>
   <div class="section-rule"></div>
-  <div class="footer-mark"><span class="index">34</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">33</span><span class="sep">/</span><span>34</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
 <section class="slide" data-cat="next-week/checklist">
-  <div class="slide-meta"><span class="dash">─</span><span class="num">35</span><span class="cat">next-week / checklist</span></div>
+  <div class="slide-meta"><span class="dash">─</span><span class="num">34</span><span class="cat">next-week / checklist</span></div>
   <div class="slide-content">
     <h2 class="slide-title">다음 주까지 준비할 것</h2>
 
@@ -2722,7 +2725,7 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
       </div>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">35</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">34</span><span class="sep">/</span><span>34</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
