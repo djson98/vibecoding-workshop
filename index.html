@@ -1769,6 +1769,210 @@ em.s { font-style: normal; font-weight: 600; letter-spacing: -0.01em; color: var
     grid-template-columns: 1fr;
   }
 }
+@media (max-width: 700px) {
+  html { scroll-snap-type: y proximity; }
+  :root {
+    --slide-padding: clamp(1.25rem, 6vw, 1.75rem);
+    --body-size: clamp(0.98rem, 4vw, 1.08rem);
+    --small-size: clamp(0.82rem, 3.4vw, 0.95rem);
+    --content-title-gap: clamp(1rem, 4vh, 1.5rem);
+    --title-block-gap: clamp(1rem, 3.8vh, 1.45rem);
+    --title-lead-gap: clamp(0.7rem, 2.8vh, 1rem);
+  }
+  .slide {
+    min-height: 100dvh;
+    height: auto;
+    overflow: visible;
+  }
+  .slide-content {
+    min-height: 100dvh;
+    overflow: visible;
+    padding: var(--slide-padding);
+  }
+  .nav-dots {
+    display: none;
+  }
+  .footer-mark,
+  .keyboard-hint {
+    display: none;
+  }
+  h1.deck-title {
+    font-size: clamp(2.35rem, 12vw, 3.3rem);
+    line-height: 1.08;
+  }
+  h2.slide-title,
+  h2.section-title {
+    font-size: clamp(2rem, 9vw, 2.8rem);
+    line-height: 1.14;
+    word-break: keep-all;
+  }
+  .lead {
+    font-size: clamp(1.08rem, 4.8vw, 1.28rem);
+    line-height: 1.5;
+  }
+  .title-slide .deck-kicker,
+  .outcome-link .label,
+  .requirement-slide .requirement-label {
+    font-size: clamp(0.86rem, 3.6vw, 0.98rem);
+  }
+  .section-divider .slide-content,
+  .scenario-title .slide-content,
+  .feedback-slide .slide-content {
+    min-height: 100dvh;
+  }
+  .section-divider .section-num,
+  .section-divider .section-sub {
+    font-size: clamp(0.86rem, 3.5vw, 1rem);
+  }
+  .section-divider .section-title {
+    font-size: clamp(2.5rem, 12vw, 3.6rem);
+  }
+  .grid-2,
+  .grid-3,
+  .grid-4,
+  .today-goals .goals-list,
+  .tool-grid,
+  .visitor-grid,
+  .production-grid,
+  .role-grid,
+  .automation-flow,
+  .agent-tool-grid,
+  .compact-material-grid,
+  .next-week-grid {
+    grid-template-columns: 1fr;
+  }
+  .curriculum-slide .curriculum-grid,
+  .vibe-flow .flow-grid,
+  .slide[data-cat="structure/sections"] .sections-grid {
+    grid-template-columns: 1fr;
+  }
+  .card,
+  .tool-card,
+  .visitor-card,
+  .production-card,
+  .agent-tool-card,
+  .role-col,
+  .compact-material-card,
+  .next-week-grid .card,
+  .today-goals .goal-card,
+  .vibe-flow .flow-card,
+  .curriculum-slide .card,
+  .slide[data-cat="structure/sections"] .sec-card {
+    min-height: auto;
+    padding: clamp(1rem, 5vw, 1.35rem);
+  }
+  .card h4,
+  .tool-card h3,
+  .visitor-card h4,
+  .agent-tool-card h4,
+  .compact-material-card h4,
+  .next-week-grid h4,
+  .today-goals .goal-card h3,
+  .vibe-flow .flow-card h3,
+  .slide[data-cat="structure/sections"] .sec-card h4 {
+    font-size: clamp(1.2rem, 5.6vw, 1.55rem);
+  }
+  .chat-flow {
+    width: 100%;
+    gap: clamp(0.85rem, 3vh, 1.15rem);
+  }
+  .chat-bubble {
+    max-width: 88%;
+    padding: clamp(0.95rem, 4.5vw, 1.2rem);
+    font-size: clamp(1.02rem, 4.6vw, 1.22rem);
+    line-height: 1.42;
+  }
+  .chat-bubble small {
+    font-size: clamp(0.72rem, 3.1vw, 0.85rem);
+  }
+  .compare,
+  .scenario-slide .scenario-layout,
+  .terminal-pair .terminal-grid,
+  .workshop-intro .intro-layout {
+    grid-template-columns: 1fr;
+  }
+  .compare-left {
+    grid-template-columns: 1fr;
+  }
+  .methods-row {
+    grid-template-columns: 1fr;
+  }
+  .production-methods .slide-content {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .production-table {
+    min-width: 640px;
+    table-layout: auto;
+  }
+  .production-table th,
+  .production-table td {
+    padding: 0.8rem 0.75rem;
+    font-size: clamp(0.82rem, 3.4vw, 0.94rem);
+    white-space: normal;
+  }
+  .production-table .method-name {
+    min-width: 7.5rem;
+  }
+  .methods-row .v-divider,
+  .curriculum-slide .card:not(:last-child)::after,
+  .vibe-flow .flow-card:not(:last-child)::after {
+    display: none;
+  }
+  .video-frame {
+    height: auto;
+    min-height: 0;
+    background: transparent;
+  }
+  .video-frame video {
+    width: 100%;
+    height: auto;
+    max-height: 76dvh;
+    object-fit: contain;
+  }
+  .image-slide .slide-content,
+  .news-single .slide-content {
+    min-height: 100dvh;
+    padding: var(--slide-padding);
+  }
+  .image-slide .image-frame img,
+  .news-single .image-frame img {
+    width: 100%;
+    height: auto;
+    max-height: 78dvh;
+    object-fit: contain;
+  }
+  .requirement-list {
+    gap: 0.55rem;
+  }
+  .requirement-body .requirement-list {
+    gap: 0.55rem;
+  }
+  .requirement-item {
+    min-height: auto;
+    padding: 0.8rem 0.9rem;
+  }
+  .requirement-item span {
+    font-size: clamp(0.9rem, 3.8vw, 1rem);
+  }
+  .requirement-preview img {
+    width: 100%;
+    height: auto;
+    max-height: 58dvh;
+    object-fit: contain;
+  }
+  .feedback-subtitle {
+    font-size: clamp(2rem, 9vw, 2.8rem);
+    max-width: 9ch;
+  }
+  .feedback-qr {
+    width: min(78vw, 420px);
+  }
+  .feedback-link {
+    font-size: clamp(0.72rem, 3.2vw, 0.86rem);
+    max-width: 34ch;
+  }
+}
 
 /* ============================================================
    NAV DOTS + KEYBOARD HINT
