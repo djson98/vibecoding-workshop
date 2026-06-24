@@ -1688,18 +1688,14 @@ em.s { font-style: normal; font-weight: 600; letter-spacing: -0.01em; color: var
   align-items: center;
   justify-content: center;
   text-align: center;
-  gap: clamp(1.1rem, 2.4vh, 1.8rem);
-}
-.feedback-slide .slide-title {
-  font-size: clamp(4.5rem, 9vw, 8.5rem);
-  line-height: 0.95;
-  margin: 0;
+  gap: clamp(1rem, 2.2vh, 1.6rem);
 }
 .feedback-subtitle {
-  color: var(--ink-2);
-  font-size: clamp(1.15rem, 1.8vw, 1.55rem);
-  font-weight: 650;
-  margin-bottom: clamp(0.4rem, 1vh, 0.8rem);
+  color: var(--ink);
+  font-size: clamp(2.2rem, 4vw, 4rem);
+  font-weight: 850;
+  line-height: 1.12;
+  margin-bottom: clamp(0.4rem, 1vh, 0.7rem);
 }
 .feedback-qr {
   width: min(38vw, 46vh, 460px);
@@ -2794,7 +2790,6 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
 <section class="slide feedback-slide" data-cat="feedback/form">
   <div class="slide-meta"><span class="dash">─</span><span class="num">37</span><span class="cat">feedback / form</span></div>
   <div class="slide-content">
-    <h2 class="slide-title">피드백</h2>
     <div class="feedback-subtitle">워크샵 개선을 위한 설문조사</div>
     <img class="feedback-qr" src="assets/feedback-form-qr.png" alt="피드백 설문 QR 코드">
     <a class="feedback-link" href="https://docs.google.com/forms/d/e/1FAIpQLScgNvwWyCHp_X0zPsdGkIxkCDQnNI_r6imBTlOe9eQdR1IdWw/viewform?usp=publish-editor" target="_blank" rel="noreferrer">
