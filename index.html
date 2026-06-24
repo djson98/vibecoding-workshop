@@ -1684,6 +1684,39 @@ em.s { font-style: normal; font-weight: 600; letter-spacing: -0.01em; color: var
   text-decoration: underline;
   text-underline-offset: 0.18em;
 }
+.feedback-slide .slide-content {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: clamp(1.1rem, 2.4vh, 1.8rem);
+}
+.feedback-slide .slide-title {
+  font-size: clamp(4.5rem, 9vw, 8.5rem);
+  line-height: 0.95;
+  margin: 0;
+}
+.feedback-subtitle {
+  color: var(--ink-2);
+  font-size: clamp(1.15rem, 1.8vw, 1.55rem);
+  font-weight: 650;
+  margin-bottom: clamp(0.4rem, 1vh, 0.8rem);
+}
+.feedback-qr {
+  width: min(38vw, 46vh, 460px);
+  aspect-ratio: 1;
+  display: block;
+  image-rendering: pixelated;
+}
+.feedback-link {
+  color: var(--accent);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(0.75rem, 1.05vw, 0.95rem);
+  line-height: 1.45;
+  max-width: 78ch;
+  overflow-wrap: anywhere;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
 .compact-material-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -2755,6 +2788,20 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
     </div>
   </div>
   <div class="footer-mark"><span class="index">36</span><span class="sep">/</span><span>36</span></div>
+  <div class="brand-mark">vibe-coding-lab</div>
+</section>
+
+<section class="slide feedback-slide" data-cat="feedback/form">
+  <div class="slide-meta"><span class="dash">─</span><span class="num">37</span><span class="cat">feedback / form</span></div>
+  <div class="slide-content">
+    <h2 class="slide-title">피드백</h2>
+    <div class="feedback-subtitle">1분만 남겨주세요.</div>
+    <img class="feedback-qr" src="assets/feedback-form-qr.png" alt="피드백 설문 QR 코드">
+    <a class="feedback-link" href="https://docs.google.com/forms/d/e/1FAIpQLScgNvwWyCHp_X0zPsdGkIxkCDQnNI_r6imBTlOe9eQdR1IdWw/viewform?usp=publish-editor" target="_blank" rel="noreferrer">
+      docs.google.com/forms/d/e/1FAIpQLScgNvwWyCHp_X0zPsdGkIxkCDQnNI_r6imBTlOe9eQdR1IdWw
+    </a>
+  </div>
+  <div class="footer-mark"><span class="index">37</span><span class="sep">/</span><span>37</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
