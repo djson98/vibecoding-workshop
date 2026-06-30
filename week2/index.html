@@ -2195,6 +2195,98 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
 }
 
 /* ============================================================
+   SCREENSHOT PLACEHOLDERS
+   ============================================================ */
+.screenshot-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 1.5rem);
+  width: min(100%, 72rem);
+  margin-top: var(--content-title-gap);
+}
+.screenshot-slot {
+  min-height: clamp(190px, 32vh, 340px);
+  border: 2px dashed var(--line-2);
+  background: var(--bg-elev);
+  border-radius: 4px;
+  padding: clamp(1.1rem, 2vw, 1.5rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--muted);
+}
+.screenshot-slot.wide {
+  width: min(100%, 72rem);
+  min-height: clamp(260px, 44vh, 460px);
+  margin-top: var(--content-title-gap);
+}
+.screenshot-slot.terminal {
+  background: var(--dark-bg);
+  border-color: var(--dark-line);
+  color: var(--dark-muted);
+}
+.screenshot-slot .slot-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: var(--small-size);
+  color: var(--accent);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.45rem;
+}
+.screenshot-slot.terminal .slot-label {
+  color: #8EC8FF;
+}
+.screenshot-slot .slot-title {
+  font-size: clamp(1.05rem, 1.8vw, 1.4rem);
+  color: var(--ink);
+  font-weight: 700;
+  line-height: 1.35;
+}
+.screenshot-slot.terminal .slot-title {
+  color: var(--dark-text);
+}
+.screenshot-slot .slot-note {
+  margin-top: 0.5rem;
+  font-size: var(--small-size);
+  line-height: 1.5;
+  max-width: 40ch;
+}
+.screenshot-photo {
+  min-height: clamp(280px, 48vh, 520px);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.screenshot-photo .slot-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: var(--small-size);
+  color: var(--accent);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.55rem;
+}
+.screenshot-photo .photo-frame {
+  flex: 1;
+  min-height: 0;
+  border: 0;
+  background: transparent;
+  border-radius: 0;
+  overflow: hidden;
+}
+.screenshot-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+@media (max-width: 800px) {
+  .screenshot-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================================
    SCROLL ANIMATIONS — soft reveal on enter
    ============================================================ */
 .slide-content > * {
@@ -2239,7 +2331,7 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
       <span class="details">강원대 컴퓨터공학과 HAI Lab</span>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">01</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">01</span><span class="sep">/</span><span>39</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -2258,23 +2350,36 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
         <span class="mono" style="font-size: var(--h3-size); color: var(--accent); min-width: 3rem;">02</span>
         <span style="font-size: var(--h3-size); color: var(--ink);">지저분한 다운로드 폴더 정리하기</span>
       </li>
+      <li style="padding: 1rem 0; border-top: 1px solid var(--line); display: flex; align-items: baseline; gap: 1.5rem;">
+        <span class="mono" style="font-size: var(--h3-size); color: var(--accent); min-width: 3rem;">03</span>
+        <span style="font-size: var(--h3-size); color: var(--ink);">논문 한꺼번에 비교·요약하기</span>
+      </li>
     </ol>
   </div>
-  <div class="footer-mark"><span class="index">02</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">02</span><span class="sep">/</span><span>39</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
 <!-- ============================================================
-     SLIDE 03 — HOMEPAGE OFFER
+     SLIDE 03 — BEFORE / AFTER HOOK
      ============================================================ -->
-<section class="slide" data-cat="notice/homepage-offer">
+<section class="slide" data-cat="hook/folder-before-after">
   <div class="slide-content">
-    <h2>홈페이지가 필요하신 분께</h2>
-    <div style="margin-top: var(--content-title-gap); padding: 1.25rem 1.5rem; border: 1px solid var(--line-2); border-left: 3px solid var(--accent); background: var(--bg-elev); border-radius: 4px; font-size: var(--body-size); color: var(--ink-2); max-width: 48rem;">
-      <a href="mailto:dongjuson@hai.kangwon.ac.kr" class="mono" style="color: var(--accent); text-decoration: none; border-bottom: 1px dashed var(--accent);">dongjuson@hai.kangwon.ac.kr</a> 로 메일 보내주시면 만들어드리겠습니다.
+    <div class="screenshot-grid" style="width: min(100%, 84rem); margin-top: 0;">
+      <div class="screenshot-photo">
+        <div class="slot-label">BEFORE</div>
+        <div class="photo-frame">
+          <img src="assets/folder-before.png" alt="Messy Finder folder before cleanup" />
+        </div>
+      </div>
+      <div class="screenshot-slot" style="min-height: clamp(280px, 48vh, 520px);">
+        <div class="slot-label">AFTER</div>
+        <div class="slot-title">카테고리별로 정리된 폴더</div>
+        <div class="slot-note">문서·이미지·압축파일 등으로 정리된 결과 캡처</div>
+      </div>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">03</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">03</span><span class="sep">/</span><span>39</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -2284,14 +2389,21 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
 <section class="slide" data-cat="claude-code/intro">
   <div class="slide-content">
     <h2>CLAUDE CODE?</h2>
-    <p style="margin-top: var(--content-title-gap); font-size: var(--h3-size); color: var(--ink-2); line-height: 1.6; max-width: 64rem;">
-      Anthropic이 만든 공식 AI 코딩 도구입니다. 터미널에서 실행되며, <span style="color: var(--accent); font-weight: 600;">사용자의 컴퓨터 안에서 직접 파일을 읽고 명령을 실행</span>합니다.
-    </p>
-    <p style="margin-top: 1rem; font-size: var(--body-size); color: var(--ink-2); line-height: 1.7; max-width: 64rem;">
-      단순히 채팅으로 답변만 받는 것이 아니라, 실제로 작업을 수행하는 AI입니다.
-    </p>
+    <div style="display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: clamp(1.5rem, 3vw, 3rem); align-items: center; margin-top: var(--content-title-gap); max-width: 84rem;">
+      <div>
+        <p style="font-size: var(--h3-size); color: var(--ink-2); line-height: 1.6;">
+          Anthropic이 만든 공식 AI 코딩 도구입니다. 터미널에서 실행되며, <span style="color: var(--accent); font-weight: 600;">사용자의 컴퓨터 안에서 직접 파일을 읽고 명령을 실행</span>합니다.
+        </p>
+        <p style="margin-top: 1rem; font-size: var(--body-size); color: var(--ink-2); line-height: 1.7;">
+          단순히 채팅으로 답변만 받는 것이 아니라, 실제로 작업을 수행하는 AI입니다.
+        </p>
+      </div>
+      <div style="border: 1px solid var(--line-2); background: var(--bg-elev); border-radius: 6px; overflow: hidden;">
+        <img src="assets/claude-code-welcome.png" alt="Claude Code terminal welcome screen" style="display: block; width: 100%; max-height: min(46vh, 460px); object-fit: cover; object-position: left top;" />
+      </div>
+    </div>
   </div>
-  <div class="footer-mark"><span class="index">04</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">04</span><span class="sep">/</span><span>39</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -2300,11 +2412,14 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
      ============================================================ -->
 <section class="slide image-slide" data-cat="claude-code/github-activity">
   <div class="slide-content">
+    <p style="font-size: var(--h3-size); color: var(--ink-2); line-height: 1.5; max-width: 64rem; margin-bottom: clamp(0.8rem, 2vh, 1.4rem);">
+      GitHub 공개 저장소 활동 기준으로, <span style="color: var(--accent); font-weight: 600;">클로드 코드의 사용량이 다른 AI 코딩 도구를 압도</span>하고 있습니다.
+    </p>
     <div class="image-frame">
       <img src="assets/github-activity-claude-code.png" alt="GitHub activity — co/authored commits: Claude Code vs Jules vs Cursor vs Copilot" />
     </div>
   </div>
-  <div class="footer-mark"><span class="index">05</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">05</span><span class="sep">/</span><span>39</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -2314,7 +2429,7 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
 <section class="slide" data-cat="claude-code/install">
   <div class="slide-content">
     <h2>사전 준비물</h2>
-    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1rem, 3vw, 2.5rem); margin-top: var(--content-title-gap); max-width: 76rem;">
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1rem, 3vw, 2.5rem); margin-top: var(--content-title-gap); max-width: 64rem;">
       <div style="padding: 1.5rem 1.75rem; border: 1px solid var(--line-2); border-top: 3px solid var(--accent); background: var(--bg-elev); border-radius: 4px;">
         <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em;">01</div>
         <div style="font-size: var(--h3-size); margin-top: 0.4rem; color: var(--ink); font-weight: 600;">Claude 구독</div>
@@ -2322,17 +2437,12 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
       </div>
       <div style="padding: 1.5rem 1.75rem; border: 1px solid var(--line-2); border-top: 3px solid var(--accent); background: var(--bg-elev); border-radius: 4px;">
         <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em;">02</div>
-        <div style="font-size: var(--h3-size); margin-top: 0.4rem; color: var(--ink); font-weight: 600;">컴퓨터</div>
-        <div style="font-size: var(--small-size); color: var(--ink-2); margin-top: 0.5rem; line-height: 1.5;">Mac · Windows · Linux 다 OK. 터미널만 있으면 됨.</div>
-      </div>
-      <div style="padding: 1.5rem 1.75rem; border: 1px solid var(--line-2); border-top: 3px solid var(--accent); background: var(--bg-elev); border-radius: 4px;">
-        <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em;">03</div>
         <div style="font-size: var(--h3-size); margin-top: 0.4rem; color: var(--ink); font-weight: 600;">작업할 폴더</div>
         <div style="font-size: var(--small-size); color: var(--ink-2); margin-top: 0.5rem; line-height: 1.5;">정리할 파일이 있는 폴더 하나. 새 폴더도 OK.</div>
       </div>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">06</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">06</span><span class="sep">/</span><span>39</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -2356,7 +2466,7 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
       </div>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">07</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">07</span><span class="sep">/</span><span>39</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -2382,7 +2492,7 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
       * Windows에서는 <span class="mono">WSL</span>(Windows Subsystem for Linux) 환경을 공식 권장합니다.
     </div>
   </div>
-  <div class="footer-mark"><span class="index">08</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">08</span><span class="sep">/</span><span>39</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -2408,7 +2518,7 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
       * 복붙하고 Enter. 알아서 자동 업데이트도 같이 깔립니다. Node.js 별도 설치 필요 없음.
     </div>
   </div>
-  <div class="footer-mark"><span class="index">09</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">09</span><span class="sep">/</span><span>39</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -2443,7 +2553,7 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
       * 한 번만 로그인하면 다음부터 자동. 계정 바꾸려면 채팅 중 <span class="mono">/login</span>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">10</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">10</span><span class="sep">/</span><span>39</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -2467,7 +2577,7 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
       * <span class="mono">cd</span> = <strong>c</strong>hange <strong>d</strong>irectory. 폴더를 Finder에서 터미널 창으로 <strong>드래그</strong>해도 경로가 자동 입력됩니다.
     </div>
   </div>
-  <div class="footer-mark"><span class="index">11</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">11</span><span class="sep">/</span><span>39</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -2488,8 +2598,16 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
     <div style="margin-top: var(--content-title-gap); font-size: var(--small-size); color: var(--muted);">
       터미널에서 <span class="mono">claude</span> 입력 → 채팅창이 열리면 자유롭게 말 걸어보기.
     </div>
+    <div style="margin-top: 1rem; max-width: 56rem;">
+      <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em; margin-bottom: 0.5rem;">이런 질문도 해보기</div>
+      <ul style="list-style: none; padding: 0; font-size: var(--body-size); color: var(--ink-2); line-height: 1.85;">
+        <li style="display: flex; gap: 0.6rem;"><span class="mono" style="color: var(--accent);">&gt;</span><span>오늘 날짜와 요일을 알려줘</span></li>
+        <li style="display: flex; gap: 0.6rem;"><span class="mono" style="color: var(--accent);">&gt;</span><span>이 폴더에 뭐가 들어있는지 봐줘</span></li>
+        <li style="display: flex; gap: 0.6rem;"><span class="mono" style="color: var(--accent);">&gt;</span><span>나는 클로드 코드 처음 써. 지금 뭐부터 배우면 좋을까?</span></li>
+      </ul>
+    </div>
   </div>
-  <div class="footer-mark"><span class="index">12</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">12</span><span class="sep">/</span><span>39</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -2532,7 +2650,7 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
       * 채팅창에 <span class="mono">/</span> 만 쳐도 자동완성으로 전체 목록이 뜹니다.
     </div>
   </div>
-  <div class="footer-mark"><span class="index">13</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">13</span><span class="sep">/</span><span>39</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -2563,7 +2681,7 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
       </div>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">14</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">14</span><span class="sep">/</span><span>39</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -2597,7 +2715,7 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
       * 2026-06 기준 최신: <span class="mono">Opus 4.8</span> · <span class="mono">Sonnet 4.6</span> · <span class="mono">Haiku 4.5</span> · <span class="mono">Fable 5</span> (신규)
     </div>
   </div>
-  <div class="footer-mark"><span class="index">15</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">15</span><span class="sep">/</span><span>39</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -2628,7 +2746,26 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
       * 허용한 권한 관리·해제는 <span class="mono">/permissions</span>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">16</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">16</span><span class="sep">/</span><span>39</span></div>
+  <div class="brand-mark">vibe-coding-lab</div>
+</section>
+
+<!-- ============================================================
+     SLIDE 13b — PERMISSION SCREENSHOT
+     ============================================================ -->
+<section class="slide" data-cat="claude-code/permission-screenshot">
+  <div class="slide-content">
+    <h2>권한 확인 화면</h2>
+    <p style="margin-top: var(--content-title-gap); font-size: var(--h3-size); color: var(--ink-2); line-height: 1.6; max-width: 64rem;">
+      파일을 바꾸거나 명령을 실행하기 전에는 이런 확인 화면이 뜹니다.
+    </p>
+    <div class="screenshot-slot terminal wide">
+      <div class="slot-label">SCREENSHOT</div>
+      <div class="slot-title">Allow once / Allow always / Deny 선택 화면</div>
+      <div class="slot-note">실제 권한 요청 문구와 선택지가 보이도록 캡처</div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">17</span><span class="sep">/</span><span>39</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -2662,7 +2799,7 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
       </div>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">17</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">18</span><span class="sep">/</span><span>39</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -2673,7 +2810,7 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
   <div class="slide-content">
     <h2 class="section-title">예제 1 — 뒤죽박죽인 폴더 정리하기</h2>
   </div>
-  <div class="footer-mark"><span class="index">18</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">19</span><span class="sep">/</span><span>39</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -2683,20 +2820,30 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
 <section class="slide" data-cat="concept/safety-habits">
   <div class="slide-content">
     <h2>백업과 권한</h2>
-    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(1rem, 3vw, 2rem); margin-top: var(--content-title-gap); max-width: 64rem;">
+    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(1rem, 3vw, 2rem); margin-top: var(--content-title-gap); max-width: 72rem;">
       <div style="padding: 1.5rem 1.75rem; border: 1px solid var(--line-2); border-top: 3px solid var(--accent); background: var(--bg-elev); border-radius: 4px;">
         <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em;">BACKUP</div>
         <div style="font-size: var(--h3-size); margin-top: 0.4rem; color: var(--ink); font-weight: 600;">백업</div>
-        <div style="font-size: var(--body-size); color: var(--ink-2); margin-top: 0.5rem; line-height: 1.5;">시작 전에 폴더를 복사해두어 만일의 상황에 대비합니다.</div>
+        <div style="font-size: var(--body-size); color: var(--ink-2); margin-top: 0.5rem; line-height: 1.5;">시작 전에 폴더를 복사해두어 만일의 상황에 대비합니다. Finder나 탐색기에서 폴더를 선택한 뒤 Cmd+C / Cmd+V로 사본을 만들어두면 됩니다.</div>
+        <div class="mono" style="font-size: var(--small-size); color: var(--accent); margin-top: 0.75rem; padding: 0.4rem 0.6rem; background: var(--accent-soft); border-radius: 3px; display: inline-block;">예) Downloads_backup_20260630/</div>
+        <div style="margin-top: 0.75rem; padding: 0.6rem 0.8rem; background: var(--dark-bg); color: var(--dark-text); border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: var(--small-size); line-height: 1.6;">
+          <div style="color: var(--dark-muted);">$ 터미널로 백업할 수도 있습니다</div>
+          <div>$ cp -r ~/Downloads ~/Downloads_backup_20260630</div>
+        </div>
       </div>
       <div style="padding: 1.5rem 1.75rem; border: 1px solid var(--line-2); border-top: 3px solid var(--accent); background: var(--bg-elev); border-radius: 4px;">
         <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em;">PERMISSION</div>
         <div style="font-size: var(--h3-size); margin-top: 0.4rem; color: var(--ink); font-weight: 600;">권한</div>
-        <div style="font-size: var(--body-size); color: var(--ink-2); margin-top: 0.5rem; line-height: 1.5;">파일을 수정하거나 명령을 실행하기 전에 항상 사용자의 확인을 받습니다.</div>
+        <div style="font-size: var(--body-size); color: var(--ink-2); margin-top: 0.5rem; line-height: 1.5;">파일을 수정하거나 명령을 실행하기 전에 항상 사용자의 확인을 받습니다. 매번 세 가지 중 하나를 선택합니다.</div>
+        <div style="margin-top: 0.75rem; display: flex; gap: 0.4rem; flex-wrap: wrap;">
+          <span class="mono" style="font-size: var(--small-size); padding: 0.3rem 0.55rem; background: var(--accent-soft); color: var(--accent); border-radius: 3px;">Allow once</span>
+          <span class="mono" style="font-size: var(--small-size); padding: 0.3rem 0.55rem; background: var(--accent-soft); color: var(--accent); border-radius: 3px;">Allow always</span>
+          <span class="mono" style="font-size: var(--small-size); padding: 0.3rem 0.55rem; background: var(--warn-soft); color: var(--warn); border-radius: 3px;">Deny</span>
+        </div>
       </div>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">19</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">20</span><span class="sep">/</span><span>39</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -2709,13 +2856,23 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
     <p style="margin-top: var(--content-title-gap); font-size: var(--h3-size); color: var(--ink-2); line-height: 1.6; max-width: 64rem;">
       정리할 폴더가 다운로드 폴더이므로, 그곳으로 먼저 이동한 다음 클로드를 실행합니다.
     </p>
-    <div style="margin-top: 1.5rem; background: var(--dark-bg); color: var(--dark-text); padding: 1.25rem 1.5rem; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: var(--body-size); max-width: 64rem;">
-      <div style="color: var(--dark-muted); font-size: var(--small-size); margin-bottom: 0.5rem;">$ TERMINAL</div>
-      <div>$ cd ~/Downloads</div>
-      <div>$ claude</div>
+    <p style="margin-top: 0.75rem; font-size: var(--body-size); color: var(--muted); max-width: 64rem; line-height: 1.6;">
+      경로가 길거나 헷갈리면, Finder/탐색기에서 폴더를 터미널 창으로 드래그하면 경로가 자동으로 입력됩니다.
+    </p>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; max-width: 76rem;">
+      <div style="background: var(--dark-bg); color: var(--dark-text); padding: 1.1rem 1.3rem; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: var(--body-size); line-height: 1.7;">
+        <div style="color: var(--dark-muted); font-size: var(--small-size); margin-bottom: 0.5rem;">$ TERMINAL — 이동 후 실행</div>
+        <div>$ cd ~/Downloads</div>
+        <div>$ claude</div>
+      </div>
+      <div style="background: var(--bg-elev); border: 1px solid var(--line); padding: 1.1rem 1.3rem; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: var(--small-size); color: var(--ink-2); line-height: 1.7;">
+        <div style="color: var(--muted); margin-bottom: 0.5rem;">현재 위치 확인 (선택)</div>
+        <div>$ pwd</div>
+        <div style="color: var(--accent);">/Users/사용자/Downloads</div>
+      </div>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">20</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">21</span><span class="sep">/</span><span>39</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -2731,8 +2888,20 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
     <div style="margin-top: 1.5rem; background: var(--accent-soft); border-left: 3px solid var(--accent); padding: 1.25rem 1.5rem; border-radius: 4px; font-size: var(--h3-size); color: var(--ink); max-width: 64rem; line-height: 1.5;">
       &gt; 이 폴더에 뭐가 들었는지 카테고리별로 정리해서 알려줘
     </div>
+    <div style="margin-top: 1rem; max-width: 64rem;">
+      <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em; margin-bottom: 0.4rem;">예시 응답</div>
+      <div style="background: var(--bg-elev); border: 1px solid var(--line); padding: 0.9rem 1.1rem; border-radius: 4px; font-size: var(--body-size); color: var(--ink-2); line-height: 1.7;">
+        총 142개 파일 · 이미지 67 / PDF 38 / 압축 14 / 설치 파일 9 / 기타 14<br />
+        오래된 설치 파일과 중복 스크린샷이 다수 발견되어 정리를 추천드립니다.
+      </div>
+    </div>
+    <div class="screenshot-slot terminal wide">
+      <div class="slot-label">SCREENSHOT</div>
+      <div class="slot-title">Claude가 폴더 내용을 카테고리별로 분석한 터미널 화면</div>
+      <div class="slot-note">파일 종류별 개수, 정리 제안, 주의할 파일이 보이면 좋음</div>
+    </div>
   </div>
-  <div class="footer-mark"><span class="index">21</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">22</span><span class="sep">/</span><span>39</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -2742,21 +2911,40 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
 <section class="slide" data-cat="concept/plan-mode">
   <div class="slide-content">
     <h2>PLAN MODE — <span class="mono">/plan</span></h2>
-    <p style="margin-top: var(--content-title-gap); font-size: var(--h3-size); color: var(--ink-2); line-height: 1.6; max-width: 64rem;">
+    <p style="margin-top: var(--content-title-gap); font-size: var(--h3-size); color: var(--ink-2); line-height: 1.6; max-width: 72rem;">
       규모가 크거나 위험한 작업을 수행하기 전에, <span style="color: var(--accent); font-weight: 600;">계획을 먼저 세우는 모드</span>입니다. 실제 실행은 일어나지 않습니다.
     </p>
-    <div style="margin-top: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap; max-width: 64rem;">
-      <div style="padding: 1rem 1.25rem; background: var(--bg-elev); border: 1px solid var(--line-2); border-radius: 4px;">
+    <div style="margin-top: 1rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
+      <div style="padding: 0.7rem 1rem; background: var(--bg-elev); border: 1px solid var(--line-2); border-radius: 4px;">
         <div class="mono" style="font-size: var(--small-size); color: var(--muted);">키보드</div>
-        <div class="mono" style="font-size: var(--body-size); color: var(--ink); margin-top: 0.3rem;">Shift + Tab × 2</div>
+        <div class="mono" style="font-size: var(--body-size); color: var(--ink); margin-top: 0.25rem;">Shift + Tab × 2</div>
       </div>
-      <div style="padding: 1rem 1.25rem; background: var(--bg-elev); border: 1px solid var(--line-2); border-radius: 4px;">
+      <div style="padding: 0.7rem 1rem; background: var(--bg-elev); border: 1px solid var(--line-2); border-radius: 4px;">
         <div class="mono" style="font-size: var(--small-size); color: var(--muted);">슬래시</div>
-        <div class="mono" style="font-size: var(--body-size); color: var(--ink); margin-top: 0.3rem;">/plan</div>
+        <div class="mono" style="font-size: var(--body-size); color: var(--ink); margin-top: 0.25rem;">/plan</div>
+      </div>
+      <div style="padding: 0.7rem 1rem; background: var(--bg-elev); border: 1px solid var(--line-2); border-radius: 4px;">
+        <div class="mono" style="font-size: var(--small-size); color: var(--muted);">빠져나오기</div>
+        <div class="mono" style="font-size: var(--body-size); color: var(--ink); margin-top: 0.25rem;">ESC</div>
       </div>
     </div>
+    <div style="margin-top: 1.25rem; max-width: 76rem;">
+      <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em; margin-bottom: 0.4rem;">예시 계획 출력</div>
+      <div style="background: var(--bg-elev); border: 1px solid var(--line); border-left: 3px solid var(--accent); padding: 0.95rem 1.2rem; border-radius: 4px; font-size: var(--body-size); color: var(--ink-2); line-height: 1.75;">
+        1. 카테고리별 하위 폴더 생성 (images / pdfs / archives / installers)<br />
+        2. 확장자별로 파일 이동<br />
+        3. 중복 파일은 _dup 접미사 붙여서 유지<br />
+        4. 빈 폴더는 그대로 두고 정리 결과를 요약 출력<br />
+        <span style="color: var(--muted); font-size: var(--small-size);">— 이대로 실행할까요? (ESC로 빠져나와 일반 모드에서 진행)</span>
+      </div>
+    </div>
+    <div class="screenshot-slot terminal wide" style="min-height: clamp(180px, 26vh, 300px);">
+      <div class="slot-label">SCREENSHOT</div>
+      <div class="slot-title">Plan Mode에서 정리 계획만 출력된 화면</div>
+      <div class="slot-note">실행 전 단계라는 점이 보이도록 계획 리스트를 캡처</div>
+    </div>
   </div>
-  <div class="footer-mark"><span class="index">22</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">23</span><span class="sep">/</span><span>39</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -2769,11 +2957,26 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
     <p style="margin-top: var(--content-title-gap); font-size: var(--h3-size); color: var(--ink-2); line-height: 1.6; max-width: 64rem;">
       계획이 마음에 들면 ESC를 눌러 일반 모드로 돌아옵니다. 같은 프롬프트를 한 번 더 입력하면 실제 작업이 시작됩니다.
     </p>
+    <div style="margin-top: 1rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
+      <div style="padding: 0.7rem 1rem; background: var(--bg-elev); border: 1px solid var(--line-2); border-radius: 4px;">
+        <div class="mono" style="font-size: var(--small-size); color: var(--muted);">일반 모드 복귀</div>
+        <div class="mono" style="font-size: var(--body-size); color: var(--ink); margin-top: 0.25rem;">ESC</div>
+      </div>
+      <div style="padding: 0.7rem 1rem; background: var(--bg-elev); border: 1px solid var(--line-2); border-radius: 4px;">
+        <div class="mono" style="font-size: var(--small-size); color: var(--muted);">이전 프롬프트 불러오기</div>
+        <div class="mono" style="font-size: var(--body-size); color: var(--ink); margin-top: 0.25rem;">↑ 화살표</div>
+      </div>
+    </div>
     <p style="margin-top: 1rem; font-size: var(--body-size); color: var(--ink-2); line-height: 1.7; max-width: 64rem;">
       작업이 진행되는 동안 파일을 수정할 때마다 권한 확인 창이 뜹니다. 내용을 확인하고 승인하시면 됩니다.
     </p>
+    <div class="screenshot-slot terminal wide">
+      <div class="slot-label">SCREENSHOT</div>
+      <div class="slot-title">일반 모드로 복귀한 뒤 실행이 시작되는 화면</div>
+      <div class="slot-note">PLAN MODE 표시가 사라지고 파일 수정 권한 요청이 뜨는 순간 캡처</div>
+    </div>
   </div>
-  <div class="footer-mark"><span class="index">23</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">24</span><span class="sep">/</span><span>39</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -2789,11 +2992,19 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
     <div style="margin-top: 1.5rem; background: var(--accent-soft); border-left: 3px solid var(--accent); padding: 1.25rem 1.5rem; border-radius: 4px; font-size: var(--h3-size); color: var(--ink); max-width: 64rem; line-height: 1.5;">
       &gt; 방금 정리한 거 다 되돌려줘
     </div>
-    <div style="margin-top: 1.5rem; border: 2px dashed var(--line-2); background: var(--bg-elev); padding: clamp(2rem, 5vh, 3rem); display: flex; align-items: center; justify-content: center; color: var(--muted); font-family: 'JetBrains Mono', monospace; font-size: var(--small-size); max-width: 64rem; border-radius: 4px;">
-      [ 정리 전 / 후 폴더 스크린샷 ]
+    <div class="screenshot-grid" style="max-width: 64rem;">
+      <div class="screenshot-slot" style="min-height: clamp(150px, 23vh, 260px);">
+        <div class="slot-label">BEFORE</div>
+        <img src="assets/folder-before.png" alt="Messy Finder folder before cleanup" style="display: block; width: 100%; height: 100%; max-height: clamp(130px, 19vh, 220px); object-fit: contain;" />
+      </div>
+      <div class="screenshot-slot" style="min-height: clamp(150px, 23vh, 260px);">
+        <div class="slot-label">AFTER</div>
+        <div class="slot-title">정리 후 폴더</div>
+        <div class="slot-note">카테고리별 폴더가 만들어진 결과 화면</div>
+      </div>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">24</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">25</span><span class="sep">/</span><span>39</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -2803,26 +3014,38 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
 <section class="slide" data-cat="example/folder-cleanup/more">
   <div class="slide-content">
     <h2>추가 예제</h2>
-    <ul style="margin-top: var(--content-title-gap); list-style: none; padding: 0; max-width: 64rem; font-size: var(--body-size); color: var(--ink-2); line-height: 1.9;">
-      <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--line); display: flex; align-items: baseline; gap: 0.75rem;">
+    <ul style="margin-top: var(--content-title-gap); list-style: none; padding: 0; max-width: 72rem; font-size: var(--body-size); color: var(--ink-2); line-height: 1.85;">
+      <li style="padding: 0.55rem 0; border-bottom: 1px solid var(--line); display: flex; align-items: baseline; gap: 0.75rem;">
         <span class="mono" style="color: var(--accent); min-width: 1.5rem;">·</span>
-        <span>영수증 사진을 보고 파일명 변경하기</span>
+        <span>영수증 사진을 보고 가게명·금액·날짜로 파일명 변경하기</span>
       </li>
-      <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--line); display: flex; align-items: baseline; gap: 0.75rem;">
+      <li style="padding: 0.55rem 0; border-bottom: 1px solid var(--line); display: flex; align-items: baseline; gap: 0.75rem;">
         <span class="mono" style="color: var(--accent); min-width: 1.5rem;">·</span>
-        <span>여행 사진을 보고 위치 · 날짜별로 정렬하기</span>
+        <span>여행 사진을 EXIF 위치·날짜로 자동 정렬하기</span>
       </li>
-      <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--line); display: flex; align-items: baseline; gap: 0.75rem;">
+      <li style="padding: 0.55rem 0; border-bottom: 1px solid var(--line); display: flex; align-items: baseline; gap: 0.75rem;">
         <span class="mono" style="color: var(--accent); min-width: 1.5rem;">·</span>
-        <span>되돌리기</span>
+        <span>중복 파일 찾아내고 한쪽만 남기기</span>
       </li>
-      <li style="padding: 0.5rem 0; display: flex; align-items: baseline; gap: 0.75rem; color: var(--muted);">
+      <li style="padding: 0.55rem 0; border-bottom: 1px solid var(--line); display: flex; align-items: baseline; gap: 0.75rem;">
+        <span class="mono" style="color: var(--accent); min-width: 1.5rem;">·</span>
+        <span>오래된 설치 파일·압축 파일만 골라서 정리하기</span>
+      </li>
+      <li style="padding: 0.55rem 0; border-bottom: 1px solid var(--line); display: flex; align-items: baseline; gap: 0.75rem;">
+        <span class="mono" style="color: var(--accent); min-width: 1.5rem;">·</span>
+        <span>스크린샷을 주제별로 묶고 캡션 붙이기</span>
+      </li>
+      <li style="padding: 0.55rem 0; border-bottom: 1px solid var(--line); display: flex; align-items: baseline; gap: 0.75rem;">
+        <span class="mono" style="color: var(--accent); min-width: 1.5rem;">·</span>
+        <span>방금 한 작업을 되돌리기 (Cmd+Z 대신 말로)</span>
+      </li>
+      <li style="padding: 0.55rem 0; display: flex; align-items: baseline; gap: 0.75rem; color: var(--muted);">
         <span class="mono" style="min-width: 1.5rem;">·</span>
         <span>등등 …</span>
       </li>
     </ul>
   </div>
-  <div class="footer-mark"><span class="index">25</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">26</span><span class="sep">/</span><span>39</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -2831,9 +3054,9 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
      ============================================================ -->
 <section class="slide section-divider" data-cat="example/paper-summary/title">
   <div class="slide-content">
-    <h2 class="section-title">예제 2 — 쌓인 논문 요약하기</h2>
+    <h2 class="section-title">예제 2 — 쌓인 논문 처리하기</h2>
   </div>
-  <div class="footer-mark"><span class="index">26</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">27</span><span class="sep">/</span><span>39</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -2843,11 +3066,29 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
 <section class="slide" data-cat="example/paper-summary/scenario">
   <div class="slide-content">
     <h2>시나리오</h2>
-    <div style="margin-top: var(--content-title-gap); font-size: var(--body-size); color: var(--muted); max-width: 56rem;">
-      안 읽은 논문이 쌓여있는 상황
+    <p style="margin-top: var(--content-title-gap); font-size: var(--h3-size); color: var(--ink-2); line-height: 1.6; max-width: 64rem;">
+      논문 업무는 “읽기”보다 <span style="color: var(--accent); font-weight: 600;">옮기기·비교하기·형식 맞추기</span>에서 시간이 많이 듭니다.
+    </p>
+    <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(0.6rem, 1.5vw, 1.1rem); margin-top: var(--content-title-gap); max-width: 84rem;">
+      <div style="padding: 1.25rem 1.4rem; border: 1px solid var(--line-2); border-top: 3px solid var(--accent); background: var(--bg-elev); border-radius: 4px;">
+        <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em;">1. STRUCTURE</div>
+        <div style="font-size: var(--body-size); color: var(--ink-2); margin-top: 0.5rem;">제목·저자·섹션·표·그림 목록 파악</div>
+      </div>
+      <div style="padding: 1.25rem 1.4rem; border: 1px solid var(--line-2); border-top: 3px solid var(--accent); background: var(--bg-elev); border-radius: 4px;">
+        <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em;">2. EXTRACT</div>
+        <div style="font-size: var(--body-size); color: var(--ink-2); margin-top: 0.5rem;">표·수치·p-value·샘플 수 추출</div>
+      </div>
+      <div style="padding: 1.25rem 1.4rem; border: 1px solid var(--line-2); border-top: 3px solid var(--accent); background: var(--bg-elev); border-radius: 4px;">
+        <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em;">3. COMPARE</div>
+        <div style="font-size: var(--body-size); color: var(--ink-2); margin-top: 0.5rem;">여러 논문을 같은 기준으로 비교</div>
+      </div>
+      <div style="padding: 1.25rem 1.4rem; border: 1px solid var(--line-2); border-top: 3px solid var(--term-green); background: var(--bg-elev); border-radius: 4px;">
+        <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em;">4. VALIDATE</div>
+        <div style="font-size: var(--body-size); color: var(--ink-2); margin-top: 0.5rem;">출처와 페이지 번호로 원문 확인</div>
+      </div>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">27</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">28</span><span class="sep">/</span><span>39</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -2856,15 +3097,79 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
      ============================================================ -->
 <section class="slide" data-cat="example/paper-summary/warmup">
   <div class="slide-content">
-    <h2>한 편 요약하기</h2>
+    <h2>한 편으로 구조 파악</h2>
     <p style="margin-top: var(--content-title-gap); font-size: var(--h3-size); color: var(--ink-2); line-height: 1.6; max-width: 64rem;">
-      먼저 PDF 한 편으로 워밍업합니다. 한 개만 넣고 요약을 받아봅니다.
+      처음부터 요약을 시키기보다, PDF가 어떤 구조인지 먼저 읽게 합니다.
     </p>
-    <div style="margin-top: 1.5rem; background: var(--accent-soft); border-left: 3px solid var(--accent); padding: 1.25rem 1.5rem; border-radius: 4px; font-size: var(--h3-size); color: var(--ink); max-width: 64rem; line-height: 1.5;">
-      &gt; sample.pdf 한국어로 3줄 요약해줘
+    <div style="margin-top: 1.5rem; background: var(--accent-soft); border-left: 3px solid var(--accent); padding: 1.25rem 1.5rem; border-radius: 4px; font-size: var(--body-size); color: var(--ink); max-width: 70rem; line-height: 1.65;">
+      &gt; paper.pdf를 읽고 논문의 제목, 저자, 섹션 구조, 표와 그림 목록을 정리해줘
+    </div>
+    <div style="margin-top: 1rem; font-size: var(--small-size); color: var(--muted); max-width: 64rem; line-height: 1.6;">
+      결과 예시: Introduction / Methods / Results / Discussion, Table 1 실험 조건, Figure 2 구조 비교
     </div>
   </div>
-  <div class="footer-mark"><span class="index">28</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">29</span><span class="sep">/</span><span>39</span></div>
+  <div class="brand-mark">vibe-coding-lab</div>
+</section>
+
+<!-- ============================================================
+     SLIDE NEW — METADATA INDEX (paper-summary)
+     ============================================================ -->
+<section class="slide" data-cat="example/paper-summary/index">
+  <div class="slide-content">
+    <h2>메타데이터로 이름 정리</h2>
+    <p style="margin-top: var(--content-title-gap); font-size: var(--h3-size); color: var(--ink-2); line-height: 1.6; max-width: 72rem;">
+      쌓인 PDF를 다루기 전에, <span style="color: var(--accent); font-weight: 600;">파일명부터 일괄로 정돈</span>합니다. 메타데이터(저자·연도·제목)를 읽어 일관된 형식으로 재명명하면 이후 작업이 훨씬 수월해집니다.
+    </p>
+    <div style="margin-top: 1.5rem; background: var(--accent-soft); border-left: 3px solid var(--accent); padding: 1.25rem 1.5rem; border-radius: 4px; font-size: var(--body-size); color: var(--ink); max-width: 76rem; line-height: 1.65;">
+      &gt; papers/ 폴더의 모든 PDF에서 메타데이터를 읽어,<br />
+      <span class="mono">{저자}_{연도}_{제목30자}.pdf</span> 형식으로 일괄 재명명해줘.<br />
+      메타데이터가 비어있는 파일은 본문 첫 페이지에서 추출해줘.
+    </div>
+    <div style="margin-top: 1rem; max-width: 76rem;">
+      <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em; margin-bottom: 0.4rem;">결과 예시</div>
+      <div style="background: var(--bg-elev); border: 1px solid var(--line); padding: 0.9rem 1.1rem; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: var(--small-size); color: var(--ink-2); line-height: 1.85;">
+        Smith_2023_Effects_of_metformin_on_glycemic.pdf<br />
+        Lee_2024_Long_term_outcomes_of_bariatric_su.pdf<br />
+        Kim_2022_Machine_learning_for_cardiac_risk.pdf
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">30</span><span class="sep">/</span><span>39</span></div>
+  <div class="brand-mark">vibe-coding-lab</div>
+</section>
+
+<!-- ============================================================
+     SLIDE 25b — 표/수치 추출
+     ============================================================ -->
+<section class="slide" data-cat="example/paper-summary/extract">
+  <div class="slide-content">
+    <h2>표와 수치 추출</h2>
+    <p style="margin-top: var(--content-title-gap); font-size: var(--h3-size); color: var(--ink-2); line-height: 1.6; max-width: 64rem;">
+      논문에서 반복해서 옮기는 데이터는 파일로 뽑아두는 게 좋습니다.
+    </p>
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(0.7rem, 1.5vw, 1.15rem); margin-top: var(--content-title-gap); max-width: 84rem;">
+      <div style="background: var(--accent-soft); border-left: 3px solid var(--accent); padding: 1.1rem 1.25rem; border-radius: 4px; font-size: var(--body-size); color: var(--ink); line-height: 1.6;">
+        &gt; paper.pdf의 Table 2를 CSV 파일로 추출해줘.<br />
+        모든 행과 열을 빠짐없이 포함하고,<br />
+        파일명은 <span class="mono">table2.csv</span>로 저장해줘
+      </div>
+      <div style="background: var(--accent-soft); border-left: 3px solid var(--accent); padding: 1.1rem 1.25rem; border-radius: 4px; font-size: var(--body-size); color: var(--ink); line-height: 1.6;">
+        &gt; paper.pdf에서 n, p-value, 95% 신뢰구간,<br />
+        효과 크기, 평균과 표준편차를 추출해서<br />
+        <span class="mono">results_summary.json</span>으로 저장해줘
+      </div>
+      <div style="background: var(--accent-soft); border-left: 3px solid var(--accent); padding: 1.1rem 1.25rem; border-radius: 4px; font-size: var(--body-size); color: var(--ink); line-height: 1.6;">
+        &gt; paper.pdf의 Figure 2, 3을<br />
+        <span class="mono">figures/</span> 폴더에 png로<br />
+        저장하고 캡션도 <span class="mono">captions.md</span>로 정리해줘
+      </div>
+    </div>
+    <div style="margin-top: 1rem; padding: 0.9rem 1.1rem; background: var(--warn-soft); border-left: 3px solid var(--warn); border-radius: 4px; font-size: var(--small-size); color: var(--ink-2); max-width: 84rem; line-height: 1.6;">
+      <span class="mono" style="color: var(--warn); font-weight: 600;">스캔본 PDF는</span> 텍스트가 그림으로 들어있어 바로 추출되지 않습니다. 먼저 OCR로 텍스트화하도록 요청한 다음 위 작업을 진행합니다 (예: <span class="mono">&gt; scanned.pdf를 OCR로 텍스트화한 뒤 표를 추출해줘</span>).
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">31</span><span class="sep">/</span><span>39</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -2874,26 +3179,15 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
 <section class="slide" data-cat="concept/rag">
   <div class="slide-content">
     <h2>RAG란?</h2>
-    <p style="margin-top: var(--content-title-gap); font-size: var(--h3-size); color: var(--ink-2); line-height: 1.6; max-width: 64rem;">
+    <p style="margin-top: var(--content-title-gap); font-size: var(--body-size); color: var(--ink-2); line-height: 1.6; max-width: 72rem;">
       <span class="mono" style="color: var(--accent); font-weight: 700;">R</span>etrieval-<span class="mono" style="color: var(--accent); font-weight: 700;">A</span>ugmented <span class="mono" style="color: var(--accent); font-weight: 700;">G</span>eneration
+      — AI가 머릿속 지식만으로 답하는 것이 아니라, <span style="color: var(--accent); font-weight: 600;">자료를 직접 참고하면서</span> 답하는 방식입니다.
     </p>
-    <p style="margin-top: 1rem; font-size: var(--body-size); color: var(--ink-2); line-height: 1.7; max-width: 64rem;">
-      AI가 머릿속 지식만으로 답하는 것이 아니라, <span style="color: var(--accent); font-weight: 600;">자료를 직접 참고하면서</span> 답하는 방식입니다. 클로드코드는 파일을 직접 읽기 때문에 자연스럽게 RAG 방식으로 동작합니다.
-    </p>
-    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(1rem, 3vw, 2rem); margin-top: var(--content-title-gap); max-width: 64rem;">
-      <div style="padding: 1.5rem 1.75rem; border: 1px solid var(--line-2); border-top: 3px solid var(--accent); background: var(--bg-elev); border-radius: 4px;">
-        <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em;">WITHOUT RAG</div>
-        <div style="font-size: var(--h3-size); margin-top: 0.4rem; color: var(--ink); font-weight: 600;">머리로만</div>
-        <div style="font-size: var(--body-size); color: var(--ink-2); margin-top: 0.5rem; line-height: 1.5;">모르는 내용도 그럴듯하게 지어내는 환각이 발생합니다.</div>
-      </div>
-      <div style="padding: 1.5rem 1.75rem; border: 1px solid var(--line-2); border-top: 3px solid var(--accent); background: var(--bg-elev); border-radius: 4px;">
-        <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em;">WITH RAG</div>
-        <div style="font-size: var(--h3-size); margin-top: 0.4rem; color: var(--ink); font-weight: 600;">자료 펴놓고</div>
-        <div style="font-size: var(--body-size); color: var(--ink-2); margin-top: 0.5rem; line-height: 1.5;">실제 PDF 내용을 바탕으로 답변합니다.</div>
-      </div>
+    <div style="margin-top: clamp(1rem, 2.4vh, 1.75rem); width: min(100%, 86rem); border: 1px solid var(--line-2); background: var(--bg-elev); overflow: hidden;">
+      <img src="assets/rag-sketch-diagram.png" alt="Sketch diagram explaining Retrieval-Augmented Generation flow" style="display: block; width: 100%; max-height: min(62vh, 620px); object-fit: contain; background: #FCFCFB;" />
     </div>
   </div>
-  <div class="footer-mark"><span class="index">29</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">32</span><span class="sep">/</span><span>39</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -2902,15 +3196,19 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
      ============================================================ -->
 <section class="slide" data-cat="example/paper-summary/batch">
   <div class="slide-content">
-    <h2>여러 논문 한꺼번에 요약하기</h2>
+    <h2>여러 논문 비교표 만들기</h2>
     <p style="margin-top: var(--content-title-gap); font-size: var(--h3-size); color: var(--ink-2); line-height: 1.6; max-width: 64rem;">
-      한 편이 잘 됐다면 일괄 처리로 넘어갑니다. 폴더 전체를 한 번에 넣으면 됩니다.
+      여러 편을 한 번에 처리할 때는 “무엇을 비교할지” 열 이름을 먼저 정해줍니다.
     </p>
-    <div style="margin-top: 1.5rem; background: var(--accent-soft); border-left: 3px solid var(--accent); padding: 1.25rem 1.5rem; border-radius: 4px; font-size: var(--h3-size); color: var(--ink); max-width: 64rem; line-height: 1.5;">
-      &gt; 이 폴더 모든 PDF 요약해서 summary.md 표로 정리해줘
+    <div style="margin-top: 1.5rem; background: var(--accent-soft); border-left: 3px solid var(--accent); padding: 1.25rem 1.5rem; border-radius: 4px; font-size: var(--body-size); color: var(--ink); max-width: 76rem; line-height: 1.65;">
+      &gt; papers 폴더의 PDF들을 각각 읽고, 다음 항목을 표로 정리해서 <span class="mono">comparison.md</span>로 저장해줘:<br />
+      - 논문 제목 / 연도 / 연구 목적<br />
+      - 연구 설계와 대상자 수<br />
+      - 주요 변수와 핵심 결과<br />
+      - 한계점과 후속 연구 방향
     </div>
   </div>
-  <div class="footer-mark"><span class="index">30</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">33</span><span class="sep">/</span><span>39</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -2946,7 +3244,7 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
       </li>
     </ul>
   </div>
-  <div class="footer-mark"><span class="index">31</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">34</span><span class="sep">/</span><span>39</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -2960,37 +3258,45 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
 
       <div style="flex: 1; min-width: 0; padding: 1.15rem 1rem; border: 1px solid var(--line-2); border-top: 3px solid var(--accent); background: var(--bg-elev); border-radius: 4px; display: flex; flex-direction: column; gap: 0.45rem;">
         <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em;">STEP 1</div>
-        <div style="font-size: var(--body-size); color: var(--ink); font-weight: 600;">인터넷 접속</div>
-        <div class="mono" style="font-size: var(--small-size); color: var(--accent); margin-top: auto; padding-top: 0.3rem;">WebSearch · WebFetch</div>
+        <div style="font-size: var(--body-size); color: var(--ink); font-weight: 600;">PDF 준비</div>
+        <div class="mono" style="font-size: var(--small-size); color: var(--accent); margin-top: auto; padding-top: 0.3rem;">papers/</div>
       </div>
 
       <div style="display: flex; align-items: center; color: var(--muted-2); font-size: 1.4rem; padding: 0 0.1rem;">→</div>
 
       <div style="flex: 1; min-width: 0; padding: 1.15rem 1rem; border: 1px solid var(--line-2); border-top: 3px solid var(--accent); background: var(--bg-elev); border-radius: 4px; display: flex; flex-direction: column; gap: 0.45rem;">
         <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em;">STEP 2</div>
-        <div style="font-size: var(--body-size); color: var(--ink); font-weight: 600;">다운로드</div>
-        <div class="mono" style="font-size: var(--small-size); color: var(--accent); margin-top: auto; padding-top: 0.3rem;">Bash (curl · wget)</div>
+        <div style="font-size: var(--body-size); color: var(--ink); font-weight: 600;">구조 파악</div>
+        <div class="mono" style="font-size: var(--small-size); color: var(--accent); margin-top: auto; padding-top: 0.3rem;">Read</div>
       </div>
 
       <div style="display: flex; align-items: center; color: var(--muted-2); font-size: 1.4rem; padding: 0 0.1rem;">→</div>
 
       <div style="flex: 1; min-width: 0; padding: 1.15rem 1rem; border: 1px solid var(--line-2); border-top: 3px solid var(--accent); background: var(--bg-elev); border-radius: 4px; display: flex; flex-direction: column; gap: 0.45rem;">
         <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em;">STEP 3</div>
-        <div style="font-size: var(--body-size); color: var(--ink); font-weight: 600;">PDF 읽기</div>
-        <div class="mono" style="font-size: var(--small-size); color: var(--accent); margin-top: auto; padding-top: 0.3rem;">Read</div>
+        <div style="font-size: var(--body-size); color: var(--ink); font-weight: 600;">표·수치 추출</div>
+        <div class="mono" style="font-size: var(--small-size); color: var(--accent); margin-top: auto; padding-top: 0.3rem;">CSV · JSON</div>
+      </div>
+
+      <div style="display: flex; align-items: center; color: var(--muted-2); font-size: 1.4rem; padding: 0 0.1rem;">→</div>
+
+      <div style="flex: 1; min-width: 0; padding: 1.15rem 1rem; border: 1px solid var(--line-2); border-top: 3px solid var(--accent); background: var(--bg-elev); border-radius: 4px; display: flex; flex-direction: column; gap: 0.45rem;">
+        <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em;">STEP 4</div>
+        <div style="font-size: var(--body-size); color: var(--ink); font-weight: 600;">비교표 작성</div>
+        <div class="mono" style="font-size: var(--small-size); color: var(--accent); margin-top: auto; padding-top: 0.3rem;">Markdown · CSV</div>
       </div>
 
       <div style="display: flex; align-items: center; color: var(--muted-2); font-size: 1.4rem; padding: 0 0.1rem;">→</div>
 
       <div style="flex: 1; min-width: 0; padding: 1.15rem 1rem; border: 1px solid var(--line-2); border-top: 3px solid var(--term-green); background: var(--bg-elev); border-radius: 4px; display: flex; flex-direction: column; gap: 0.45rem;">
-        <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em;">STEP 4</div>
-        <div style="font-size: var(--body-size); color: var(--ink); font-weight: 600;">엑셀로 쓰기</div>
-        <div class="mono" style="font-size: var(--small-size); color: var(--term-green); margin-top: auto; padding-top: 0.3rem;">Write</div>
+        <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em;">STEP 5</div>
+        <div style="font-size: var(--body-size); color: var(--ink); font-weight: 600;">출처 검증</div>
+        <div class="mono" style="font-size: var(--small-size); color: var(--term-green); margin-top: auto; padding-top: 0.3rem;">page · source</div>
       </div>
 
     </div>
   </div>
-  <div class="footer-mark"><span class="index">32</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">35</span><span class="sep">/</span><span>39</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -2999,15 +3305,20 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
      ============================================================ -->
 <section class="slide" data-cat="example/paper-summary/verify">
   <div class="slide-content">
-    <h2>결과 확인</h2>
+    <h2>출처까지 확인</h2>
     <p style="margin-top: var(--content-title-gap); font-size: var(--h3-size); color: var(--ink-2); line-height: 1.6; max-width: 64rem;">
-      생성된 summary.md 파일을 열어 확인합니다. 결과가 표 형태로 정리되어 있습니다.
+      논문 작업은 그럴듯한 요약보다 <span style="color: var(--accent); font-weight: 600;">원문에서 확인 가능한 결과</span>가 중요합니다.
     </p>
-    <div style="margin-top: 1.5rem; border: 2px dashed var(--line-2); background: var(--bg-elev); padding: clamp(2rem, 5vh, 3rem); display: flex; align-items: center; justify-content: center; color: var(--muted); font-family: 'JetBrains Mono', monospace; font-size: var(--small-size); max-width: 64rem; border-radius: 4px;">
-      [ summary.md 결과 스크린샷 ]
+    <div style="margin-top: 1.5rem; background: var(--accent-soft); border-left: 3px solid var(--accent); padding: 1.25rem 1.5rem; border-radius: 4px; font-size: var(--body-size); color: var(--ink); max-width: 76rem; line-height: 1.65;">
+      &gt; comparison.md의 각 행에 대해, 해당 값이 원본 PDF 몇 페이지에 있는지 출처를 표시해줘
+    </div>
+    <div class="screenshot-slot wide" style="max-width: 64rem;">
+      <div class="slot-label">SCREENSHOT</div>
+      <div class="slot-title">comparison.md 결과 화면</div>
+      <div class="slot-note">논문별 비교표와 page/source 열이 보이는 마크다운 캡처</div>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">33</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">36</span><span class="sep">/</span><span>39</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -3020,19 +3331,23 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
     <ul style="margin-top: var(--content-title-gap); list-style: none; padding: 0; max-width: 64rem; font-size: var(--body-size); color: var(--ink-2); line-height: 1.9;">
       <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--line); display: flex; align-items: baseline; gap: 0.75rem;">
         <span class="mono" style="color: var(--accent); min-width: 1.5rem;">·</span>
-        <span>키워드별로 그룹핑하기</span>
+        <span>BibTeX를 APA / Vancouver 형식으로 변환하기</span>
       </li>
       <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--line); display: flex; align-items: baseline; gap: 0.75rem;">
         <span class="mono" style="color: var(--accent); min-width: 1.5rem;">·</span>
-        <span>인용 정보 추출해서 BibTeX로</span>
+        <span>깨진 참고문헌 텍스트를 BibTeX로 복원하기</span>
       </li>
       <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--line); display: flex; align-items: baseline; gap: 0.75rem;">
         <span class="mono" style="color: var(--accent); min-width: 1.5rem;">·</span>
-        <span>특정 키워드 포함된 논문만 골라내기</span>
+        <span>중복 참고문헌 찾고 인용 키 정리하기</span>
       </li>
       <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--line); display: flex; align-items: baseline; gap: 0.75rem;">
         <span class="mono" style="color: var(--accent); min-width: 1.5rem;">·</span>
-        <span>각 논문 핵심 figure만 모아 정리</span>
+        <span>여러 논문의 공통 한계점과 연구 갭 뽑기</span>
+      </li>
+      <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--line); display: flex; align-items: baseline; gap: 0.75rem;">
+        <span class="mono" style="color: var(--accent); min-width: 1.5rem;">·</span>
+        <span>비교표를 바탕으로 문헌 리뷰 초안 작성하기</span>
       </li>
       <li style="padding: 0.5rem 0; display: flex; align-items: baseline; gap: 0.75rem; color: var(--muted);">
         <span class="mono" style="min-width: 1.5rem;">·</span>
@@ -3040,7 +3355,21 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
       </li>
     </ul>
   </div>
-  <div class="footer-mark"><span class="index">34</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">37</span><span class="sep">/</span><span>39</span></div>
+  <div class="brand-mark">vibe-coding-lab</div>
+</section>
+
+<!-- ============================================================
+     HOMEPAGE OFFER
+     ============================================================ -->
+<section class="slide" data-cat="notice/homepage-offer">
+  <div class="slide-content">
+    <h2>홈페이지가 필요하신 분께</h2>
+    <div style="margin-top: var(--content-title-gap); padding: 1.25rem 1.5rem; border: 1px solid var(--line-2); border-left: 3px solid var(--accent); background: var(--bg-elev); border-radius: 4px; font-size: var(--body-size); color: var(--ink-2); max-width: 48rem;">
+      <a href="mailto:dongjuson@hai.kangwon.ac.kr" class="mono" style="color: var(--accent); text-decoration: none; border-bottom: 1px dashed var(--accent);">dongjuson@hai.kangwon.ac.kr</a> 로 메일 보내주시면 만들어드리겠습니다.
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">38</span><span class="sep">/</span><span>39</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -3050,8 +3379,14 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
 <section class="slide section-divider" data-cat="section/wrap-up">
   <div class="slide-content">
     <h2 class="section-title">마무리</h2>
+    <p style="margin-top: var(--content-title-gap); font-size: var(--h3-size); color: var(--ink-2); line-height: 1.6; text-align: center;">
+      슬라이드 다시 보기 · <a href="https://djson.me/vibecoding-workshop/week2/" class="mono" style="color: var(--accent); text-decoration: none; border-bottom: 1px dashed var(--accent);">djson.me/vibecoding-workshop/week2/</a>
+    </p>
+    <p style="margin-top: 1rem; font-size: var(--body-size); color: var(--muted); text-align: center;">
+      다음 주에 이어서 진행하겠습니다.
+    </p>
   </div>
-  <div class="footer-mark"><span class="index">35</span><span class="sep">/</span><span>35</span></div>
+  <div class="footer-mark"><span class="index">39</span><span class="sep">/</span><span>39</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
