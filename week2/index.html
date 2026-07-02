@@ -763,18 +763,15 @@
     <div class="screenshot-grid" style="width: min(100%, 92rem); margin-top: 1rem;">
       <div class="screenshot-photo">
         <div class="slot-label">BEFORE</div>
-        <div class="photo-frame" style="min-height: clamp(280px, 48vh, 520px); display: flex; align-items: center; justify-content: center; border: 2px dashed var(--line-2); border-radius: 8px;">
-          <div style="text-align: center; color: var(--muted); font-family: 'JetBrains Mono', monospace; font-size: var(--small-size); padding: 1rem;">
-            ~/Desktop/papers/ 폴더 캡처<br />
-            <span style="color: var(--ink-2);">Hwang_2025 · Kang_2023 · Park_2020 · Lee_2021 · Lee_2020</span>
-          </div>
+        <div class="photo-frame">
+          <img src="assets/papers-folder.png" alt="~/Desktop/papers/ 폴더 — HAI Lab 논문 5편" />
         </div>
       </div>
       <div class="screenshot-photo">
         <div class="slot-label">AFTER</div>
         <div class="photo-frame" style="min-height: clamp(280px, 48vh, 520px); display: flex; align-items: center; justify-content: center; border: 2px dashed var(--line-2); border-radius: 8px;">
           <div style="text-align: center; color: var(--muted); font-family: 'JetBrains Mono', monospace; font-size: var(--small-size); padding: 1rem;">
-            comparison.md 결과 캡처<br />
+            comparison.xlsx 결과 캡처<br />
             <span style="color: var(--ink-2);">논문별 비교표 · 페이지 출처 열 포함</span>
           </div>
         </div>
@@ -850,7 +847,7 @@
       <div style="flex: 1; min-width: 0; padding: 1.15rem 1rem; border: 1px solid var(--line-2); border-top: 3px solid var(--accent); background: var(--bg-elev); border-radius: 4px; display: flex; flex-direction: column; gap: 0.45rem;">
         <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em;">STEP 4</div>
         <div style="font-size: var(--body-size); color: var(--ink); font-weight: 600;">비교표 작성</div>
-        <div class="mono" style="font-size: var(--small-size); color: var(--accent); margin-top: auto; padding-top: 0.3rem;">Markdown · CSV</div>
+        <div class="mono" style="font-size: var(--small-size); color: var(--accent); margin-top: auto; padding-top: 0.3rem;">XLSX · CSV</div>
       </div>
 
       <div style="display: flex; align-items: center; color: var(--muted-2); font-size: 1.4rem; padding: 0 0.1rem;">→</div>
@@ -983,7 +980,7 @@
       여러 편을 한 번에 처리할 때는 “무엇을 비교할지” 열 이름을 먼저 정해줍니다.
     </p>
     <div style="margin-top: 1.5rem; background: var(--accent-soft); border-left: 3px solid var(--accent); padding: 1.25rem 1.5rem; border-radius: 4px; font-size: var(--body-size); color: var(--ink); max-width: 76rem; line-height: 1.65;">
-      &gt; papers 폴더의 PDF들을 각각 읽고, 다음 항목을 표로 정리해서 <span class="mono">comparison.md</span>로 저장해줘:<br />
+      &gt; papers 폴더의 PDF들을 각각 읽고, 다음 항목을 표로 정리해서 <span class="mono">comparison.xlsx</span>로 저장해줘:<br />
       - 논문 제목 / 연도 / 연구 목적<br />
       - 연구 설계와 대상자 수<br />
       - 주요 변수와 핵심 결과<br />
@@ -1004,11 +1001,11 @@
       논문 작업은 그럴듯한 요약보다 <span style="color: var(--accent); font-weight: 600;">원문에서 확인 가능한 결과</span>가 중요합니다.
     </p>
     <div style="margin-top: 1.5rem; background: var(--accent-soft); border-left: 3px solid var(--accent); padding: 1.25rem 1.5rem; border-radius: 4px; font-size: var(--body-size); color: var(--ink); max-width: 76rem; line-height: 1.65;">
-      &gt; comparison.md의 각 행에 대해, 해당 값이 원본 PDF 몇 페이지에 있는지 출처를 표시해줘
+      &gt; comparison.xlsx의 각 행에 대해, 해당 값이 원본 PDF 몇 페이지에 있는지 출처를 표시해줘
     </div>
     <div class="screenshot-slot wide" style="max-width: 64rem;">
       <div class="slot-label">SCREENSHOT</div>
-      <div class="slot-title">comparison.md 결과 화면 (실제 실행 후 캡처)</div>
+      <div class="slot-title">comparison.xlsx 결과 화면 (실제 실행 후 캡처)</div>
       <div class="slot-note">HAI Lab 논문 5편 예시가 hook 슬라이드에 미리 렌더되어 있습니다</div>
     </div>
   </div>
