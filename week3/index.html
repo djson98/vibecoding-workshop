@@ -529,58 +529,74 @@
      SLIDE 22 — REAL PROMPT
      ============================================================ -->
 <!-- ============================================================
-     SLIDE — INTERACTIVE DEMO: DERIVATIVE (why HTML slides win)
+     SLIDE — INTERACTIVE DEMO: DERIVATIVE via average rate → limit
      ============================================================ -->
 <section class="slide" data-cat="example/presentation/html-demo">
   <div class="slide-content">
-    <h2>인터랙션이 되는 이유 — 미분 접선 데모</h2>
+    <h2>인터랙션이 되는 이유 — 평균변화율의 극한</h2>
     <p style="margin-top: var(--content-title-gap); font-size: var(--body-size); color: var(--ink-2); line-height: 1.7; max-width: 76rem;">
-      기존 발표에서는 <span style="color: var(--muted);">사진 두 장</span>(평균변화율 → 접선의 기울기)으로 설명하던 부분입니다. HTML 슬라이드에서는 <span style="color: var(--accent); font-weight: 600;">x 를 직접 움직이며 접선이 곡선을 따라가는 모습</span>을 그대로 보여줄 수 있습니다.
+      x = 1 에서의 미분계수를 설명할 때, 지금까지는 <span style="color: var(--muted);">사진 두 장</span>(할선 → 접선)이 전부였습니다. HTML 슬라이드에서는 <span style="color: var(--accent); font-weight: 600;">Δx 를 직접 줄여가며 할선이 접선으로 수렴하는 모습</span>을 눈으로 따라갈 수 있습니다.
     </p>
-    <div style="margin-top: 1.25rem; display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: clamp(1rem, 2vw, 1.5rem); max-width: 84rem; align-items: start;">
+    <div style="margin-top: 1rem; display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: clamp(1rem, 2vw, 1.5rem); max-width: 84rem; align-items: start;">
       <div style="background: var(--bg-elev); border: 1px solid var(--line-2); border-radius: 6px; padding: 0.75rem;">
         <svg id="derivDemoSvg" viewBox="0 0 400 320" style="width: 100%; height: auto; display: block; overflow: hidden;" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <marker id="arrowhead" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-              <polygon points="0 0, 6 3, 0 6" fill="var(--muted-2)" />
+              <polygon points="0 0, 6 3, 0 6" fill="#9398A0" />
             </marker>
+            <clipPath id="plotClip"><rect x="0" y="0" width="400" height="300" /></clipPath>
           </defs>
           <!-- axes -->
-          <line x1="0" y1="300" x2="400" y2="300" stroke="var(--muted-2)" stroke-width="1" marker-end="url(#arrowhead)" />
-          <line x1="200" y1="320" x2="200" y2="0" stroke="var(--muted-2)" stroke-width="1" marker-end="url(#arrowhead)" />
-          <!-- axis labels -->
-          <text x="390" y="315" font-family="JetBrains Mono, monospace" font-size="12" fill="var(--muted)">x</text>
-          <text x="205" y="12" font-family="JetBrains Mono, monospace" font-size="12" fill="var(--muted)">y</text>
-          <!-- ticks -->
-          <text x="100" y="315" font-family="JetBrains Mono, monospace" font-size="10" fill="var(--muted)" text-anchor="middle">-1</text>
-          <text x="300" y="315" font-family="JetBrains Mono, monospace" font-size="10" fill="var(--muted)" text-anchor="middle">1</text>
-          <text x="188" y="228" font-family="JetBrains Mono, monospace" font-size="10" fill="var(--muted)" text-anchor="end">1</text>
+          <line x1="0" y1="300" x2="400" y2="300" stroke="#9398A0" stroke-width="1" marker-end="url(#arrowhead)" />
+          <line x1="200" y1="320" x2="200" y2="0" stroke="#9398A0" stroke-width="1" marker-end="url(#arrowhead)" />
+          <text x="390" y="315" font-family="JetBrains Mono, monospace" font-size="12" fill="#5C6168">x</text>
+          <text x="205" y="12" font-family="JetBrains Mono, monospace" font-size="12" fill="#5C6168">y</text>
+          <text x="300" y="315" font-family="JetBrains Mono, monospace" font-size="10" fill="#5C6168" text-anchor="middle">1</text>
+          <text x="188" y="228" font-family="JetBrains Mono, monospace" font-size="10" fill="#5C6168" text-anchor="end">1</text>
           <!-- curve y = x^2 -->
-          <path id="derivDemoCurve" d="" fill="none" stroke="var(--accent)" stroke-width="2.5" />
-          <!-- tangent line -->
-          <line id="derivDemoTangent" x1="0" y1="0" x2="0" y2="0" stroke="var(--term-green)" stroke-width="2" stroke-dasharray="6 4" />
-          <!-- touch point -->
-          <circle id="derivDemoPoint" cx="0" cy="0" r="6" fill="var(--accent)" stroke="var(--bg)" stroke-width="2" />
+          <path id="derivDemoCurve" d="" fill="none" stroke="#1F3A6B" stroke-width="2.5" />
+          <!-- secant line (extended) -->
+          <g clip-path="url(#plotClip)">
+            <line id="derivDemoSecant" x1="0" y1="0" x2="0" y2="0" stroke="#8E5A1A" stroke-width="2" stroke-dasharray="6 4" />
+          </g>
+          <!-- tangent at x=1 (reference, thin) -->
+          <g clip-path="url(#plotClip)">
+            <line id="derivDemoTangent" x1="0" y1="0" x2="0" y2="0" stroke="#3E7A55" stroke-width="1.2" stroke-dasharray="2 3" opacity="0.65" />
+          </g>
+          <!-- fixed point at x=1 -->
+          <circle id="derivDemoP1" cx="0" cy="0" r="6" fill="#1F3A6B" stroke="#FCFCFB" stroke-width="2" />
+          <!-- moving point at x=1+Δx -->
+          <circle id="derivDemoP2" cx="0" cy="0" r="6" fill="#8E5A1A" stroke="#FCFCFB" stroke-width="2" />
+          <!-- point labels -->
+          <text id="derivDemoP1Label" x="0" y="0" font-family="JetBrains Mono, monospace" font-size="11" fill="#1F3A6B" font-weight="700">P₁ (1, 1)</text>
+          <text id="derivDemoP2Label" x="0" y="0" font-family="JetBrains Mono, monospace" font-size="11" fill="#8E5A1A" font-weight="700"></text>
         </svg>
       </div>
-      <div style="display: flex; flex-direction: column; gap: 0.9rem;">
-        <div style="padding: 0.9rem 1.1rem; background: var(--bg-elev); border: 1px solid var(--line-2); border-radius: 4px;">
-          <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em; margin-bottom: 0.4rem;">함수</div>
-          <div class="mono" style="font-size: var(--h3-size); color: var(--ink);">f(x) = x²</div>
+      <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+        <div style="padding: 0.75rem 1rem; background: var(--bg-elev); border: 1px solid var(--line-2); border-radius: 4px;">
+          <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em; margin-bottom: 0.3rem;">함수 / 기준점</div>
+          <div class="mono" style="font-size: var(--body-size); color: var(--ink);">f(x) = x²,  P₁ = (1, 1)</div>
         </div>
-        <div style="padding: 0.9rem 1.1rem; background: var(--bg-elev); border: 1px solid var(--line-2); border-radius: 4px;">
-          <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em; margin-bottom: 0.4rem;">움직여보세요 — x</div>
-          <input id="derivDemoSlider" type="range" min="-1.8" max="1.8" step="0.02" value="0.8" style="width: 100%; accent-color: var(--accent);" />
-          <div class="mono" style="font-size: var(--body-size); color: var(--ink); margin-top: 0.4rem;">x = <span id="derivDemoX">0.80</span></div>
+        <div style="padding: 0.75rem 1rem; background: var(--bg-elev); border: 1px solid var(--line-2); border-radius: 4px;">
+          <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em; margin-bottom: 0.3rem;">Δx 를 줄여보세요</div>
+          <input id="derivDemoSlider" type="range" min="0.02" max="1" step="0.02" value="0.8" style="width: 100%; accent-color: var(--warn);" />
+          <div class="mono" style="font-size: var(--body-size); color: var(--ink); margin-top: 0.3rem;">Δx = <span id="derivDemoDx">0.80</span></div>
         </div>
-        <div style="padding: 0.9rem 1.1rem; background: var(--accent-soft); border-left: 3px solid var(--term-green); border-radius: 4px;">
-          <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em; margin-bottom: 0.4rem;">접선의 기울기</div>
-          <div class="mono" style="font-size: var(--h3-size); color: var(--ink);">f'(x) = 2x = <span id="derivDemoSlope">1.60</span></div>
+        <div style="padding: 0.75rem 1rem; background: var(--warn-soft); border-left: 3px solid var(--warn); border-radius: 4px;">
+          <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em; margin-bottom: 0.3rem;">평균변화율 (할선 기울기)</div>
+          <div class="mono" style="font-size: var(--small-size); color: var(--ink-2); line-height: 1.65;">
+            <span style="color: var(--warn); font-weight: 600;">(f(1+Δx) − f(1)) / Δx</span><br />
+            = 2 + Δx = <span id="derivDemoSecantSlope" style="font-size: var(--body-size); color: var(--ink); font-weight: 700;">2.80</span>
+          </div>
+        </div>
+        <div style="padding: 0.75rem 1rem; background: var(--accent-soft); border-left: 3px solid var(--term-green); border-radius: 4px;">
+          <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em; margin-bottom: 0.3rem;">Δx → 0 극한 (접선 기울기)</div>
+          <div class="mono" style="font-size: var(--body-size); color: var(--ink); font-weight: 700;">f'(1) = 2</div>
         </div>
       </div>
     </div>
-    <p style="margin-top: 1rem; font-size: var(--small-size); color: var(--muted); max-width: 76rem; line-height: 1.6;">
-      * 이 슬라이드도 <span class="mono" style="color: var(--accent);">frontend-slides</span> 스킬로 만들 수 있습니다. SVG + input[type=range] 조합이면 대부분의 개념 시각화가 가능합니다.
+    <p style="margin-top: 0.75rem; font-size: var(--small-size); color: var(--muted); max-width: 84rem; line-height: 1.6;">
+      * 슬라이더를 왼쪽으로 당길수록 할선(주황 점선)이 접선(초록 점선)에 가까워지고, 평균변화율은 2 로 수렴합니다.
     </p>
   </div>
   <div class="footer-mark"><span class="index">22</span><span class="sep">/</span><span>30</span></div>
@@ -592,40 +608,66 @@
   const svg = document.getElementById('derivDemoSvg');
   if (!svg) return;
   const curve = document.getElementById('derivDemoCurve');
+  const secant = document.getElementById('derivDemoSecant');
   const tangent = document.getElementById('derivDemoTangent');
-  const point = document.getElementById('derivDemoPoint');
+  const P1 = document.getElementById('derivDemoP1');
+  const P2 = document.getElementById('derivDemoP2');
+  const P1Label = document.getElementById('derivDemoP1Label');
+  const P2Label = document.getElementById('derivDemoP2Label');
   const slider = document.getElementById('derivDemoSlider');
-  const xOut = document.getElementById('derivDemoX');
-  const slopeOut = document.getElementById('derivDemoSlope');
+  const dxOut = document.getElementById('derivDemoDx');
+  const secSlopeOut = document.getElementById('derivDemoSecantSlope');
 
-  // Math coord: x in [-2, 2], y in [0, 4]
-  // SVG coord: viewBox 400 x 320. Origin at (200, 300). 1 math unit = 100 px (x), 75 px (y).
+  // viewBox 400 x 320, origin (200, 300). 1 unit = 100 px (x), 75 px (y).
   const xToPx = x => 200 + x * 100;
   const yToPx = y => 300 - y * 75;
 
-  // Draw y = x^2 curve
+  // Draw y = x^2
   let d = '';
   for (let x = -2; x <= 2.001; x += 0.04) {
-    const y = x * x;
-    d += (d === '' ? 'M' : 'L') + xToPx(x).toFixed(2) + ',' + yToPx(y).toFixed(2);
+    d += (d === '' ? 'M' : 'L') + xToPx(x).toFixed(2) + ',' + yToPx(x * x).toFixed(2);
   }
   curve.setAttribute('d', d);
 
-  function update() {
-    const x0 = parseFloat(slider.value);
-    const y0 = x0 * x0;
-    const slope = 2 * x0;
-    // Tangent: y = y0 + slope * (x - x0)
-    const yL = y0 + slope * (-2 - x0);
-    const yR = y0 + slope * (2 - x0);
+  // Fixed tangent at x=1: slope=2, y = 2x - 1
+  {
+    const yL = 2 * (-2) - 1;   // at x=-2
+    const yR = 2 * (2) - 1;    // at x=2
     tangent.setAttribute('x1', xToPx(-2));
     tangent.setAttribute('y1', yToPx(yL));
     tangent.setAttribute('x2', xToPx(2));
     tangent.setAttribute('y2', yToPx(yR));
-    point.setAttribute('cx', xToPx(x0));
-    point.setAttribute('cy', yToPx(y0));
-    xOut.textContent = x0.toFixed(2);
-    slopeOut.textContent = slope.toFixed(2);
+  }
+
+  // P1 fixed at (1, 1)
+  P1.setAttribute('cx', xToPx(1));
+  P1.setAttribute('cy', yToPx(1));
+  P1Label.setAttribute('x', xToPx(1) + 10);
+  P1Label.setAttribute('y', yToPx(1) - 10);
+
+  function update() {
+    const dx = parseFloat(slider.value);
+    const x2 = 1 + dx;
+    const y2 = x2 * x2;
+    const slope = 2 + dx;   // (f(1+dx)-f(1))/dx = 2 + dx
+
+    // Secant through P1(1,1) with computed slope, extended
+    // y = 1 + slope * (x - 1)
+    const yL = 1 + slope * (-2 - 1);
+    const yR = 1 + slope * (2 - 1);
+    secant.setAttribute('x1', xToPx(-2));
+    secant.setAttribute('y1', yToPx(yL));
+    secant.setAttribute('x2', xToPx(2));
+    secant.setAttribute('y2', yToPx(yR));
+
+    P2.setAttribute('cx', xToPx(x2));
+    P2.setAttribute('cy', yToPx(y2));
+    P2Label.setAttribute('x', xToPx(x2) + 10);
+    P2Label.setAttribute('y', yToPx(y2) - 10);
+    P2Label.textContent = `P₂ (${x2.toFixed(2)}, ${y2.toFixed(2)})`;
+
+    dxOut.textContent = dx.toFixed(2);
+    secSlopeOut.textContent = slope.toFixed(2);
   }
   slider.addEventListener('input', update);
   update();
