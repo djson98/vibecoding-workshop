@@ -44,7 +44,7 @@
       <span class="details">강원대 컴퓨터공학과 HAI Lab</span>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">01</span><span class="sep">/</span><span>40</span></div>
+  <div class="footer-mark"><span class="index">01</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -69,7 +69,7 @@
       </li>
     </ol>
   </div>
-  <div class="footer-mark"><span class="index">02</span><span class="sep">/</span><span>40</span></div>
+  <div class="footer-mark"><span class="index">02</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -92,7 +92,7 @@
       </div>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">03</span><span class="sep">/</span><span>40</span></div>
+  <div class="footer-mark"><span class="index">03</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -116,7 +116,7 @@
       </div>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">04</span><span class="sep">/</span><span>40</span></div>
+  <div class="footer-mark"><span class="index">04</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -132,7 +132,7 @@
       <img src="assets/github-activity-claude-code.png" alt="GitHub activity — co/authored commits: Claude Code vs Jules vs Cursor vs Copilot" />
     </div>
   </div>
-  <div class="footer-mark"><span class="index">05</span><span class="sep">/</span><span>40</span></div>
+  <div class="footer-mark"><span class="index">05</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -158,7 +158,7 @@
       * 아직 구독이 없으신 경우 <span class="mono">claude.ai</span>에서 무료로 계정 만드시고 오늘 실습만 함께 따라오셔도 괜찮습니다. 설치는 강의 중에 함께 진행합니다.
     </p>
   </div>
-  <div class="footer-mark"><span class="index">06</span><span class="sep">/</span><span>40</span></div>
+  <div class="footer-mark"><span class="index">06</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -182,7 +182,7 @@
       </div>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">07</span><span class="sep">/</span><span>40</span></div>
+  <div class="footer-mark"><span class="index">07</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -208,9 +208,49 @@
       * Windows에서는 <span class="mono">WSL</span>(Windows Subsystem for Linux) 환경을 공식 권장합니다.
     </div>
   </div>
-  <div class="footer-mark"><span class="index">08</span><span class="sep">/</span><span>40</span></div>
+  <div class="footer-mark"><span class="index">08</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
+
+<!-- ============================================================
+     SLIDE — TERMINAL FIRST LOOK (real screenshot)
+     ============================================================ -->
+<section class="slide" data-cat="claude-code/terminal-first-look">
+  <div class="slide-content">
+    <h2>이게 터미널입니다</h2>
+    <p style="margin-top: 0.6rem; font-size: var(--body-size); color: var(--muted); line-height: 1.6; max-width: 84rem;">
+      맥에서는 <span style="color: var(--accent); font-weight: 600;">터미널 (Terminal.app)</span>, 윈도우에서는 <span style="color: var(--accent); font-weight: 600;">파워셸 (PowerShell)</span> 이라고 부릅니다. 이름만 다르고 하는 일은 같습니다 — 검은 화면에 명령어를 적어 컴퓨터를 조작합니다.
+    </p>
+    <div style="margin-top: 1rem; display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: clamp(1rem, 2vw, 1.5rem); max-width: 88rem; align-items: start;">
+      <div style="border: 1px solid var(--line-2); border-radius: 8px; overflow: hidden; box-shadow: 0 6px 20px rgba(15, 20, 25, 0.08);">
+        <img src="assets/terminal-mac.png" alt="맥 터미널 첫 화면 — Last login, 프롬프트 표시" style="display: block; width: 100%; height: auto; background: #FFFFFF;" />
+        <div style="padding: 0.5rem 0.9rem; background: var(--bg-elev); border-top: 1px solid var(--line); font-size: var(--small-size); color: var(--muted); text-align: center;">
+          <span class="mono" style="color: var(--accent);">MAC</span> · Terminal.app 첫 화면
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 0.7rem;">
+        <div style="padding: 0.75rem 1rem; background: var(--bg-elev); border: 1px solid var(--line-2); border-radius: 4px;">
+          <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em; margin-bottom: 0.35rem;">여기서 무엇을 보나요</div>
+          <ul style="padding-left: 1rem; margin: 0; font-size: var(--small-size); color: var(--ink-2); line-height: 1.75;">
+            <li>맨 위: 지난번 접속 시간 정보</li>
+            <li>가운데: <span class="mono" style="color: var(--accent);">사용자@컴퓨터이름 ~ %</span> — 지금 명령을 기다린다는 표시입니다.</li>
+            <li>깜빡이는 회색 사각형: 커서. 여기에 글자가 들어갑니다.</li>
+          </ul>
+        </div>
+        <div style="padding: 0.75rem 1rem; background: var(--bg-elev); border: 1px solid var(--line-2); border-top: 3px solid var(--accent); border-radius: 4px;">
+          <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em; margin-bottom: 0.35rem;">윈도우도 거의 같습니다</div>
+          <div style="font-size: var(--small-size); color: var(--ink-2); line-height: 1.6;">파워셸을 열면 프롬프트가 <span class="mono" style="color: var(--accent);">PS C:\Users\사용자&gt;</span> 형태로 뜹니다. 색과 기호만 다를 뿐, 이후 나오는 명령어는 동일하게 동작합니다.</div>
+        </div>
+      </div>
+    </div>
+    <p style="margin-top: 0.7rem; font-size: var(--small-size); color: var(--muted); max-width: 88rem; line-height: 1.6;">
+      * 처음 열면 검은 화면(또는 흰 화면)에 글자만 있어서 낯설 수 있지만, 클릭할 아이콘이 없을 뿐 <span style="color: var(--ink-2);">평범한 프로그램 하나</span>입니다.
+    </p>
+  </div>
+  <div class="footer-mark"><span class="index">09</span><span class="sep">/</span><span>41</span></div>
+  <div class="brand-mark">vibe-coding-lab</div>
+</section>
+
 
 <!-- ============================================================
      SLIDE 08 — INSTALL COMMAND
@@ -234,7 +274,7 @@
       * 복붙하고 Enter. 알아서 자동 업데이트도 같이 깔립니다. Node.js 별도 설치 필요 없음.
     </div>
   </div>
-  <div class="footer-mark"><span class="index">09</span><span class="sep">/</span><span>40</span></div>
+  <div class="footer-mark"><span class="index">10</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -269,7 +309,7 @@
       * 한 번만 로그인하면 다음부터 자동. 계정 바꾸려면 채팅 중 <span class="mono">/login</span>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">10</span><span class="sep">/</span><span>40</span></div>
+  <div class="footer-mark"><span class="index">11</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -293,7 +333,7 @@
       * <span class="mono">cd</span> = <strong>c</strong>hange <strong>d</strong>irectory. 폴더를 Finder(맥) 또는 탐색기(윈도우)에서 터미널 창으로 <strong>드래그</strong>해도 경로가 자동 입력됩니다. 윈도우 경로 예: <span class="mono">C:\Users\사용자\Desktop\내폴더</span>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">11</span><span class="sep">/</span><span>40</span></div>
+  <div class="footer-mark"><span class="index">12</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -323,7 +363,7 @@
       </ul>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">12</span><span class="sep">/</span><span>40</span></div>
+  <div class="footer-mark"><span class="index">13</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -366,7 +406,7 @@
       * 채팅창에 <span class="mono">/</span> 만 쳐도 자동완성으로 전체 목록이 뜹니다.
     </div>
   </div>
-  <div class="footer-mark"><span class="index">13</span><span class="sep">/</span><span>40</span></div>
+  <div class="footer-mark"><span class="index">14</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -397,7 +437,7 @@
       </div>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">14</span><span class="sep">/</span><span>40</span></div>
+  <div class="footer-mark"><span class="index">15</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -431,7 +471,7 @@
       * 2026-06 기준 최신: <span class="mono">Opus 4.8</span> · <span class="mono">Sonnet 4.6</span> · <span class="mono">Haiku 4.5</span> · <span class="mono">Fable 5</span> (신규)
     </div>
   </div>
-  <div class="footer-mark"><span class="index">15</span><span class="sep">/</span><span>40</span></div>
+  <div class="footer-mark"><span class="index">16</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -467,7 +507,7 @@
       </li>
     </ul>
   </div>
-  <div class="footer-mark"><span class="index">16</span><span class="sep">/</span><span>40</span></div>
+  <div class="footer-mark"><span class="index">17</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -500,7 +540,7 @@
       * 허용한 권한 관리·해제는 <span class="mono">/permissions</span>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">17</span><span class="sep">/</span><span>40</span></div>
+  <div class="footer-mark"><span class="index">18</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -527,7 +567,7 @@
       <div style="margin-top: 1.1rem; color: #8A8F98; font-size: var(--small-size);">Choose (1/2/3): <span style="color: #F2F2EE;">_</span></div>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">18</span><span class="sep">/</span><span>40</span></div>
+  <div class="footer-mark"><span class="index">19</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -561,7 +601,7 @@
       </div>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">19</span><span class="sep">/</span><span>40</span></div>
+  <div class="footer-mark"><span class="index">20</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -572,7 +612,7 @@
   <div class="slide-content">
     <h2 class="section-title">예제 1 — 뒤죽박죽인 폴더 정리하기</h2>
   </div>
-  <div class="footer-mark"><span class="index">20</span><span class="sep">/</span><span>40</span></div>
+  <div class="footer-mark"><span class="index">21</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -605,7 +645,7 @@
       </div>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">21</span><span class="sep">/</span><span>40</span></div>
+  <div class="footer-mark"><span class="index">22</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -634,7 +674,7 @@
       </div>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">22</span><span class="sep">/</span><span>40</span></div>
+  <div class="footer-mark"><span class="index">23</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -675,7 +715,7 @@
       </div>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">23</span><span class="sep">/</span><span>40</span></div>
+  <div class="footer-mark"><span class="index">24</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -724,7 +764,7 @@
       </div>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">24</span><span class="sep">/</span><span>40</span></div>
+  <div class="footer-mark"><span class="index">25</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -764,7 +804,7 @@
       </div>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">25</span><span class="sep">/</span><span>40</span></div>
+  <div class="footer-mark"><span class="index">26</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -792,7 +832,7 @@
       </div>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">26</span><span class="sep">/</span><span>40</span></div>
+  <div class="footer-mark"><span class="index">27</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -841,7 +881,7 @@
       </li>
     </ul>
   </div>
-  <div class="footer-mark"><span class="index">27</span><span class="sep">/</span><span>40</span></div>
+  <div class="footer-mark"><span class="index">28</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -852,7 +892,7 @@
   <div class="slide-content">
     <h2 class="section-title">예제 2 — 쌓인 논문 처리하기</h2>
   </div>
-  <div class="footer-mark"><span class="index">28</span><span class="sep">/</span><span>40</span></div>
+  <div class="footer-mark"><span class="index">29</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -937,7 +977,7 @@
       </div>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">29</span><span class="sep">/</span><span>40</span></div>
+  <div class="footer-mark"><span class="index">30</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -970,7 +1010,7 @@
       </div>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">30</span><span class="sep">/</span><span>40</span></div>
+  <div class="footer-mark"><span class="index">31</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -1022,7 +1062,7 @@
 
     </div>
   </div>
-  <div class="footer-mark"><span class="index">31</span><span class="sep">/</span><span>40</span></div>
+  <div class="footer-mark"><span class="index">32</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -1044,7 +1084,7 @@
       결과 예시: Introduction / Methods / Results / Discussion, Table 1 실험 조건, Figure 2 구조 비교
     </div>
   </div>
-  <div class="footer-mark"><span class="index">32</span><span class="sep">/</span><span>40</span></div>
+  <div class="footer-mark"><span class="index">33</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -1073,7 +1113,7 @@
       </div>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">33</span><span class="sep">/</span><span>40</span></div>
+  <div class="footer-mark"><span class="index">34</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -1107,7 +1147,7 @@
       <span class="mono" style="color: var(--warn); font-weight: 600;">스캔본 PDF는</span> 텍스트가 그림으로 들어있어 바로 추출되지 않습니다. 먼저 OCR로 텍스트화하도록 요청한 다음 위 작업을 진행합니다 (예: <span class="mono">&gt; scanned.pdf를 OCR로 텍스트화한 뒤 표를 추출해줘</span>).
     </div>
   </div>
-  <div class="footer-mark"><span class="index">34</span><span class="sep">/</span><span>40</span></div>
+  <div class="footer-mark"><span class="index">35</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -1128,7 +1168,7 @@
       예) 논문 5편이 든 폴더를 던지면, 지어내지 않고 <span style="color: var(--accent); font-weight: 500;">원문 페이지에서 근거를 찾아</span> 답을 구성합니다.
     </p>
   </div>
-  <div class="footer-mark"><span class="index">35</span><span class="sep">/</span><span>40</span></div>
+  <div class="footer-mark"><span class="index">36</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -1149,7 +1189,7 @@
       - 한계점과 후속 연구 방향
     </div>
   </div>
-  <div class="footer-mark"><span class="index">36</span><span class="sep">/</span><span>40</span></div>
+  <div class="footer-mark"><span class="index">37</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -1171,7 +1211,7 @@
       <div class="slot-note">HAI Lab 논문 5편 예시가 hook 슬라이드에 미리 렌더되어 있습니다</div>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">37</span><span class="sep">/</span><span>40</span></div>
+  <div class="footer-mark"><span class="index">38</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -1208,7 +1248,7 @@
       </li>
     </ul>
   </div>
-  <div class="footer-mark"><span class="index">38</span><span class="sep">/</span><span>40</span></div>
+  <div class="footer-mark"><span class="index">39</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -1240,7 +1280,7 @@
       슬라이드 다시 보기 · <a href="https://djson.me/vibecoding-workshop/week2/" class="mono" style="color: var(--accent); text-decoration: none; border-bottom: 1px dashed var(--accent);">djson.me/vibecoding-workshop/week2/</a>
     </p>
   </div>
-  <div class="footer-mark"><span class="index">39</span><span class="sep">/</span><span>40</span></div>
+  <div class="footer-mark"><span class="index">40</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -1254,7 +1294,7 @@
       <a href="mailto:dongjuson@hai.kangwon.ac.kr" class="mono" style="color: var(--accent); text-decoration: none; border-bottom: 1px dashed var(--accent);">dongjuson@hai.kangwon.ac.kr</a> 로 메일 보내주시면 만들어드리겠습니다.
     </div>
   </div>
-  <div class="footer-mark"><span class="index">40</span><span class="sep">/</span><span>40</span></div>
+  <div class="footer-mark"><span class="index">41</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
