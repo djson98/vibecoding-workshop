@@ -49,15 +49,17 @@ slides.forEach((s, i) => {
   if (totalEl) totalEl.textContent = String(total).padStart(2, '0');
 });
 
-// Build nav dots
+// Build nav dots (optional — page still works without #navDots)
 const nav = document.getElementById('navDots');
-slides.forEach((s, i) => {
-  const b = document.createElement('button');
-  b.setAttribute('aria-label', `Go to slide ${i + 1}`);
-  b.addEventListener('click', () => goToSlide(i));
-  nav.appendChild(b);
-});
-const dots = nav.querySelectorAll('button');
+if (nav) {
+  slides.forEach((s, i) => {
+    const b = document.createElement('button');
+    b.setAttribute('aria-label', `Go to slide ${i + 1}`);
+    b.addEventListener('click', () => goToSlide(i));
+    nav.appendChild(b);
+  });
+}
+const dots = nav ? nav.querySelectorAll('button') : [];
 
 // IntersectionObserver — mark active slide, sync dots
 const io = new IntersectionObserver((entries) => {
