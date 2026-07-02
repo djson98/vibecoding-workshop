@@ -1,0 +1,720 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Week 3 — 반복을 도구로: CLAUDE.md · 스킬 · 발표 자료</title>
+
+<!-- Fonts: Pretendard (KR body + emphasis), JetBrains Mono (labels/code) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+
+<!-- Foundation (shared): design tokens + viewport lock + reset -->
+<link rel="stylesheet" href="../template/foundation.css" />
+<!-- Week-specific styles -->
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ============================================================
+     SLIDE 01 — COVER
+     ============================================================ -->
+<section class="slide title-slide" data-cat="cover">
+  <div class="slide-content">
+    <h1 class="deck-title"><span class="accent">WEEK 3</span><br />반복을 도구로 만들기</h1>
+    <p style="margin-top: 1.5rem; font-size: var(--h3-size); color: var(--muted); line-height: 1.5;">
+      CLAUDE.md · 스킬 · 발표 자료 자동 생성
+    </p>
+    <p style="margin-top: 2rem; font-size: var(--body-size); color: var(--muted);">
+      손동주 · 강원대 컴퓨터공학과 HAI Lab
+    </p>
+  </div>
+  <div class="footer-mark"><span class="index">01</span><span class="sep">/</span><span>29</span></div>
+  <div class="brand-mark">vibe-coding-lab</div>
+</section>
+
+<!-- ============================================================
+     SLIDE 02 — AGENDA
+     ============================================================ -->
+<section class="slide" data-cat="agenda/overview">
+  <div class="slide-content">
+    <h2>오늘 할 것</h2>
+    <ol style="margin-top: var(--content-title-gap); list-style: none; padding: 0; max-width: 72rem;">
+      <li style="padding: 1rem 0; border-bottom: 1px solid var(--line); display: flex; align-items: baseline; gap: 1.5rem;">
+        <span class="mono" style="font-size: var(--h3-size); color: var(--accent); min-width: 3rem;">01</span>
+        <span style="font-size: var(--h3-size); color: var(--ink);">CLAUDE.md — 내 규칙을 파일로</span>
+      </li>
+      <li style="padding: 1rem 0; border-bottom: 1px solid var(--line); display: flex; align-items: baseline; gap: 1.5rem;">
+        <span class="mono" style="font-size: var(--h3-size); color: var(--accent); min-width: 3rem;">02</span>
+        <span style="font-size: var(--h3-size); color: var(--ink);">스킬 — 남이 만든 걸 가져와서 쓰기</span>
+      </li>
+      <li style="padding: 1rem 0; display: flex; align-items: baseline; gap: 1.5rem;">
+        <span class="mono" style="font-size: var(--h3-size); color: var(--accent); min-width: 3rem;">03</span>
+        <span style="font-size: var(--h3-size); color: var(--ink);">발표 자료 자동으로 만들기</span>
+      </li>
+    </ol>
+  </div>
+  <div class="footer-mark"><span class="index">02</span><span class="sep">/</span><span>29</span></div>
+  <div class="brand-mark">vibe-coding-lab</div>
+</section>
+
+<!-- ============================================================
+     SLIDE 03 — RECAP WEEK 2
+     ============================================================ -->
+<section class="slide" data-cat="recap/week2">
+  <div class="slide-content">
+    <h2>지난주에 배운 것</h2>
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1rem, 3vw, 2rem); margin-top: var(--content-title-gap); max-width: 72rem;">
+      <div style="padding: 1.5rem 1.75rem; border: 1px solid var(--line-2); border-top: 3px solid var(--accent); background: var(--bg-elev); border-radius: 4px;">
+        <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em;">WEEK 2 · EXAMPLE 1</div>
+        <div style="font-size: var(--h3-size); margin-top: 0.4rem; color: var(--ink); font-weight: 600;">뒤죽박죽 다운로드 폴더 정리</div>
+        <div style="font-size: var(--body-size); color: var(--ink-2); margin-top: 0.5rem; line-height: 1.55;">백업 · 폴더 분석 · PLAN MODE · 실행 · 결과 확인</div>
+      </div>
+      <div style="padding: 1.5rem 1.75rem; border: 1px solid var(--line-2); border-top: 3px solid var(--accent); background: var(--bg-elev); border-radius: 4px;">
+        <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em;">WEEK 2 · EXAMPLE 2</div>
+        <div style="font-size: var(--h3-size); margin-top: 0.4rem; color: var(--ink); font-weight: 600;">쌓인 논문 처리</div>
+        <div style="font-size: var(--body-size); color: var(--ink-2); margin-top: 0.5rem; line-height: 1.55;">구조 파악 · 메타데이터 색인 · 표 추출 · 비교표 · 출처 검증</div>
+      </div>
+    </div>
+    <p style="margin-top: 1.25rem; font-size: var(--body-size); color: var(--muted); max-width: 72rem; line-height: 1.6;">
+      이번 주에는 이 프롬프트들을 <span style="color: var(--accent); font-weight: 500;">한 번만 짜두고 계속 재사용</span>하는 방법을 배웁니다.
+    </p>
+  </div>
+  <div class="footer-mark"><span class="index">03</span><span class="sep">/</span><span>29</span></div>
+  <div class="brand-mark">vibe-coding-lab</div>
+</section>
+
+<!-- ============================================================
+     SLIDE 04 — HOOK / PROBLEM
+     ============================================================ -->
+<section class="slide" data-cat="hook/repeat-prompts">
+  <div class="slide-content">
+    <h2>같은 프롬프트를 매번 치고 계셨죠</h2>
+    <div style="margin-top: var(--content-title-gap); max-width: 72rem;">
+      <div style="background: var(--accent-soft); border-left: 3px solid var(--accent); padding: 1rem 1.25rem; border-radius: 4px; font-size: var(--body-size); color: var(--ink-2); line-height: 1.7; margin-bottom: 0.6rem;">
+        &gt; 이 폴더의 논문 요약해줘. 결과는 표로 정리하고, 저자·연도·핵심 결과 열을 넣어줘. 한국어로.
+      </div>
+      <div style="background: var(--accent-soft); border-left: 3px solid var(--accent); padding: 1rem 1.25rem; border-radius: 4px; font-size: var(--body-size); color: var(--ink-2); line-height: 1.7; margin-bottom: 0.6rem;">
+        &gt; 이 폴더의 논문 요약해줘. 결과는 표로 정리하고, 저자·연도·핵심 결과 열을 넣어줘. 한국어로.
+      </div>
+      <div style="background: var(--accent-soft); border-left: 3px solid var(--accent); padding: 1rem 1.25rem; border-radius: 4px; font-size: var(--body-size); color: var(--ink-2); line-height: 1.7;">
+        &gt; 이 폴더의 논문 요약해줘. 결과는 표로 정리하고, 저자·연도·핵심 결과 열을 넣어줘. 한국어로.
+      </div>
+    </div>
+    <p style="margin-top: 1.25rem; font-size: var(--body-size); color: var(--muted); max-width: 72rem; line-height: 1.6;">
+      매번 같은 문장. 실험실 규칙(익명화 · 인용 형식)도 매번 다시 설명. 이게 자동화라고 할 수 있을까요.
+    </p>
+  </div>
+  <div class="footer-mark"><span class="index">04</span><span class="sep">/</span><span>29</span></div>
+  <div class="brand-mark">vibe-coding-lab</div>
+</section>
+
+<!-- ============================================================
+     SLIDE 05 — CONCEPT: REUSABLE TOOLS
+     ============================================================ -->
+<section class="slide" data-cat="concept/reusable">
+  <div class="slide-content">
+    <h2>반복은 도구가 되어야 합니다</h2>
+    <div style="display: flex; align-items: stretch; gap: clamp(0.6rem, 1.5vw, 1.2rem); margin-top: var(--content-title-gap); max-width: 84rem; flex-wrap: nowrap;">
+      <div style="flex: 1; min-width: 0; padding: 1.25rem 1.15rem; border: 1px solid var(--line-2); border-top: 3px solid var(--accent); background: var(--bg-elev); border-radius: 4px; display: flex; flex-direction: column; gap: 0.5rem;">
+        <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em;">LEVEL 1</div>
+        <div style="font-size: var(--body-size); color: var(--ink); font-weight: 600;">매번 프롬프트</div>
+        <div style="font-size: var(--small-size); color: var(--ink-2); line-height: 1.55;">쓸 때마다 처음부터 다시 입력합니다.</div>
+      </div>
+      <div style="display: flex; align-items: center; color: var(--muted-2); font-size: 1.4rem; padding: 0 0.1rem;">→</div>
+      <div style="flex: 1; min-width: 0; padding: 1.25rem 1.15rem; border: 1px solid var(--line-2); border-top: 3px solid var(--accent); background: var(--bg-elev); border-radius: 4px; display: flex; flex-direction: column; gap: 0.5rem;">
+        <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em;">LEVEL 2</div>
+        <div style="font-size: var(--body-size); color: var(--ink); font-weight: 600;">내 규칙 파일</div>
+        <div style="font-size: var(--small-size); color: var(--ink-2); line-height: 1.55;">CLAUDE.md 에 규칙만 적어두고 재사용합니다.</div>
+      </div>
+      <div style="display: flex; align-items: center; color: var(--muted-2); font-size: 1.4rem; padding: 0 0.1rem;">→</div>
+      <div style="flex: 1; min-width: 0; padding: 1.25rem 1.15rem; border: 1px solid var(--line-2); border-top: 3px solid var(--term-green); background: var(--bg-elev); border-radius: 4px; display: flex; flex-direction: column; gap: 0.5rem;">
+        <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em;">LEVEL 3</div>
+        <div style="font-size: var(--body-size); color: var(--ink); font-weight: 600;">남이 만든 스킬</div>
+        <div style="font-size: var(--small-size); color: var(--ink-2); line-height: 1.55;">누군가 이미 만들어둔 걸 다운로드해서 씁니다.</div>
+      </div>
+    </div>
+    <p style="margin-top: 1.25rem; font-size: var(--body-size); color: var(--muted); max-width: 84rem; line-height: 1.6;">
+      오늘은 Level 1 에서 Level 2, Level 3 으로 올라갑니다.
+    </p>
+  </div>
+  <div class="footer-mark"><span class="index">05</span><span class="sep">/</span><span>29</span></div>
+  <div class="brand-mark">vibe-coding-lab</div>
+</section>
+
+<!-- ============================================================
+     SLIDE 06 — SECTION DIVIDER: CLAUDE.md
+     ============================================================ -->
+<section class="slide section-divider" data-cat="example/claude-md/title">
+  <div class="slide-content">
+    <h2 class="section-title">예제 1 — 내 규칙을 파일로 (CLAUDE.md)</h2>
+  </div>
+  <div class="footer-mark"><span class="index">06</span><span class="sep">/</span><span>29</span></div>
+  <div class="brand-mark">vibe-coding-lab</div>
+</section>
+
+<!-- ============================================================
+     SLIDE 07 — CLAUDE.md INTRO
+     ============================================================ -->
+<section class="slide" data-cat="claude-md/intro">
+  <div class="slide-content">
+    <h2>CLAUDE.md 란?</h2>
+    <p style="margin-top: var(--content-title-gap); font-size: var(--h3-size); color: var(--ink-2); line-height: 1.6; max-width: 72rem;">
+      프로젝트 폴더에 두는 <span style="color: var(--accent); font-weight: 600;">규칙 파일</span>입니다. 클로드 코드가 매 세션을 시작할 때 자동으로 읽습니다.
+    </p>
+    <p style="margin-top: 1rem; font-size: var(--body-size); color: var(--ink-2); line-height: 1.7; max-width: 72rem;">
+      2주차 마지막에 잠깐 보았던 파일입니다. 이번 주에는 실제로 만들어서 써봅니다.
+    </p>
+  </div>
+  <div class="footer-mark"><span class="index">07</span><span class="sep">/</span><span>29</span></div>
+  <div class="brand-mark">vibe-coding-lab</div>
+</section>
+
+<!-- ============================================================
+     SLIDE 08 — CLAUDE.md WHAT GOES IN
+     ============================================================ -->
+<section class="slide" data-cat="claude-md/what">
+  <div class="slide-content">
+    <h2>무엇을 적나요</h2>
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1rem, 2.5vw, 1.75rem); margin-top: var(--content-title-gap); max-width: 76rem;">
+      <div style="padding: 1.25rem 1.4rem; border: 1px solid var(--line-2); border-top: 3px solid var(--accent); background: var(--bg-elev); border-radius: 4px;">
+        <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em;">RULES</div>
+        <div style="font-size: var(--h3-size); margin-top: 0.35rem; color: var(--ink); font-weight: 600;">규칙</div>
+        <div style="font-size: var(--body-size); color: var(--ink-2); margin-top: 0.4rem; line-height: 1.55;">파일 명명 규칙, 인용 형식, 익명화 방식, 톤 등</div>
+      </div>
+      <div style="padding: 1.25rem 1.4rem; border: 1px solid var(--line-2); border-top: 3px solid var(--accent); background: var(--bg-elev); border-radius: 4px;">
+        <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em;">CONTEXT</div>
+        <div style="font-size: var(--h3-size); margin-top: 0.35rem; color: var(--ink); font-weight: 600;">맥락</div>
+        <div style="font-size: var(--body-size); color: var(--ink-2); margin-top: 0.4rem; line-height: 1.55;">프로젝트 개요, 폴더 구조, 주요 데이터 위치</div>
+      </div>
+      <div style="padding: 1.25rem 1.4rem; border: 1px solid var(--line-2); border-top: 3px solid var(--accent); background: var(--bg-elev); border-radius: 4px;">
+        <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em;">COMMANDS</div>
+        <div style="font-size: var(--h3-size); margin-top: 0.35rem; color: var(--ink); font-weight: 600;">자주 쓰는 명령어</div>
+        <div style="font-size: var(--body-size); color: var(--ink-2); margin-top: 0.4rem; line-height: 1.55;">빌드 · 실행 · 배포 명령어를 미리 정리</div>
+      </div>
+      <div style="padding: 1.25rem 1.4rem; border: 1px solid var(--line-2); border-top: 3px solid var(--accent); background: var(--bg-elev); border-radius: 4px;">
+        <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em;">GOTCHAS</div>
+        <div style="font-size: var(--h3-size); margin-top: 0.35rem; color: var(--ink); font-weight: 600;">주의사항</div>
+        <div style="font-size: var(--body-size); color: var(--ink-2); margin-top: 0.4rem; line-height: 1.55;">금기 사항, 지난번 실수, 조심할 함정</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">08</span><span class="sep">/</span><span>29</span></div>
+  <div class="brand-mark">vibe-coding-lab</div>
+</section>
+
+<!-- ============================================================
+     SLIDE 09 — CLAUDE.md EXAMPLE (LAB)
+     ============================================================ -->
+<section class="slide" data-cat="claude-md/example">
+  <div class="slide-content">
+    <h2>연구실 CLAUDE.md 예시</h2>
+    <div style="margin-top: var(--content-title-gap); max-width: 80rem; background: var(--bg-elev); border: 1px solid var(--line); border-left: 3px solid var(--accent); padding: 1.25rem 1.5rem; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: var(--small-size); color: var(--ink-2); line-height: 1.8;">
+      <div style="color: var(--muted);"># 우리 연구실 규칙</div>
+      <div style="margin-top: 0.6rem;"><span style="color: var(--accent);">## 논문 파일</span></div>
+      <div>- 파일명은 <span style="color: var(--accent);">{저자}_{연도}_{제목30자}.pdf</span> 형식으로 통일합니다.</div>
+      <div>- 새로 추가된 논문은 <span style="color: var(--accent);">papers/inbox/</span>에서 <span style="color: var(--accent);">papers/reviewed/</span>로 이동합니다.</div>
+      <div style="margin-top: 0.6rem;"><span style="color: var(--accent);">## 인용 형식</span></div>
+      <div>- 기본은 Vancouver 스타일을 사용합니다.</div>
+      <div>- 학회 발표 자료에서는 APA 를 함께 지원합니다.</div>
+      <div style="margin-top: 0.6rem;"><span style="color: var(--accent);">## 익명화</span></div>
+      <div>- 환자 실명은 <span style="color: var(--accent);">P001, P002 …</span> 형식으로 치환합니다.</div>
+      <div>- 생년월일은 연도만 남기고 월/일은 제거합니다.</div>
+      <div style="margin-top: 0.6rem;"><span style="color: var(--accent);">## 응답 톤</span></div>
+      <div>- 한국어는 격식 있는 <span style="color: var(--accent);">~합니다</span> 종결로 작성합니다.</div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">09</span><span class="sep">/</span><span>29</span></div>
+  <div class="brand-mark">vibe-coding-lab</div>
+</section>
+
+<!-- ============================================================
+     SLIDE 10 — CLAUDE.md /init
+     ============================================================ -->
+<section class="slide" data-cat="claude-md/create">
+  <div class="slide-content">
+    <h2>새로 만들기 — <span class="mono">/init</span></h2>
+    <p style="margin-top: var(--content-title-gap); font-size: var(--h3-size); color: var(--ink-2); line-height: 1.6; max-width: 72rem;">
+      클로드 코드 안에서 <span class="mono" style="color: var(--accent);">/init</span> 명령어를 입력하면, 현재 폴더를 스캔해서 CLAUDE.md 초안을 자동으로 만들어줍니다.
+    </p>
+    <div style="margin-top: 1.5rem; background: var(--dark-bg); color: var(--dark-text); padding: 1.25rem 1.5rem; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: var(--body-size); max-width: 64rem; line-height: 1.7;">
+      <div style="color: var(--dark-muted); font-size: var(--small-size); margin-bottom: 0.5rem;">$ CLAUDE CODE</div>
+      <div>&gt; /init</div>
+      <div style="color: var(--dark-muted); font-size: var(--small-size); margin-top: 0.6rem;">— 폴더를 분석해서 CLAUDE.md 초안을 만들어드리겠습니다 —</div>
+    </div>
+    <p style="margin-top: 1rem; font-size: var(--body-size); color: var(--muted); max-width: 72rem; line-height: 1.6;">
+      초안이 만들어지면 필요한 규칙을 직접 추가하거나 다듬어 완성합니다.
+    </p>
+  </div>
+  <div class="footer-mark"><span class="index">10</span><span class="sep">/</span><span>29</span></div>
+  <div class="brand-mark">vibe-coding-lab</div>
+</section>
+
+<!-- ============================================================
+     SLIDE 11 — CLAUDE.md BEFORE/AFTER
+     ============================================================ -->
+<section class="slide" data-cat="claude-md/verify">
+  <div class="slide-content">
+    <h2>규칙 없이 vs 있이</h2>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1rem, 2vw, 1.5rem); margin-top: var(--content-title-gap); max-width: 84rem;">
+      <div style="background: var(--bg-elev); border: 1px solid var(--line-2); border-radius: 4px; padding: 1.25rem 1.4rem;">
+        <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em;">규칙 없이</div>
+        <div style="font-size: var(--body-size); color: var(--ink-2); margin-top: 0.6rem; line-height: 1.65;">
+          매번 프롬프트에 "익명화는 P001 형식으로, 인용은 Vancouver 로, 톤은 ~합니다 로"를 전부 다시 설명합니다.
+        </div>
+      </div>
+      <div style="background: var(--bg-elev); border: 1px solid var(--line-2); border-top: 3px solid var(--accent); border-radius: 4px; padding: 1.25rem 1.4rem;">
+        <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em;">규칙 있이</div>
+        <div style="font-size: var(--body-size); color: var(--ink-2); margin-top: 0.6rem; line-height: 1.65;">
+          <span class="mono" style="color: var(--accent);">&gt; 지난 논문 요약해줘</span> 한 줄이면 규칙에 맞춰 결과가 나옵니다.
+        </div>
+      </div>
+    </div>
+    <div class="screenshot-slot terminal wide">
+      <div class="slot-label">SCREENSHOT</div>
+      <div class="slot-title">CLAUDE.md 적용 전후 응답 비교</div>
+      <div class="slot-note">같은 프롬프트에 대한 두 응답을 나란히 캡처</div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">11</span><span class="sep">/</span><span>29</span></div>
+  <div class="brand-mark">vibe-coding-lab</div>
+</section>
+
+<!-- ============================================================
+     SLIDE 12 — SECTION DIVIDER: SKILLS
+     ============================================================ -->
+<section class="slide section-divider" data-cat="example/skills/title">
+  <div class="slide-content">
+    <h2 class="section-title">예제 2 — 남이 만든 걸 가져와서 쓰기 (스킬)</h2>
+  </div>
+  <div class="footer-mark"><span class="index">12</span><span class="sep">/</span><span>29</span></div>
+  <div class="brand-mark">vibe-coding-lab</div>
+</section>
+
+<!-- ============================================================
+     SLIDE 13 — SKILLS INTRO
+     ============================================================ -->
+<section class="slide" data-cat="skills/intro">
+  <div class="slide-content">
+    <h2>스킬이란?</h2>
+    <p style="margin-top: var(--content-title-gap); font-size: var(--h3-size); color: var(--ink-2); line-height: 1.6; max-width: 72rem;">
+      특정 작업에 <span style="color: var(--accent); font-weight: 600;">이름을 붙여 저장한 것</span>입니다. PDF 다루기, 슬라이드 만들기, 엑셀 처리 등 반복되는 작업들이 각각 하나의 스킬로 정리되어 있습니다.
+    </p>
+    <p style="margin-top: 1rem; font-size: var(--body-size); color: var(--ink-2); line-height: 1.7; max-width: 72rem;">
+      가장 좋은 점은 <span style="color: var(--accent); font-weight: 600;">내가 만들지 않아도 된다</span>는 것입니다. 이미 다른 사람들이 만들어둔 스킬을 가져다 씁니다.
+    </p>
+  </div>
+  <div class="footer-mark"><span class="index">13</span><span class="sep">/</span><span>29</span></div>
+  <div class="brand-mark">vibe-coding-lab</div>
+</section>
+
+<!-- ============================================================
+     SLIDE 14 — ANTHROPIC SKILLS REPO
+     ============================================================ -->
+<section class="slide" data-cat="skills/repo">
+  <div class="slide-content">
+    <h2>Anthropic 공식 스킬 저장소</h2>
+    <div style="margin-top: var(--content-title-gap); background: var(--dark-bg); color: var(--dark-text); padding: 1.25rem 1.5rem; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: var(--body-size); max-width: 76rem; line-height: 1.7;">
+      <div style="color: var(--dark-muted); font-size: var(--small-size); margin-bottom: 0.5rem;">$ REPOSITORY</div>
+      <div>github.com/anthropics/skills</div>
+    </div>
+    <div class="screenshot-slot wide" style="margin-top: 1.5rem;">
+      <div class="slot-label">SCREENSHOT</div>
+      <div class="slot-title">github.com/anthropics/skills 저장소 첫 화면</div>
+      <div class="slot-note">skills/ 폴더 아래 여러 스킬 디렉토리가 보이도록 캡처</div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">14</span><span class="sep">/</span><span>29</span></div>
+  <div class="brand-mark">vibe-coding-lab</div>
+</section>
+
+<!-- ============================================================
+     SLIDE 15 — USEFUL SKILLS LIST
+     ============================================================ -->
+<section class="slide" data-cat="skills/list">
+  <div class="slide-content">
+    <h2>이런 스킬들이 있습니다</h2>
+    <ul style="margin-top: var(--content-title-gap); list-style: none; padding: 0; max-width: 80rem;">
+      <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--line); display: flex; align-items: baseline; gap: 1.5rem;">
+        <span class="mono" style="font-size: var(--body-size); color: var(--accent); min-width: 12rem;">frontend-slides</span>
+        <span style="font-size: var(--body-size); color: var(--ink-2);">HTML 슬라이드 발표 자료 자동 생성</span>
+      </li>
+      <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--line); display: flex; align-items: baseline; gap: 1.5rem;">
+        <span class="mono" style="font-size: var(--body-size); color: var(--accent); min-width: 12rem;">academic-pptx</span>
+        <span style="font-size: var(--body-size); color: var(--ink-2);">학술 발표용 PowerPoint 자료 생성</span>
+      </li>
+      <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--line); display: flex; align-items: baseline; gap: 1.5rem;">
+        <span class="mono" style="font-size: var(--body-size); color: var(--accent); min-width: 12rem;">pdf</span>
+        <span style="font-size: var(--body-size); color: var(--ink-2);">PDF 텍스트/표/이미지 추출, OCR</span>
+      </li>
+      <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--line); display: flex; align-items: baseline; gap: 1.5rem;">
+        <span class="mono" style="font-size: var(--body-size); color: var(--accent); min-width: 12rem;">xlsx</span>
+        <span style="font-size: var(--body-size); color: var(--ink-2);">엑셀 파일 읽기·쓰기·집계</span>
+      </li>
+      <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--line); display: flex; align-items: baseline; gap: 1.5rem;">
+        <span class="mono" style="font-size: var(--body-size); color: var(--accent); min-width: 12rem;">docx</span>
+        <span style="font-size: var(--body-size); color: var(--ink-2);">Word 문서 작성·편집</span>
+      </li>
+      <li style="padding: 0.75rem 0; display: flex; align-items: baseline; gap: 1.5rem; color: var(--muted);">
+        <span class="mono" style="font-size: var(--body-size); min-width: 12rem;">…</span>
+        <span style="font-size: var(--body-size);">이 밖에도 계속 늘어나고 있습니다</span>
+      </li>
+    </ul>
+  </div>
+  <div class="footer-mark"><span class="index">15</span><span class="sep">/</span><span>29</span></div>
+  <div class="brand-mark">vibe-coding-lab</div>
+</section>
+
+<!-- ============================================================
+     SLIDE 16 — INSTALL SKILL
+     ============================================================ -->
+<section class="slide" data-cat="skills/install">
+  <div class="slide-content">
+    <h2>스킬 설치하기</h2>
+    <p style="margin-top: var(--content-title-gap); font-size: var(--h3-size); color: var(--ink-2); line-height: 1.6; max-width: 72rem;">
+      원하는 스킬을 <span class="mono" style="color: var(--accent);">~/.claude/skills/</span> 폴더에 두면 클로드 코드가 자동으로 인식합니다.
+    </p>
+    <div style="margin-top: 1.5rem; background: var(--dark-bg); color: var(--dark-text); padding: 1.25rem 1.5rem; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: var(--body-size); max-width: 76rem; line-height: 1.7;">
+      <div style="color: var(--dark-muted); font-size: var(--small-size); margin-bottom: 0.5rem;">$ TERMINAL</div>
+      <div>$ cd ~/.claude/skills</div>
+      <div>$ git clone https://github.com/anthropics/skills.git anthropic-skills</div>
+      <div style="color: var(--dark-muted); font-size: var(--small-size); margin-top: 0.6rem;">— 이제 클로드 코드에서 스킬을 사용할 수 있습니다 —</div>
+    </div>
+    <p style="margin-top: 1rem; font-size: var(--body-size); color: var(--muted); max-width: 72rem; line-height: 1.6;">
+      설치가 어려우면 클로드에게 부탁하셔도 됩니다. <span class="mono" style="color: var(--accent);">&gt; anthropic 공식 스킬 저장소를 내 클로드 폴더에 설치해줘</span>
+    </p>
+  </div>
+  <div class="footer-mark"><span class="index">16</span><span class="sep">/</span><span>29</span></div>
+  <div class="brand-mark">vibe-coding-lab</div>
+</section>
+
+<!-- ============================================================
+     SLIDE 17 — SECTION DIVIDER: PRACTICAL
+     ============================================================ -->
+<section class="slide section-divider" data-cat="example/presentation/title">
+  <div class="slide-content">
+    <h2 class="section-title">예제 3 — 발표 자료 자동으로 만들기</h2>
+  </div>
+  <div class="footer-mark"><span class="index">17</span><span class="sep">/</span><span>29</span></div>
+  <div class="brand-mark">vibe-coding-lab</div>
+</section>
+
+<!-- ============================================================
+     SLIDE 18 — SCENARIO
+     ============================================================ -->
+<section class="slide" data-cat="example/presentation/scenario">
+  <div class="slide-content">
+    <h2>시나리오</h2>
+    <p style="margin-top: var(--content-title-gap); font-size: var(--h3-size); color: var(--ink-2); line-height: 1.6; max-width: 76rem;">
+      매주 랩미팅 · 학회 발표 · 강의 자료. <span style="color: var(--accent); font-weight: 600;">매번 새 파일을 처음부터 만들지 않고</span>, 프롬프트 한 줄로 초안을 뽑아보겠습니다.
+    </p>
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(0.85rem, 2vw, 1.5rem); margin-top: var(--content-title-gap); max-width: 84rem;">
+      <div style="padding: 1.25rem 1.4rem; border: 1px solid var(--line-2); border-top: 3px solid var(--accent); background: var(--bg-elev); border-radius: 4px;">
+        <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em;">1. PICK</div>
+        <div style="font-size: var(--body-size); color: var(--ink-2); margin-top: 0.5rem;">형식을 고릅니다 (마크다운 · HTML)</div>
+      </div>
+      <div style="padding: 1.25rem 1.4rem; border: 1px solid var(--line-2); border-top: 3px solid var(--accent); background: var(--bg-elev); border-radius: 4px;">
+        <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em;">2. GENERATE</div>
+        <div style="font-size: var(--body-size); color: var(--ink-2); margin-top: 0.5rem;">스킬이 초안을 만듭니다</div>
+      </div>
+      <div style="padding: 1.25rem 1.4rem; border: 1px solid var(--line-2); border-top: 3px solid var(--term-green); background: var(--bg-elev); border-radius: 4px;">
+        <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em;">3. REFINE</div>
+        <div style="font-size: var(--body-size); color: var(--ink-2); margin-top: 0.5rem;">프롬프트로 다듬어 완성합니다</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">18</span><span class="sep">/</span><span>29</span></div>
+  <div class="brand-mark">vibe-coding-lab</div>
+</section>
+
+<!-- ============================================================
+     SLIDE 19 — OPTIONS: MARP vs HTML
+     ============================================================ -->
+<section class="slide" data-cat="example/presentation/options">
+  <div class="slide-content">
+    <h2>두 가지 선택지</h2>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1rem, 2.5vw, 1.75rem); margin-top: var(--content-title-gap); max-width: 84rem;">
+      <div style="padding: 1.5rem 1.75rem; border: 1px solid var(--line-2); border-top: 3px solid var(--accent); background: var(--bg-elev); border-radius: 4px;">
+        <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em;">OPTION A</div>
+        <div style="font-size: var(--h3-size); margin-top: 0.4rem; color: var(--ink); font-weight: 600;">Marp — 마크다운으로</div>
+        <div style="font-size: var(--body-size); color: var(--ink-2); margin-top: 0.5rem; line-height: 1.6;">
+          한 줄씩 마크다운을 적으면 슬라이드가 됩니다. 배우기 쉽고 정적입니다.
+        </div>
+        <div style="margin-top: 0.75rem; font-size: var(--small-size); color: var(--muted);">
+          장점: 간단한 문법 · 텍스트 위주 발표에 적합
+        </div>
+      </div>
+      <div style="padding: 1.5rem 1.75rem; border: 1px solid var(--line-2); border-top: 3px solid var(--term-green); background: var(--bg-elev); border-radius: 4px;">
+        <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em;">OPTION B</div>
+        <div style="font-size: var(--h3-size); margin-top: 0.4rem; color: var(--ink); font-weight: 600;">HTML 슬라이드 — 스킬로</div>
+        <div style="font-size: var(--body-size); color: var(--ink-2); margin-top: 0.5rem; line-height: 1.6;">
+          <span class="mono" style="color: var(--accent);">frontend-slides</span> 스킬이 대신 만듭니다. 인터랙션 · 차트 · 비디오가 가능합니다.
+        </div>
+        <div style="margin-top: 0.75rem; font-size: var(--small-size); color: var(--muted);">
+          장점: 표현력 · 인터랙티브 · 이 워크샵 슬라이드가 이 방식입니다
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">19</span><span class="sep">/</span><span>29</span></div>
+  <div class="brand-mark">vibe-coding-lab</div>
+</section>
+
+<!-- ============================================================
+     SLIDE 20 — MARP QUICK LOOK
+     ============================================================ -->
+<section class="slide" data-cat="example/presentation/marp">
+  <div class="slide-content">
+    <h2>Marp — 마크다운으로 만들기</h2>
+    <p style="margin-top: var(--content-title-gap); font-size: var(--body-size); color: var(--ink-2); line-height: 1.7; max-width: 72rem;">
+      슬라이드 사이는 <span class="mono" style="color: var(--accent);">---</span> 로 구분합니다. 텍스트만 적으면 발표 자료가 됩니다.
+    </p>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1rem, 2vw, 1.5rem); margin-top: 1.25rem; max-width: 84rem;">
+      <div style="background: var(--bg-elev); border: 1px solid var(--line); padding: 1rem 1.2rem; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: var(--small-size); color: var(--ink-2); line-height: 1.75;">
+        <div style="color: var(--muted);">---<br />marp: true<br />---</div>
+        <div style="margin-top: 0.5rem;"># 첫 번째 슬라이드<br />본문 한 줄</div>
+        <div style="margin-top: 0.5rem; color: var(--muted);">---</div>
+        <div style="margin-top: 0.5rem;"># 두 번째 슬라이드<br />- 항목 1<br />- 항목 2</div>
+      </div>
+      <div style="background: var(--accent-soft); border-left: 3px solid var(--accent); padding: 1rem 1.2rem; border-radius: 4px; font-size: var(--body-size); color: var(--ink); line-height: 1.7;">
+        &gt; 이 파일을 Marp 로 렌더링해서<br />
+        <span class="mono">slides.html</span> 로 만들어줘
+      </div>
+    </div>
+    <p style="margin-top: 1rem; font-size: var(--small-size); color: var(--muted); max-width: 72rem; line-height: 1.6;">
+      * 오늘은 참고용으로만 소개합니다. 뒤에서는 HTML 슬라이드 스킬로 진행합니다.
+    </p>
+  </div>
+  <div class="footer-mark"><span class="index">20</span><span class="sep">/</span><span>29</span></div>
+  <div class="brand-mark">vibe-coding-lab</div>
+</section>
+
+<!-- ============================================================
+     SLIDE 21 — HTML SLIDES via SKILL
+     ============================================================ -->
+<section class="slide" data-cat="example/presentation/html">
+  <div class="slide-content">
+    <h2>HTML 슬라이드 — <span class="mono">frontend-slides</span> 스킬로</h2>
+    <p style="margin-top: var(--content-title-gap); font-size: var(--h3-size); color: var(--ink-2); line-height: 1.6; max-width: 76rem;">
+      마크다운 문법을 알 필요가 없습니다. 원하는 내용을 프롬프트로 설명하면 스킬이 <span style="color: var(--accent); font-weight: 600;">HTML 슬라이드 초안</span>을 대신 만들어줍니다.
+    </p>
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(0.85rem, 2vw, 1.5rem); margin-top: var(--content-title-gap); max-width: 84rem;">
+      <div style="padding: 1.15rem 1.3rem; border: 1px solid var(--line-2); border-top: 3px solid var(--accent); background: var(--bg-elev); border-radius: 4px;">
+        <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em;">인터랙션</div>
+        <div style="font-size: var(--body-size); color: var(--ink-2); margin-top: 0.4rem; line-height: 1.55;">버튼 · 애니메이션 · 단계별 진행</div>
+      </div>
+      <div style="padding: 1.15rem 1.3rem; border: 1px solid var(--line-2); border-top: 3px solid var(--accent); background: var(--bg-elev); border-radius: 4px;">
+        <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em;">차트</div>
+        <div style="font-size: var(--body-size); color: var(--ink-2); margin-top: 0.4rem; line-height: 1.55;">Chart.js 그래프를 슬라이드에 삽입</div>
+      </div>
+      <div style="padding: 1.15rem 1.3rem; border: 1px solid var(--line-2); border-top: 3px solid var(--accent); background: var(--bg-elev); border-radius: 4px;">
+        <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em;">비디오 · 3D</div>
+        <div style="font-size: var(--body-size); color: var(--ink-2); margin-top: 0.4rem; line-height: 1.55;">Three.js 로 3D 도형, 영상 임베드</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">21</span><span class="sep">/</span><span>29</span></div>
+  <div class="brand-mark">vibe-coding-lab</div>
+</section>
+
+<!-- ============================================================
+     SLIDE 22 — REAL PROMPT
+     ============================================================ -->
+<section class="slide" data-cat="example/presentation/prompt">
+  <div class="slide-content">
+    <h2>실제 프롬프트</h2>
+    <p style="margin-top: var(--content-title-gap); font-size: var(--body-size); color: var(--ink-2); line-height: 1.7; max-width: 72rem;">
+      CLAUDE.md 에 발표 규칙을 적어두었으므로, 프롬프트는 최소한만 필요합니다.
+    </p>
+    <div style="margin-top: 1.5rem; background: var(--accent-soft); border-left: 3px solid var(--accent); padding: 1.25rem 1.5rem; border-radius: 4px; font-size: var(--h3-size); color: var(--ink); max-width: 80rem; line-height: 1.55;">
+      &gt; 다음 주 랩미팅 발표 자료를 HTML 슬라이드로 만들어줘.<br />
+      주제: 지난달 실험 결과 요약, 분량: 10분,<br />
+      우리 CLAUDE.md 규칙 따르고, 결과 표는 <span class="mono">results.csv</span> 사용.
+    </div>
+    <p style="margin-top: 1rem; font-size: var(--small-size); color: var(--muted); max-width: 72rem; line-height: 1.6;">
+      * <span class="mono">&gt;</span> 기호 뒤 문장만 복사해서 붙여넣으시면 됩니다.
+    </p>
+  </div>
+  <div class="footer-mark"><span class="index">22</span><span class="sep">/</span><span>29</span></div>
+  <div class="brand-mark">vibe-coding-lab</div>
+</section>
+
+<!-- ============================================================
+     SLIDE 23 — RESULT
+     ============================================================ -->
+<section class="slide" data-cat="example/presentation/result">
+  <div class="slide-content">
+    <h2>결과 확인</h2>
+    <p style="margin-top: var(--content-title-gap); font-size: var(--body-size); color: var(--ink-2); line-height: 1.7; max-width: 72rem;">
+      브라우저에서 만들어진 HTML 파일을 열어 발표 자료를 확인합니다. 마음에 들지 않는 부분은 프롬프트로 다시 요청합니다.
+    </p>
+    <div style="margin-top: 1.25rem; background: var(--accent-soft); border-left: 3px solid var(--accent); padding: 1rem 1.25rem; border-radius: 4px; font-size: var(--body-size); color: var(--ink); max-width: 72rem; line-height: 1.65;">
+      &gt; 3번 슬라이드 색을 좀 더 밝게 바꿔주고, 5번 슬라이드에 차트를 추가해줘
+    </div>
+    <div class="screenshot-slot wide" style="margin-top: 1.5rem;">
+      <div class="slot-label">SCREENSHOT</div>
+      <div class="slot-title">생성된 발표 자료 브라우저 화면</div>
+      <div class="slot-note">전체화면 모드로 첫 번째 슬라이드가 보이도록 캡처</div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">23</span><span class="sep">/</span><span>29</span></div>
+  <div class="brand-mark">vibe-coding-lab</div>
+</section>
+
+<!-- ============================================================
+     SLIDE 24 — MORE EXAMPLES
+     ============================================================ -->
+<section class="slide" data-cat="example/presentation/more">
+  <div class="slide-content">
+    <h2>추가 예제</h2>
+    <ul style="margin-top: var(--content-title-gap); list-style: none; padding: 0; max-width: 76rem; font-size: var(--body-size); color: var(--ink-2); line-height: 1.85;">
+      <li style="padding: 0.55rem 0; border-bottom: 1px solid var(--line); display: flex; align-items: baseline; gap: 0.75rem;">
+        <span class="mono" style="color: var(--accent); min-width: 1.5rem;">·</span>
+        <span>학회 포스터 초안 만들기 (A0 사이즈, PDF 로 변환)</span>
+      </li>
+      <li style="padding: 0.55rem 0; border-bottom: 1px solid var(--line); display: flex; align-items: baseline; gap: 0.75rem;">
+        <span class="mono" style="color: var(--accent); min-width: 1.5rem;">·</span>
+        <span>강의 자료를 학생 배포용으로 정리 (요약본 · 연습 문제)</span>
+      </li>
+      <li style="padding: 0.55rem 0; border-bottom: 1px solid var(--line); display: flex; align-items: baseline; gap: 0.75rem;">
+        <span class="mono" style="color: var(--accent); min-width: 1.5rem;">·</span>
+        <span>3D 시뮬레이션을 삽입한 강의 자료 (Three.js)</span>
+      </li>
+      <li style="padding: 0.55rem 0; border-bottom: 1px solid var(--line); display: flex; align-items: baseline; gap: 0.75rem;">
+        <span class="mono" style="color: var(--accent); min-width: 1.5rem;">·</span>
+        <span>학회 초록을 발표 자료로 자동 변환</span>
+      </li>
+      <li style="padding: 0.55rem 0; border-bottom: 1px solid var(--line); display: flex; align-items: baseline; gap: 0.75rem;">
+        <span class="mono" style="color: var(--accent); min-width: 1.5rem;">·</span>
+        <span>지난 발표 자료 스타일을 그대로 유지한 새 발표 만들기</span>
+      </li>
+      <li style="padding: 0.55rem 0; display: flex; align-items: baseline; gap: 0.75rem; color: var(--muted);">
+        <span class="mono" style="min-width: 1.5rem;">·</span>
+        <span>등등 …</span>
+      </li>
+    </ul>
+  </div>
+  <div class="footer-mark"><span class="index">24</span><span class="sep">/</span><span>29</span></div>
+  <div class="brand-mark">vibe-coding-lab</div>
+</section>
+
+<!-- ============================================================
+     SLIDE 25 — SECTION DIVIDER: META
+     ============================================================ -->
+<section class="slide section-divider" data-cat="section/meta">
+  <div class="slide-content">
+    <h2 class="section-title">메타 — 이 워크샵도 그렇게 만들었습니다</h2>
+  </div>
+  <div class="footer-mark"><span class="index">25</span><span class="sep">/</span><span>29</span></div>
+  <div class="brand-mark">vibe-coding-lab</div>
+</section>
+
+<!-- ============================================================
+     SLIDE 26 — META: TEMPLATE FOLDER
+     ============================================================ -->
+<section class="slide" data-cat="meta/template">
+  <div class="slide-content">
+    <h2>template 폴더 시스템</h2>
+    <p style="margin-top: var(--content-title-gap); font-size: var(--body-size); color: var(--ink-2); line-height: 1.7; max-width: 76rem;">
+      이 워크샵 슬라이드도 매주 처음부터 만들지 않습니다. 공통 자원을 <span class="mono" style="color: var(--accent);">template/</span> 폴더 하나에 몰아두고, 각 주차는 자기만의 슬라이드 내용만 채워 넣습니다.
+    </p>
+    <div style="margin-top: 1.25rem; background: var(--bg-elev); border: 1px solid var(--line); border-left: 3px solid var(--accent); padding: 1rem 1.25rem; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: var(--small-size); color: var(--ink-2); line-height: 1.85; max-width: 76rem;">
+      <div>vibecoding-workshop/</div>
+      <div>├── <span style="color: var(--accent);">template/</span></div>
+      <div>│   ├── foundation.css   <span style="color: var(--muted);">디자인 토큰 · viewport lock</span></div>
+      <div>│   ├── navigator.js     <span style="color: var(--muted);">스크롤 · 해시 · 저장</span></div>
+      <div>│   ├── index.html       <span style="color: var(--muted);">새 week 시작 뼈대</span></div>
+      <div>│   └── CLAUDE.md        <span style="color: var(--muted);">프로젝트 규칙</span></div>
+      <div>├── week1/</div>
+      <div>├── week2/</div>
+      <div>└── <span style="color: var(--accent);">week3/</span>  <span style="color: var(--muted);">← 지금 이 자료</span></div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">26</span><span class="sep">/</span><span>29</span></div>
+  <div class="brand-mark">vibe-coding-lab</div>
+</section>
+
+<!-- ============================================================
+     SLIDE 27 — META: APPLY TO YOUR LAB
+     ============================================================ -->
+<section class="slide" data-cat="meta/apply">
+  <div class="slide-content">
+    <h2>여러분 연구실에 적용하기</h2>
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(0.85rem, 2vw, 1.5rem); margin-top: var(--content-title-gap); max-width: 84rem;">
+      <div style="padding: 1.25rem 1.4rem; border: 1px solid var(--line-2); border-top: 3px solid var(--accent); background: var(--bg-elev); border-radius: 4px;">
+        <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em;">STEP 1</div>
+        <div style="font-size: var(--body-size); color: var(--ink); font-weight: 600; margin-top: 0.4rem;">CLAUDE.md 하나 만들기</div>
+        <div style="font-size: var(--small-size); color: var(--ink-2); margin-top: 0.4rem; line-height: 1.6;">연구실 규칙 · 자주 하는 작업을 정리합니다.</div>
+      </div>
+      <div style="padding: 1.25rem 1.4rem; border: 1px solid var(--line-2); border-top: 3px solid var(--accent); background: var(--bg-elev); border-radius: 4px;">
+        <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em;">STEP 2</div>
+        <div style="font-size: var(--body-size); color: var(--ink); font-weight: 600; margin-top: 0.4rem;">스킬 몇 개 설치</div>
+        <div style="font-size: var(--small-size); color: var(--ink-2); margin-top: 0.4rem; line-height: 1.6;">pdf · xlsx · docx · frontend-slides 정도로 시작합니다.</div>
+      </div>
+      <div style="padding: 1.25rem 1.4rem; border: 1px solid var(--line-2); border-top: 3px solid var(--term-green); background: var(--bg-elev); border-radius: 4px;">
+        <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em;">STEP 3</div>
+        <div style="font-size: var(--body-size); color: var(--ink); font-weight: 600; margin-top: 0.4rem;">Git 에 올려서 공유</div>
+        <div style="font-size: var(--small-size); color: var(--ink-2); margin-top: 0.4rem; line-height: 1.6;">다음 사람도 같은 시작점에서 출발합니다.</div>
+      </div>
+    </div>
+    <p style="margin-top: 1.25rem; font-size: var(--body-size); color: var(--muted); max-width: 84rem; line-height: 1.65;">
+      이 세 가지가 갖춰지면, 새 연구원이 들어와도 30 분 안에 같은 환경에서 작업을 시작할 수 있습니다.
+    </p>
+  </div>
+  <div class="footer-mark"><span class="index">27</span><span class="sep">/</span><span>29</span></div>
+  <div class="brand-mark">vibe-coding-lab</div>
+</section>
+
+<!-- ============================================================
+     SLIDE 28 — WRAP UP
+     ============================================================ -->
+<section class="slide section-divider" data-cat="section/wrap-up">
+  <div class="slide-content">
+    <h2 class="section-title">마무리</h2>
+    <div style="margin-top: var(--content-title-gap); display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1rem, 2.5vw, 2rem); max-width: 72rem;">
+      <div style="padding: 1.25rem 1.5rem; border: 1px solid var(--line-2); border-top: 3px solid var(--accent); background: var(--bg-elev); border-radius: 4px;">
+        <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em;">오늘 한 것</div>
+        <ul style="margin-top: 0.5rem; padding-left: 1.1rem; font-size: var(--body-size); color: var(--ink-2); line-height: 1.75;">
+          <li>CLAUDE.md 로 프로젝트 규칙을 파일에 박기</li>
+          <li>Anthropic 공식 스킬 저장소에서 스킬 다운로드</li>
+          <li>발표 자료 초안을 프롬프트 한 줄로 생성</li>
+        </ul>
+      </div>
+      <div style="padding: 1.25rem 1.5rem; border: 1px solid var(--line-2); border-top: 3px solid var(--term-green); background: var(--bg-elev); border-radius: 4px;">
+        <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em;">지난 3주 요약</div>
+        <ul style="margin-top: 0.5rem; padding-left: 1.1rem; font-size: var(--body-size); color: var(--ink-2); line-height: 1.75;">
+          <li>WEEK 1 — 홈페이지 만들기</li>
+          <li>WEEK 2 — 파일 정리 · 논문 처리</li>
+          <li>WEEK 3 — 반복을 재사용 가능한 도구로</li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin-top: 1.25rem; font-size: var(--body-size); color: var(--muted); text-align: center;">
+      슬라이드 다시 보기 · <a href="https://djson.me/vibecoding-workshop/week3/" class="mono" style="color: var(--accent); text-decoration: none; border-bottom: 1px dashed var(--accent);">djson.me/vibecoding-workshop/week3/</a>
+    </p>
+  </div>
+  <div class="footer-mark"><span class="index">28</span><span class="sep">/</span><span>29</span></div>
+  <div class="brand-mark">vibe-coding-lab</div>
+</section>
+
+<!-- ============================================================
+     SLIDE 29 — HOMEPAGE OFFER
+     ============================================================ -->
+<section class="slide" data-cat="notice/homepage-offer">
+  <div class="slide-content">
+    <h2>홈페이지가 필요하신 분께</h2>
+    <div style="margin-top: var(--content-title-gap); padding: 1.25rem 1.5rem; border: 1px solid var(--line-2); border-left: 3px solid var(--accent); background: var(--bg-elev); border-radius: 4px; font-size: var(--body-size); color: var(--ink-2); max-width: 48rem;">
+      <a href="mailto:dongjuson@hai.kangwon.ac.kr" class="mono" style="color: var(--accent); text-decoration: none; border-bottom: 1px dashed var(--accent);">dongjuson@hai.kangwon.ac.kr</a> 로 메일 보내주시면 만들어드리겠습니다.
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">29</span><span class="sep">/</span><span>29</span></div>
+  <div class="brand-mark">vibe-coding-lab</div>
+</section>
+
+<!-- Shared navigator: scroll snap, hash routing, localStorage -->
+<script src="../template/navigator.js" defer></script>
+
+</body>
+</html>
