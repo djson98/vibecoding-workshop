@@ -713,21 +713,22 @@
 <section class="slide" data-cat="example/folder-cleanup/verify">
   <div class="slide-content">
     <h2>결과 확인</h2>
-    <p style="margin-top: var(--content-title-gap); font-size: var(--h3-size); color: var(--ink-2); line-height: 1.6; max-width: 64rem;">
-      Finder나 탐색기로 폴더를 열어 직접 확인합니다. 결과가 마음에 들지 않으면 클로드에게 되돌리도록 요청합니다.
+    <p style="margin-top: 0.5rem; font-size: clamp(0.95rem, 1.4vw, 1.35rem); color: var(--ink-2); line-height: 1.55; max-width: 84rem;">
+      Finder로 직접 열어 확인합니다. 이상하면 <span class="mono" style="color: var(--accent);">&gt; 되돌려줘</span> 한 줄이면 원상복귀됩니다.
     </p>
-    <div style="margin-top: 1.5rem; background: var(--accent-soft); border-left: 3px solid var(--accent); padding: 1.25rem 1.5rem; border-radius: 4px; font-size: var(--h3-size); color: var(--ink); max-width: 64rem; line-height: 1.5;">
-      &gt; 방금 정리한 거 다 되돌려줘
-    </div>
-    <div class="screenshot-grid" style="max-width: 64rem;">
-      <div class="screenshot-slot" style="min-height: clamp(150px, 23vh, 260px);">
-        <div class="slot-label">BEFORE</div>
-        <img src="assets/folder-before.png" alt="Messy Finder folder before cleanup" style="display: block; width: 100%; height: 100%; max-height: clamp(130px, 19vh, 220px); object-fit: contain;" />
+    <div style="margin-top: 1.25rem; display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr) minmax(0, 1fr); gap: clamp(0.7rem, 1.5vw, 1.1rem); max-width: 96rem;">
+      <div style="border: 1px solid var(--line-2); border-radius: 6px; overflow: hidden; background: #FFFFFF; box-shadow: 0 4px 12px rgba(15, 20, 25, 0.06);">
+        <img src="assets/folder-cleanup-response.png" alt="정리 완료 응답 — 최종 폴더 구조 안내" style="display: block; width: 100%; height: auto;" />
       </div>
-      <div class="screenshot-slot" style="min-height: clamp(150px, 23vh, 260px);">
-        <div class="slot-label">AFTER</div>
-        <div class="slot-title">정리 후 폴더</div>
-        <div class="slot-note">카테고리별 폴더가 만들어진 결과 화면</div>
+      <div style="display: flex; flex-direction: column; gap: clamp(0.6rem, 1.2vw, 0.9rem);">
+        <div style="border: 1px solid var(--line-2); border-radius: 6px; overflow: hidden; background: #FFFFFF; box-shadow: 0 4px 12px rgba(15, 20, 25, 0.06);">
+          <img src="assets/folder-cleanup-finder-root.png" alt="정리 결과 — 6개 카테고리 폴더" style="display: block; width: 100%; height: auto;" />
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: clamp(0.6rem, 1.2vw, 0.9rem);">
+        <div style="border: 1px solid var(--line-2); border-radius: 6px; overflow: hidden; background: #FFFFFF; box-shadow: 0 4px 12px rgba(15, 20, 25, 0.06);">
+          <img src="assets/folder-cleanup-finder-media.png" alt="미디어 폴더 내부 — 화면기록/카톡사진/스크린샷" style="display: block; width: 100%; height: auto;" />
+        </div>
       </div>
     </div>
   </div>
