@@ -513,10 +513,18 @@
     <p style="margin-top: var(--content-title-gap); font-size: var(--h3-size); color: var(--ink-2); line-height: 1.6; max-width: 64rem;">
       파일을 바꾸거나 명령을 실행하기 전에는 이런 확인 화면이 뜹니다.
     </p>
-    <div class="screenshot-slot terminal wide">
-      <div class="slot-label">SCREENSHOT</div>
-      <div class="slot-title">Allow once / Allow always / Deny 선택 화면</div>
-      <div class="slot-note">실제 권한 요청 문구와 선택지가 보이도록 캡처</div>
+    <div style="margin-top: var(--content-title-gap); width: min(100%, 72rem); background: #1A2230; border: 1px solid #353C48; border-radius: 8px; padding: 1.5rem 1.75rem; font-family: 'JetBrains Mono', monospace; box-shadow: 0 8px 24px rgba(15, 20, 25, 0.15);">
+      <div style="color: #8A8F98; font-size: var(--small-size); margin-bottom: 0.9rem; letter-spacing: 0.05em;">CLAUDE CODE — PERMISSION</div>
+      <div style="color: #F2F2EE; font-size: var(--body-size); line-height: 1.65;">
+        <div>Claude 이 <span style="color: #8EC8FF;">파일을 편집</span>하려고 합니다:</div>
+        <div style="margin-top: 0.4rem; color: #8EC8FF;">~/Downloads/report.pdf</div>
+      </div>
+      <div style="margin-top: 1.1rem; display: flex; flex-direction: column; gap: 0.35rem; font-size: var(--body-size);">
+        <div style="color: #F2F2EE;"><span style="color: #3E7A55;">[1]</span> Allow once — 이번 한 번만 허용</div>
+        <div style="color: #F2F2EE;"><span style="color: #3E7A55;">[2]</span> Allow always — 앞으로 자동 허용</div>
+        <div style="color: #F2F2EE;"><span style="color: #8E5A1A;">[3]</span> Deny — 거부하고 다른 방법 제안</div>
+      </div>
+      <div style="margin-top: 1.1rem; color: #8A8F98; font-size: var(--small-size);">Choose (1/2/3): <span style="color: #F2F2EE;">_</span></div>
     </div>
   </div>
   <div class="footer-mark"><span class="index">18</span><span class="sep">/</span><span>39</span></div>
@@ -704,10 +712,16 @@
         <span style="color: var(--muted); font-size: var(--small-size);">— 이대로 실행할까요? (ESC로 빠져나와 일반 모드에서 진행)</span>
       </div>
     </div>
-    <div class="screenshot-slot terminal wide" style="min-height: clamp(180px, 26vh, 300px);">
-      <div class="slot-label">SCREENSHOT</div>
-      <div class="slot-title">Plan Mode에서 정리 계획만 출력된 화면</div>
-      <div class="slot-note">실행 전 단계라는 점이 보이도록 계획 리스트를 캡처</div>
+    <div style="margin-top: var(--content-title-gap); width: min(100%, 76rem); background: #1A2230; border: 1px solid #353C48; border-radius: 8px; padding: 1.4rem 1.7rem; font-family: 'JetBrains Mono', monospace; box-shadow: 0 8px 24px rgba(15, 20, 25, 0.15);">
+      <div style="display: inline-block; padding: 0.25rem 0.6rem; border-radius: 3px; background: #3E7A55; color: #FCFCFB; font-size: var(--small-size); letter-spacing: 0.05em; margin-bottom: 0.9rem;">PLAN MODE — 실제 실행은 일어나지 않습니다</div>
+      <div style="color: #F2F2EE; font-size: var(--body-size); line-height: 1.75;">
+        <div style="color: #8A8F98; font-size: var(--small-size);">다음과 같이 폴더를 정리하겠습니다:</div>
+        <div style="margin-top: 0.6rem;"><span style="color: #8EC8FF;">1.</span> 카테고리별 하위 폴더 생성 <span style="color: #8A8F98;">(images/, pdfs/, archives/, installers/)</span></div>
+        <div><span style="color: #8EC8FF;">2.</span> 확장자별로 파일 이동</div>
+        <div><span style="color: #8EC8FF;">3.</span> 중복 파일은 <span class="mono">_dup</span> 접미사 붙여서 유지</div>
+        <div><span style="color: #8EC8FF;">4.</span> 빈 폴더는 그대로 두고 정리 결과 요약 출력</div>
+        <div style="margin-top: 0.9rem; color: #8A8F98; font-size: var(--small-size);">이대로 실행할까요? (ESC 로 빠져나와 일반 모드에서 진행)</div>
+      </div>
     </div>
   </div>
   <div class="footer-mark"><span class="index">24</span><span class="sep">/</span><span>39</span></div>
