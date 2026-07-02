@@ -1,0 +1,82 @@
+@charset "UTF-8";
+
+/* ============================================================
+   VIEWPORT BASE (mandatory) — locks each .slide to one viewport
+   ============================================================ */
+html, body { height: 100%; overflow-x: hidden; }
+html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+.slide {
+  width: 100vw; height: 100vh; height: 100dvh;
+  overflow: hidden; scroll-snap-align: start;
+  display: flex; flex-direction: column; position: relative;
+}
+.slide-content {
+  flex: 1; display: flex; flex-direction: column;
+  justify-content: center; max-height: 100%;
+  overflow: hidden; padding: var(--slide-padding);
+}
+:root {
+  --title-size: clamp(1.5rem, 5vw, 4rem);
+  --h2-size: clamp(1.25rem, 3.5vw, 2.5rem);
+  --h3-size: clamp(1rem, 2.5vw, 1.75rem);
+  --body-size: clamp(0.75rem, 1.5vw, 1.125rem);
+  --small-size: clamp(0.65rem, 1vw, 0.875rem);
+  --slide-padding: clamp(1.5rem, 4vw, 4rem);
+  --content-gap: clamp(0.5rem, 2vw, 2rem);
+  --element-gap: clamp(0.25rem, 1vw, 1rem);
+  --title-block-gap: clamp(1.1rem, 2.4vh, 1.8rem);
+  --title-lead-gap: clamp(0.65rem, 1.6vh, 1.1rem);
+  --content-title-gap: clamp(1rem, 2.1vh, 1.6rem);
+}
+img, .image-container { max-width: 100%; max-height: min(50vh, 400px); object-fit: contain; }
+@media (max-height: 700px) {
+  :root { --slide-padding: clamp(1rem, 3vw, 2.5rem); --title-size: clamp(1.25rem, 4.5vw, 2.75rem); --h2-size: clamp(1rem, 3vw, 1.85rem); }
+}
+@media (max-height: 600px) {
+  :root { --slide-padding: clamp(0.75rem, 2.5vw, 1.75rem); --title-size: clamp(1.1rem, 4vw, 2.2rem); --body-size: clamp(0.7rem, 1.2vw, 0.95rem); }
+  .deco, .footer-mark { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.2s !important; }
+  html { scroll-behavior: auto; }
+}
+
+/* ============================================================
+   DESIGN TOKENS — editor/CLI meta-aesthetic
+   light cream base, ink text, electric blue accent, terminal green
+   ============================================================ */
+:root {
+  /* White paper + deep academic blue — clean, scholarly */
+  --bg: #FCFCFB;             /* warm white, not pure */
+  --bg-elev: #F4F4F0;        /* card subtle elevation */
+  --ink: #0F1419;
+  --ink-2: #2A2F36;
+  --muted: #5C6168;
+  --muted-2: #9398A0;
+  --line: #E5E5DF;
+  --line-2: #D2D2CB;
+  --accent: #1F3A6B;         /* deep oxford blue — academic */
+  --accent-hover: #16294D;
+  --accent-soft: #E8EDF6;
+  --term-green: #3E7A55;     /* deeper forest, restrained */
+  --warn: #8E5A1A;
+  --warn-soft: #F5EAD7;
+  --dark-bg: #1A2230;        /* cool slate (used sparingly on cards/blocks) */
+  --dark-bg-2: #232C3A;
+  --dark-line: #353C48;
+  --dark-text: #F2F2EE;
+  --dark-muted: #8A8F98;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Pretendard', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-feature-settings: "ss01", "ss02", "kern";
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: -0.005em;
+}
+
+.mono { font-family: 'JetBrains Mono', ui-monospace, monospace; font-feature-settings: "ss01"; }

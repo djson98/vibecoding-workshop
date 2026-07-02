@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Week N — 제목</title>
+
+<!-- Fonts: Pretendard (KR body + emphasis), JetBrains Mono (labels/code) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+
+<!-- Foundation (shared): design tokens + viewport lock + reset -->
+<link rel="stylesheet" href="../template/foundation.css" />
+<!-- Week-specific styles -->
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ============================================================
+     SLIDE 01 — COVER
+     ============================================================ -->
+<section class="slide title-slide" data-cat="cover">
+  <div class="slide-content">
+    <h1 class="deck-title"><span class="accent">WEEK N</span><br />부제</h1>
+    <p style="margin-top: 1rem; font-size: var(--body-size); color: var(--muted);">
+      손동주 · 강원대 컴퓨터공학과 HAI Lab
+    </p>
+  </div>
+  <div class="footer-mark"><span class="index">01</span><span class="sep">/</span><span>01</span></div>
+</section>
+
+<!-- Shared navigator: scroll snap, hash routing, localStorage -->
+<script src="../template/navigator.js" defer></script>
+
+</body>
+</html>

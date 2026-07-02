@@ -1,4 +1,4 @@
-// week 2 slide navigator
+// vibecoding workshop — slide navigator (shared)
 
 const slides = document.querySelectorAll('.slide');
 const total = slides.length;

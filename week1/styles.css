@@ -1918,6 +1918,27 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
   background: var(--bg);
   margin: 0 0.15ch;
 }
+.pdf-download {
+  position: fixed;
+  top: clamp(0.9rem, 2vh, 1.5rem);
+  right: var(--slide-padding);
+  z-index: 120;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.55rem 0.8rem;
+  border: 1px solid var(--line-2);
+  background: rgba(252, 252, 251, 0.9);
+  color: var(--accent);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(0.68rem, 0.9vw, 0.8rem);
+  font-weight: 700;
+  text-decoration: none;
+  backdrop-filter: blur(8px);
+}
+.pdf-download:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
 
 /* ============================================================
    ROLE SPLIT — 사람 / AI
@@ -2104,98 +2125,6 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
 }
 
 /* ============================================================
-   SCREENSHOT PLACEHOLDERS
-   ============================================================ */
-.screenshot-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(1rem, 2vw, 1.5rem);
-  width: min(100%, 72rem);
-  margin-top: var(--content-title-gap);
-}
-.screenshot-slot {
-  min-height: clamp(190px, 32vh, 340px);
-  border: 2px dashed var(--line-2);
-  background: var(--bg-elev);
-  border-radius: 4px;
-  padding: clamp(1.1rem, 2vw, 1.5rem);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: var(--muted);
-}
-.screenshot-slot.wide {
-  width: min(100%, 72rem);
-  min-height: clamp(260px, 44vh, 460px);
-  margin-top: var(--content-title-gap);
-}
-.screenshot-slot.terminal {
-  background: var(--dark-bg);
-  border-color: var(--dark-line);
-  color: var(--dark-muted);
-}
-.screenshot-slot .slot-label {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: var(--small-size);
-  color: var(--accent);
-  letter-spacing: 0.05em;
-  margin-bottom: 0.45rem;
-}
-.screenshot-slot.terminal .slot-label {
-  color: #8EC8FF;
-}
-.screenshot-slot .slot-title {
-  font-size: clamp(1.05rem, 1.8vw, 1.4rem);
-  color: var(--ink);
-  font-weight: 700;
-  line-height: 1.35;
-}
-.screenshot-slot.terminal .slot-title {
-  color: var(--dark-text);
-}
-.screenshot-slot .slot-note {
-  margin-top: 0.5rem;
-  font-size: var(--small-size);
-  line-height: 1.5;
-  max-width: 40ch;
-}
-.screenshot-photo {
-  min-height: clamp(280px, 48vh, 520px);
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-}
-.screenshot-photo .slot-label {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: var(--small-size);
-  color: var(--accent);
-  letter-spacing: 0.05em;
-  margin-bottom: 0.55rem;
-}
-.screenshot-photo .photo-frame {
-  flex: 1;
-  min-height: 0;
-  border: 0;
-  background: transparent;
-  border-radius: 0;
-  overflow: hidden;
-}
-.screenshot-photo img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-@media (max-width: 800px) {
-  .screenshot-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* ============================================================
    SCROLL ANIMATIONS — soft reveal on enter
    ============================================================ */
 .slide-content > * {
@@ -2208,3 +2137,49 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
 .slide.active .slide-content > *:nth-child(3) { transition-delay: 0.21s; }
 .slide.active .slide-content > *:nth-child(4) { transition-delay: 0.29s; }
 .slide.active .slide-content > *:nth-child(5) { transition-delay: 0.37s; }
+
+/* ============================================================
+   PRINT / PDF EXPORT
+   ============================================================ */
+@page {
+  size: 16in 9in;
+  margin: 0;
+}
+@media print {
+  html,
+  body {
+    width: 16in;
+    height: auto;
+    overflow: visible;
+    scroll-snap-type: none;
+    background: var(--bg);
+  }
+  .slide {
+    width: 16in !important;
+    height: 9in !important;
+    min-height: 9in !important;
+    overflow: hidden !important;
+    break-after: page;
+    page-break-after: always;
+    scroll-snap-align: none;
+  }
+  .slide:last-of-type {
+    break-after: auto;
+    page-break-after: auto;
+  }
+  .slide-content {
+    height: 9in !important;
+    max-height: 9in !important;
+    overflow: hidden !important;
+  }
+  .slide-content > * {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .nav-dots,
+  .keyboard-hint,
+  .pdf-download {
+    display: none !important;
+  }
+}
