@@ -760,78 +760,24 @@
 <section class="slide" data-cat="example/paper-summary/preview">
   <div class="slide-content">
     <h2>이번 예제에서 이런 결과를 만듭니다</h2>
-    <p style="margin-top: 0.6rem; font-size: var(--body-size); color: var(--muted); line-height: 1.6; max-width: 84rem;">
-      HAI Lab 논문 5편을 클로드 코드에 넣고, 아래와 같은 <span style="color: var(--accent); font-weight: 600;">비교표</span>를 만들어봅니다. 표의 마지막 열에는 각 값이 <span style="color: var(--accent); font-weight: 600;">원본 PDF 몇 페이지에서 왔는지 출처</span>가 함께 붙습니다.
-    </p>
-    <div style="margin-top: 1.25rem; width: min(100%, 84rem); background: var(--bg-elev); border: 1px solid var(--line-2); border-radius: 6px; padding: 1rem 1.2rem; box-shadow: 0 4px 14px rgba(15, 20, 25, 0.06);">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem;">
-        <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em;">comparison.md — HAI Lab 논문 5편 예시</div>
-        <div class="mono" style="font-size: var(--small-size); color: var(--muted);">preview</div>
+    <div class="screenshot-grid" style="width: min(100%, 92rem); margin-top: 1rem;">
+      <div class="screenshot-photo">
+        <div class="slot-label">BEFORE</div>
+        <div class="photo-frame" style="min-height: clamp(280px, 48vh, 520px); display: flex; align-items: center; justify-content: center; border: 2px dashed var(--line-2); border-radius: 8px;">
+          <div style="text-align: center; color: var(--muted); font-family: 'JetBrains Mono', monospace; font-size: var(--small-size); padding: 1rem;">
+            ~/Desktop/papers/ 폴더 캡처<br />
+            <span style="color: var(--ink-2);">Hwang_2025 · Kang_2023 · Park_2020 · Lee_2021 · Lee_2020</span>
+          </div>
+        </div>
       </div>
-      <div style="overflow-x: auto;">
-        <table style="width: 100%; border-collapse: collapse; font-size: clamp(0.6rem, 0.85vw, 0.78rem); line-height: 1.5; color: var(--ink-2);">
-          <thead>
-            <tr style="background: var(--bg); border-bottom: 2px solid var(--accent);">
-              <th style="padding: 0.5rem 0.55rem; text-align: left; color: var(--ink); font-weight: 700;">제목</th>
-              <th style="padding: 0.5rem 0.55rem; text-align: left; color: var(--ink); font-weight: 700;">연도</th>
-              <th style="padding: 0.5rem 0.55rem; text-align: left; color: var(--ink); font-weight: 700;">학회 / 저널</th>
-              <th style="padding: 0.5rem 0.55rem; text-align: left; color: var(--ink); font-weight: 700;">방법</th>
-              <th style="padding: 0.5rem 0.55rem; text-align: right; color: var(--ink); font-weight: 700;">N</th>
-              <th style="padding: 0.5rem 0.55rem; text-align: left; color: var(--ink); font-weight: 700;">주요 결과</th>
-              <th style="padding: 0.5rem 0.55rem; text-align: left; color: var(--accent); font-weight: 700;">출처</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr style="border-bottom: 1px solid var(--line);">
-              <td style="padding: 0.5rem 0.55rem;">Dataset on Takeover During Distracted L2</td>
-              <td style="padding: 0.5rem 0.55rem;">2025</td>
-              <td style="padding: 0.5rem 0.55rem;">Scientific Data</td>
-              <td style="padding: 0.5rem 0.55rem;">시뮬레이터 + 다중 센서</td>
-              <td style="padding: 0.5rem 0.55rem; text-align: right;" class="mono">32</td>
-              <td style="padding: 0.5rem 0.55rem;">인지 부하 시 takeover RT 상승</td>
-              <td style="padding: 0.5rem 0.55rem;" class="mono"><span style="color: var(--accent);">p.4-6</span></td>
-            </tr>
-            <tr style="border-bottom: 1px solid var(--line);">
-              <td style="padding: 0.5rem 0.55rem;">In-Vehicle Auditory Interactions</td>
-              <td style="padding: 0.5rem 0.55rem;">2025</td>
-              <td style="padding: 0.5rem 0.55rem;">IJHCS</td>
-              <td style="padding: 0.5rem 0.55rem;">Between-subject 실험</td>
-              <td style="padding: 0.5rem 0.55rem; text-align: right;" class="mono">48</td>
-              <td style="padding: 0.5rem 0.55rem;">음성 알림이 알람보다 성공률 우위</td>
-              <td style="padding: 0.5rem 0.55rem;" class="mono"><span style="color: var(--accent);">p.7</span></td>
-            </tr>
-            <tr style="border-bottom: 1px solid var(--line);">
-              <td style="padding: 0.5rem 0.55rem;">Context-Aware Mental Health Self-Tracking</td>
-              <td style="padding: 0.5rem 0.55rem;">2024</td>
-              <td style="padding: 0.5rem 0.55rem;">CHI</td>
-              <td style="padding: 0.5rem 0.55rem;">3주 홈 배치 연구</td>
-              <td style="padding: 0.5rem 0.55rem; text-align: right;" class="mono">15</td>
-              <td style="padding: 0.5rem 0.55rem;">상황 인식 프롬프트가 응답률 향상</td>
-              <td style="padding: 0.5rem 0.55rem;" class="mono"><span style="color: var(--accent);">p.9-11</span></td>
-            </tr>
-            <tr style="border-bottom: 1px solid var(--line);">
-              <td style="padding: 0.5rem 0.55rem;">S-ADL: BAC Detection from ADL</td>
-              <td style="padding: 0.5rem 0.55rem;">2024</td>
-              <td style="padding: 0.5rem 0.55rem;">CHI</td>
-              <td style="padding: 0.5rem 0.55rem;">Controlled study</td>
-              <td style="padding: 0.5rem 0.55rem; text-align: right;" class="mono">22</td>
-              <td style="padding: 0.5rem 0.55rem;">걸음걸이·타이핑으로 BAC 검출</td>
-              <td style="padding: 0.5rem 0.55rem;" class="mono"><span style="color: var(--accent);">p.6</span></td>
-            </tr>
-            <tr>
-              <td style="padding: 0.5rem 0.55rem;">K-EmoPhone Dataset</td>
-              <td style="padding: 0.5rem 0.55rem;">2023</td>
-              <td style="padding: 0.5rem 0.55rem;">Scientific Data</td>
-              <td style="padding: 0.5rem 0.55rem;">In-the-wild 데이터 수집</td>
-              <td style="padding: 0.5rem 0.55rem; text-align: right;" class="mono">77</td>
-              <td style="padding: 0.5rem 0.55rem;">감정·스트레스·주의력 라벨</td>
-              <td style="padding: 0.5rem 0.55rem;" class="mono"><span style="color: var(--accent);">p.3, 8</span></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div style="margin-top: 0.7rem; font-size: var(--small-size); color: var(--muted); line-height: 1.55;">
-        * 출처 열 클릭으로 원문 해당 페이지를 바로 열도록 이후 자동화 가능. 강의 리허설 시 실제 응답으로 교체하시면 됩니다.
+      <div class="screenshot-photo">
+        <div class="slot-label">AFTER</div>
+        <div class="photo-frame" style="min-height: clamp(280px, 48vh, 520px); display: flex; align-items: center; justify-content: center; border: 2px dashed var(--line-2); border-radius: 8px;">
+          <div style="text-align: center; color: var(--muted); font-family: 'JetBrains Mono', monospace; font-size: var(--small-size); padding: 1rem;">
+            comparison.md 결과 캡처<br />
+            <span style="color: var(--ink-2);">논문별 비교표 · 페이지 출처 열 포함</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
