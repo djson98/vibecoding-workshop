@@ -2009,6 +2009,27 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
   background: var(--bg);
   margin: 0 0.15ch;
 }
+.pdf-download {
+  position: fixed;
+  top: clamp(0.9rem, 2vh, 1.5rem);
+  right: var(--slide-padding);
+  z-index: 120;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.55rem 0.8rem;
+  border: 1px solid var(--line-2);
+  background: rgba(252, 252, 251, 0.9);
+  color: var(--accent);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(0.68rem, 0.9vw, 0.8rem);
+  font-weight: 700;
+  text-decoration: none;
+  backdrop-filter: blur(8px);
+}
+.pdf-download:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
 
 /* ============================================================
    ROLE SPLIT — 사람 / AI
@@ -2207,6 +2228,52 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
 .slide.active .slide-content > *:nth-child(3) { transition-delay: 0.21s; }
 .slide.active .slide-content > *:nth-child(4) { transition-delay: 0.29s; }
 .slide.active .slide-content > *:nth-child(5) { transition-delay: 0.37s; }
+
+/* ============================================================
+   PRINT / PDF EXPORT
+   ============================================================ */
+@page {
+  size: 16in 9in;
+  margin: 0;
+}
+@media print {
+  html,
+  body {
+    width: 16in;
+    height: auto;
+    overflow: visible;
+    scroll-snap-type: none;
+    background: var(--bg);
+  }
+  .slide {
+    width: 16in !important;
+    height: 9in !important;
+    min-height: 9in !important;
+    overflow: hidden !important;
+    break-after: page;
+    page-break-after: always;
+    scroll-snap-align: none;
+  }
+  .slide:last-of-type {
+    break-after: auto;
+    page-break-after: auto;
+  }
+  .slide-content {
+    height: 9in !important;
+    max-height: 9in !important;
+    overflow: hidden !important;
+  }
+  .slide-content > * {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .nav-dots,
+  .keyboard-hint,
+  .pdf-download {
+    display: none !important;
+  }
+}
 </style>
 </head>
 <body>
@@ -2216,6 +2283,7 @@ body:has(.slide.active.dark) .nav-dots button:not(.active) { background: var(--d
      ============================================================ -->
 <nav class="nav-dots" id="navDots"></nav>
 <div class="keyboard-hint"><kbd>←</kbd><kbd>→</kbd> or <kbd>Space</kbd> · scroll</div>
+<a class="pdf-download" href="./week1.pdf" download>PDF 다운로드</a>
 
 <!-- ============================================================
      SLIDE 01 — TITLE

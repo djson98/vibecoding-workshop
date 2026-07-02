@@ -66,6 +66,40 @@ h1 {
   border-color: var(--accent);
   background: var(--accent-soft);
 }
+.week-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.week-card:hover {
+  border-color: var(--accent);
+}
+.week-card .week {
+  min-height: 132px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+.week-card .week:hover {
+  border-color: transparent;
+  background: transparent;
+}
+.week-pdf {
+  display: block;
+  margin: 0 24px 24px;
+  padding: 11px 12px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 800;
+  text-decoration: none;
+}
+.week-pdf:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
 .week-num {
   display: block;
   margin-bottom: 34px;
@@ -95,11 +129,14 @@ h1 {
   <h1>Vibe Coding Workshop</h1>
   <p class="lead">바이브 코딩으로 연구실 홈페이지 만들기 워크샵 자료입니다. 주차별 슬라이드를 선택해 열 수 있습니다.</p>
   <div class="weeks">
-    <a class="week" href="./week1/">
-      <span class="week-num">WEEK 1</span>
-      <span class="week-title">연구실 홈페이지 만들기</span>
-      <span class="week-desc">Codex와 바이브 코딩 흐름을 이용한 홈페이지 제작 실습</span>
-    </a>
+    <div class="week-card">
+      <a class="week" href="./week1/">
+        <span class="week-num">WEEK 1</span>
+        <span class="week-title">연구실 홈페이지 만들기</span>
+        <span class="week-desc">Codex와 바이브 코딩 흐름을 이용한 홈페이지 제작 실습</span>
+      </a>
+      <a class="week-pdf" href="./week1/week1.pdf" download>PDF 다운로드</a>
+    </div>
     <a class="week" href="./week2/">
       <span class="week-num">WEEK 2</span>
       <span class="week-title">Claude Code 자동화</span>
