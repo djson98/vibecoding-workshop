@@ -13,6 +13,7 @@
 
 <link rel="stylesheet" href="../template/foundation.css" />
 <link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="../template/print.css" media="print" />
 </head>
 <body>
 
@@ -36,15 +37,14 @@
       <span class="label">VIBE CODING WORKSHOP — WEEK 2</span>
       <span class="year">2026</span>
     </div>
-    <h1 class="deck-title"><span class="accent">CLAUDE CODE</span><br />바이브코딩 자동화 가이드</h1>
-    <div class="deck-sub">부제 자리</div>
+    <h1 class="deck-title"><span class="accent">CLAUDE CODE</span><br />바이브코딩 업무자동화 가이드</h1>
     <div class="deck-meta">
       <span class="presenter">손동주</span>
       <span class="meta-sep">·</span>
       <span class="details">강원대 컴퓨터공학과 HAI Lab</span>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">01</span><span class="sep">/</span><span>38</span></div>
+  <div class="footer-mark"><span class="index">01</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -69,7 +69,18 @@
       </li>
     </ol>
   </div>
-  <div class="footer-mark"><span class="index">02</span><span class="sep">/</span><span>38</span></div>
+  <div class="footer-mark"><span class="index">02</span><span class="sep">/</span><span>41</span></div>
+  <div class="brand-mark">vibe-coding-lab</div>
+</section>
+
+<!-- ============================================================
+     SLIDE — EXAMPLE 1 SECTION TITLE
+     ============================================================ -->
+<section class="slide section-divider" data-cat="example/folder-cleanup/section-title">
+  <div class="slide-content">
+    <h2 class="section-title">미리보기</h2>
+  </div>
+  <div class="footer-mark"><span class="index">03</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -78,7 +89,8 @@
      ============================================================ -->
 <section class="slide" data-cat="hook/folder-before-after">
   <div class="slide-content">
-    <div class="screenshot-grid" style="width: min(100%, 84rem); margin-top: 0;">
+    <h2>폴더 정리하기</h2>
+    <div class="screenshot-grid" style="width: min(100%, 84rem); margin-top: 1rem;">
       <div class="screenshot-photo">
         <div class="slot-label">BEFORE</div>
         <div class="photo-frame">
@@ -93,7 +105,396 @@
       </div>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">03</span><span class="sep">/</span><span>38</span></div>
+  <div class="footer-mark"><span class="index">04</span><span class="sep">/</span><span>41</span></div>
+  <div class="brand-mark">vibe-coding-lab</div>
+</section>
+
+<!-- ============================================================
+     SLIDE — EXAMPLE 1 PREVIEW HOOK (folder cleanup)
+     ============================================================ -->
+<section class="slide" data-cat="example/paper-summary/preview-hook">
+  <div class="slide-content">
+    <h2>논문 한꺼번에 정리하기</h2>
+    <div class="screenshot-grid" style="width: min(100%, 92rem); margin-top: 1rem;">
+      <div class="screenshot-photo">
+        <div class="slot-label">BEFORE</div>
+        <div class="photo-frame">
+          <img src="assets/papers-folder.png" alt="~/Desktop/papers/ 폴더 — HAI Lab 논문 5편" />
+        </div>
+      </div>
+      <div class="screenshot-photo">
+        <div class="slot-label">AFTER</div>
+        <div class="photo-frame">
+          <img src="assets/comparison.png" alt="comparison.xlsx — HAI Lab 논문 5편 비교표" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">05</span><span class="sep">/</span><span>41</span></div>
+  <div class="brand-mark">vibe-coding-lab</div>
+</section>
+
+<!-- ============================================================
+     SLIDE — PAPER RELATIONSHIP GRAPH (interactive)
+     ============================================================ -->
+<section class="slide" data-cat="example/paper-summary/graph">
+  <div class="slide-content">
+    <h2>논문들의 관계 · 3주차 미리보기 (옵시디언)</h2>
+    <div style="margin-top: 0.6rem; width: min(100%, 96rem); flex: 1; min-height: 0; display: flex; flex-direction: column;">
+      <canvas id="paper-graph" style="width: 100%; height: 100%; min-height: clamp(400px, 62vh, 680px); background: #FDFDF9; border-radius: 8px; cursor: grab; touch-action: none; border: 1px solid var(--line);"></canvas>
+      <div style="margin-top: 0.55rem; font-family: 'JetBrains Mono', monospace; font-size: var(--small-size); color: var(--muted); display: flex; gap: 1.4rem; flex-wrap: wrap; align-items: center;">
+        <span>드래그 · 휠 줌 · 호버로 하이라이트</span>
+        <span style="display: inline-flex; align-items: center; gap: 0.4rem;"><span style="width: 10px; height: 10px; border-radius: 50%; background: #3B7CD1;"></span>운전</span>
+        <span style="display: inline-flex; align-items: center; gap: 0.4rem;"><span style="width: 10px; height: 10px; border-radius: 50%; background: #D97A3B;"></span>감정</span>
+        <span style="display: inline-flex; align-items: center; gap: 0.4rem;"><span style="width: 10px; height: 10px; border-radius: 50%; background: #3E9754;"></span>공중보건</span>
+        <span style="display: inline-flex; align-items: center; gap: 0.4rem;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #2E9E85;"></span>방법</span>
+        <span style="display: inline-flex; align-items: center; gap: 0.4rem;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #8759C6;"></span>학회</span>
+        <span style="display: inline-flex; align-items: center; gap: 0.4rem;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #B37A1F;"></span>도메인</span>
+        <span style="display: inline-flex; align-items: center; gap: 0.4rem;"><span style="width: 6px; height: 6px; border-radius: 50%; background: #6B7288;"></span>키워드</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">06</span><span class="sep">/</span><span>41</span></div>
+  <div class="brand-mark">vibe-coding-lab</div>
+</section>
+<script>
+(function () {
+  const canvas = document.getElementById('paper-graph');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W = 0, H = 0, dpr = 1;
+
+  // ============ DATA MODEL ============
+  const THEME = {
+    driving: '#3B7CD1',
+    emotion: '#D97A3B',
+    health:  '#3E9754',
+  };
+  const TYPE = {
+    paper:   { r: 22, color: null,      textColor: '#FFFFFF', mass: 4.0, alwaysLabel: true  },
+    domain:  { r: 13, color: '#B37A1F', textColor: '#7A4E0F', mass: 2.2, alwaysLabel: true  },
+    venue:   { r: 11, color: '#8759C6', textColor: '#5A3487', mass: 1.8, alwaysLabel: false },
+    method:  { r: 8,  color: '#2E9E85', textColor: '#1F6D5C', mass: 1.0, alwaysLabel: false },
+    keyword: { r: 6,  color: '#6B7288', textColor: '#4A5064', mass: 0.7, alwaysLabel: false },
+    author:  { r: 6,  color: '#B45994', textColor: '#7E3B67', mass: 0.7, alwaysLabel: false },
+    year:    { r: 9,  color: '#5C6889', textColor: '#3D465F', mass: 1.2, alwaysLabel: true  },
+    sample:  { r: 7,  color: '#B85670', textColor: '#7F3B4C', mass: 0.9, alwaysLabel: false },
+  };
+
+  const PAPERS = {
+    hwang: { title: 'Takeover · L2 자율주행', theme: 'driving',
+      keywords: ['takeover','인지부하','반응시간','L2자율주행','주의분산','ADAS','비상상황'],
+      methods:  ['EEG','GSR','Eye tracking','시뮬레이터','Deep Learning','신호처리','라벨링'],
+      authors:  ['J.Hwang','B.Kim','S.Choi'],
+      venue: 'Scientific Data', domains: ['자율주행','인간공학'], year: '2025', sample: 'N=32'
+    },
+    kang: { title: 'K-EmoPhone · 감정 스트레스', theme: 'emotion',
+      keywords: ['감정','스트레스','주의력','in-the-wild','8주간종단','ESM','실생활','라벨링'],
+      methods:  ['웨어러블','스마트폰센싱','ESM','Deep Learning','라벨링','GSR','PPG','HRV'],
+      authors:  ['S.Kang','J.Park','H.Lee'],
+      venue: 'Scientific Data', domains: ['Affective Computing','모바일센싱'], year: '2023', sample: 'N=77'
+    },
+    park: { title: 'K-EmoCon · 대화 감정', theme: 'emotion',
+      keywords: ['자연스러운대화','연속감정','다중모달','실시간','상호작용','감정','라벨링'],
+      methods:  ['오디오','비디오','생체센서','GSR','PPG','HRV','신호처리','Deep Learning'],
+      authors:  ['C.Park','G.Kim','H.Lee'],
+      venue: 'Scientific Data', domains: ['Affective Computing','HCI'], year: '2020', sample: 'N=32'
+    },
+    lee21: { title: 'COVID 접촉추적', theme: 'health',
+      keywords: ['COVID-19','접촉추적','감염확산','시뮬레이션','정책','프라이버시','모바일'],
+      methods:  ['Agent-Based Sim','Bluetooth','신호처리','수학모델'],
+      authors:  ['K.Lee','M.Jung','Y.Ha'],
+      venue: 'Frontiers in Public Health', domains: ['공중보건','정책'], year: '2021', sample: 'N=대규모'
+    },
+    lee20: { title: '차량 흐름 제어', theme: 'driving',
+      keywords: ['운전자상태','차량UI','흐름제어','프레임워크','상호작용','ADAS'],
+      methods:  ['개념제안','프레임워크','시뮬레이터'],
+      authors:  ['D.Lee','J.Park','H.Kim'],
+      venue: 'ICTC', domains: ['자율주행','HCI'], year: '2020', sample: 'N=개념'
+    },
+  };
+
+  // ============ BUILD NODES/EDGES ============
+  const nodes = [];
+  const nodeIndex = {};
+  const edges = [];
+  function addNode(id, type, label, extra) {
+    if (nodeIndex[id] != null) return nodeIndex[id];
+    const idx = nodes.length;
+    nodeIndex[id] = idx;
+    nodes.push({
+      id, type, label,
+      theme: extra && extra.theme,
+      x: 0, y: 0, vx: 0, vy: 0, fx: null, fy: null, degree: 0,
+    });
+    return idx;
+  }
+  function addEdge(aId, bId) {
+    const ai = nodeIndex[aId], bi = nodeIndex[bId];
+    if (ai == null || bi == null) return;
+    edges.push([ai, bi]);
+    nodes[ai].degree++; nodes[bi].degree++;
+  }
+  Object.entries(PAPERS).forEach(([id, p]) => addNode(id, 'paper', p.title, { theme: p.theme }));
+  Object.entries(PAPERS).forEach(([id, p]) => {
+    p.keywords.forEach(k => { addNode('k::' + k, 'keyword', k); addEdge(id, 'k::' + k); });
+    p.methods.forEach(m => { addNode('m::' + m, 'method', m); addEdge(id, 'm::' + m); });
+    p.authors.forEach(a => { addNode('a::' + a, 'author', a); addEdge(id, 'a::' + a); });
+    p.domains.forEach(d => { addNode('d::' + d, 'domain', d); addEdge(id, 'd::' + d); });
+    addNode('v::' + p.venue, 'venue', p.venue); addEdge(id, 'v::' + p.venue);
+    addNode('y::' + p.year, 'year', p.year); addEdge(id, 'y::' + p.year);
+    addNode('s::' + p.sample, 'sample', p.sample); addEdge(id, 's::' + p.sample);
+  });
+  const adj = Array.from({length: nodes.length}, () => new Set());
+  for (const [a, b] of edges) { adj[a].add(b); adj[b].add(a); }
+  nodes.forEach(n => {
+    const base = TYPE[n.type].r;
+    n.r = base + Math.min(6, Math.sqrt(Math.max(0, n.degree - 1)) * 1.4);
+  });
+  // ============ LAYOUT / VIEW ============
+  let view = { scale: 1, tx: 0, ty: 0 };
+  let dragging = null, panning = null, hover = null;
+
+  function resize() {
+    const rect = canvas.getBoundingClientRect();
+    dpr = window.devicePixelRatio || 1;
+    W = rect.width; H = rect.height;
+    canvas.width = W * dpr; canvas.height = H * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    if (!nodes[0].__seeded) {
+      nodes.forEach(n => {
+        const spread = n.type === 'paper' ? 0.18 : 0.55;
+        n.x = W * 0.5 + (Math.random() - 0.5) * W * spread;
+        n.y = H * 0.5 + (Math.random() - 0.5) * H * spread;
+        n.__seeded = true;
+      });
+    }
+  }
+
+  // ============ PHYSICS ============
+  function step() {
+    const REPULSE = 850;
+    for (let i = 0; i < nodes.length; i++) {
+      for (let j = i + 1; j < nodes.length; j++) {
+        const a = nodes[i], b = nodes[j];
+        let dx = b.x - a.x, dy = b.y - a.y;
+        let d2 = dx * dx + dy * dy;
+        if (d2 < 4) { d2 = 4; dx = 2 * (Math.random() - 0.5); dy = 2 * (Math.random() - 0.5); }
+        const d = Math.sqrt(d2);
+        const f = REPULSE / d2;
+        const fx = f * dx / d, fy = f * dy / d;
+        const ma = TYPE[a.type].mass, mb = TYPE[b.type].mass;
+        a.vx -= fx / ma; a.vy -= fy / ma;
+        b.vx += fx / mb; b.vy += fy / mb;
+      }
+    }
+    for (const [ai, bi] of edges) {
+      const a = nodes[ai], b = nodes[bi];
+      const desired = (a.type === 'paper' && b.type === 'paper') ? 240 : 82;
+      const dx = b.x - a.x, dy = b.y - a.y;
+      const d = Math.hypot(dx, dy) || 0.01;
+      const f = (d - desired) * 0.055;
+      const fx = f * dx / d, fy = f * dy / d;
+      const ma = TYPE[a.type].mass, mb = TYPE[b.type].mass;
+      a.vx += fx / ma; a.vy += fy / ma;
+      b.vx -= fx / mb; b.vy -= fy / mb;
+    }
+    const cx = W / 2, cy = H / 2;
+    for (const n of nodes) {
+      const g = n.type === 'paper' ? 0.0025 : 0.007;
+      n.vx += (cx - n.x) * g;
+      n.vy += (cy - n.y) * g;
+      n.vx *= 0.80; n.vy *= 0.80;
+      if (n.fx == null) { n.x += n.vx; n.y += n.vy; }
+      else { n.x = n.fx; n.y = n.fy; n.vx = 0; n.vy = 0; }
+    }
+  }
+
+  // ============ RENDER ============
+  function worldToScreen(x, y) { return { x: x * view.scale + view.tx, y: y * view.scale + view.ty }; }
+  function screenToWorld(x, y) { return { x: (x - view.tx) / view.scale, y: (y - view.ty) / view.scale }; }
+  function hexToRgba(hex, a) {
+    const h = hex.replace('#', '');
+    const r = parseInt(h.slice(0, 2), 16);
+    const g = parseInt(h.slice(2, 4), 16);
+    const b = parseInt(h.slice(4, 6), 16);
+    return `rgba(${r},${g},${b},${a})`;
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    ctx.save();
+    ctx.translate(view.tx, view.ty);
+    ctx.scale(view.scale, view.scale);
+
+    let highlighted = null;
+    if (hover != null) highlighted = new Set([hover, ...adj[hover]]);
+
+    // Edges
+    for (const [ai, bi] of edges) {
+      const a = nodes[ai], b = nodes[bi];
+      const isHi = highlighted && highlighted.has(ai) && highlighted.has(bi);
+      const dim = highlighted && !isHi;
+      ctx.strokeStyle = isHi
+        ? 'rgba(30, 40, 60, 0.55)'
+        : dim ? 'rgba(80, 90, 110, 0.05)' : 'rgba(80, 90, 110, 0.18)';
+      ctx.lineWidth = isHi ? 1.4 : 1.0;
+      ctx.beginPath();
+      ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y);
+      ctx.stroke();
+    }
+
+    // Nodes (soft halo + core)
+    for (let i = 0; i < nodes.length; i++) {
+      const n = nodes[i];
+      const t = TYPE[n.type];
+      const color = t.color || THEME[n.theme] || '#888';
+      const isHi = highlighted && highlighted.has(i);
+      const dim = highlighted && !isHi;
+      const alpha = dim ? 0.28 : 1.0;
+      // Very subtle halo — just enough to give depth on white
+      const glowR = n.r * (isHi ? 2.6 : 1.9);
+      const grad = ctx.createRadialGradient(n.x, n.y, n.r * 0.7, n.x, n.y, glowR);
+      grad.addColorStop(0, hexToRgba(color, (isHi ? 0.25 : 0.12) * alpha));
+      grad.addColorStop(1, hexToRgba(color, 0));
+      ctx.fillStyle = grad;
+      ctx.beginPath(); ctx.arc(n.x, n.y, glowR, 0, Math.PI * 2); ctx.fill();
+      // Core
+      ctx.beginPath(); ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+      ctx.fillStyle = hexToRgba(color, alpha); ctx.fill();
+      // Darker rim for definition on white
+      ctx.strokeStyle = hexToRgba(color, 0.55 * alpha);
+      ctx.lineWidth = 1; ctx.stroke();
+    }
+
+    // Labels
+    for (let i = 0; i < nodes.length; i++) {
+      const n = nodes[i];
+      const t = TYPE[n.type];
+      const isHi = highlighted && highlighted.has(i);
+      if (!(t.alwaysLabel || isHi)) continue;
+      const dim = highlighted && !isHi;
+      const alpha = dim ? 0.32 : 1.0;
+      const isPaper = n.type === 'paper';
+      const fontSize = (isPaper ? 13 : 11) / view.scale;
+      ctx.font = `${isPaper ? 700 : 500} ${fontSize + (isPaper ? 1 : 0.5)}px "JetBrains Mono", "Pretendard", sans-serif`;
+      ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+      const yOff = n.r + 6;
+      const w = ctx.measureText(n.label).width;
+      // Light pill for legibility over edges
+      ctx.fillStyle = hexToRgba('#FFFFFF', 0.85 * alpha);
+      ctx.fillRect(n.x - w / 2 - 5, n.y + yOff - 1, w + 10, (isPaper ? 18 : 15) / view.scale);
+      const textColor = isPaper ? '#1A1D26' : t.textColor;
+      ctx.fillStyle = hexToRgba(textColor, 0.95 * alpha);
+      ctx.fillText(n.label, n.x, n.y + yOff + 1);
+    }
+
+    ctx.restore();
+  }
+
+  function loop() { step(); draw(); requestAnimationFrame(loop); }
+
+  // ============ INTERACTION ============
+  function pointerPos(e) {
+    const rect = canvas.getBoundingClientRect();
+    const t = e.touches ? e.touches[0] : e;
+    return { x: t.clientX - rect.left, y: t.clientY - rect.top };
+  }
+  function hitTest(p) {
+    const w = screenToWorld(p.x, p.y);
+    let best = null, bestD = Infinity;
+    for (let i = nodes.length - 1; i >= 0; i--) {
+      const n = nodes[i];
+      const d = Math.hypot(n.x - w.x, n.y - w.y);
+      if (d <= n.r + 3 && d < bestD) { best = i; bestD = d; }
+    }
+    return best;
+  }
+  canvas.addEventListener('mousedown', e => {
+    const p = pointerPos(e);
+    const hit = hitTest(p);
+    if (hit != null) {
+      dragging = hit;
+      const w = screenToWorld(p.x, p.y);
+      nodes[hit].fx = w.x; nodes[hit].fy = w.y;
+      canvas.style.cursor = 'grabbing';
+    } else {
+      panning = { x: p.x, y: p.y, tx: view.tx, ty: view.ty };
+      canvas.style.cursor = 'grabbing';
+    }
+    e.preventDefault();
+  });
+  window.addEventListener('mousemove', e => {
+    const p = pointerPos(e);
+    if (dragging != null) {
+      const w = screenToWorld(p.x, p.y);
+      nodes[dragging].fx = w.x; nodes[dragging].fy = w.y;
+    } else if (panning) {
+      view.tx = panning.tx + (p.x - panning.x);
+      view.ty = panning.ty + (p.y - panning.y);
+    } else {
+      hover = hitTest(p);
+      canvas.style.cursor = (hover != null) ? 'pointer' : 'grab';
+    }
+  });
+  window.addEventListener('mouseup', () => {
+    if (dragging != null) { nodes[dragging].fx = null; nodes[dragging].fy = null; }
+    dragging = null; panning = null;
+    canvas.style.cursor = 'grab';
+  });
+  canvas.addEventListener('mouseleave', () => { hover = null; });
+  canvas.addEventListener('wheel', e => {
+    e.preventDefault();
+    const p = pointerPos(e);
+    const world = screenToWorld(p.x, p.y);
+    const zoom = Math.exp(-e.deltaY * 0.001);
+    view.scale = Math.max(0.35, Math.min(3.5, view.scale * zoom));
+    view.tx = p.x - world.x * view.scale;
+    view.ty = p.y - world.y * view.scale;
+  }, { passive: false });
+  canvas.addEventListener('touchstart', e => {
+    const p = pointerPos(e);
+    const hit = hitTest(p);
+    if (hit != null) {
+      dragging = hit;
+      const w = screenToWorld(p.x, p.y);
+      nodes[hit].fx = w.x; nodes[hit].fy = w.y;
+    } else {
+      panning = { x: p.x, y: p.y, tx: view.tx, ty: view.ty };
+    }
+    e.preventDefault();
+  }, { passive: false });
+  canvas.addEventListener('touchmove', e => {
+    const p = pointerPos(e);
+    if (dragging != null) {
+      const w = screenToWorld(p.x, p.y);
+      nodes[dragging].fx = w.x; nodes[dragging].fy = w.y;
+    } else if (panning) {
+      view.tx = panning.tx + (p.x - panning.x);
+      view.ty = panning.ty + (p.y - panning.y);
+    }
+    e.preventDefault();
+  }, { passive: false });
+  canvas.addEventListener('touchend', () => {
+    if (dragging != null) { nodes[dragging].fx = null; nodes[dragging].fy = null; }
+    dragging = null; panning = null;
+  });
+
+  const ro = new ResizeObserver(resize);
+  ro.observe(canvas);
+  resize();
+  loop();
+})();
+</script>
+
+<!-- ============================================================
+     SLIDE — CLAUDE CODE SECTION TITLE
+     ============================================================ -->
+<section class="slide section-divider" data-cat="claude-code/section-title">
+  <div class="slide-content">
+    <h2 class="section-title">클로드 코드란?</h2>
+  </div>
+  <div class="footer-mark"><span class="index">07</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -117,7 +518,7 @@
       </div>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">04</span><span class="sep">/</span><span>38</span></div>
+  <div class="footer-mark"><span class="index">08</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -126,14 +527,11 @@
      ============================================================ -->
 <section class="slide image-slide" data-cat="claude-code/github-activity">
   <div class="slide-content">
-    <p style="font-size: var(--h3-size); color: var(--ink-2); line-height: 1.5; max-width: 64rem; margin-bottom: clamp(0.8rem, 2vh, 1.4rem);">
-      GitHub 공개 저장소 활동 기준으로, <span style="color: var(--accent); font-weight: 600;">클로드 코드의 사용량이 다른 AI 코딩 도구를 압도</span>하고 있습니다.
-    </p>
     <div class="image-frame">
       <img src="assets/github-activity-claude-code.png" alt="GitHub activity — co/authored commits: Claude Code vs Jules vs Cursor vs Copilot" />
     </div>
   </div>
-  <div class="footer-mark"><span class="index">05</span><span class="sep">/</span><span>38</span></div>
+  <div class="footer-mark"><span class="index">09</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -143,20 +541,41 @@
 <section class="slide" data-cat="claude-code/terminal-first-look">
   <div class="slide-content">
     <h2>터미널이란?</h2>
-    <div style="margin-top: 1.5rem; display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: clamp(1.5rem, 3vw, 3rem); max-width: 92rem; align-items: center;">
-      <div style="border: 1px solid var(--line-2); border-radius: 8px; overflow: hidden;">
-        <img src="assets/terminal-mac.png" alt="맥 터미널 첫 화면" style="display: block; width: 100%; height: auto;" />
+    <div style="margin-top: 1.5rem; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1rem, 2vw, 1.75rem); width: min(100%, 92rem); align-items: stretch;">
+      <div style="height: clamp(320px, 52vh, 520px); display: flex; align-items: center; justify-content: center;">
+        <img src="assets/macos-terminal-app.png" alt="macOS에서 터미널 앱을 검색한 화면" style="display: block; width: 100%; height: 100%; object-fit: contain;" />
       </div>
-      <div style="font-size: clamp(1.15rem, 2.4vw, 2rem); color: var(--ink); line-height: 1.5; font-weight: 500;">
-        명령어를 입력해<br />컴퓨터를 조작하는<br />프로그램입니다.
-        <div style="margin-top: 1.5rem; font-size: clamp(0.9rem, 1.6vw, 1.35rem); color: var(--ink-2); line-height: 1.8; font-weight: 400;">
-          맥 <span style="color: var(--accent); font-weight: 700;">터미널</span><br />
-          윈도우 <span style="color: var(--accent); font-weight: 700;">파워셸</span>
-        </div>
+      <div style="height: clamp(320px, 52vh, 520px); display: flex; align-items: center; justify-content: center;">
+        <img src="assets/terminal-mac.png" alt="맥 터미널 첫 화면" style="display: block; width: 100%; height: 100%; object-fit: contain;" />
+      </div>
+    </div>
+    <div style="margin-top: 1rem; font-size: clamp(1.05rem, 1.8vw, 1.45rem); color: var(--ink); line-height: 1.5; font-weight: 500;">
+      명령어를 입력해 컴퓨터를 조작하는 프로그램입니다.
+      <div style="margin-top: 0.45rem; font-size: clamp(0.9rem, 1.3vw, 1.1rem); color: var(--ink-2); line-height: 1.6; font-weight: 400;">
+        맥 <span style="color: var(--accent); font-weight: 700;">터미널</span> · 윈도우 <span style="color: var(--accent); font-weight: 700;">파워셸</span>
       </div>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">06</span><span class="sep">/</span><span>38</span></div>
+  <div class="footer-mark"><span class="index">10</span><span class="sep">/</span><span>41</span></div>
+  <div class="brand-mark">vibe-coding-lab</div>
+</section>
+
+<!-- ============================================================
+     SLIDE — WINDOWS POWERSHELL FIRST LOOK
+     ============================================================ -->
+<section class="slide" data-cat="claude-code/windows-powershell">
+  <div class="slide-content">
+    <h2>윈도우 파워셀</h2>
+    <div style="margin-top: 1.5rem; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1rem, 2vw, 1.75rem); width: min(100%, 92rem); align-items: stretch;">
+      <div style="height: clamp(320px, 52vh, 520px); display: flex; align-items: center; justify-content: center;">
+        <img src="assets/windows-powershell-search.png" alt="Windows에서 PowerShell을 검색한 화면" style="display: block; width: 100%; height: 100%; object-fit: contain;" />
+      </div>
+      <div style="height: clamp(320px, 52vh, 520px); display: flex; align-items: center; justify-content: center;">
+        <img src="assets/windows-powershell-terminal.png" alt="Windows PowerShell 실행 화면" style="display: block; width: 100%; height: 100%; object-fit: contain;" />
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">11</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -190,7 +609,7 @@
       </div>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">07</span><span class="sep">/</span><span>38</span></div>
+  <div class="footer-mark"><span class="index">12</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -215,7 +634,7 @@
       </div>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">08</span><span class="sep">/</span><span>38</span></div>
+  <div class="footer-mark"><span class="index">13</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -237,39 +656,7 @@
       </div>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">09</span><span class="sep">/</span><span>38</span></div>
-  <div class="brand-mark">vibe-coding-lab</div>
-</section>
-
-
-
-<!-- ============================================================
-     SLIDE 09 — FIRST CHAT
-     ============================================================ -->
-<section class="slide" data-cat="claude-code/first-chat">
-  <div class="slide-content">
-    <h2>새 채팅 해보기</h2>
-    <div style="margin-top: var(--content-title-gap); background: var(--dark-bg); color: var(--dark-text); border-radius: 6px; padding: 1.5rem 1.75rem; max-width: 56rem; box-shadow: 0 1px 0 var(--dark-line) inset;">
-      <div class="mono" style="font-size: var(--small-size); color: var(--dark-muted); letter-spacing: 0.05em; margin-bottom: 0.6rem;">$ TERMINAL</div>
-      <div class="mono" style="font-size: clamp(0.95rem, 1.6vw, 1.35rem); line-height: 1.7;">
-        <div><span style="color: var(--dark-muted);">$</span> claude</div>
-        <div style="color: var(--dark-muted); font-size: var(--small-size); margin: 0.4rem 0 0.6rem;">— 새 채팅 세션이 열립니다 —</div>
-        <div><span style="color: #8EC8FF;">&gt;</span> 안녕</div>
-      </div>
-    </div>
-    <div style="margin-top: var(--content-title-gap); font-size: var(--small-size); color: var(--muted);">
-      터미널에서 <span class="mono">claude</span> 입력 → 채팅창이 열리면 자유롭게 말 걸어보기.
-    </div>
-    <div style="margin-top: 1rem; max-width: 56rem;">
-      <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em; margin-bottom: 0.5rem;">이런 질문도 해보기</div>
-      <ul style="list-style: none; padding: 0; font-size: var(--body-size); color: var(--ink-2); line-height: 1.85;">
-        <li style="display: flex; gap: 0.6rem;"><span class="mono" style="color: var(--accent);">&gt;</span><span>오늘 날짜와 요일을 알려줘</span></li>
-        <li style="display: flex; gap: 0.6rem;"><span class="mono" style="color: var(--accent);">&gt;</span><span>이 폴더에 뭐가 들어있는지 봐줘</span></li>
-        <li style="display: flex; gap: 0.6rem;"><span class="mono" style="color: var(--accent);">&gt;</span><span>나는 클로드 코드 처음 써. 지금 뭐부터 배우면 좋을까?</span></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-mark"><span class="index">10</span><span class="sep">/</span><span>38</span></div>
+  <div class="footer-mark"><span class="index">14</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -312,7 +699,7 @@
       * 채팅창에 <span class="mono">/</span> 만 쳐도 자동완성으로 전체 목록이 뜹니다.
     </div>
   </div>
-  <div class="footer-mark"><span class="index">11</span><span class="sep">/</span><span>38</span></div>
+  <div class="footer-mark"><span class="index">15</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -343,7 +730,7 @@
       </div>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">12</span><span class="sep">/</span><span>38</span></div>
+  <div class="footer-mark"><span class="index">16</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -377,7 +764,7 @@
       * 2026-06 기준 최신: <span class="mono">Opus 4.8</span> · <span class="mono">Sonnet 4.6</span> · <span class="mono">Haiku 4.5</span> · <span class="mono">Fable 5</span> (신규)
     </div>
   </div>
-  <div class="footer-mark"><span class="index">13</span><span class="sep">/</span><span>38</span></div>
+  <div class="footer-mark"><span class="index">17</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -413,7 +800,7 @@
       </li>
     </ul>
   </div>
-  <div class="footer-mark"><span class="index">14</span><span class="sep">/</span><span>38</span></div>
+  <div class="footer-mark"><span class="index">18</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -446,7 +833,7 @@
       * 허용한 권한 관리·해제는 <span class="mono">/permissions</span>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">15</span><span class="sep">/</span><span>38</span></div>
+  <div class="footer-mark"><span class="index">19</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -473,7 +860,7 @@
       <div style="margin-top: 1.1rem; color: #8A8F98; font-size: var(--small-size);">Choose (1/2/3): <span style="color: #F2F2EE;">_</span></div>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">16</span><span class="sep">/</span><span>38</span></div>
+  <div class="footer-mark"><span class="index">20</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -507,7 +894,7 @@
       </div>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">17</span><span class="sep">/</span><span>38</span></div>
+  <div class="footer-mark"><span class="index">21</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -518,7 +905,7 @@
   <div class="slide-content">
     <h2 class="section-title">예제 1 — 뒤죽박죽인 폴더 정리하기</h2>
   </div>
-  <div class="footer-mark"><span class="index">18</span><span class="sep">/</span><span>38</span></div>
+  <div class="footer-mark"><span class="index">22</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -551,36 +938,7 @@
       </div>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">19</span><span class="sep">/</span><span>38</span></div>
-  <div class="brand-mark">vibe-coding-lab</div>
-</section>
-
-<!-- ============================================================
-     SLIDE 17 — CONCEPT: 작업할 폴더로 이동
-     ============================================================ -->
-<section class="slide" data-cat="concept/cd-into-folder">
-  <div class="slide-content">
-    <h2>작업할 폴더로 이동</h2>
-    <p style="margin-top: var(--content-title-gap); font-size: var(--h3-size); color: var(--ink-2); line-height: 1.6; max-width: 64rem;">
-      정리할 폴더가 다운로드 폴더이므로, 그곳으로 먼저 이동한 다음 클로드를 실행합니다.
-    </p>
-    <p style="margin-top: 0.75rem; font-size: var(--body-size); color: var(--muted); max-width: 64rem; line-height: 1.6;">
-      경로가 길거나 헷갈리면, Finder/탐색기에서 폴더를 터미널 창으로 드래그하면 경로가 자동으로 입력됩니다.
-    </p>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; max-width: 76rem;">
-      <div style="background: var(--dark-bg); color: var(--dark-text); padding: 1.1rem 1.3rem; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: var(--body-size); line-height: 1.7;">
-        <div style="color: var(--dark-muted); font-size: var(--small-size); margin-bottom: 0.5rem;">$ TERMINAL — 이동 후 실행</div>
-        <div>$ cd ~/Downloads</div>
-        <div>$ claude</div>
-      </div>
-      <div style="background: var(--bg-elev); border: 1px solid var(--line); padding: 1.1rem 1.3rem; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: var(--small-size); color: var(--ink-2); line-height: 1.7;">
-        <div style="color: var(--muted); margin-bottom: 0.5rem;">현재 위치 확인 (선택)</div>
-        <div>$ pwd</div>
-        <div style="color: var(--accent);">/Users/사용자/Downloads</div>
-      </div>
-    </div>
-  </div>
-  <div class="footer-mark"><span class="index">20</span><span class="sep">/</span><span>38</span></div>
+  <div class="footer-mark"><span class="index">23</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -608,60 +966,7 @@
       </div>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">21</span><span class="sep">/</span><span>38</span></div>
-  <div class="brand-mark">vibe-coding-lab</div>
-</section>
-
-<!-- ============================================================
-     SLIDE 19 — PLAN MODE
-     ============================================================ -->
-<section class="slide" data-cat="concept/plan-mode">
-  <div class="slide-content">
-    <h2>PLAN MODE — <span class="mono">/plan</span></h2>
-    <p style="margin-top: var(--content-title-gap); font-size: var(--h3-size); color: var(--ink-2); line-height: 1.6; max-width: 72rem;">
-      규모가 크거나 위험한 작업을 수행하기 전에, <span style="color: var(--accent); font-weight: 600;">계획을 먼저 세우는 모드</span>입니다. 실제 실행은 일어나지 않습니다.
-    </p>
-<div style="margin-top: var(--content-title-gap); width: min(100%, 76rem); background: #1A2230; border: 1px solid #353C48; border-radius: 8px; padding: 1.4rem 1.7rem; font-family: 'JetBrains Mono', monospace; box-shadow: 0 8px 24px rgba(15, 20, 25, 0.15);">
-      <div style="display: inline-block; padding: 0.25rem 0.6rem; border-radius: 3px; background: #3E7A55; color: #FCFCFB; font-size: var(--small-size); letter-spacing: 0.05em; margin-bottom: 0.9rem;">PLAN MODE — 실제 실행은 일어나지 않습니다</div>
-      <div style="color: #F2F2EE; font-size: var(--body-size); line-height: 1.75;">
-        <div style="color: #8A8F98; font-size: var(--small-size);">다음과 같이 폴더를 정리하겠습니다:</div>
-        <div style="margin-top: 0.6rem;"><span style="color: #8EC8FF;">1.</span> 카테고리별 하위 폴더 생성 <span style="color: #8A8F98;">(images/, pdfs/, archives/, installers/)</span></div>
-        <div><span style="color: #8EC8FF;">2.</span> 확장자별로 파일 이동</div>
-        <div><span style="color: #8EC8FF;">3.</span> 중복 파일은 <span class="mono">_dup</span> 접미사 붙여서 유지</div>
-        <div><span style="color: #8EC8FF;">4.</span> 빈 폴더는 그대로 두고 정리 결과 요약 출력</div>
-        <div style="margin-top: 0.9rem; color: #8A8F98; font-size: var(--small-size);">이대로 실행할까요? (ESC 로 빠져나와 일반 모드에서 진행)</div>
-      </div>
-    </div>
-  </div>
-  <div class="footer-mark"><span class="index">22</span><span class="sep">/</span><span>38</span></div>
-  <div class="brand-mark">vibe-coding-lab</div>
-</section>
-
-<!-- ============================================================
-     SLIDE 20 — 일반 모드로 돌아와서 실행
-     ============================================================ -->
-<section class="slide" data-cat="example/folder-cleanup/execute">
-  <div class="slide-content">
-    <h2>일반 모드로 돌아와서 실행</h2>
-    <p style="margin-top: var(--content-title-gap); font-size: var(--h3-size); color: var(--ink-2); line-height: 1.6; max-width: 64rem;">
-      계획이 마음에 들면 ESC를 눌러 일반 모드로 돌아옵니다. 같은 프롬프트를 한 번 더 입력하면 실제 작업이 시작됩니다.
-    </p>
-</div>
-    <div style="margin-top: var(--content-title-gap); width: min(100%, 76rem); background: #1A2230; border: 1px solid #353C48; border-radius: 8px; padding: 1.4rem 1.7rem; font-family: 'JetBrains Mono', monospace; box-shadow: 0 8px 24px rgba(15, 20, 25, 0.15);">
-      <div style="color: #8A8F98; font-size: var(--small-size); margin-bottom: 0.9rem; letter-spacing: 0.05em;">CLAUDE CODE — RUNNING</div>
-      <div style="color: #F2F2EE; font-size: var(--body-size); line-height: 1.75;">
-        <div style="color: #3E7A55;">✓ Created folder: images/</div>
-        <div style="color: #3E7A55;">✓ Created folder: pdfs/</div>
-        <div style="color: #3E7A55;">✓ Created folder: archives/</div>
-        <div style="margin-top: 0.7rem;">Moving file: <span style="color: #8EC8FF;">screenshot_2026-06-30.png</span> → images/</div>
-        <div style="margin-top: 0.9rem; padding: 0.7rem 0.9rem; background: #232C3A; border-left: 3px solid #E8B26B; border-radius: 3px;">
-          <div style="color: #E8B26B; font-size: var(--small-size); margin-bottom: 0.35rem;">파일 이동 권한이 필요합니다</div>
-          <div style="color: #F2F2EE;"><span style="color: #3E7A55;">[1]</span> Allow &nbsp; <span style="color: #3E7A55;">[2]</span> Always &nbsp; <span style="color: #8E5A1A;">[3]</span> Deny</div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="footer-mark"><span class="index">23</span><span class="sep">/</span><span>38</span></div>
+  <div class="footer-mark"><span class="index">24</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -690,7 +995,46 @@
       </div>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">24</span><span class="sep">/</span><span>38</span></div>
+  <div class="footer-mark"><span class="index">25</span><span class="sep">/</span><span>41</span></div>
+  <div class="brand-mark">vibe-coding-lab</div>
+</section>
+
+<!-- ============================================================
+     SLIDE 19 — PLAN MODE
+     ============================================================ -->
+<section class="slide" data-cat="concept/plan-mode">
+  <div class="slide-content">
+    <h2>PLAN MODE — <span class="mono">/plan</span></h2>
+    <p style="margin-top: var(--content-title-gap); font-size: var(--h3-size); color: var(--ink-2); line-height: 1.6; max-width: 72rem;">
+      규모가 크거나 위험한 작업을 수행하기 전에, <span style="color: var(--accent); font-weight: 600;">계획을 먼저 세우는 모드</span>입니다. 실제 실행은 일어나지 않습니다.
+    </p>
+<div style="margin-top: var(--content-title-gap); width: min(100%, 76rem); background: #1A2230; border: 1px solid #353C48; border-radius: 8px; padding: 1.4rem 1.7rem; font-family: 'JetBrains Mono', monospace; box-shadow: 0 8px 24px rgba(15, 20, 25, 0.15);">
+      <div style="display: inline-block; padding: 0.25rem 0.6rem; border-radius: 3px; background: #3E7A55; color: #FCFCFB; font-size: var(--small-size); letter-spacing: 0.05em; margin-bottom: 0.9rem;">PLAN MODE — 실제 실행은 일어나지 않습니다</div>
+      <div style="color: #F2F2EE; font-size: var(--body-size); line-height: 1.75;">
+        <div style="color: #8A8F98; font-size: var(--small-size);">다음과 같이 폴더를 정리하겠습니다:</div>
+        <div style="margin-top: 0.6rem;"><span style="color: #8EC8FF;">1.</span> 카테고리별 하위 폴더 생성 <span style="color: #8A8F98;">(images/, pdfs/, archives/, installers/)</span></div>
+        <div><span style="color: #8EC8FF;">2.</span> 확장자별로 파일 이동</div>
+        <div><span style="color: #8EC8FF;">3.</span> 중복 파일은 <span class="mono">_dup</span> 접미사 붙여서 유지</div>
+        <div><span style="color: #8EC8FF;">4.</span> 빈 폴더는 그대로 두고 정리 결과 요약 출력</div>
+        <div style="margin-top: 0.9rem; color: #8A8F98; font-size: var(--small-size);">이대로 실행할까요? (ESC 로 빠져나와 일반 모드에서 진행)</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">26</span><span class="sep">/</span><span>41</span></div>
+  <div class="brand-mark">vibe-coding-lab</div>
+</section>
+
+<!-- ============================================================
+     SLIDE 20 — 일반 모드로 돌아와서 실행
+     ============================================================ -->
+<section class="slide" data-cat="example/folder-cleanup/execute">
+  <div class="slide-content">
+    <h2>일반 모드로 돌아와서 실행</h2>
+    <p style="margin-top: var(--content-title-gap); font-size: var(--h3-size); color: var(--ink-2); line-height: 1.6; max-width: 64rem;">
+      계획이 마음에 들면 ESC를 눌러 일반 모드로 돌아옵니다. 같은 프롬프트를 한 번 더 입력하면 실제 작업이 시작됩니다.
+    </p>
+  </div>
+  <div class="footer-mark"><span class="index">27</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -739,7 +1083,7 @@
       </li>
     </ul>
   </div>
-  <div class="footer-mark"><span class="index">25</span><span class="sep">/</span><span>38</span></div>
+  <div class="footer-mark"><span class="index">28</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -750,7 +1094,7 @@
   <div class="slide-content">
     <h2 class="section-title">예제 2 — 쌓인 논문 처리하기</h2>
   </div>
-  <div class="footer-mark"><span class="index">26</span><span class="sep">/</span><span>38</span></div>
+  <div class="footer-mark"><span class="index">29</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -759,8 +1103,7 @@
      ============================================================ -->
 <section class="slide" data-cat="example/paper-summary/preview">
   <div class="slide-content">
-    <h2>이번 예제에서 이런 결과를 만듭니다</h2>
-    <div class="screenshot-grid" style="width: min(100%, 92rem); margin-top: 1rem;">
+    <div class="screenshot-grid" style="width: min(100%, 92rem); margin-top: 0;">
       <div class="screenshot-photo">
         <div class="slot-label">BEFORE</div>
         <div class="photo-frame">
@@ -769,102 +1112,91 @@
       </div>
       <div class="screenshot-photo">
         <div class="slot-label">AFTER</div>
-        <div class="photo-frame" style="min-height: clamp(280px, 48vh, 520px); display: flex; align-items: center; justify-content: center; border: 2px dashed var(--line-2); border-radius: 8px;">
-          <div style="text-align: center; color: var(--muted); font-family: 'JetBrains Mono', monospace; font-size: var(--small-size); padding: 1rem;">
-            comparison.xlsx 결과 캡처<br />
-            <span style="color: var(--ink-2);">논문별 비교표 · 페이지 출처 열 포함</span>
-          </div>
+        <div class="photo-frame">
+          <img src="assets/comparison.png" alt="comparison.xlsx — HAI Lab 논문 5편 비교표" />
         </div>
       </div>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">27</span><span class="sep">/</span><span>38</span></div>
-  <div class="brand-mark">vibe-coding-lab</div>
-</section>
-
-
-<!-- ============================================================
-     SLIDE 24 — 시나리오
-     ============================================================ -->
-<section class="slide" data-cat="example/paper-summary/scenario">
-  <div class="slide-content">
-    <h2>시나리오</h2>
-    <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(0.6rem, 1.5vw, 1.1rem); margin-top: var(--content-title-gap); max-width: 84rem;">
-      <div style="padding: 1.25rem 1.4rem; border: 1px solid var(--line-2); border-top: 3px solid var(--accent); background: var(--bg-elev); border-radius: 4px;">
-        <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em;">1. STRUCTURE</div>
-        <div style="font-size: var(--body-size); color: var(--ink-2); margin-top: 0.5rem;">제목·저자·섹션·표·그림 목록 파악</div>
-      </div>
-      <div style="padding: 1.25rem 1.4rem; border: 1px solid var(--line-2); border-top: 3px solid var(--accent); background: var(--bg-elev); border-radius: 4px;">
-        <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em;">2. EXTRACT</div>
-        <div style="font-size: var(--body-size); color: var(--ink-2); margin-top: 0.5rem;">표·수치·p-value·샘플 수 추출</div>
-      </div>
-      <div style="padding: 1.25rem 1.4rem; border: 1px solid var(--line-2); border-top: 3px solid var(--accent); background: var(--bg-elev); border-radius: 4px;">
-        <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em;">3. COMPARE</div>
-        <div style="font-size: var(--body-size); color: var(--ink-2); margin-top: 0.5rem;">여러 논문을 같은 기준으로 비교</div>
-      </div>
-      <div style="padding: 1.25rem 1.4rem; border: 1px solid var(--line-2); border-top: 3px solid var(--term-green); background: var(--bg-elev); border-radius: 4px;">
-        <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em;">4. VALIDATE</div>
-        <div style="font-size: var(--body-size); color: var(--ink-2); margin-top: 0.5rem;">출처와 페이지 번호로 원문 확인</div>
-      </div>
-    </div>
-  </div>
-  <div class="footer-mark"><span class="index">28</span><span class="sep">/</span><span>38</span></div>
+  <div class="footer-mark"><span class="index">30</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
 <!-- ============================================================
-     SLIDE 29 — WORKFLOW
+     SLIDE — 시나리오 · 워크플로우 (merged)
      ============================================================ -->
-<section class="slide" data-cat="concept/workflow">
+<section class="slide" data-cat="example/paper-summary/workflow">
   <div class="slide-content">
-    <h2>워크플로우</h2>
-    <div style="margin-top: var(--content-title-gap); display: flex; align-items: stretch; gap: clamp(0.4rem, 1vw, 0.85rem); max-width: 84rem; flex-wrap: nowrap;">
+    <h2>시나리오 · 워크플로우</h2>
+    <div style="margin-top: var(--content-title-gap); display: flex; align-items: stretch; gap: clamp(0.4rem, 1vw, 0.85rem); max-width: 92rem; flex-wrap: nowrap;">
 
-      <div style="flex: 1; min-width: 0; padding: 1.15rem 1rem; border: 1px solid var(--line-2); border-top: 3px solid var(--accent); background: var(--bg-elev); border-radius: 4px; display: flex; flex-direction: column; gap: 0.45rem;">
+      <div style="flex: 1; min-width: 0; padding: 1.15rem 1rem; border: 1px solid var(--line-2); border-top: 3px solid var(--accent); background: var(--bg-elev); border-radius: 4px; display: flex; flex-direction: column; gap: 0.5rem;">
         <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em;">STEP 1</div>
         <div style="font-size: var(--body-size); color: var(--ink); font-weight: 600;">PDF 준비</div>
+        <div style="font-size: var(--small-size); color: var(--ink-2); line-height: 1.5;">다운로드한 논문을 한 폴더에 모으기</div>
         <div class="mono" style="font-size: var(--small-size); color: var(--accent); margin-top: auto; padding-top: 0.3rem;">papers/</div>
       </div>
 
       <div style="display: flex; align-items: center; color: var(--muted-2); font-size: 1.4rem; padding: 0 0.1rem;">→</div>
 
-      <div style="flex: 1; min-width: 0; padding: 1.15rem 1rem; border: 1px solid var(--line-2); border-top: 3px solid var(--accent); background: var(--bg-elev); border-radius: 4px; display: flex; flex-direction: column; gap: 0.45rem;">
-        <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em;">STEP 2</div>
+      <div style="flex: 1; min-width: 0; padding: 1.15rem 1rem; border: 1px solid var(--line-2); border-top: 3px solid var(--accent); background: var(--bg-elev); border-radius: 4px; display: flex; flex-direction: column; gap: 0.5rem;">
+        <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em;">STEP 2 · STRUCTURE</div>
         <div style="font-size: var(--body-size); color: var(--ink); font-weight: 600;">구조 파악</div>
+        <div style="font-size: var(--small-size); color: var(--ink-2); line-height: 1.5;">제목·저자·섹션·표·그림 목록</div>
         <div class="mono" style="font-size: var(--small-size); color: var(--accent); margin-top: auto; padding-top: 0.3rem;">Read</div>
       </div>
 
       <div style="display: flex; align-items: center; color: var(--muted-2); font-size: 1.4rem; padding: 0 0.1rem;">→</div>
 
-      <div style="flex: 1; min-width: 0; padding: 1.15rem 1rem; border: 1px solid var(--line-2); border-top: 3px solid var(--accent); background: var(--bg-elev); border-radius: 4px; display: flex; flex-direction: column; gap: 0.45rem;">
-        <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em;">STEP 3</div>
+      <div style="flex: 1; min-width: 0; padding: 1.15rem 1rem; border: 1px solid var(--line-2); border-top: 3px solid var(--accent); background: var(--bg-elev); border-radius: 4px; display: flex; flex-direction: column; gap: 0.5rem;">
+        <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em;">STEP 3 · EXTRACT</div>
         <div style="font-size: var(--body-size); color: var(--ink); font-weight: 600;">표·수치 추출</div>
+        <div style="font-size: var(--small-size); color: var(--ink-2); line-height: 1.5;">표·수치·p-value·샘플 수</div>
         <div class="mono" style="font-size: var(--small-size); color: var(--accent); margin-top: auto; padding-top: 0.3rem;">CSV · JSON</div>
       </div>
 
       <div style="display: flex; align-items: center; color: var(--muted-2); font-size: 1.4rem; padding: 0 0.1rem;">→</div>
 
-      <div style="flex: 1; min-width: 0; padding: 1.15rem 1rem; border: 1px solid var(--line-2); border-top: 3px solid var(--accent); background: var(--bg-elev); border-radius: 4px; display: flex; flex-direction: column; gap: 0.45rem;">
-        <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em;">STEP 4</div>
+      <div style="flex: 1; min-width: 0; padding: 1.15rem 1rem; border: 1px solid var(--line-2); border-top: 3px solid var(--accent); background: var(--bg-elev); border-radius: 4px; display: flex; flex-direction: column; gap: 0.5rem;">
+        <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em;">STEP 4 · COMPARE</div>
         <div style="font-size: var(--body-size); color: var(--ink); font-weight: 600;">비교표 작성</div>
+        <div style="font-size: var(--small-size); color: var(--ink-2); line-height: 1.5;">같은 기준으로 여러 논문 비교</div>
         <div class="mono" style="font-size: var(--small-size); color: var(--accent); margin-top: auto; padding-top: 0.3rem;">XLSX · CSV</div>
       </div>
 
       <div style="display: flex; align-items: center; color: var(--muted-2); font-size: 1.4rem; padding: 0 0.1rem;">→</div>
 
-      <div style="flex: 1; min-width: 0; padding: 1.15rem 1rem; border: 1px solid var(--line-2); border-top: 3px solid var(--term-green); background: var(--bg-elev); border-radius: 4px; display: flex; flex-direction: column; gap: 0.45rem;">
-        <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em;">STEP 5</div>
+      <div style="flex: 1; min-width: 0; padding: 1.15rem 1rem; border: 1px solid var(--line-2); border-top: 3px solid var(--term-green); background: var(--bg-elev); border-radius: 4px; display: flex; flex-direction: column; gap: 0.5rem;">
+        <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em;">STEP 5 · VALIDATE</div>
         <div style="font-size: var(--body-size); color: var(--ink); font-weight: 600;">출처 검증</div>
+        <div style="font-size: var(--small-size); color: var(--ink-2); line-height: 1.5;">페이지 번호로 원문 확인</div>
         <div class="mono" style="font-size: var(--small-size); color: var(--term-green); margin-top: auto; padding-top: 0.3rem;">page · source</div>
       </div>
 
     </div>
   </div>
-  <div class="footer-mark"><span class="index">29</span><span class="sep">/</span><span>38</span></div>
+  <div class="footer-mark"><span class="index">31</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
 
+<!-- ============================================================
+     SLIDE — PAPER DOWNLOAD (terminal capture)
+     ============================================================ -->
+<section class="slide" data-cat="example/paper-summary/download">
+  <div class="slide-content">
+    <h2>논문 다운로드</h2>
+    <div style="margin-top: var(--content-title-gap); width: min(100%, 92rem); display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: clamp(1.25rem, 3vw, 2.25rem); align-items: center;">
+      <img src="assets/papers-download.png" alt="hai.kangwon.ac.kr 접속 → 최근 논문 5개 PDF를 ~/papers에 저장" style="display: block; width: 100%; height: auto;" />
+      <div style="font-size: var(--h3-size); color: var(--ink-2); line-height: 1.65;">
+        <p style="margin: 0;">구글스콜라 등에서 원하는 논문 다운로드 요청합니다.</p>
+        <p style="margin: 1rem 0 0; color: var(--muted); font-size: var(--body-size);">예시는 우리 연구실 홈페이지에서 다운로드했습니다.</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">32</span><span class="sep">/</span><span>41</span></div>
+  <div class="brand-mark">vibe-coding-lab</div>
+</section>
 
 <!-- ============================================================
      SLIDE 25 — 한 편 요약하기 (워밍업)
@@ -872,17 +1204,36 @@
 <section class="slide" data-cat="example/paper-summary/warmup">
   <div class="slide-content">
     <h2>한 편으로 구조 파악</h2>
-    <p style="margin-top: var(--content-title-gap); font-size: var(--h3-size); color: var(--ink-2); line-height: 1.6; max-width: 64rem;">
-      처음부터 요약을 시키기보다, PDF가 어떤 구조인지 먼저 읽게 합니다.
-    </p>
-    <div style="margin-top: 1.5rem; background: var(--accent-soft); border-left: 3px solid var(--accent); padding: 1.25rem 1.5rem; border-radius: 4px; font-size: var(--body-size); color: var(--ink); max-width: 70rem; line-height: 1.65;">
+    <div style="margin-top: var(--content-title-gap); background: var(--accent-soft); border-left: 3px solid var(--accent); padding: 0.9rem 1.2rem; border-radius: 4px; font-size: var(--body-size); color: var(--ink); max-width: 76rem; line-height: 1.55;">
       &gt; paper.pdf를 읽고 논문의 제목, 저자, 섹션 구조, 표와 그림 목록을 정리해줘
     </div>
-    <div style="margin-top: 1rem; font-size: var(--small-size); color: var(--muted); max-width: 64rem; line-height: 1.6;">
-      결과 예시: Introduction / Methods / Results / Discussion, Table 1 실험 조건, Figure 2 구조 비교
+    <div style="margin-top: 1rem; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(0.7rem, 1.5vw, 1.1rem); width: min(100%, 92rem); flex: 1; min-height: 0;">
+      <img src="assets/paper-structure-1.png" alt="Claude Code가 PDF에서 제목·저자·저널·DOI·섹션 구조 정리" style="display: block; width: 100%; height: 100%; object-fit: contain; object-position: top;" />
+      <img src="assets/paper-structure-2.png" alt="Claude Code가 그림 목록·표 목록까지 정리" style="display: block; width: 100%; height: 100%; object-fit: contain; object-position: top;" />
     </div>
   </div>
-  <div class="footer-mark"><span class="index">30</span><span class="sep">/</span><span>38</span></div>
+  <div class="footer-mark"><span class="index">33</span><span class="sep">/</span><span>41</span></div>
+  <div class="brand-mark">vibe-coding-lab</div>
+</section>
+
+<!-- ============================================================
+     SLIDE 26 — RAG
+     ============================================================ -->
+<section class="slide" data-cat="concept/rag">
+  <div class="slide-content">
+    <h2>RAG란?</h2>
+    <p style="margin-top: var(--content-title-gap); font-size: var(--body-size); color: var(--ink-2); line-height: 1.6; max-width: 72rem;">
+      <span class="mono" style="color: var(--accent); font-weight: 700;">R</span>etrieval-<span class="mono" style="color: var(--accent); font-weight: 700;">A</span>ugmented <span class="mono" style="color: var(--accent); font-weight: 700;">G</span>eneration
+      — AI가 머릿속 지식만으로 답하는 것이 아니라, <span style="color: var(--accent); font-weight: 600;">자료를 직접 참고하면서</span> 답하는 방식입니다.
+    </p>
+    <div style="margin-top: clamp(1rem, 2.4vh, 1.75rem); width: min(100%, 86rem);">
+      <img src="assets/rag-sketch-diagram.png" alt="Sketch diagram explaining Retrieval-Augmented Generation flow" style="display: block; width: 100%; max-height: min(58vh, 580px); object-fit: contain;" />
+    </div>
+    <p style="margin-top: 0.9rem; font-size: var(--small-size); color: var(--muted); text-align: center; max-width: 84rem; line-height: 1.6;">
+      예) 논문 5편이 든 폴더를 던지면, 지어내지 않고 <span style="color: var(--accent); font-weight: 500;">원문 페이지에서 근거를 찾아</span> 답을 구성합니다.
+    </p>
+  </div>
+  <div class="footer-mark"><span class="index">34</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -911,7 +1262,7 @@
       </div>
     </div>
   </div>
-  <div class="footer-mark"><span class="index">31</span><span class="sep">/</span><span>38</span></div>
+  <div class="footer-mark"><span class="index">35</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -945,28 +1296,7 @@
       <span class="mono" style="color: var(--warn); font-weight: 600;">스캔본 PDF는</span> 텍스트가 그림으로 들어있어 바로 추출되지 않습니다. 먼저 OCR로 텍스트화하도록 요청한 다음 위 작업을 진행합니다 (예: <span class="mono">&gt; scanned.pdf를 OCR로 텍스트화한 뒤 표를 추출해줘</span>).
     </div>
   </div>
-  <div class="footer-mark"><span class="index">32</span><span class="sep">/</span><span>38</span></div>
-  <div class="brand-mark">vibe-coding-lab</div>
-</section>
-
-<!-- ============================================================
-     SLIDE 26 — RAG
-     ============================================================ -->
-<section class="slide" data-cat="concept/rag">
-  <div class="slide-content">
-    <h2>RAG란?</h2>
-    <p style="margin-top: var(--content-title-gap); font-size: var(--body-size); color: var(--ink-2); line-height: 1.6; max-width: 72rem;">
-      <span class="mono" style="color: var(--accent); font-weight: 700;">R</span>etrieval-<span class="mono" style="color: var(--accent); font-weight: 700;">A</span>ugmented <span class="mono" style="color: var(--accent); font-weight: 700;">G</span>eneration
-      — AI가 머릿속 지식만으로 답하는 것이 아니라, <span style="color: var(--accent); font-weight: 600;">자료를 직접 참고하면서</span> 답하는 방식입니다.
-    </p>
-    <div style="margin-top: clamp(1rem, 2.4vh, 1.75rem); width: min(100%, 86rem); border: 1px solid var(--line-2); background: var(--bg-elev); overflow: hidden;">
-      <img src="assets/rag-sketch-diagram.png" alt="Sketch diagram explaining Retrieval-Augmented Generation flow" style="display: block; width: 100%; max-height: min(58vh, 580px); object-fit: contain; background: #FCFCFB;" />
-    </div>
-    <p style="margin-top: 0.9rem; font-size: var(--small-size); color: var(--muted); text-align: center; max-width: 84rem; line-height: 1.6;">
-      예) 논문 5편이 든 폴더를 던지면, 지어내지 않고 <span style="color: var(--accent); font-weight: 500;">원문 페이지에서 근거를 찾아</span> 답을 구성합니다.
-    </p>
-  </div>
-  <div class="footer-mark"><span class="index">33</span><span class="sep">/</span><span>38</span></div>
+  <div class="footer-mark"><span class="index">36</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -987,7 +1317,7 @@
       - 한계점과 후속 연구 방향
     </div>
   </div>
-  <div class="footer-mark"><span class="index">34</span><span class="sep">/</span><span>38</span></div>
+  <div class="footer-mark"><span class="index">37</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -1003,13 +1333,11 @@
     <div style="margin-top: 1.5rem; background: var(--accent-soft); border-left: 3px solid var(--accent); padding: 1.25rem 1.5rem; border-radius: 4px; font-size: var(--body-size); color: var(--ink); max-width: 76rem; line-height: 1.65;">
       &gt; comparison.xlsx의 각 행에 대해, 해당 값이 원본 PDF 몇 페이지에 있는지 출처를 표시해줘
     </div>
-    <div class="screenshot-slot wide" style="max-width: 64rem;">
-      <div class="slot-label">SCREENSHOT</div>
-      <div class="slot-title">comparison.xlsx 결과 화면 (실제 실행 후 캡처)</div>
-      <div class="slot-note">HAI Lab 논문 5편 예시가 hook 슬라이드에 미리 렌더되어 있습니다</div>
+    <div style="margin-top: var(--content-title-gap); width: min(100%, 92rem); border: 1px solid var(--line-2); border-radius: 6px; overflow: hidden; background: #FFFFFF; box-shadow: 0 4px 12px rgba(15, 20, 25, 0.06);">
+      <img src="assets/comparison.png" alt="comparison.xlsx — 출처 페이지 열 포함 논문 5편 비교표" style="display: block; width: 100%; height: auto;" />
     </div>
   </div>
-  <div class="footer-mark"><span class="index">35</span><span class="sep">/</span><span>38</span></div>
+  <div class="footer-mark"><span class="index">38</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -1046,7 +1374,7 @@
       </li>
     </ul>
   </div>
-  <div class="footer-mark"><span class="index">36</span><span class="sep">/</span><span>38</span></div>
+  <div class="footer-mark"><span class="index">39</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -1060,17 +1388,17 @@
       <div style="padding: 1.25rem 1.5rem; border: 1px solid var(--line-2); border-top: 3px solid var(--accent); background: var(--bg-elev); border-radius: 4px;">
         <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em;">오늘 한 것</div>
         <ul style="margin-top: 0.5rem; padding-left: 1.1rem; font-size: var(--body-size); color: var(--ink-2); line-height: 1.75;">
-          <li>클로드코드 설치와 첫 채팅</li>
-          <li>뒤죽박죽 다운로드 폴더 정리</li>
-          <li>쌓인 논문 구조 파악 · 표 추출 · 비교표 · 출처 검증</li>
+          <li>클로드코드 설치와 첫 대화</li>
+          <li>지저분한 폴더 정리</li>
+          <li>논문 다운로드 · 구조 파악 · 비교표 · 출처 검증</li>
         </ul>
       </div>
       <div style="padding: 1.25rem 1.5rem; border: 1px solid var(--line-2); border-top: 3px solid var(--term-green); background: var(--bg-elev); border-radius: 4px;">
         <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em;">다음 주 (WEEK 3)</div>
         <ul style="margin-top: 0.5rem; padding-left: 1.1rem; font-size: var(--body-size); color: var(--ink-2); line-height: 1.75;">
-          <li>반복 프롬프트를 재사용 가능한 도구로</li>
-          <li>CLAUDE.md · 스킬 · 훅으로 자동화 세팅</li>
-          <li>2주차 실습을 한 줄 명령으로 되돌려보기</li>
+          <li>저장된 논문 관리하기 — 옵시디언 볼트로</li>
+          <li>태그 · 백링크 · 그래프뷰로 지식 연결</li>
+          <li>클로드코드로 볼트 자동 정리 · 요약</li>
         </ul>
       </div>
     </div>
@@ -1078,7 +1406,7 @@
       슬라이드 다시 보기 · <a href="https://djson.me/vibecoding-workshop/week2/" class="mono" style="color: var(--accent); text-decoration: none; border-bottom: 1px dashed var(--accent);">djson.me/vibecoding-workshop/week2/</a>
     </p>
   </div>
-  <div class="footer-mark"><span class="index">37</span><span class="sep">/</span><span>38</span></div>
+  <div class="footer-mark"><span class="index">40</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
@@ -1092,7 +1420,7 @@
       <a href="mailto:dongjuson@hai.kangwon.ac.kr" class="mono" style="color: var(--accent); text-decoration: none; border-bottom: 1px dashed var(--accent);">dongjuson@hai.kangwon.ac.kr</a> 로 메일 보내주시면 만들어드리겠습니다.
     </div>
   </div>
-  <div class="footer-mark"><span class="index">38</span><span class="sep">/</span><span>38</span></div>
+  <div class="footer-mark"><span class="index">41</span><span class="sep">/</span><span>41</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
 </section>
 
