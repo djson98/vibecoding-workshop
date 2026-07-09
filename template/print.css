@@ -1,0 +1,39 @@
+@page { size: 1600px 900px; margin: 0; }
+html, body {
+  height: auto !important;
+  min-height: auto !important;
+  overflow: visible !important;
+  overflow-x: visible !important;
+  overflow-y: visible !important;
+  scroll-snap-type: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.slide {
+  min-height: 900px !important;
+  height: 900px !important;
+  width: 1600px !important;
+  max-height: 900px !important;
+  page-break-after: always !important;
+  break-after: page !important;
+  overflow: hidden !important;
+  scroll-snap-align: none !important;
+  position: relative !important;
+}
+.slide:last-child { page-break-after: auto !important; break-after: auto !important; }
+.slide-content {
+  min-height: 900px !important;
+  height: 900px !important;
+  max-height: 900px !important;
+  overflow: hidden !important;
+}
+/* Kill reveal-on-scroll animations — force everything visible */
+.slide-content > *,
+.slide-content > * > *,
+.slide *[style*="opacity"] {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+  animation: none !important;
+}
+.nav-dots, .keyboard-hint, .pdf-download { display: none !important; }

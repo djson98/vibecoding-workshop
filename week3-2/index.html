@@ -1,0 +1,756 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Week 3 — CLAUDE CODE 바이브코딩 업무자동화 가이드</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../template/foundation.css" />
+<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="../template/print.css" media="print" />
+</head>
+<body>
+
+<nav class="nav-dots" id="navDots"></nav>
+<div class="keyboard-hint"><kbd>←</kbd><kbd>→</kbd> or <kbd>Space</kbd> · scroll</div>
+
+<section class="slide title-slide" data-cat="cover">
+  <div class="slide-content">
+    <div class="pre-title"><span class="pulse"></span><span class="label">VIBE CODING WORKSHOP</span><span class="year">2026</span></div>
+    <h1 class="deck-title"><span class="accent">CLAUDE CODE</span><br />바이브코딩 업무자동화 가이드</h1>
+    <p class="deck-subtitle">WEEK 3 · 옵시디언으로 나만의 지식베이스 만들기</p>
+    <div class="deck-meta"><span class="presenter">손동주</span><span class="meta-sep">·</span><span class="details">강원대 컴퓨터공학과 HAI Lab</span></div>
+  </div>
+  <div class="footer-mark"><span class="index">01</span><span class="sep">/</span><span>38</span></div>
+</section>
+
+<section class="slide section-divider" data-cat="section/obsidian-kb">
+  <div class="slide-content"><h2 class="section-title">옵시디언으로 나만의 지식베이스 만들기</h2></div>
+  <div class="footer-mark"><span class="index">02</span><span class="sep">/</span><span>38</span></div>
+</section>
+
+<section class="slide" data-cat="preview/before-after">
+  <div class="slide-content">
+    <h2>미리보기</h2>
+    <div class="before-after-preview">
+      <div class="preview-before">
+        <div class="install-heading">Before</div>
+        <figure>
+          <img src="assets/papers-folder-selected.png" alt="논문 PDF가 모여 있는 Finder 폴더" />
+          <figcaption>PDF 파일만 모여 있으면 다시 찾고 연결하기 어렵습니다.</figcaption>
+        </figure>
+      </div>
+      <div class="preview-arrow">→</div>
+      <div class="preview-after">
+        <div class="install-heading">After</div>
+        <div class="preview-grid">
+          <figure>
+            <img src="assets/obsidian-paper-home-top.png" alt="Obsidian 논문 지식베이스 Home 노트 상단" />
+            <figcaption>논문별 요약과 비교표</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/obsidian-paper-home-flow.png" alt="Obsidian 논문 지식베이스 Home 노트 하단" />
+            <figcaption>개념 노트와 연구 흐름</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/obsidian-paper-graph-result.png" alt="Obsidian 논문 지식베이스 그래프 뷰" />
+            <figcaption>그래프 뷰로 연결 확인</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">03</span><span class="sep">/</span><span>38</span></div>
+</section>
+
+<section class="slide" data-cat="goal">
+  <div class="slide-content">
+    <h2>오늘의 목표: AI 대화를 내 지식으로 남기기</h2>
+    <div class="cards three">
+      <div class="card"><span>문제</span><strong>AI에게 물어본 지식은 사라집니다</strong><p>좋은 답변도 대화창에만 남으면 나중에 찾기 어렵습니다.</p></div>
+      <div class="card"><span>정리</span><strong>Obsidian에 저장합니다</strong><p>답변, 요약, 메모를 Markdown 노트로 남기고 연결합니다.</p></div>
+      <div class="card"><span>활용</span><strong>Claude Code가 다시 씁니다</strong><p>내 지식베이스를 읽고 요약, 비교, 강의자료 제작에 활용합니다.</p></div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">04</span><span class="sep">/</span><span>38</span></div>
+</section>
+
+<section class="slide" data-cat="hook/ai-memory">
+  <div class="slide-content">
+    <div class="split-visual">
+      <figure class="phone-shot">
+        <img src="assets/chatgpt-question-list.png" alt="ChatGPT 대화 목록 화면" />
+        <figcaption>AI 대화는 쌓이지만 다시 찾기 어렵습니다.</figcaption>
+      </figure>
+      <div class="hook-copy">
+        <h2>AI에게 물어본 지식,<br />그냥 두면 사라집니다</h2>
+        <p class="lead">우리는 ChatGPT와 Claude에게 밥 먹듯이 질문합니다. 하지만 좋은 답변도 대화창에만 남으면 다시 찾기 어렵습니다.</p>
+        <div class="hook-points">
+          <div><span>01</span><strong>대화는 시간순으로만 쌓입니다.</strong></div>
+          <div><span>02</span><strong>비슷한 질문을 또 하게 됩니다.</strong></div>
+          <div><span>03</span><strong>내 지식으로 남기려면 저장하고 연결해야 합니다.</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">05</span><span class="sep">/</span><span>38</span></div>
+</section>
+
+<section class="slide" data-cat="agenda">
+  <div class="slide-content">
+    <div class="split-visual obsidian-intro">
+      <figure class="app-shot">
+        <img src="assets/obsidian-desktop-mobile-graph.png" alt="Obsidian desktop and mobile knowledge graph" />
+        <figcaption>Obsidian은 노트를 연결해 지식 구조를 보여줍니다.</figcaption>
+      </figure>
+      <div class="hook-copy">
+        <h2>옵시디언이란?</h2>
+        <p class="lead">Obsidian은 AI와 대화해서 얻은 답변, 논문 요약, 수업 메모, 프로젝트 기록을 내 컴퓨터의 Markdown 지식베이스로 저장하는 도구입니다.</p>
+        <div class="hook-points">
+          <div><span>01</span><strong>노트를 파일로 저장합니다.</strong></div>
+          <div><span>02</span><strong>관련 지식을 링크로 연결합니다.</strong></div>
+          <div><span>03</span><strong>그래프뷰로 지식의 구조를 봅니다.</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">06</span><span class="sep">/</span><span>38</span></div>
+</section>
+
+<section class="slide" data-cat="frame">
+  <div class="slide-content">
+    <h2>오늘의 핵심 프레임</h2>
+    <div class="flow">
+      <div>자료</div><span>→</span><div>Markdown 노트</div><span>→</span><div>링크</div><span>→</span><div>그래프</div><span>→</span><div>Claude Code</div>
+    </div>
+    <p class="lead">핵심은 옵시디언 자체가 아니라, 지식을 AI가 활용할 수 있는 형태로 만드는 방법입니다.</p>
+  </div>
+  <div class="footer-mark"><span class="index">07</span><span class="sep">/</span><span>38</span></div>
+</section>
+
+<section class="slide" data-cat="markdown/intro">
+  <div class="slide-content">
+    <h2>Markdown이란?</h2>
+    <p class="lead">Markdown은 평범한 텍스트에 약속된 기호를 붙여서 제목, 목록, 링크 같은 문서 구조를 표현하는 문법입니다.</p>
+    <div class="markdown-demo">
+      <div class="md-column">
+        <span class="panel-label">렌더링 전: Markdown 문법</span>
+        <div class="md-panel">
+          <pre><code># ChatGPT에서 배운 것
+
+## 핵심 요약
+
+- 좋은 답변은 그냥 두면 사라진다.
+- 중요한 내용은 노트로 저장한다.
+- 관련 개념은 [[개인 지식베이스]]로 연결한다.
+
+`vault = notes folder`</code></pre>
+        </div>
+      </div>
+      <div class="md-column">
+        <span class="panel-label">렌더링 후: 읽기 좋은 글</span>
+        <div class="md-panel rendered">
+          <h3>ChatGPT에서 배운 것</h3>
+          <h4>핵심 요약</h4>
+          <ul>
+            <li>좋은 답변은 그냥 두면 사라진다.</li>
+            <li>중요한 내용은 노트로 저장한다.</li>
+            <li>관련 개념은 <a>개인 지식베이스</a>로 연결한다.</li>
+          </ul>
+          <code>vault = notes folder</code>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">08</span><span class="sep">/</span><span>38</span></div>
+</section>
+
+<section class="slide" data-cat="markdown/basic-syntax">
+  <div class="slide-content">
+    <h2>Markdown 기초 문법</h2>
+    <p class="lead">전부 외울 필요는 없습니다. 오늘은 이런 문법이 있다는 것만 보고, 실제로 쓸 때 필요한 것부터 찾아서 쓰면 됩니다.</p>
+    <div class="syntax-grid">
+      <div><code># 제목</code><span>큰 제목</span></div>
+      <div><code>## 소제목</code><span>작은 제목</span></div>
+      <div><code>- 목록</code><span>목록 만들기</span></div>
+      <div><code>**굵게**</code><span>강조</span></div>
+      <div><code>`코드`</code><span>짧은 코드/명령어</span></div>
+      <div><code>[[노트 이름]]</code><span>Obsidian 내부 링크</span></div>
+      <div><code>[[자료.pdf]]</code><span>Vault 안 파일 링크</span></div>
+      <div><code>#태그</code><span>태그 분류</span></div>
+    </div>
+    <div class="statement-box compact">처음에는 제목, 목록, 링크, 태그만 알아도 충분합니다.</div>
+  </div>
+  <div class="footer-mark"><span class="index">09</span><span class="sep">/</span><span>38</span></div>
+</section>
+
+<section class="slide" data-cat="markdown/pdf-ai">
+  <div class="slide-content">
+    <div class="split-visual pdf-ai-slide">
+      <figure class="article-shot">
+        <img src="assets/pdf-ai-reading-difficulty.png" alt="PDF 읽기, AI에게는 여전히 어려운 영역 기사 화면" />
+        <figcaption>PDF는 사람이 보기 좋지만 AI가 구조를 읽기 어렵습니다.</figcaption>
+      </figure>
+      <div class="hook-copy">
+        <p class="lead">PDF는 사람이 보기 좋게 고정된 문서입니다. 하지만 AI 입장에서는 표, 이미지, 다단 구성, 주석, 수식이 섞인 복잡한 레이아웃입니다.</p>
+        <div class="hook-points">
+          <div><span>01</span><strong>텍스트 구조가 깨질 수 있습니다.</strong></div>
+          <div><span>02</span><strong>표와 이미지 안의 정보는 OCR이 필요합니다.</strong></div>
+          <div><span>03</span><strong>그래서 오래 쓸 지식은 Markdown으로 저장해야 합니다.</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">10</span><span class="sep">/</span><span>38</span></div>
+</section>
+
+<section class="slide" data-cat="markdown/why">
+  <div class="slide-content">
+    <h2>Markdown을 사용하는 이유</h2>
+    <p class="lead">AI 대화와 PDF에서 얻은 지식을 다시 쓰려면, 사람이 읽기 좋고 AI도 읽기 쉬운 형태로 남겨야 합니다.</p>
+    <div class="cards three">
+      <div class="card"><span>EDIT</span><strong>계속 고칠 수 있습니다</strong><p>PDF처럼 굳어 있는 문서가 아니라, 배운 내용을 바로 수정하고 덧붙일 수 있습니다.</p></div>
+      <div class="card"><span>LINK</span><strong>노트끼리 연결됩니다</strong><p>`[[링크]]`로 개념, 질문, 논문 요약을 서로 이어서 지식 구조를 만들 수 있습니다.</p></div>
+      <div class="card"><span>AI</span><strong>Claude Code가 읽기 쉽습니다</strong><p>폴더 안의 `.md` 파일을 읽고 요약, 비교, 문헌리뷰, 강의자료 초안으로 다시 활용할 수 있습니다.</p></div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">11</span><span class="sep">/</span><span>38</span></div>
+</section>
+
+<section class="slide section-divider" data-cat="section/install">
+  <div class="slide-content"><h2 class="section-title">설치 및 기초 사용법</h2></div>
+  <div class="footer-mark"><span class="index">12</span><span class="sep">/</span><span>38</span></div>
+</section>
+
+<section class="slide" data-cat="practice/first-vault">
+  <div class="slide-content">
+    <h2>실습: 내 첫 Vault 만들기</h2>
+    <p class="lead">설치가 끝나면 각자 작은 Obsidian 보관함을 만들고, 노트를 직접 연결해봅니다.</p>
+    <div class="number-list">
+      <div><span>01</span><strong>새 보관함 만들기</strong></div>
+      <div><span>02</span><strong>폴더 만들기</strong></div>
+      <div><span>03</span><strong>노트 2개 만들기</strong></div>
+      <div><span>04</span><strong>[[링크]]로 연결하기</strong></div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">13</span><span class="sep">/</span><span>38</span></div>
+</section>
+
+<section class="slide" data-cat="install/download">
+  <div class="slide-content">
+    <div class="split-visual download-slide">
+      <figure class="site-shot">
+        <img src="assets/obsidian-download-page.png" alt="Obsidian 공식 다운로드 페이지" />
+        <figcaption>Obsidian 공식 사이트에서 설치 파일을 받습니다.</figcaption>
+      </figure>
+      <div class="hook-copy install-copy">
+        <div class="install-heading">공식 다운로드</div>
+        <p class="lead">브라우저에서 Obsidian 공식 사이트에 접속해서 운영체제에 맞는 설치 파일을 받습니다. 개인 사용 기준으로 무료로 시작할 수 있습니다.</p>
+        <div class="prompt-box">https://obsidian.md</div>
+        <div class="hook-points">
+          <div><span>01</span><strong>Get Obsidian 또는 Download 버튼을 누릅니다.</strong></div>
+          <div><span>02</span><strong>macOS, Windows, Linux 중 내 환경에 맞게 설치합니다.</strong></div>
+          <div><span>03</span><strong>설치 후에는 보관함(Vault)을 만듭니다.</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">14</span><span class="sep">/</span><span>38</span></div>
+</section>
+
+<section class="slide" data-cat="install/first-launch">
+  <div class="slide-content">
+    <div class="split-visual first-launch-slide">
+      <figure class="first-launch-shot">
+        <img src="assets/obsidian-first-launch.png" alt="Obsidian 처음 실행 화면" />
+        <figcaption>처음 실행하면 새 보관함을 만들거나 기존 폴더를 엽니다.</figcaption>
+      </figure>
+      <div class="hook-copy install-copy">
+        <div class="install-heading">처음 실행 화면</div>
+        <p class="lead">Obsidian에서 보관함(Vault)은 노트가 저장되는 폴더입니다. 처음 시작할 때는 새 보관함을 만들거나, 이미 있는 Markdown 폴더를 열 수 있습니다.</p>
+        <div class="hook-points">
+          <div><span>01</span><strong>새 보관함 생성: 실습용 폴더를 새로 만듭니다.</strong></div>
+          <div><span>02</span><strong>보관함 폴더 열기: 이미 있는 Markdown 폴더를 엽니다.</strong></div>
+          <div><span>03</span><strong>Obsidian Sync는 유료 동기화 기능이라 오늘은 쓰지 않습니다.</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">15</span><span class="sep">/</span><span>38</span></div>
+</section>
+
+<section class="slide" data-cat="install/create-vault">
+  <div class="slide-content">
+    <div class="split-visual first-launch-slide">
+      <figure class="first-launch-shot">
+        <img src="assets/obsidian-create-local-vault.png" alt="Obsidian 로컬 보관함 생성 화면" />
+        <figcaption>보관함 이름과 저장 위치를 정합니다.</figcaption>
+      </figure>
+      <div class="hook-copy install-copy">
+        <div class="install-heading">새 보관함 이름과 위치를 정합니다</div>
+        <p class="lead">보관함은 앞으로 노트가 저장될 폴더입니다. 실습에서는 찾기 쉬운 이름과 위치를 정해두는 것이 좋습니다.</p>
+        <div class="hook-points">
+          <div><span>01</span><strong>보관함 이름: 프로젝트나 수업 이름으로 짓습니다.</strong></div>
+          <div><span>02</span><strong>위치: Desktop 또는 Documents처럼 찾기 쉬운 곳을 고릅니다.</strong></div>
+          <div><span>03</span><strong>생성을 누르면 그 폴더가 Obsidian Vault가 됩니다.</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">16</span><span class="sep">/</span><span>38</span></div>
+</section>
+
+<section class="slide" data-cat="install/new-vault-screen">
+  <div class="slide-content">
+    <figure class="vault-screen-shot full-shot">
+      <img src="assets/obsidian-new-vault-screen.png" alt="Obsidian 새 보관함 기본 화면" />
+      <figcaption>새 보관함을 만들면 기본 노트와 그래프 뷰가 보입니다.</figcaption>
+    </figure>
+  </div>
+  <div class="footer-mark"><span class="index">17</span><span class="sep">/</span><span>38</span></div>
+</section>
+
+<section class="slide" data-cat="install/new-folder">
+  <div class="slide-content">
+    <div class="split-visual new-vault-slide">
+      <div class="stacked-shots">
+        <figure class="vault-screen-shot">
+          <img src="assets/obsidian-new-folder-menu.png" alt="Obsidian 새 폴더 메뉴" />
+          <figcaption>Obsidian 안에서 새 폴더를 만들 수 있습니다.</figcaption>
+        </figure>
+        <figure class="vault-screen-shot">
+          <img src="assets/finder-vault-folder-local.png" alt="Finder에서 확인한 Obsidian Vault 로컬 폴더" />
+          <figcaption>만든 폴더는 Finder에서도 실제 폴더로 보입니다.</figcaption>
+        </figure>
+      </div>
+      <div class="hook-copy install-copy">
+        <div class="install-heading">새 폴더 만들기</div>
+        <p class="lead">Vault 안에서 폴더를 만들면, 실제 컴퓨터 로컬에도 같은 폴더가 생깁니다. Obsidian은 내 컴퓨터의 파일과 폴더를 그대로 다룹니다.</p>
+        <div class="hook-points">
+          <div><span>01</span><strong>폴더는 노트를 큰 주제별로 나누는 기준입니다.</strong></div>
+          <div><span>02</span><strong>Finder에서도 실제 폴더로 확인할 수 있습니다.</strong></div>
+          <div><span>03</span><strong>인터넷 없이도 열 수 있고, 자동 업로드되지 않습니다.</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">18</span><span class="sep">/</span><span>38</span></div>
+</section>
+
+<section class="slide" data-cat="install/new-note">
+  <div class="slide-content">
+    <div class="split-visual new-vault-slide">
+      <figure class="vault-screen-shot">
+        <img src="assets/obsidian-new-note-screen.png" alt="Obsidian 새 노트 작성 화면" />
+        <figcaption>새 노트는 Vault 안의 Markdown 파일로 저장됩니다.</figcaption>
+      </figure>
+      <div class="hook-copy install-copy">
+        <div class="install-heading">새 노트 만들기</div>
+        <p class="lead">노트는 Markdown 파일입니다. 제목, 설명, 목록, 링크를 적으면서 AI 답변이나 수업 내용을 내 지식으로 남깁니다.</p>
+        <div class="hook-points">
+          <div><span>01</span><strong>새 노트 버튼을 누르면 현재 폴더 안에 노트가 생깁니다.</strong></div>
+          <div><span>02</span><strong>적은 내용은 실제 `.md` 파일로 저장됩니다.</strong></div>
+          <div><span>03</span><strong>링크를 만들면 그래프 뷰에 연결이 나타납니다.</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">19</span><span class="sep">/</span><span>38</span></div>
+</section>
+
+<section class="slide" data-cat="install/link-notes">
+  <div class="slide-content">
+    <div class="split-visual new-vault-slide">
+      <div class="side-by-side-shots">
+        <figure class="vault-screen-shot">
+          <img src="assets/obsidian-link-note.png" alt="Obsidian 노트에서 링크 작성" />
+          <figcaption>대괄호 두 개로 다른 노트를 연결합니다.</figcaption>
+        </figure>
+        <figure class="vault-screen-shot">
+          <img src="assets/obsidian-link-graph.png" alt="Obsidian 그래프 뷰에서 노트 연결 확인" />
+          <figcaption>연결된 노트는 그래프 뷰에서 선으로 표시됩니다.</figcaption>
+        </figure>
+      </div>
+      <div class="hook-copy install-copy">
+        <div class="install-heading">링크로 노트 연결하기</div>
+        <p class="lead">대괄호 두 개로 노트 이름을 감싸면 다른 노트와 연결됩니다. 이 연결이 그래프 뷰에서 선으로 보입니다.</p>
+        <div class="hook-points">
+          <div><span>01</span><strong>`[[새 노트]]`처럼 입력하면 링크가 생깁니다.</strong></div>
+          <div><span>02</span><strong>아직 없는 노트도 링크로 먼저 만들 수 있습니다.</strong></div>
+          <div><span>03</span><strong>연결된 노트는 그래프 뷰에서 선으로 보입니다.</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">20</span><span class="sep">/</span><span>38</span></div>
+</section>
+
+<section class="slide" data-cat="install/link-files">
+  <div class="slide-content">
+    <div class="split-visual new-vault-slide">
+      <figure class="vault-screen-shot">
+        <img src="assets/obsidian-link-file-pdf.png" alt="Obsidian에서 PDF 파일 링크 연결" />
+        <figcaption>PDF 같은 파일도 노트에서 링크할 수 있습니다.</figcaption>
+      </figure>
+      <div class="hook-copy install-copy">
+        <div class="install-heading">파일 연결하기</div>
+        <p class="lead">노트뿐 아니라 Vault 안에 넣은 PDF, 이미지 같은 파일도 링크할 수 있습니다.</p>
+        <div class="hook-points">
+          <div><span>01</span><strong>`[[2주차_수업자료.pdf]]`처럼 파일명을 링크합니다.</strong></div>
+          <div><span>02</span><strong>원본 자료는 `자료` 폴더에 두고, 요약은 노트로 따로 씁니다.</strong></div>
+          <div><span>03</span><strong>파일 보관함이 아니라 자료와 요약이 연결된 지식베이스가 됩니다.</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">21</span><span class="sep">/</span><span>38</span></div>
+</section>
+
+<section class="slide" data-cat="install/tags">
+  <div class="slide-content">
+    <div class="split-visual tag-slide">
+      <div class="tag-shot-row">
+        <figure class="vault-screen-shot">
+          <img src="assets/obsidian-tag-week1.png" alt="1주차 요약 노트의 태그" />
+          <figcaption>요약 노트에 주제 태그를 붙입니다.</figcaption>
+        </figure>
+        <figure class="vault-screen-shot">
+          <img src="assets/obsidian-tag-week2.png" alt="2주차 요약 노트의 태그" />
+          <figcaption>다른 노트에도 같은 태그를 붙일 수 있습니다.</figcaption>
+        </figure>
+        <figure class="vault-screen-shot">
+          <img src="assets/obsidian-tag-graph.png" alt="Obsidian 그래프 뷰에서 태그로 연결된 노트" />
+          <figcaption>같은 태그를 가진 노트는 그래프에서 함께 보입니다.</figcaption>
+        </figure>
+      </div>
+      <div class="hook-copy install-copy">
+        <div class="install-heading">태그로 묶기</div>
+        <p class="lead">태그는 여러 노트를 같은 주제로 묶는 라벨입니다. 같은 태그를 단 노트들은 그래프 뷰에서 하나의 주제 주변에 모입니다.</p>
+        <div class="hook-points">
+          <div><span>01</span><strong>`#바이브코딩`처럼 입력하면 태그가 됩니다.</strong></div>
+          <div><span>02</span><strong>링크는 직접 연결, 태그는 분류 라벨입니다.</strong></div>
+          <div><span>03</span><strong>그래프 뷰 설정에서 태그 표시를 켜면 연결이 보입니다.</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">22</span><span class="sep">/</span><span>38</span></div>
+</section>
+
+<section class="slide" data-cat="install/search">
+  <div class="slide-content">
+    <div class="split-visual new-vault-slide">
+      <div class="stacked-shots">
+        <figure class="vault-screen-shot">
+          <img src="assets/obsidian-search-options.png" alt="Obsidian 검색 옵션 화면" />
+          <figcaption>검색 옵션으로 파일명, 경로, 태그를 찾을 수 있습니다.</figcaption>
+        </figure>
+        <figure class="vault-screen-shot">
+          <img src="assets/obsidian-search-results.png" alt="Obsidian 태그 검색 결과 화면" />
+          <figcaption>태그를 검색하면 관련 노트가 바로 모입니다.</figcaption>
+        </figure>
+      </div>
+      <div class="hook-copy install-copy">
+        <div class="install-heading">검색하기</div>
+        <p class="lead">단어, 파일명, 경로, 태그 기준으로 필요한 노트를 빠르게 찾을 수 있습니다.</p>
+        <div class="hook-points">
+          <div><span>01</span><strong>왼쪽 돋보기 아이콘으로 검색 패널을 엽니다.</strong></div>
+          <div><span>02</span><strong>`#바이브코딩`처럼 태그를 검색할 수 있습니다.</strong></div>
+          <div><span>03</span><strong>많이 쌓인 AI 답변과 수업 메모를 다시 찾는 기본 기능입니다.</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">23</span><span class="sep">/</span><span>38</span></div>
+</section>
+
+<section class="slide" data-cat="install/graph-view">
+  <div class="slide-content">
+    <div class="split-visual graph-view-slide">
+      <figure class="large-graph-shot">
+        <img src="assets/obsidian-large-graph-view.png" alt="Obsidian 큰 그래프 뷰 예시" />
+        <figcaption>그래프 뷰는 노트와 태그의 연결 관계를 시각화합니다.</figcaption>
+      </figure>
+      <div class="hook-copy install-copy">
+        <div class="install-heading">그래프 뷰</div>
+        <p class="lead">Obsidian의 장점은 노트를 따로따로 보관하는 것이 아니라, 지식이 어떻게 연결되어 있는지 한눈에 볼 수 있다는 점입니다.</p>
+        <div class="hook-points">
+          <div><span>01</span><strong>점 하나는 노트나 태그 같은 지식 단위입니다.</strong></div>
+          <div><span>02</span><strong>선은 링크와 참조 관계를 보여줍니다.</strong></div>
+          <div><span>03</span><strong>큰 덩어리는 자주 연결되는 주제나 프로젝트입니다.</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">24</span><span class="sep">/</span><span>38</span></div>
+</section>
+
+<section class="slide" data-cat="method/zettelkasten">
+  <div class="slide-content">
+    <h2>제텔카스텐: 하나의 메모, 하나의 아이디어</h2>
+    <p class="lead">Obsidian, Zotero 같은 지식관리 도구는 작은 메모를 만들고 서로 연결하는 방식과 잘 맞습니다.</p>
+    <div class="cards three">
+      <div class="card"><span>NOTE</span><strong>한 메모에는 하나의 아이디어만 적습니다</strong><p>논문 전체를 한 덩어리로 외우지 않고, 핵심 개념을 작은 노트로 나눕니다.</p></div>
+      <div class="card"><span>LINK</span><strong>관련 메모를 링크로 연결합니다</strong><p>`[[개념명]]`으로 논문, 수업 메모, AI 답변을 서로 이어줍니다.</p></div>
+      <div class="card"><span>USE</span><strong>필요할 때 다시 꺼내 씁니다</strong><p>검색과 그래프 뷰로 연결된 지식을 찾고, Claude Code가 다시 읽게 합니다.</p></div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">25</span><span class="sep">/</span><span>38</span></div>
+</section>
+
+<section class="slide" data-cat="compare/ai-tools">
+  <div class="slide-content">
+    <h2>ChatGPT, NotebookLM과 무엇이 다른가?</h2>
+    <p class="lead">ChatGPT와 NotebookLM은 자료를 읽고 답변을 받는 데 강하고, Obsidian과 Claude Code는 그 답변을 저장하고 연결해서 다시 쓰는 데 강합니다.</p>
+    <div class="tool-logo-compare">
+      <div class="tool-logo-card text-only">
+        <img src="assets/chatgpt-logo.png" alt="ChatGPT 로고" />
+        <strong>지금 바로 묻고 답합니다</strong>
+        <p>PDF 하나를 빠르게 요약하거나 질문하기 좋습니다. 하지만 대화창에 남아 다시 찾기 어렵습니다.</p>
+      </div>
+      <figure class="tool-logo-card">
+        <img src="assets/notebooklm-logo.png" alt="NotebookLM 로고" />
+        <figcaption>여러 PDF를 넣고 출처 기반 답변을 받기 좋습니다. 다만 내 로컬 Markdown 지식베이스로 쌓이진 않습니다.</figcaption>
+      </figure>
+      <figure class="tool-logo-card dark">
+        <img src="assets/obsidian-logo-card.png" alt="Obsidian 로고" />
+        <figcaption>PDF, 요약, 개념 노트, 링크, 태그가 내 컴퓨터의 파일로 남습니다.</figcaption>
+      </figure>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">26</span><span class="sep">/</span><span>38</span></div>
+</section>
+
+<section class="slide section-divider" data-cat="section/claude-obsidian">
+  <div class="slide-content"><h2 class="section-title">Claude Code와 Obsidian으로 나만의 지식베이스 만들기</h2></div>
+  <div class="footer-mark"><span class="index">27</span><span class="sep">/</span><span>38</span></div>
+</section>
+
+<section class="slide" data-cat="claude/paper-markdown">
+  <div class="slide-content">
+    <div class="split-visual paper-markdown-slide">
+      <div class="stacked-shots">
+        <figure>
+          <img src="assets/papers-folder-selected.png" alt="Finder에서 선택된 논문 PDF 파일들" />
+          <figcaption>원본 PDF는 폴더에 그대로 둡니다.</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/claude-paper-markdown-prompt.png" alt="Claude Code에 논문 Markdown 정리를 요청한 화면" />
+          <figcaption>Claude Code에게 Obsidian용 정리를 요청합니다.</figcaption>
+        </figure>
+      </div>
+      <div class="hook-copy install-copy">
+        <div class="install-heading">논문을 Markdown 노트로 정리하기</div>
+        <p class="lead">PDF는 원본으로 보관하고, Claude Code에게 Obsidian에서 다시 쓸 수 있는 요약 노트를 만들게 합니다.</p>
+        <div class="hook-points">
+          <div><span>01</span><strong>논문별 요약 노트를 만듭니다.</strong></div>
+          <div><span>02</span><strong>핵심 개념은 [[링크]]로 연결합니다.</strong></div>
+          <div><span>03</span><strong>주제별 #태그를 붙입니다.</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">28</span><span class="sep">/</span><span>38</span></div>
+</section>
+
+<section class="slide" data-cat="claude/prompt-copy">
+  <div class="slide-content">
+    <h2>복사용 프롬프트</h2>
+    <div class="prompt-box copy-prompt">
+{논문_폴더_경로} 폴더의 논문 PDF들을 읽고
+Obsidian용 Markdown 지식베이스로 정리해줘.
+
+논문별 요약 노트를 만들고,
+핵심 개념은 [[링크]]로 연결하고,
+주제별 #태그를 붙여줘.
+원본 PDF도 각 요약 노트에서 연결해줘.
+    </div>
+    <p class="lead">경로만 자기 논문 폴더 위치로 바꾸면 바로 사용할 수 있습니다.</p>
+  </div>
+  <div class="footer-mark"><span class="index">29</span><span class="sep">/</span><span>38</span></div>
+</section>
+
+<section class="slide" data-cat="claude/paper-result">
+  <div class="slide-content">
+    <div class="split-visual new-vault-slide">
+      <figure class="vault-screen-shot claude-result-shot">
+        <img src="assets/claude-paper-markdown-result.png" alt="Claude Code가 논문 Markdown 지식베이스를 만든 결과 화면" />
+        <figcaption>Claude Code가 논문 요약 노트와 개념 노트를 생성한 결과입니다.</figcaption>
+      </figure>
+      <div class="hook-copy install-copy">
+        <div class="install-heading">결과: 바로 열 수 있는 지식베이스</div>
+        <p class="lead">Claude Code가 PDF 폴더를 읽고 Obsidian Vault로 열 수 있는 Markdown 노트 묶음을 만듭니다.</p>
+        <div class="hook-points">
+          <div><span>01</span><strong>논문별 요약 노트가 생성됩니다.</strong></div>
+          <div><span>02</span><strong>개념 노트와 [[링크]]가 함께 만들어집니다.</strong></div>
+          <div><span>03</span><strong>Obsidian에서 검색과 그래프 뷰로 확인합니다.</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">30</span><span class="sep">/</span><span>38</span></div>
+</section>
+
+<section class="slide" data-cat="claude/obsidian-home-result">
+  <div class="slide-content">
+    <div class="split-visual new-vault-slide">
+      <div class="side-by-side-shots paper-home-shots">
+        <figure class="vault-screen-shot">
+          <img src="assets/obsidian-paper-home-top.png" alt="Obsidian에서 열린 논문 지식베이스 Home 상단" />
+          <figcaption>Home 노트에서 논문 목록과 핵심 정보를 한 번에 봅니다.</figcaption>
+        </figure>
+        <figure class="vault-screen-shot">
+          <img src="assets/obsidian-paper-home-flow.png" alt="Obsidian에서 열린 논문 지식베이스 Home 하단" />
+          <figcaption>개념 노트와 연구 흐름까지 링크로 정리됩니다.</figcaption>
+        </figure>
+      </div>
+      <div class="hook-copy install-copy">
+        <div class="install-heading">Obsidian에서 결과 확인하기</div>
+        <p class="lead">생성된 Home 노트는 논문 요약, 개념 목록, 연구 흐름을 한 화면에서 확인하는 인덱스 역할을 합니다.</p>
+        <div class="hook-points">
+          <div><span>01</span><strong>논문 5편을 표로 비교합니다.</strong></div>
+          <div><span>02</span><strong>개념 노트가 링크로 연결됩니다.</strong></div>
+          <div><span>03</span><strong>태그로 주제별 검색이 쉬워집니다.</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">31</span><span class="sep">/</span><span>38</span></div>
+</section>
+
+<section class="slide" data-cat="claude/obsidian-graph-result">
+  <div class="slide-content">
+    <div class="split-visual graph-view-slide">
+      <figure class="large-graph-shot">
+        <img src="assets/obsidian-paper-graph-result.png" alt="Obsidian 논문 지식베이스 그래프 뷰" />
+        <figcaption>논문, 개념, 태그가 연결되면서 지식 구조가 그래프로 보입니다.</figcaption>
+      </figure>
+      <div class="hook-copy install-copy">
+        <div class="install-heading">그래프 뷰로 연결 확인하기</div>
+        <p class="lead">논문 요약 노트와 개념 노트가 연결되면 어떤 주제가 중심인지 눈으로 확인할 수 있습니다.</p>
+        <div class="hook-points">
+          <div><span>01</span><strong>큰 점은 많이 연결된 핵심 노트입니다.</strong></div>
+          <div><span>02</span><strong>초록 점은 태그처럼 주제를 묶는 기준입니다.</strong></div>
+          <div><span>03</span><strong>검색과 함께 쓰면 필요한 자료를 빠르게 찾습니다.</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">32</span><span class="sep">/</span><span>38</span></div>
+</section>
+
+<section class="slide" data-cat="claude/graph-focused">
+  <div class="slide-content">
+    <div class="split-visual graph-view-slide">
+      <figure class="large-graph-shot">
+        <img src="assets/obsidian-paper-graph-focused.png" alt="Obsidian 그래프 뷰에서 하나의 개념 노트를 선택한 화면" />
+        <figcaption>그래프에서 하나를 클릭하면 직접 연결된 노트와 태그가 강조됩니다.</figcaption>
+      </figure>
+      <div class="hook-copy install-copy">
+        <div class="install-heading">하나를 클릭해서 연결 보기</div>
+        <p class="lead">그래프 뷰에서 노트 하나를 선택하면 그 노트가 어떤 논문, 개념, 태그와 이어져 있는지 볼 수 있습니다.</p>
+        <div class="hook-points">
+          <div><span>01</span><strong>관련 없는 노드는 흐리게 보입니다.</strong></div>
+          <div><span>02</span><strong>직접 연결된 노트와 태그만 강조됩니다.</strong></div>
+          <div><span>03</span><strong>관심 개념 주변의 자료를 빠르게 따라갈 수 있습니다.</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">33</span><span class="sep">/</span><span>38</span></div>
+</section>
+
+<section class="slide" data-cat="claude/concept-note">
+  <div class="slide-content">
+    <div class="split-visual new-vault-slide">
+      <figure class="vault-screen-shot">
+        <img src="assets/obsidian-concept-note-takeover.png" alt="Obsidian Takeover 개념 노트" />
+        <figcaption>그래프나 링크에서 개념 노트로 들어가 내용을 읽을 수 있습니다.</figcaption>
+      </figure>
+      <div class="hook-copy install-copy">
+        <div class="install-heading">개념 노트로 다시 읽기</div>
+        <p class="lead">그래프의 점이나 본문 링크를 클릭하면, 해당 개념을 설명하는 노트로 바로 이동합니다.</p>
+        <div class="hook-points">
+          <div><span>01</span><strong>개념 정의를 따로 모아둡니다.</strong></div>
+          <div><span>02</span><strong>관련 논문과 다른 개념으로 이동할 수 있습니다.</strong></div>
+          <div><span>03</span><strong>AI가 만든 요약을 사람이 검토하고 수정합니다.</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">34</span><span class="sep">/</span><span>38</span></div>
+</section>
+
+<section class="slide" data-cat="claude/search-result">
+  <div class="slide-content">
+    <div class="split-visual graph-view-slide">
+      <figure class="large-graph-shot">
+        <img src="assets/obsidian-paper-search-result.png" alt="Obsidian에서 자율주행 키워드를 검색한 결과" />
+        <figcaption>키워드나 태그로 검색하면 관련 논문과 개념 노트를 바로 찾을 수 있습니다.</figcaption>
+      </figure>
+      <div class="hook-copy install-copy">
+        <div class="install-heading">검색으로 다시 찾기</div>
+        <p class="lead">정리된 지식베이스는 나중에 필요한 내용을 빠르게 꺼내 쓰기 위한 공간입니다.</p>
+        <div class="hook-points">
+          <div><span>01</span><strong>키워드로 논문 요약과 개념 노트를 찾습니다.</strong></div>
+          <div><span>02</span><strong>태그로 같은 주제의 자료를 모읍니다.</strong></div>
+          <div><span>03</span><strong>찾은 노트를 Claude Code에게 다시 읽힐 수 있습니다.</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">35</span><span class="sep">/</span><span>38</span></div>
+</section>
+
+<section class="slide" data-cat="closing/second-brain">
+  <div class="slide-content">
+    <h2>AI에게 배운 지식을 내 것으로 남기기</h2>
+    <p class="lead">Claude Code나 ChatGPT와 이야기하다가 새로운 지식을 얻었다면, Markdown 노트로 남겨 Obsidian에 저장하고, 필요할 때 다시 꺼내 쓰세요.</p>
+    <div class="flow">
+      <div>AI와 대화</div><span>→</span><div>Markdown으로 기록</div><span>→</span><div>Obsidian에 연결</div><span>→</span><div>다시 활용</div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">36</span><span class="sep">/</span><span>38</span></div>
+</section>
+
+<section class="slide" data-cat="closing/prompt-note">
+  <div class="slide-content">
+    <h2>복사용 프롬프트</h2>
+    <div class="prompt-box copy-prompt">
+방금 대화에서 얻은 새로운 지식을
+Obsidian에 저장할 수 있는 Markdown 노트로 정리해줘.
+
+형식:
+- 제목
+- 한 줄 요약
+- 핵심 개념
+- 내가 기억해야 할 내용
+- 관련해서 이어질 질문
+- 추천 태그
+
+가능하면 관련 개념은 [[링크]] 형태로 작성해줘.
+    </div>
+    <p class="lead">AI와 대화가 끝난 뒤, 이 프롬프트로 바로 저장용 노트를 만들 수 있습니다.</p>
+  </div>
+  <div class="footer-mark"><span class="index">37</span><span class="sep">/</span><span>38</span></div>
+</section>
+
+<section class="slide" data-cat="closing">
+  <div class="slide-content">
+    <h2>오늘의 정리</h2>
+    <p class="lead">흩어져 있던 AI 답변, 논문 PDF, 수업 메모를 Obsidian과 Claude Code로 다시 읽을 수 있는 지식베이스로 만들었습니다.</p>
+    <div class="cards three">
+      <div class="card"><span>STORE</span><strong>자료를 모았습니다</strong><p>PDF와 메모를 Vault 안에 넣고 Markdown 노트로 정리했습니다.</p></div>
+      <div class="card"><span>CONNECT</span><strong>링크와 태그로 연결했습니다</strong><p>논문, 개념, 태그가 서로 이어져 검색과 그래프 뷰에서 보입니다.</p></div>
+      <div class="card"><span>NEXT</span><strong>다음 주: 플러그인으로 확장합니다</strong><p>캘린더, 템플릿, 표, 작업관리 같은 플러그인으로 나만의 Obsidian 환경을 만들어봅니다.</p></div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">38</span><span class="sep">/</span><span>38</span></div>
+</section>
+
+<script src="../template/navigator.js" defer></script>
+</body>
+</html>
