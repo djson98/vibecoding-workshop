@@ -354,6 +354,12 @@ h2.section-title {
   border-radius: 0.8rem;
 }
 
+.claude-ask-shot img {
+  max-height: 33rem;
+  object-fit: contain;
+  background: var(--bg-elev);
+}
+
 .image-pair {
   display: grid;
   grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
