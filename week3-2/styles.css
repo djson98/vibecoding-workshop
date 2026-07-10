@@ -6,6 +6,17 @@ body {
   letter-spacing: 0;
 }
 
+.slide,
+.slide-content,
+.slide-content > *,
+.split-visual,
+.cards,
+.compare,
+.flow {
+  min-width: 0;
+  max-width: 100%;
+}
+
 :root {
   --h3-size: 1.5rem;
   --body-size: 1.05rem;
