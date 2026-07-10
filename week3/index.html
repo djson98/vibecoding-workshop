@@ -3,7 +3,10 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Week 3 — 반복을 도구로: CLAUDE.md · 스킬 · 발표 자료</title>
+<meta http-equiv="refresh" content="0; url=../week3-2/index.html" />
+<link rel="canonical" href="../week3-2/" />
+<title>Week 3 — 옵시디언으로 나만의 지식베이스 만들기</title>
+<script>window.location.replace('../week3-2/index.html');</script>
 
 <!-- Fonts: Pretendard (KR body + emphasis), JetBrains Mono (labels/code) -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
@@ -15,6 +18,7 @@
 <link rel="stylesheet" href="../template/foundation.css" />
 <!-- Week-specific styles -->
 <link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="../template/print.css" media="print" />
 </head>
 <body>
 
@@ -29,13 +33,17 @@
      ============================================================ -->
 <section class="slide title-slide" data-cat="cover">
   <div class="slide-content">
-    <h1 class="deck-title"><span class="accent">WEEK 3</span><br />반복을 도구로 만들기</h1>
-    <p style="margin-top: 1.5rem; font-size: var(--h3-size); color: var(--muted); line-height: 1.5;">
-      CLAUDE.md · 스킬 · 발표 자료 자동 생성
-    </p>
-    <p style="margin-top: 2rem; font-size: var(--body-size); color: var(--muted);">
-      손동주 · 강원대 컴퓨터공학과 HAI Lab
-    </p>
+    <div class="pre-title">
+      <span class="pulse"></span>
+      <span class="label">VIBE CODING WORKSHOP — WEEK 3</span>
+      <span class="year">2026</span>
+    </div>
+    <h1 class="deck-title"><span class="accent">CLAUDE CODE</span><br />바이브코딩 업무자동화 가이드</h1>
+    <div class="deck-meta">
+      <span class="presenter">손동주</span>
+      <span class="meta-sep">·</span>
+      <span class="details">강원대 컴퓨터공학과 HAI Lab</span>
+    </div>
   </div>
   <div class="footer-mark"><span class="index">01</span><span class="sep">/</span><span>30</span></div>
   <div class="brand-mark">vibe-coding-lab</div>
@@ -264,24 +272,39 @@
 <section class="slide" data-cat="claude-md/verify">
   <div class="slide-content">
     <h2>규칙 없이 vs 있이</h2>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1rem, 2vw, 1.5rem); margin-top: var(--content-title-gap); max-width: 84rem;">
-      <div style="background: var(--bg-elev); border: 1px solid var(--line-2); border-radius: 4px; padding: 1.25rem 1.4rem;">
-        <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em;">규칙 없이</div>
-        <div style="font-size: var(--body-size); color: var(--ink-2); margin-top: 0.6rem; line-height: 1.65;">
-          매번 프롬프트에 "익명화는 P001 형식으로, 인용은 Vancouver 로, 톤은 ~합니다 로"를 전부 다시 설명합니다.
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1rem, 2vw, 1.5rem); margin-top: var(--content-title-gap); max-width: 92rem;">
+      <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+        <div style="background: var(--bg-elev); border: 1px solid var(--line-2); border-radius: 4px; padding: 1rem 1.25rem;">
+          <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em;">규칙 없이 · 매번 프롬프트</div>
+          <div style="margin-top: 0.5rem; background: var(--accent-soft); border-left: 3px solid var(--accent); padding: 0.75rem 1rem; border-radius: 3px; font-size: var(--small-size); color: var(--ink-2); line-height: 1.7;">
+            &gt; papers/ 폴더의 논문을 요약해줘.<br />
+            익명화는 P001, P002 형식으로 하고,<br />
+            인용은 Vancouver 형식으로 붙여줘.<br />
+            응답은 ~합니다 종결로 써줘.
+          </div>
+        </div>
+        <div style="background: #1A2230; color: #E4E7ED; border-radius: 4px; padding: 0.85rem 1.1rem; font-family: 'JetBrains Mono', monospace; font-size: var(--small-size); line-height: 1.65;">
+          <div style="color: #8A8F98;">— 응답 (좋음)</div>
+          <div style="margin-top: 0.4rem;">1. Kang et al. <span style="color: #8EC8FF;">(2023)</span>: P001…</div>
+          <div style="color: #E8B26B; margin-top: 0.5rem;">✱ 규칙을 매번 다시 쳐야 함</div>
         </div>
       </div>
-      <div style="background: var(--bg-elev); border: 1px solid var(--line-2); border-top: 3px solid var(--accent); border-radius: 4px; padding: 1.25rem 1.4rem;">
-        <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em;">규칙 있이</div>
-        <div style="font-size: var(--body-size); color: var(--ink-2); margin-top: 0.6rem; line-height: 1.65;">
-          <span class="mono" style="color: var(--accent);">&gt; 지난 논문 요약해줘</span> 한 줄이면 규칙에 맞춰 결과가 나옵니다.
+      <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+        <div style="background: var(--bg-elev); border: 1px solid var(--line-2); border-top: 3px solid var(--accent); border-radius: 4px; padding: 1rem 1.25rem;">
+          <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em;">규칙 있이 · CLAUDE.md 저장</div>
+          <div style="margin-top: 0.5rem; background: var(--accent-soft); border-left: 3px solid var(--accent); padding: 0.75rem 1rem; border-radius: 3px; font-size: var(--body-size); color: var(--ink); line-height: 1.7;">
+            &gt; 지난 논문 요약해줘.
+          </div>
+          <div style="margin-top: 0.5rem; font-size: var(--small-size); color: var(--muted); line-height: 1.55;">
+            익명화·인용·톤 규칙은 CLAUDE.md에 이미 저장돼 있어 다시 안 씀
+          </div>
+        </div>
+        <div style="background: #1A2230; color: #E4E7ED; border-radius: 4px; padding: 0.85rem 1.1rem; font-family: 'JetBrains Mono', monospace; font-size: var(--small-size); line-height: 1.65;">
+          <div style="color: #8A8F98;">— 응답 (똑같이 좋음)</div>
+          <div style="margin-top: 0.4rem;">1. Kang et al. <span style="color: #8EC8FF;">(2023)</span>: P001…</div>
+          <div style="color: #7ACD8F; margin-top: 0.5rem;">✓ 규칙은 자동으로 적용됨</div>
         </div>
       </div>
-    </div>
-    <div class="screenshot-slot terminal wide">
-      <div class="slot-label">SCREENSHOT</div>
-      <div class="slot-title">CLAUDE.md 적용 전후 응답 비교</div>
-      <div class="slot-note">같은 프롬프트에 대한 두 응답을 나란히 캡처</div>
     </div>
   </div>
   <div class="footer-mark"><span class="index">11</span><span class="sep">/</span><span>30</span></div>
@@ -694,16 +717,21 @@
 <section class="slide" data-cat="example/presentation/result">
   <div class="slide-content">
     <h2>결과 확인</h2>
-    <p style="margin-top: var(--content-title-gap); font-size: var(--body-size); color: var(--ink-2); line-height: 1.7; max-width: 72rem;">
+    <p style="margin-top: var(--content-title-gap); font-size: var(--body-size); color: var(--ink-2); line-height: 1.7; max-width: 76rem;">
       브라우저에서 만들어진 HTML 파일을 열어 발표 자료를 확인합니다. 마음에 들지 않는 부분은 프롬프트로 다시 요청합니다.
     </p>
-    <div style="margin-top: 1.25rem; background: var(--accent-soft); border-left: 3px solid var(--accent); padding: 1rem 1.25rem; border-radius: 4px; font-size: var(--body-size); color: var(--ink); max-width: 72rem; line-height: 1.65;">
+    <div style="margin-top: 1.25rem; background: var(--accent-soft); border-left: 3px solid var(--accent); padding: 1rem 1.25rem; border-radius: 4px; font-size: var(--body-size); color: var(--ink); max-width: 76rem; line-height: 1.65;">
       &gt; 3번 슬라이드 색을 좀 더 밝게 바꿔주고, 5번 슬라이드에 차트를 추가해줘
     </div>
-    <div class="screenshot-slot wide" style="margin-top: 1.5rem;">
-      <div class="slot-label">SCREENSHOT</div>
-      <div class="slot-title">생성된 발표 자료 브라우저 화면</div>
-      <div class="slot-note">전체화면 모드로 첫 번째 슬라이드가 보이도록 캡처</div>
+    <div style="margin-top: 1.5rem; padding: 1.25rem 1.5rem; border: 1px solid var(--line-2); border-left: 3px solid var(--term-green); background: var(--bg-elev); border-radius: 4px; max-width: 76rem;">
+      <div class="mono" style="font-size: var(--small-size); color: var(--muted); letter-spacing: 0.05em;">EXAMPLE OUTPUT</div>
+      <div style="font-size: var(--body-size); color: var(--ink); margin-top: 0.5rem; line-height: 1.65;">
+        지금 보고 계신 이 슬라이드가 그 결과입니다.<br />
+        <span class="mono" style="color: var(--accent); font-size: var(--small-size);">djson.me/vibecoding-workshop/week3/</span>
+      </div>
+      <div style="margin-top: 0.5rem; font-size: var(--small-size); color: var(--muted); line-height: 1.55;">
+        Week 1, 2, 3 모두 <span class="mono">frontend-slides</span> 스킬로 초안을 뽑아 다듬은 결과물입니다.
+      </div>
     </div>
   </div>
   <div class="footer-mark"><span class="index">24</span><span class="sep">/</span><span>30</span></div>
