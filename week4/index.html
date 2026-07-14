@@ -1,0 +1,818 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Week 4 — Obsidian 플러그인으로 지식베이스 확장하기</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../template/foundation.css" />
+<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="../template/print.css" media="print" />
+</head>
+<body>
+
+<nav class="nav-dots" id="navDots"></nav>
+<div class="keyboard-hint"><kbd>←</kbd><kbd>→</kbd> or <kbd>Space</kbd> · scroll</div>
+
+<section class="slide title-slide" data-cat="cover">
+  <div class="slide-content">
+    <div class="pre-title"><span class="pulse"></span><span class="label">VIBE CODING WORKSHOP</span><span class="year">2026</span></div>
+    <h1 class="deck-title"><span class="accent">CLAUDE CODE</span><br />바이브코딩 업무자동화 가이드</h1>
+    <p class="deck-subtitle">WEEK 4 · Obsidian 플러그인으로 지식베이스 확장하기</p>
+    <div class="deck-meta"><span class="presenter">손동주</span><span class="meta-sep">·</span><span class="details">강원대 컴퓨터공학과 HAI Lab</span></div>
+  </div>
+  <div class="footer-mark"><span class="index">01</span><span class="sep">/</span><span>46</span></div>
+</section>
+
+<section class="slide" data-cat="recap/week3">
+  <div class="slide-content">
+    <h2>지난주에 만든 것</h2>
+    <p class="lead">AI 대화, 논문 PDF, 수업 메모를 Markdown 노트로 바꾸고 Obsidian 안에서 링크와 태그로 연결했습니다.</p>
+    <div class="flow">
+      <div>자료</div><span>→</span><div>Markdown 노트</div><span>→</span><div>링크와 태그</div><span>→</span><div>그래프</div><span>→</span><div>Claude Code</div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">02</span><span class="sep">/</span><span>46</span></div>
+</section>
+
+<section class="slide" data-cat="preview/result">
+  <div class="slide-content">
+    <h2>오늘 만들 결과 미리보기</h2>
+    <p class="lead preview-result-lead">Zotero에서 표시한 문장과 메모가 Obsidian의 논문 노트가 되고, 다른 지식과 연결됩니다.</p>
+    <div class="preview-gallery">
+      <figure>
+        <span class="preview-step">01 · ZOTERO</span>
+        <img src="assets/zotero-highlight-note-popup.png" alt="Zotero에서 하이라이트에 메모와 태그를 추가한 화면" />
+        <figcaption>논문을 읽고 하이라이트와 메모를 남깁니다.</figcaption>
+      </figure>
+      <figure>
+        <span class="preview-step">02 · OBSIDIAN</span>
+        <img src="assets/obsidian-zotero-imported-note.png" alt="Zotero 서지정보를 Obsidian 논문 노트로 가져온 화면" />
+        <figcaption>서지정보가 속성이 있는 Markdown 노트가 됩니다.</figcaption>
+      </figure>
+      <figure>
+        <span class="preview-step">03 · KNOWLEDGE BASE</span>
+        <img src="assets/obsidian-zotero-highlights-note.png" alt="Zotero에서 가져온 하이라이트와 메모를 Obsidian에서 보는 화면" />
+        <figcaption>Zotero의 하이라이트와 메모가 Markdown이 되어 Claude Code가 읽기 쉬워집니다.</figcaption>
+      </figure>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">03</span><span class="sep">/</span><span>46</span></div>
+</section>
+
+<section class="slide" data-cat="obsidian/linking-preview">
+  <div class="slide-content">
+    <h2>연결 결과 미리보기</h2>
+    <p class="lead preview-result-lead">논문 노트에 연결 섹션을 붙이고, 개념 노트와 그래프뷰까지 이어진 모습입니다.</p>
+    <div class="preview-gallery four-preview">
+      <figure>
+        <span class="preview-step">01 · Paper Note</span>
+        <img src="assets/obsidian-linked-note-before.png" alt="Obsidian 문헌 노트 상단 화면" />
+        <figcaption>가져온 논문 노트</figcaption>
+      </figure>
+      <figure>
+        <span class="preview-step">02 · Links</span>
+        <img src="assets/obsidian-linked-note-after.png" alt="Obsidian 문헌 노트에 연결 섹션이 추가된 화면" />
+        <figcaption>개념과 관련 논문 링크</figcaption>
+      </figure>
+      <figure>
+        <span class="preview-step">03 · Concept Note</span>
+        <img src="assets/obsidian-concept-note-affective-computing.png" alt="Obsidian Affective Computing 개념 노트" />
+        <figcaption>정리된 개념 노트</figcaption>
+      </figure>
+      <figure>
+        <span class="preview-step">04 · Graph View</span>
+        <img src="assets/obsidian-linked-graph-view.png" alt="Obsidian 그래프뷰에서 논문과 개념 노트가 연결된 화면" />
+        <figcaption>연결된 그래프뷰</figcaption>
+      </figure>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">04</span><span class="sep">/</span><span>46</span></div>
+</section>
+
+<section class="slide" data-cat="preview/before-after">
+  <div class="slide-content">
+    <div class="before-after">
+      <div>
+        <span class="panel-label">서지관리 프로그램</span>
+        <div class="preview-panel">
+          <img class="reference-manager-logos" src="assets/reference-manager-logos-transparent.png" alt="EndNote, Mendeley, Zotero 로고" />
+          <strong>서지관리 프로그램에 넣어둔 정보는 AI가 읽기 어렵습니다.</strong>
+          <p>서지정보, 하이라이트, 메모가 쌓여 있어도 AI는 기본 상태에서 그 내용을 함께 읽기 어렵습니다.</p>
+        </div>
+      </div>
+      <div class="preview-arrow">→</div>
+      <div>
+        <span class="panel-label">Obsidian + Claude</span>
+        <div class="preview-panel">
+          <div class="ai-tool-logos">
+            <img src="assets/obsidian-logo-transparent.png" alt="Obsidian 로고" />
+            <span>+</span>
+            <img src="assets/claude-logo-transparent.png" alt="Claude 로고" />
+          </div>
+          <strong>Markdown으로 바꾸면 AI가 읽기 쉬워집니다.</strong>
+          <p>Obsidian으로 가져온 연구 기록을 Claude Code에게 쉽게 묻고, 여러 논문을 함께 비교·요약·작성할 수 있습니다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">05</span><span class="sep">/</span><span>46</span></div>
+</section>
+
+<section class="slide section-divider" data-cat="section/zotero">
+  <div class="slide-content"><h2 class="section-title">Zotero 세팅하기</h2></div>
+  <div class="footer-mark"><span class="index">06</span><span class="sep">/</span><span>46</span></div>
+</section>
+
+<section class="slide" data-cat="zotero/overview">
+  <div class="slide-content">
+    <div class="split-install zotero-overview-layout">
+      <figure class="browser-shot zotero-library-shot">
+        <img src="assets/zotero-library-overview.png" alt="논문과 서지정보를 정리한 Zotero 라이브러리 화면" />
+      </figure>
+      <div class="install-copy">
+        <h2>Zotero란?</h2>
+        <p class="lead">논문 수집부터 정리, 인용, 협업까지 한곳에서 관리하는 무료 서지관리 프로그램입니다.</p>
+        <div class="zotero-benefits">
+          <div><strong>클릭 한 번으로 수집</strong><p>웹에서 논문과 PDF를 바로 저장합니다.</p></div>
+          <div><strong>내 방식대로 정리</strong><p>컬렉션과 태그로 자료를 분류합니다.</p></div>
+          <div><strong>바로 인용</strong><p>Word와 Google Docs에서 참고문헌 생성</p></div>
+          <div><strong>기기 간 동기화</strong><p>자료와 메모를 여러 기기에서 이어봅니다.</p></div>
+          <div><strong>함께 연구</strong><p>공동 라이브러리로 자료를 공유합니다.</p></div>
+          <div><strong>내 데이터 통제</strong><p>비영리 오픈소스로 연구 기록을 관리합니다.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">07</span><span class="sep">/</span><span>46</span></div>
+</section>
+
+<section class="slide" data-cat="zotero/workflow">
+  <div class="slide-content">
+    <h2>권장 흐름</h2>
+    <div class="flow wide-flow">
+      <div>논문 저장</div><span>→</span><div>Zotero에서 읽기</div><span>→</span><div>하이라이트</div><span>→</span><div>Obsidian 노트</div><span>→</span><div>Claude Code 분석</div>
+    </div>
+    <p class="lead">PDF 파일 자체를 Obsidian에 모두 넣기보다, Zotero에는 원본과 주석을 두고 Obsidian에는 생각과 연결을 남깁니다.</p>
+  </div>
+  <div class="footer-mark"><span class="index">08</span><span class="sep">/</span><span>46</span></div>
+</section>
+
+<section class="slide" data-cat="zotero/download-home">
+  <div class="slide-content">
+    <div class="split-install">
+      <figure class="browser-shot">
+        <img src="assets/zotero-download-page.png" alt="Zotero 공식 홈페이지 다운로드 화면" />
+      </figure>
+      <div class="install-copy">
+        <h2>Zotero 다운로드</h2>
+        <p class="lead">공식 홈페이지에서 운영체제에 맞는 Zotero를 다운로드합니다.</p>
+        <div class="steps compact-steps">
+          <div><span>01</span><strong><code>zotero.org</code> 접속</strong></div>
+          <div><span>02</span><strong>가운데 Download 버튼 클릭</strong></div>
+          <div><span>03</span><strong>운영체제에 맞는 설치 페이지 이동</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">09</span><span class="sep">/</span><span>46</span></div>
+</section>
+
+<section class="slide" data-cat="zotero/download-options">
+  <div class="slide-content">
+    <div class="split-install">
+      <figure class="browser-shot">
+        <img src="assets/zotero-download-options.png" alt="Zotero 9 for Mac과 Zotero Connector 설치 화면" />
+      </figure>
+      <div class="install-copy">
+        <h2>Zotero와 Zotero Connector 설치</h2>
+        <div class="compare mini-compare">
+          <div><span>Zotero 9 for Mac</span><strong>논문 라이브러리 앱입니다.</strong><p>PDF, 서지정보, 하이라이트를 관리합니다.</p></div>
+          <div><span>Zotero Connector</span><strong>브라우저 저장 버튼입니다.</strong><p>논문 페이지를 Zotero로 바로 보냅니다.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">10</span><span class="sep">/</span><span>46</span></div>
+</section>
+
+<section class="slide" data-cat="zotero/connector-chrome">
+  <div class="slide-content">
+    <div class="split-install">
+      <figure class="browser-shot">
+        <img src="assets/zotero-connector-chrome.png" alt="Chrome 웹 스토어의 Zotero Connector 설치 화면" />
+      </figure>
+      <div class="install-copy">
+        <h2>구글 크롬 확장 프로그램 Zotero Connector 추가</h2>
+        <p class="small-description">논문 페이지의 제목, 저자, 학술지, DOI와 PDF를 인식해 Zotero에 쉽게 저장해주는 확장 프로그램입니다.</p>
+        <div class="steps compact-steps">
+          <div><span>01</span><strong>오른쪽 위 <code>Chrome에 추가</code> 클릭</strong></div>
+          <div><span>02</span><strong>브라우저 주소창 옆 Zotero 아이콘 확인</strong></div>
+          <div><span>03</span><strong>논문 페이지에서 아이콘 클릭 후 Zotero 저장</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">11</span><span class="sep">/</span><span>46</span></div>
+</section>
+
+<section class="slide" data-cat="zotero/first-launch">
+  <div class="slide-content">
+    <figure class="single-screen">
+      <img src="assets/zotero-first-launch.png" alt="Zotero 설치 후 처음 실행한 라이브러리 화면" />
+      <figcaption>첫 설치 화면</figcaption>
+    </figure>
+  </div>
+  <div class="footer-mark"><span class="index">12</span><span class="sep">/</span><span>46</span></div>
+</section>
+
+<section class="slide" data-cat="zotero/connector-article-page">
+  <div class="slide-content">
+    <div class="split-install">
+      <figure class="browser-shot app-shot-large">
+        <img src="assets/zotero-nature-article-page.png" alt="Nature Scientific Data 논문 페이지 화면" />
+      </figure>
+      <div class="install-copy">
+        <h2>논문 페이지에서 Zotero Connector로 다운로드</h2>
+        <p class="lead">논문 웹페이지에서 Zotero Connector로 저장하면 제목, 저자, 학술지, 연도, DOI 등의 서지정보와 PDF를 함께 가져올 수 있습니다.</p>
+        <div class="steps compact-steps">
+          <div><span>01</span><strong>논문 제목, 저자, 저널, DOI가 보이는 페이지 열기</strong></div>
+          <div><span>02</span><strong>원문 PDF가 제공되는 페이지에서 저장</strong></div>
+          <div><span>03</span><strong>서지정보와 PDF를 함께 가져오는 방식</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">13</span><span class="sep">/</span><span>46</span></div>
+</section>
+
+<section class="slide" data-cat="zotero/connector-extension-menu">
+  <div class="slide-content">
+    <div class="split-install">
+      <figure class="browser-shot app-shot-large">
+        <img src="assets/zotero-extension-menu.png" alt="Chrome 확장 프로그램 목록에서 Zotero Connector를 확인하는 화면" />
+      </figure>
+      <div class="install-copy">
+        <h2>확장 프로그램에서 Zotero 찾기</h2>
+        <p class="lead">주소창 오른쪽의 퍼즐 아이콘을 누르면 설치된 확장 프로그램 목록이 나옵니다.</p>
+        <div class="steps compact-steps">
+          <div><span>01</span><strong><code>Zotero Connector</code> 목록 확인</strong></div>
+          <div><span>02</span><strong>고정 아이콘을 클릭해 주소창 옆에 고정</strong></div>
+          <div><span>03</span><strong>논문 페이지에서 바로 저장할 수 있게 준비</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">14</span><span class="sep">/</span><span>46</span></div>
+</section>
+
+<section class="slide" data-cat="zotero/connector-save-click">
+  <div class="slide-content">
+    <div class="split-install">
+      <figure class="browser-shot app-shot-large">
+        <img src="assets/zotero-connector-save-tooltip.png" alt="Zotero Connector가 논문 페이지를 저장할 수 있음을 보여주는 화면" />
+      </figure>
+      <div class="install-copy">
+        <h2>Connector 아이콘 클릭</h2>
+        <p class="lead">논문 페이지를 인식하면 Zotero Connector가 저장 가능한 항목 이름을 보여줍니다.</p>
+        <div class="steps compact-steps">
+          <div><span>01</span><strong>툴팁의 <code>Save to Zotero</code> 확인</strong></div>
+          <div><span>02</span><strong>아이콘 클릭 후 저장 창 열기</strong></div>
+          <div><span>03</span><strong>Zotero 앱 실행 상태 확인</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">15</span><span class="sep">/</span><span>46</span></div>
+</section>
+
+<section class="slide" data-cat="zotero/connector-save-dialog">
+  <div class="slide-content">
+    <div class="split-install">
+      <figure class="browser-shot app-shot-large">
+        <img src="assets/zotero-save-dialog.png" alt="Zotero Connector 저장 위치와 Full Text PDF 확인 화면" />
+      </figure>
+      <div class="install-copy">
+        <h2>저장 위치 확인</h2>
+        <p class="lead">저장 창에서 <code>내 라이브러리</code>를 선택하고, Full Text PDF가 같이 들어오는지 확인합니다.</p>
+        <div class="steps compact-steps">
+          <div><span>01</span><strong>저장 위치 <code>내 라이브러리</code> 확인</strong></div>
+          <div><span>02</span><strong><code>Full Text PDF</code> 표시 확인</strong></div>
+          <div><span>03</span><strong>태그나 메모는 필요할 때만 추가</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">16</span><span class="sep">/</span><span>46</span></div>
+</section>
+
+<section class="slide" data-cat="zotero/connector-saved-result">
+  <div class="slide-content">
+    <div class="split-install">
+      <figure class="browser-shot app-shot-large">
+        <img src="assets/zotero-saved-result.png" alt="Zotero에 논문이 저장되고 메타데이터가 채워진 화면" />
+      </figure>
+      <div class="install-copy">
+        <h2>Zotero 저장 결과 확인</h2>
+        <p class="lead">Connector로 저장하면 제목, 저자, 간행, 출판사, 날짜, 태그가 PDF 드래그보다 더 잘 채워집니다.</p>
+        <div class="steps compact-steps">
+          <div><span>01</span><strong>가운데 목록의 논문 항목 확인</strong></div>
+          <div><span>02</span><strong>아래 정보 패널의 저자와 날짜 확인</strong></div>
+          <div><span>03</span><strong>왼쪽 아래 자동 태그 확인</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">17</span><span class="sep">/</span><span>46</span></div>
+</section>
+
+<section class="slide" data-cat="zotero/highlight-and-note">
+  <div class="slide-content">
+    <h2>Zotero에서 바로 읽고 표시</h2>
+    <div class="dual-screens">
+      <figure>
+        <img src="assets/zotero-pdf-highlight-toolbar.png" alt="Zotero PDF 뷰어에서 문장을 선택하고 하이라이트 색상을 고르는 화면" />
+        <figcaption>PDF 문장을 드래그하면 하이라이트 색상을 고를 수 있습니다.</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/zotero-highlight-note-popup.png" alt="Zotero 하이라이트에 메모와 태그를 추가하는 화면" />
+        <figcaption>하이라이트에는 메모와 태그를 붙일 수 있습니다.</figcaption>
+      </figure>
+    </div>
+    <p class="lead compact-lead">이렇게 남긴 하이라이트와 메모가 나중에 Obsidian으로 가져올 핵심 재료가 됩니다.</p>
+  </div>
+  <div class="footer-mark"><span class="index">18</span><span class="sep">/</span><span>46</span></div>
+</section>
+
+<section class="slide" data-cat="zotero/better-bibtex-install-page">
+  <div class="slide-content">
+    <div class="split-install">
+      <figure class="browser-shot app-shot-large">
+        <img src="assets/better-bibtex-installation-page.png" alt="Better BibTeX for Zotero 설치 안내 페이지" />
+      </figure>
+      <div class="install-copy">
+        <h2>Better BibTeX 설치</h2>
+        <p class="lead">Zotero Integration은 Zotero 자료를 안정적으로 찾기 위해 Better BibTeX가 필요합니다.</p>
+        <div class="link-box">https://retorque.re/zotero-better-bibtex/installation/</div>
+        <div class="steps compact-steps">
+          <div><span>01</span><strong><code>latest release</code> 링크에서 <code>.xpi</code> 파일 다운로드</strong></div>
+          <div><span>02</span><strong>Zotero에서 <code>Tools → Plugins</code> 열기</strong></div>
+          <div><span>03</span><strong>톱니바퀴 메뉴에서 <code>Install Plugin From File</code> 선택</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">19</span><span class="sep">/</span><span>46</span></div>
+</section>
+
+<section class="slide" data-cat="zotero/better-bibtex-release-xpi">
+  <div class="slide-content">
+    <div class="split-install">
+      <figure class="browser-shot app-shot-large">
+        <img src="assets/better-bibtex-github-release-xpi.png" alt="GitHub Release Assets에서 zotero-better-bibtex xpi 파일을 다운로드하는 화면" />
+      </figure>
+      <div class="install-copy">
+        <h2>Better BibTeX <code>.xpi</code> 설치</h2>
+        <p class="lead">GitHub Release의 Assets에서 Better BibTeX 설치 파일을 다운로드합니다.</p>
+        <div class="steps compact-steps">
+          <div><span>01</span><strong><code>Assets</code> 섹션 열기</strong></div>
+          <div><span>02</span><strong><code>zotero-better-bibtex-버전.xpi</code> 파일 클릭</strong></div>
+          <div><span>03</span><strong><code>Source code</code> 압축 파일은 설치 파일 아님</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">20</span><span class="sep">/</span><span>46</span></div>
+</section>
+
+<section class="slide section-divider" data-cat="section/zotero-obsidian">
+  <div class="slide-content"><h2 class="section-title">Zotero와 Obsidian 연결하기</h2></div>
+  <div class="footer-mark"><span class="index">21</span><span class="sep">/</span><span>46</span></div>
+</section>
+
+<section class="slide" data-cat="plugins/intro">
+  <div class="slide-content">
+    <h2>플러그인이란?</h2>
+    <p class="lead">구글 크롬에 확장 프로그램을 설치하듯, Obsidian에 필요한 기능을 추가하는 작은 프로그램입니다.</p>
+    <div class="steps">
+      <div><span>01</span><strong>캘린더, 표 보기처럼 기본 기능에 없는 도구 추가</strong></div>
+      <div><span>02</span><strong>반복 작업 자동화 또는 다른 프로그램 자료 연결</strong></div>
+      <div><span>03</span><strong>오늘 사용할 플러그인: <code>Zotero Integration</code></strong></div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">22</span><span class="sep">/</span><span>46</span></div>
+</section>
+
+<section class="slide" data-cat="obsidian/settings-entry">
+  <div class="slide-content">
+    <div class="split-install">
+      <figure class="browser-shot app-shot-large">
+        <img src="assets/obsidian-settings-entry.png" alt="Obsidian 왼쪽 아래 설정 버튼이 보이는 화면" />
+      </figure>
+      <div class="install-copy">
+        <h2>Obsidian 플러그인 설정 클릭</h2>
+        <p class="lead">Zotero Integration 설치를 위해 Obsidian 설정에서 커뮤니티 플러그인으로 이동합니다.</p>
+        <div class="steps compact-steps">
+          <div><span>01</span><strong>왼쪽 아래 톱니바퀴 버튼 클릭</strong></div>
+          <div><span>02</span><strong>설정 창에서 <code>커뮤니티 플러그인</code> 이동</strong></div>
+          <div><span>03</span><strong>플러그인 설치 화면 이동</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">23</span><span class="sep">/</span><span>46</span></div>
+</section>
+
+<section class="slide" data-cat="obsidian/community-plugins-enable">
+  <div class="slide-content">
+    <div class="split-install">
+      <figure class="browser-shot app-shot-large">
+        <img src="assets/obsidian-community-plugins-enable.png" alt="Obsidian 커뮤니티 플러그인 사용 버튼 화면" />
+      </figure>
+      <div class="install-copy">
+        <h2>커뮤니티 플러그인 켜기</h2>
+        <p class="lead">Zotero Integration 설치를 위해 커뮤니티 플러그인을 사용할 수 있게 설정합니다.</p>
+        <div class="steps compact-steps">
+          <div><span>01</span><strong><code>커뮤니티 플러그인 사용</code> 버튼 클릭</strong></div>
+          <div><span>02</span><strong>Browse에서 <code>Zotero Integration</code> 검색</strong></div>
+          <div><span>03</span><strong>설치 후 <code>Enable</code> 클릭</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">24</span><span class="sep">/</span><span>46</span></div>
+</section>
+
+<section class="slide" data-cat="obsidian/community-plugins-ready">
+  <div class="slide-content">
+    <div class="split-install">
+      <figure class="browser-shot app-shot-large">
+        <img src="assets/obsidian-community-plugins-ready.png" alt="Obsidian 커뮤니티 플러그인 탐색 버튼 화면" />
+      </figure>
+      <div class="install-copy">
+        <h2>탐색 버튼 클릭</h2>
+        <p class="lead">커뮤니티 플러그인 화면에서 탐색 버튼으로 플러그인 스토어를 엽니다.</p>
+        <div class="steps compact-steps">
+          <div><span>01</span><strong>커뮤니티 플러그인 사용 상태 확인</strong></div>
+          <div><span>02</span><strong><code>탐색</code> 버튼 클릭</strong></div>
+          <div><span>03</span><strong>검색창에서 필요한 플러그인 검색</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">25</span><span class="sep">/</span><span>46</span></div>
+</section>
+
+<section class="slide" data-cat="obsidian/zotero-integration-search">
+  <div class="slide-content">
+    <div class="split-install">
+      <figure class="browser-shot app-shot-large">
+        <img src="assets/obsidian-zotero-integration-search.png" alt="Obsidian 플러그인 탐색에서 Zotero Integration을 검색한 화면" />
+      </figure>
+      <div class="install-copy">
+        <h2>Zotero Integration 검색</h2>
+        <p class="lead">검색 결과에서 <code>Zotero Integration</code> 선택.</p>
+        <div class="steps compact-steps">
+          <div><span>01</span><strong>검색창에 <code>zotero</code> 입력</strong></div>
+          <div><span>02</span><strong>첫 번째 결과인 <code>Zotero Integration</code> 선택</strong></div>
+          <div><span>03</span><strong>PDF annotations import 설명 확인</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">26</span><span class="sep">/</span><span>46</span></div>
+</section>
+
+<section class="slide" data-cat="obsidian/zotero-integration-install">
+  <div class="slide-content">
+    <div class="split-install">
+      <figure class="browser-shot app-shot-large">
+        <img src="assets/obsidian-zotero-integration-install.png" alt="Obsidian Zotero Integration 플러그인 설치 버튼 화면" />
+      </figure>
+      <div class="install-copy">
+        <h2>설치 클릭</h2>
+        <p class="lead">플러그인 상세 화면에서 설치 버튼 클릭. 설명에 Better BibTeX가 보이면 맞게 들어온 것입니다.</p>
+        <div class="steps compact-steps">
+          <div><span>01</span><strong>개발자 <code>obsidian-community</code> 확인</strong></div>
+          <div><span>02</span><strong><code>설치</code> 버튼 클릭</strong></div>
+          <div><span>03</span><strong>설치 후 활성화 버튼 확인</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">27</span><span class="sep">/</span><span>46</span></div>
+</section>
+
+<section class="slide" data-cat="obsidian/zotero-integration-installed">
+  <div class="slide-content">
+    <div class="split-install">
+      <figure class="browser-shot app-shot-large">
+        <img src="assets/obsidian-zotero-integration-installed.png" alt="Obsidian Zotero Integration 플러그인 설치 후 활성화된 화면" />
+      </figure>
+      <div class="install-copy">
+        <h2>설치 후 활성화 확인</h2>
+        <p class="lead">설치만으로는 끝이 아닙니다. 버튼이 <code>비활성화</code>로 바뀌어 있으면 현재 활성화된 상태입니다.</p>
+        <div class="steps compact-steps">
+          <div><span>01</span><strong><code>설치됨</code> 표시 확인</strong></div>
+          <div><span>02</span><strong><code>비활성화</code> 버튼이 보이면 활성화 상태</strong></div>
+          <div><span>03</span><strong>다음 단계는 옵션에서 import 설정 확인</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">28</span><span class="sep">/</span><span>46</span></div>
+</section>
+
+<section class="slide section-divider" data-cat="section/import-zotero-to-obsidian">
+  <div class="slide-content"><h2 class="section-title">Obsidian에 Zotero 자료 전부 가져오기</h2></div>
+  <div class="footer-mark"><span class="index">29</span><span class="sep">/</span><span>46</span></div>
+</section>
+
+<section class="slide" data-cat="zotero/note-shape">
+  <div class="slide-content">
+    <h2>가져오고 싶은 정보</h2>
+    <div class="cards four">
+      <div class="card"><span>Metadata</span><strong>서지정보</strong><p>제목, 저자, 연도, 학회지, DOI를 속성으로 저장합니다.</p></div>
+      <div class="card"><span>PDF</span><strong>원문 링크</strong><p>필요할 때 Zotero의 원본 PDF로 돌아갈 수 있게 합니다.</p></div>
+      <div class="card"><span>Annotations</span><strong>하이라이트</strong><p>중요 문장과 내 코멘트를 Markdown으로 가져옵니다.</p></div>
+      <div class="card"><span>Thinking</span><strong>내 해석</strong><p>그 논문이 내 연구 질문과 어떻게 연결되는지 씁니다.</p></div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">30</span><span class="sep">/</span><span>46</span></div>
+</section>
+
+<section class="slide" data-cat="obsidian/zotero-command-palette">
+  <div class="slide-content">
+    <div class="split-install">
+      <figure class="browser-shot app-shot-large">
+        <img src="assets/obsidian-command-palette-zotero.png" alt="Obsidian 명령 팔레트에서 Zotero를 검색한 화면" />
+      </figure>
+      <div class="install-copy">
+        <h2>컨트롤 P 누르고 Zotero 검색</h2>
+        <p class="lead">명령 팔레트에서 Zotero Integration 명령을 찾아 실행합니다.</p>
+        <div class="steps compact-steps">
+          <div><span>01</span><strong><code>Control + P</code>로 명령 팔레트 열기</strong></div>
+          <div><span>02</span><strong>검색창에 <code>zotero</code> 입력</strong></div>
+          <div><span>03</span><strong><code>Zotero Integration: Import notes</code> 선택</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">31</span><span class="sep">/</span><span>46</span></div>
+</section>
+
+<section class="slide" data-cat="obsidian/zotero-import-notes">
+  <div class="slide-content">
+    <div class="split-install">
+      <figure class="browser-shot app-shot-large">
+        <img src="assets/obsidian-zotero-import-notes.png" alt="Obsidian Zotero Integration Import notes 화면" />
+      </figure>
+      <div class="install-copy">
+        <h2>Import notes로 논문 가져오기</h2>
+        <p class="lead">Import notes를 선택하면 Zotero에 있는 논문과 하이라이트, 메모를 Obsidian으로 가져올 수 있습니다.</p>
+        <div class="steps compact-steps">
+          <div><span>01</span><strong><code>Zotero Integration: Import notes</code> 선택</strong></div>
+          <div><span>02</span><strong>가져올 논문 선택</strong></div>
+          <div><span>03</span><strong>하이라이트와 메모까지 Markdown 노트로 가져오기</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">32</span><span class="sep">/</span><span>46</span></div>
+</section>
+
+<section class="slide" data-cat="obsidian/import-result">
+  <div class="slide-content">
+    <h2>가져온 결과</h2>
+    <p class="lead preview-result-lead">Zotero의 서지정보, PDF 링크, 초록, 하이라이트와 메모가 Obsidian 노트로 들어옵니다.</p>
+    <div class="preview-gallery">
+      <figure>
+        <span class="preview-step">01 · Literature Note</span>
+        <img src="assets/obsidian-import-result-note-top.png" alt="Obsidian에 가져온 Zotero 문헌 노트 상단" />
+        <figcaption>서지정보와 Zotero 링크가 노트 속성으로 정리됩니다.</figcaption>
+      </figure>
+      <figure>
+        <span class="preview-step">02 · Highlight</span>
+        <img src="assets/obsidian-import-result-note-body.png" alt="Obsidian에 가져온 초록과 하이라이트 메모" />
+        <figcaption>초록, 하이라이트, 메모가 Markdown 본문으로 들어옵니다.</figcaption>
+      </figure>
+      <figure>
+        <span class="preview-step">03 · Knowledge Base</span>
+        <img src="assets/obsidian-import-result-graph.png" alt="Obsidian 그래프 보기" />
+        <figcaption>가져온 노트는 다른 노트와 연결되는 지식베이스가 됩니다.</figcaption>
+      </figure>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">33</span><span class="sep">/</span><span>46</span></div>
+</section>
+
+<section class="slide section-divider" data-cat="section/link-zotero-notes-with-claude-code">
+  <div class="slide-content"><h2 class="section-title">Claude Code로 Zotero 노트 연결하기</h2></div>
+  <div class="footer-mark"><span class="index">34</span><span class="sep">/</span><span>46</span></div>
+</section>
+
+<section class="slide" data-cat="claude-code/link-request">
+  <div class="slide-content">
+    <div class="split-install">
+      <figure class="browser-shot app-shot-large">
+        <img src="assets/claude-code-zotero-link-request.png" alt="Claude Code에서 Zotero 노트 연결을 요청하는 화면" />
+      </figure>
+      <div class="install-copy">
+        <h2>Claude Code에 연결 요청</h2>
+        <p class="lead">가져온 Markdown 노트를 Claude Code에게 읽히고, 노트 사이의 연결을 만들어 달라고 요청합니다.</p>
+        <div class="steps compact-steps">
+          <div><span>01</span><strong>ZoteroNotes 폴더 열기</strong></div>
+          <div><span>02</span><strong>서지정보, 초록, 하이라이트, 메모 읽기 요청</strong></div>
+          <div><span>03</span><strong>관련 개념과 논문을 <code>[[링크]]</code>로 연결</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">35</span><span class="sep">/</span><span>46</span></div>
+</section>
+
+<section class="slide" data-cat="zotero/prompt">
+  <div class="slide-content">
+    <h2>복사용 프롬프트</h2>
+    <div class="prompt-box">
+이 폴더는 Zotero에서 Obsidian으로 가져온 논문 Markdown 노트입니다.
+
+각 노트의 서지정보, 초록, 하이라이트, 메모를 읽고
+노트 사이의 연결을 만들어줘.
+
+1. 반복해서 등장하는 핵심 개념을 뽑아줘.
+2. 같은 개념을 다루는 논문들을 묶어줘.
+3. 각 논문 노트에 연결하면 좋은 [[개념 노트]]를 제안해줘.
+4. 서로 비교할 만한 논문 쌍을 찾아줘.
+5. Obsidian에서 쓸 수 있는 [[링크]] 형태로 연결 예시를 만들어줘.
+
+근거가 된 노트 이름을 [[노트명]] 형태로 표시해줘.
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">36</span><span class="sep">/</span><span>46</span></div>
+</section>
+
+<section class="slide" data-cat="claude-code/link-result">
+  <div class="slide-content">
+    <h2>Claude Code 요청 결과</h2>
+    <p class="lead compact-lead">Claude Code가 노트들을 읽고 공통 개념, 관련 논문 묶음, 실제 추가할 <code>[[링크]]</code>를 제안합니다.</p>
+    <div class="dual-screens">
+      <figure>
+        <img src="assets/claude-code-link-result-summary.png" alt="Claude Code가 핵심 개념과 관련 논문 묶음을 정리한 화면" />
+        <figcaption>반복 개념과 논문 묶음 정리</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/claude-code-link-result-applied.png" alt="Claude Code가 Obsidian 링크를 적용한 결과를 보여주는 화면" />
+        <figcaption>논문 노트 하단에 연결 섹션 추가</figcaption>
+      </figure>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">37</span><span class="sep">/</span><span>46</span></div>
+</section>
+
+<section class="slide" data-cat="obsidian/linked-result">
+  <div class="slide-content">
+    <h2>Obsidian에 작성된 결과</h2>
+    <p class="lead compact-lead">Claude Code가 만든 연결 섹션이 논문 노트에 추가되고, 개념 노트와 관련 논문이 링크로 이어집니다.</p>
+    <div class="dual-screens">
+      <figure>
+        <img src="assets/obsidian-linked-note-before.png" alt="Obsidian 문헌 노트 상단 화면" />
+        <figcaption>가져온 논문 노트</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/obsidian-linked-note-after.png" alt="Obsidian 문헌 노트에 연결 섹션이 추가된 화면" />
+        <figcaption>개념 노트와 관련 논문 링크 추가</figcaption>
+      </figure>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">38</span><span class="sep">/</span><span>46</span></div>
+</section>
+
+<section class="slide" data-cat="obsidian/concept-note-graph">
+  <div class="slide-content">
+    <h2>정리된 개념 노트와 그래프뷰</h2>
+    <p class="lead compact-lead">Claude Code가 만든 개념 노트가 논문 노트와 연결되면, Graph view에서도 관계가 보이기 시작합니다.</p>
+    <div class="dual-screens">
+      <figure>
+        <img src="assets/obsidian-concept-note-affective-computing.png" alt="Obsidian Affective Computing 개념 노트" />
+        <figcaption>개념 노트에 관련 논문과 하위 개념 연결</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/obsidian-linked-graph-view.png" alt="Obsidian 그래프뷰에서 논문과 개념 노트가 연결된 화면" />
+        <figcaption>논문 노트와 개념 노트가 그래프에서 연결</figcaption>
+      </figure>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">39</span><span class="sep">/</span><span>46</span></div>
+</section>
+
+
+<section class="slide" data-cat="key-idea/research-data-loop">
+  <div class="slide-content">
+    <h2>Key Idea</h2>
+    <p class="lead">Zotero, EndNote, Excel 어디에 있든 연구 자료를 Obsidian으로 가져오면 AI가 다시 읽을 수 있는 지식베이스가 됩니다.</p>
+    <div class="workflow-grid">
+      <div><span>1</span><strong>저장</strong><p>Zotero, EndNote, Excel에 서지정보와 메모 저장</p></div>
+      <div><span>2</span><strong>가져오기</strong><p>Obsidian으로 Markdown 노트화</p></div>
+      <div><span>3</span><strong>연결</strong><p>논문, 개념, 메모를 <code>[[링크]]</code>로 연결</p></div>
+      <div><span>4</span><strong>질문</strong><p>Claude Code가 폴더를 읽고 근거 기반으로 답변</p></div>
+    </div>
+    <p class="lead compact-lead">핵심은 PDF 하나를 요약시키는 것이 아니라, 연구실의 자료 흐름 전체를 AI가 읽을 수 있는 형태로 바꾸는 것입니다.</p>
+  </div>
+  <div class="footer-mark"><span class="index">40</span><span class="sep">/</span><span>46</span></div>
+</section>
+
+<section class="slide section-divider" data-cat="section/integration">
+  <div class="slide-content"><h2 class="section-title">종합 실습 — 플러그인과 Claude Code 연결하기</h2></div>
+  <div class="footer-mark"><span class="index">41</span><span class="sep">/</span><span>46</span></div>
+</section>
+
+<section class="slide" data-cat="integration/workflow">
+  <div class="slide-content">
+    <h2>오늘의 전체 워크플로우</h2>
+    <div class="workflow-grid">
+      <div><span>1</span><strong>Zotero</strong><p>서지정보와 하이라이트 가져오기</p></div>
+      <div><span>2</span><strong>Obsidian</strong><p>논문 노트와 하이라이트 가져오기</p></div>
+      <div><span>3</span><strong>Claude Code</strong><p>개념 노트와 링크 생성</p></div>
+      <div><span>4</span><strong>Graph view</strong><p>연결된 지식베이스 확인</p></div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">42</span><span class="sep">/</span><span>46</span></div>
+</section>
+
+<section class="slide" data-cat="integration/folder">
+  <div class="slide-content">
+    <h2>추천 Vault 구조</h2>
+    <div class="terminal-box">
+ResearchVault/
+  00_Home.md
+  10_Papers/
+  20_Concepts/
+  30_Projects/
+  40_Meetings/
+    </div>
+    <p class="lead">폴더는 적게 시작하고, 속성과 링크로 찾습니다. 폴더 구조가 복잡해지면 다시 AI가 읽기 어려워집니다.</p>
+  </div>
+  <div class="footer-mark"><span class="index">43</span><span class="sep">/</span><span>46</span></div>
+</section>
+
+<section class="slide" data-cat="integration/final-prompt">
+  <div class="slide-content">
+    <h2>복사용 프롬프트</h2>
+    <div class="prompt-box">
+이 폴더는 내 Obsidian 연구 지식베이스입니다.
+
+다음 폴더를 함께 읽어줘.
+- 10_Papers: 논문 요약 노트
+- 20_Concepts: 개념 노트
+- 30_Projects: 프로젝트 기록
+
+아래 결과를 만들어줘.
+1. 현재 지식베이스의 핵심 주제 5개
+2. 논문들이 서로 이어지는 흐름
+3. 아직 비어 있는 질문이나 약한 근거
+4. 다음 주에 읽을 논문 또는 정리할 노트 제안
+5. 발표 자료에 넣을 문헌 배경 문장
+
+답변에는 근거가 된 파일명을 표시해줘.
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">44</span><span class="sep">/</span><span>46</span></div>
+</section>
+
+<section class="slide" data-cat="closing/summary">
+  <div class="slide-content">
+    <h2>오늘의 정리</h2>
+    <div class="cards three">
+      <div class="card"><span>IMPORT</span><strong>논문 정보 가져오기</strong><p>Zotero와 연결해 서지정보와 하이라이트를 재료로 만들었습니다.</p></div>
+      <div class="card"><span>LINK</span><strong>노트 연결하기</strong><p>Claude Code로 개념 노트와 관련 논문 링크를 만들었습니다.</p></div>
+      <div class="card"><span>GRAPH</span><strong>연결 확인하기</strong><p>Obsidian Graph view에서 논문과 개념이 이어지는 것을 확인했습니다.</p></div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">45</span><span class="sep">/</span><span>46</span></div>
+</section>
+
+<section class="slide" data-cat="next/week-preview">
+  <div class="slide-content">
+    <h2>다음 주 미리보기</h2>
+    <p class="lead">다음 주에는 연결된 노트를 Bases로 표처럼 보고, Canvas로 연구 흐름을 배치합니다.</p>
+    <div class="dual-screens">
+      <figure>
+        <img src="assets/preview-next-bases.png" alt="Obsidian Bases 표 보기 화면" />
+        <figcaption>Bases로 노트 속성 표 보기</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/preview-next-canvas.png" alt="Obsidian Canvas 연구 흐름 보드 화면" />
+        <figcaption>Canvas로 논문과 아이디어 배치</figcaption>
+      </figure>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">46</span><span class="sep">/</span><span>46</span></div>
+</section>
+
+<script src="../template/navigator.js" defer></script>
+</body>
+</html>
