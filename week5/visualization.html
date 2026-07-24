@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>참가자 현황 — 데이터 품질·시각화 리포트</title>
+  <style>
+    :root{--ink:#17212b;--muted:#687582;--line:#dbe3e8;--paper:#f5f7f8;--card:#fff;--accent:#2878f0;--good:#1b9b72;--warn:#e59c25;--bad:#d95555}
+    *{box-sizing:border-box} body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.6 -apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",sans-serif}
+    .wrap{max-width:1180px;margin:auto;padding:42px 22px 64px}.eyebrow{color:var(--accent);font-weight:800;letter-spacing:.12em;font-size:12px}.top{display:flex;justify-content:space-between;gap:20px;align-items:end;margin-bottom:28px}.top h1{font-size:clamp(28px,4vw,46px);line-height:1.15;margin:8px 0}.top p{color:var(--muted);margin:0}.back{color:var(--accent);text-decoration:none;font-weight:700;white-space:nowrap}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:0 5px 18px #17212b08}.metric-label{font-size:13px;color:var(--muted)}.metric{font-size:32px;font-weight:800;line-height:1.2;margin-top:5px}.metric small{font-size:15px;font-weight:600;color:var(--muted)}.section{margin-top:22px}.section h2{font-size:20px;margin:0 0 12px}.charts{display:grid;grid-template-columns:1fr 1fr;gap:14px}.bar-row{display:grid;grid-template-columns:100px 1fr 48px;gap:10px;align-items:center;margin:14px 0}.bar{height:12px;background:#e9eef2;border-radius:99px;overflow:hidden}.bar i{display:block;height:100%;background:var(--accent);border-radius:inherit}.bar-row strong{text-align:right}.legend{display:flex;gap:18px;color:var(--muted);font-size:13px}.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px;background:var(--good)}.dot.warn{background:var(--warn)}.dot.bad{background:var(--bad)}.donut{width:150px;height:150px;border-radius:50%;margin:15px auto;background:conic-gradient(var(--good) 0 58.3%,var(--warn) 58.3% 66.6%,var(--bad) 66.6% 100%);display:grid;place-items:center}.donut:after{content:"12명";width:92px;height:92px;background:#fff;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:20px}.note{color:var(--muted);font-size:13px;margin:8px 0 0}.toolbar{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:12px}.toolbar input,.toolbar select{border:1px solid var(--line);border-radius:9px;padding:9px 11px;background:white;font:inherit}.toolbar input{width:min(100%,280px)}.table-wrap{overflow:auto}.table{width:100%;border-collapse:collapse;min-width:720px;background:#fff}.table th,.table td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap}.table th{font-size:12px;color:var(--muted);background:#f9fafb;cursor:pointer}.table tr:last-child td{border-bottom:0}.pill{display:inline-block;border-radius:99px;padding:2px 9px;font-size:12px;font-weight:700}.submitted{background:#e1f5ee;color:#137456}.missing{background:#fff1d8;color:#9a650e}.complete{background:#e6efff;color:#245db5}.issue{color:var(--bad);font-weight:700}.ok{color:var(--good);font-weight:700}.footer{color:var(--muted);font-size:12px;margin-top:18px}@media(max-width:760px){.top{display:block}.back{display:inline-block;margin-top:16px}.grid{grid-template-columns:repeat(2,1fr)}.charts{grid-template-columns:1fr}.bar-row{grid-template-columns:80px 1fr 40px}}@media(max-width:420px){.grid{grid-template-columns:1fr 1fr}.metric{font-size:25px}}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header class="top">
+      <div><div class="eyebrow">WEEK 5 · HTML REPORT EXAMPLE</div><h1>참가자 현황 데이터 리포트</h1><p>샘플 CSV를 읽고 결측치·중복·제출 현황을 한 화면에서 확인하는 예시입니다.</p></div>
+      <a class="back" href="./">← Week 5 슬라이드로 돌아가기</a>
+    </header>
+    <section class="grid">
+      <article class="card"><div class="metric-label">전체 참가자</div><div class="metric">12<small> 명</small></div></article>
+      <article class="card"><div class="metric-label">제출·완료</div><div class="metric">8<small> 명 · 66.7%</small></div></article>
+      <article class="card"><div class="metric-label">미제출</div><div class="metric">4<small> 명</small></div></article>
+      <article class="card"><div class="metric-label">품질 이슈</div><div class="metric issue">2<small> 건</small></div></article>
+    </section>
+    <section class="section charts">
+      <article class="card"><h2>소속별 참가자 수</h2><div class="bar-row"><span>하이대학교</span><div class="bar"><i style="width:100%"></i></div><strong>4</strong></div><div class="bar-row"><span>한빛연구소</span><div class="bar"><i style="width:75%"></i></div><strong>4</strong></div><div class="bar-row"><span>새봄대학교</span><div class="bar"><i style="width:100%"></i></div><strong>4</strong></div><p class="note">소속별 인원은 균등하지만 제출 상태는 다릅니다.</p></article>
+      <article class="card"><h2>제출 상태 분포</h2><div class="donut"></div><div class="legend"><span><i class="dot"></i>제출·완료 8</span><span><i class="dot warn"></i>미제출 4</span></div><p class="note">마감일 이후 제출된 항목 1건은 별도 확인이 필요합니다.</p></article>
+    </section>
+    <section class="section card"><h2>데이터 품질 점검</h2><div class="grid"><div><div class="metric-label">이메일 결측</div><div class="metric issue">1<small> 건</small></div><p class="note">P006 이메일이 비어 있습니다.</p></div><div><div class="metric-label">이메일 중복</div><div class="metric issue">1<small> 건</small></div><p class="note">P001·P011의 이메일이 같습니다.</p></div><div><div class="metric-label">마감일 형식</div><div class="metric ok">정상</div><p class="note">전체 날짜가 YYYY-MM-DD 형식입니다.</p></div><div><div class="metric-label">원본 보존</div><div class="metric ok">완료</div><p class="note">분석용 리포트에서만 표시합니다.</p></div></div></section>
+    <section class="section card"><div class="toolbar"><h2>참가자 상세</h2><div><input id="search" type="search" placeholder="이름·소속 검색" /><select id="status"><option value="">전체 상태</option><option>제출</option><option>완료</option><option>미제출</option></select></div></div><div class="table-wrap"><table class="table"><thead><tr><th>ID</th><th>이름</th><th>소속</th><th>제출 상태</th><th>제출일</th><th>점검 결과</th></tr></thead><tbody id="rows"></tbody></table></div><p class="footer">샘플 데이터 기준 · 필터는 브라우저에서 바로 동작합니다 · 실제 업무 데이터는 개인정보를 제거한 뒤 사용하세요.</p></section>
+  </main>
+  <script>
+    const data=[['P001','김가람','하이대학교','제출','2026-07-16','정상'],['P002','이누리','한빛연구소','미제출','—','정상'],['P003','박다온','새봄대학교','제출','2026-07-18','정상'],['P004','최라온','하이대학교','완료','2026-07-17','정상'],['P005','정마루','한빛연구소','미제출','—','정상'],['P006','강보람','새봄대학교','제출','2026-07-15','이메일 결측'],['P007','윤서우','하이대학교','제출','2026-07-18','정상'],['P008','한아람','한빛연구소','미제출','—','정상'],['P009','송이든','새봄대학교','제출','2026-07-14','정상'],['P010','임지음','하이대학교','제출','2026-07-19','마감일 이후'],['P011','오하람','한빛연구소','제출','2026-07-17','이메일 중복'],['P012','배해온','새봄대학교','미제출','—','정상']];
+    const rows=document.querySelector('#rows'), search=document.querySelector('#search'), status=document.querySelector('#status');
+    function render(){const q=search.value.trim().toLowerCase(); rows.innerHTML=data.filter(r=>(!q||r.join(' ').toLowerCase().includes(q))&&(!status.value||r[3]===status.value)).map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td><span class="pill ${r[3]==='미제출'?'missing':r[3]==='완료'?'complete':'submitted'}">${r[3]}</span></td><td>${r[4]}</td><td class="${r[5]==='정상'?'ok':'issue'}">${r[5]}</td></tr>`).join('')||'<tr><td colspan="6">검색 결과가 없습니다.</td></tr>'} search.addEventListener('input',render); status.addEventListener('change',render); render();
+  </script>
+</body>
+</html>
