@@ -1,0 +1,910 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Week 6 — 바이브코딩 업무자동화 가이드</title>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="../template/foundation.css" />
+<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="../template/print.css" media="print" />
+</head>
+<body>
+
+<nav class="nav-dots" id="navDots"></nav>
+<div class="keyboard-hint"><kbd>←</kbd><kbd>→</kbd> or <kbd>Space</kbd> · scroll</div>
+
+<!-- DRAFT: 강의 완성 후 삭제 -->
+<section class="slide" data-cat="draft/brain-dump">
+  <div class="slide-content">
+    <h2>브레인덤프</h2>
+    <div class="steps">
+      <div><span>01</span><strong>비디오 편집 및 압축 방법</strong></div>
+      <div><span>02</span><strong>비디오를 HTML 슬라이드에 넣는 방법</strong></div>
+      <div><span>03</span><strong>여러 기기에서 Obsidian 동기화하는 방법</strong></div>
+      <div><span>04</span><strong>Claude Skill</strong></div>
+      <div><span>05</span><strong>Zotero · Claude · Obsidian 실습 영상</strong></div>
+    </div>
+  </div>
+  <div class="footer-mark"><span>00</span></div>
+</section>
+
+<section class="slide title-slide" id="slide-cover" data-cat="cover">
+  <div class="slide-content">
+    <div class="pre-title"><span class="pulse"></span><span class="label">VIBE CODING WORKSHOP</span><span class="year">2026</span></div>
+    <h1 class="deck-title"><span class="accent">CLAUDE CODE</span><br />바이브코딩 업무자동화 가이드</h1>
+    <p class="deck-subtitle">WEEK 6 · 강대병원 바이브코딩 워크숍</p>
+    <div class="deck-meta"><span class="presenter">손동주</span><span class="meta-sep">·</span><span class="details">강원대 컴퓨터공학과 HAI Lab</span></div>
+  </div>
+  <div class="footer-mark"><span class="index">01</span><span class="sep">/</span><span>07</span></div>
+</section>
+
+<section class="slide" data-cat="recap/roadmap">
+  <div class="slide-content">
+    <h2>5주 정리</h2>
+    <div class="timeline five-week-timeline">
+      <div><span>WEEK 1</span><strong>만들기</strong><p>말로 요구사항을 설명하고 결과 확인</p></div>
+      <div><span>WEEK 2</span><strong>일시키기</strong><p>Claude Code로 파일과 업무 처리</p></div>
+      <div><span>WEEK 3</span><strong>기억하기</strong><p>규칙과 지식을 Obsidian에 축적</p></div>
+      <div><span>WEEK 4</span><strong>연결하기</strong><p>Zotero와 논문 지식베이스 연결</p></div>
+      <div><span>WEEK 5</span><strong>자동화하기</strong><p>엑셀 수작업을 맞춤형 도구로 전환</p></div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">04</span><span class="sep">/</span><span>57</span></div>
+</section>
+
+<section class="slide" data-cat="recap/before-after">
+  <div class="slide-content">
+    <h2>Before / After</h2>
+    <div class="compare">
+      <div class="panel">
+        <strong>Before — 수작업</strong>
+        <p>AI에게 같은 맥락 반복 설명</p>
+        <p>논문·엑셀·회의록이 여러 곳에 분산</p>
+        <p>이전 결과 탐색과 재작업 반복</p>
+      </div>
+      <div class="panel">
+        <strong>After — AI 업무 시스템</strong>
+        <p>Claude Code의 직접 업무 처리</p>
+        <p>결과와 판단 근거를 Obsidian에 축적</p>
+        <p>과거 자료와 작업 방식 재활용</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">04</span><span class="sep">/</span><span>07</span></div>
+</section>
+
+<section class="slide" data-cat="recap/week1-vibe-coding">
+  <div class="slide-content">
+    <h2>바이브코딩 절차</h2>
+    <p class="lead">만들고 싶은 결과와 필요한 자료 설명 → AI 초안 확인 → 수정 요청</p>
+    <div class="flow wide-flow">
+      <div>목표 설명</div><span>→</span><div>자료 제공</div><span>→</span><div>초안 생성</div><span>→</span><div>결과 확인</div><span>→</span><div>수정 요청</div>
+    </div>
+    <div class="callout"><strong>사람의 역할:</strong> 목표 설정 · 자료 선택 · 결과 판단</div>
+  </div>
+  <div class="footer-mark"><span class="index">06</span><span class="sep">/</span><span>57</span></div>
+</section>
+
+<section class="slide" data-cat="recap/week2-tools">
+  <div class="slide-content">
+    <h2>클로드코드 - 직접 작업 가능한 AI 비서</h2>
+    <p class="lead">단순히 답변하는 AI가 아니라, 내 컴퓨터의 도구를 사용해 직접 업무 처리</p>
+    <div class="cards four">
+      <div class="card"><span>READ</span><strong>파일 읽기</strong><p>폴더 구조와 문서 내용을 확인</p></div>
+      <div class="card"><span>EDIT</span><strong>파일 수정</strong><p>문서, 코드, 데이터에 변경 적용</p></div>
+      <div class="card"><span>RUN</span><strong>명령 실행</strong><p>프로그램, 검사, 변환 작업 실행</p></div>
+      <div class="card"><span>VERIFY</span><strong>결과 검증</strong><p>오류와 누락을 다시 확인</p></div>
+    </div>
+    <p class="one-line-rule">Claude Code · 내 컴퓨터에서 직접 일하는 AI 비서</p>
+  </div>
+  <div class="footer-mark"><span class="index">09</span><span class="sep">/</span><span>57</span></div>
+</section>
+
+<section class="slide" data-cat="recap/hands-and-brain">
+  <div class="slide-content">
+    <h2>옵시디언 - 제2의 뇌 지식 저장소</h2>
+    <p class="lead">AI 비서가 처리한 결과와 판단 근거를 다음 업무에 다시 쓰도록 저장</p>
+    <div class="cards four">
+      <div class="card"><span>RESULT</span><strong>결과 저장</strong><p>논문 · 엑셀 · 회의 · 강의 자료</p></div>
+      <div class="card"><span>EVIDENCE</span><strong>근거 저장</strong><p>출처 · 판단 기준 · 수정 과정</p></div>
+      <div class="card"><span>LINK</span><strong>지식 연결</strong><p>Markdown · 내부 링크 · 백링크 · 태그</p></div>
+      <div class="card"><span>REUSE</span><strong>다음 업무에 재사용</strong><p>과거 자료 · 프로젝트 맥락 · 후속 행동</p></div>
+    </div>
+    <p class="one-line-rule">AI 비서가 일함 → Obsidian에 기록 → 다음 업무에서 재사용</p>
+  </div>
+  <div class="footer-mark"><span class="index">24</span><span class="sep">/</span><span>57</span></div>
+</section>
+
+<section class="slide" data-cat="recap/week3-reuse">
+  <div class="slide-content">
+    <h2>반복 설명을 재사용 가능한 자산으로</h2>
+    <div class="cards three">
+      <div class="card"><span>RULE</span><strong>CLAUDE.md</strong><p>프로젝트의 목적, 규칙, 파일 구조, 작업 방법</p></div>
+      <div class="card"><span>METHOD</span><strong>Skill</strong><p>특정 업무를 수행하는 절차와 참고자료 묶음</p></div>
+      <div class="card"><span>KNOWLEDGE</span><strong>Obsidian</strong><p>업무 결과, 출처, 판단, 다음 행동이 쌓이는 공간</p></div>
+    </div>
+    <p class="one-line-rule">규칙은 Claude에 · 지식은 Obsidian에</p>
+  </div>
+  <div class="footer-mark"><span class="index">13</span><span class="sep">/</span><span>57</span></div>
+</section>
+
+<section class="slide" data-cat="recap/stronger-ai">
+  <div class="slide-content">
+    <h2>사용할수록 진화하는 AI</h2>
+    <p class="lead">Obsidian에 쌓인 규칙 · 결과 · 판단 근거를 다음 업무에 반복 활용</p>
+    <div class="cards three">
+      <div class="card"><span>CONTEXT</span><strong>과거 맥락</strong><p>이전에 무엇을 했고 왜 그렇게 판단했는지 확인</p></div>
+      <div class="card"><span>STYLE</span><strong>내 작업 방식</strong><p>원하는 결과 형식과 확인 절차를 반복 적용</p></div>
+      <div class="card"><span>REUSE</span><strong>기존 결과 재사용</strong><p>노트, 템플릿, 도구를 새 업무의 출발점으로 사용</p></div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">25</span><span class="sep">/</span><span>57</span></div>
+</section>
+
+<section class="slide section-divider" data-cat="expand">
+  <div class="slide-content">
+    <h2 class="section-title">외부 업무 도구 연결하기 - 클로드 커넥터</h2>
+  </div>
+  <div class="footer-mark"><span class="index">05</span><span class="sep">/</span><span>07</span></div>
+</section>
+
+<section class="slide mcp-hub-slide" data-cat="expand/connector-concept">
+  <div class="slide-content">
+    <div class="connector-layout">
+      <img class="mcp-hub-image" src="assets/mcp-hub-diagram.png" alt="MCP가 Claude 같은 AI와 원격 서비스 및 로컬 자료를 연결하는 구조">
+      <div class="connector-copy">
+        <h2>클로드 커넥터란?</h2>
+        <p class="lead">외부 업무 도구를 Claude의 손발로 연결</p>
+        <div class="steps">
+          <div><span>01</span><strong>도구 연결</strong><p>Slack · Gmail · Calendar · Drive · Notion</p></div>
+          <div><span>02</span><strong>직접 사용</strong><p>읽기 · 검색 · 작성 · 업데이트</p></div>
+          <div><span>03</span><strong>말로 요청</strong><p>Claude Code가 필요한 도구를 선택해 작업</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">10</span><span class="sep">/</span><span>10</span></div>
+</section>
+
+<section class="slide" data-cat="expand/why-connectors">
+  <div class="slide-content">
+    <h2>커넥터를 왜 쓰는가?</h2>
+    <p class="lead">답변하는 AI에서 외부 업무 도구를 직접 쓰는 AI 비서로</p>
+    <div class="cards three">
+      <div class="card">
+        <span>CHATBOT</span>
+        <strong>챗봇</strong>
+        <p>내가 물어본 질문에 답변<br>대화창 안에서만 작동</p>
+      </div>
+      <div class="card">
+        <span>AGENT</span>
+        <strong>에이전트</strong>
+        <p>내가 제공한 파일과 폴더에서 작업<br>주어진 범위 안에서 실행</p>
+      </div>
+      <div class="card">
+        <span>CONNECTOR</span>
+        <strong>커넥터 연결</strong>
+        <p>Slack · Gmail · Drive · Notion 직접 사용<br>필요한 도구를 골라 비서처럼 업무 처리</p>
+      </div>
+    </div>
+    <p class="one-line-rule">질문에 답변 → 내 자료에서 작업 → 외부 업무 도구까지 직접 사용</p>
+  </div>
+  <div class="footer-mark"><span class="index">11</span><span class="sep">/</span><span>11</span></div>
+</section>
+
+<section class="slide connector-slide" data-cat="expand/connectors">
+  <div class="slide-content">
+    <div class="connector-layout">
+      <img class="connector-shot" src="assets/claude-connectors.png" alt="Claude 데스크톱의 사용자 지정과 커넥터 진입 화면">
+      <div class="connector-copy">
+        <h2>클로드 커넥터 사용하기</h2>
+        <div class="steps">
+          <div><span>01</span><strong>프로필 메뉴 열기</strong><p>왼쪽 아래 이름 클릭</p></div>
+          <div><span>02</span><strong>설정에서 커넥터 선택</strong><p>사용자 지정 → 커넥터</p></div>
+          <div><span>03</span><strong>필요한 서비스 연결</strong><p>Gmail · Google Drive · Slack → 로그인</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">07</span><span class="sep">/</span><span>07</span></div>
+</section>
+
+<section class="slide connector-steps-slide" data-cat="expand/connector-settings">
+  <div class="slide-content">
+    <h2>설정에서 커넥터 들어가기</h2>
+    <div class="connector-steps-layout">
+      <div>
+        <strong>1. 프로필 → 설정</strong>
+        <img src="assets/claude-settings.png" alt="Claude 프로필 메뉴에서 설정을 선택하는 화면">
+      </div>
+      <div>
+        <strong>2. 사용자 지정 → 커넥터</strong>
+        <img src="assets/claude-connectors-list.png" alt="Claude 설정의 커넥터 목록과 연결 버튼">
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">08</span><span class="sep">/</span><span>08</span></div>
+</section>
+
+<section class="slide" data-cat="expand/connector-ready">
+  <div class="slide-content">
+    <h2>원하는 커넥터 선택 → 연결</h2>
+    <p class="lead">연결이 끝나면 Claude Code가 필요한 프로그램을 사람이 사용하듯 직접 사용</p>
+    <div class="flow">
+      <div>커넥터 선택</div>
+      <span>→</span>
+      <div>로그인 · 권한 허용</div>
+      <span>→</span>
+      <div>읽기 · 검색 · 작성 · 수정</div>
+    </div>
+    <div class="cards four tool-cards">
+      <div class="card"><img class="tool-card-icon" src="assets/icon-notion.svg" alt=""><span>NOTION</span><strong>Notion</strong><p>페이지 · 데이터베이스</p></div>
+      <div class="card"><img class="tool-card-icon" src="assets/icon-slack.svg" alt=""><span>SLACK</span><strong>Slack</strong><p>채널 · 메시지</p></div>
+      <div class="card"><img class="tool-card-icon" src="assets/icon-google-drive.svg" alt=""><span>DRIVE</span><strong>Google Drive</strong><p>문서 · 폴더 · PDF</p></div>
+      <div class="card"><img class="tool-card-icon" src="assets/icon-gmail.svg" alt=""><span>GMAIL</span><strong>Gmail</strong><p>메일 · 스레드</p></div>
+    </div>
+    <p class="one-line-rule">이번 실습 · Notion · Slack · Google Drive · Gmail 연결</p>
+  </div>
+  <div class="footer-mark"><span class="index">14</span><span class="sep">/</span><span>14</span></div>
+</section>
+
+<section class="slide section-divider" data-cat="expand/google-connectors">
+  <div class="slide-content">
+    <h2 class="section-title">Gmail · Google Drive 연결하기</h2>
+  </div>
+  <div class="footer-mark"><span class="index">15</span><span class="sep">/</span><span>15</span></div>
+</section>
+
+<section class="slide connector-login-slide" data-cat="expand/connector-login">
+  <div class="slide-content">
+    <h2>Gmail 연결 후 Google 로그인</h2>
+    <div class="connector-login-layout">
+      <div>
+        <strong>1. Gmail 연결 클릭</strong>
+        <img src="assets/claude-gmail-connect.png" alt="Claude 커넥터 목록에서 Gmail 연결을 선택하는 화면">
+      </div>
+      <div>
+        <strong>2. 사용할 Google 계정 선택</strong>
+        <img src="assets/claude-google-login.png" alt="Claude for Gmail에 연결할 Google 계정을 선택하는 화면">
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">09</span><span class="sep">/</span><span>09</span></div>
+</section>
+
+<section class="slide connector-login-slide" data-cat="expand/connector-result">
+  <div class="slide-content">
+    <h2>연결된 결과</h2>
+    <div class="connector-login-layout">
+      <div>
+        <strong>1. Gmail 접근 권한 선택 → 계속</strong>
+        <img src="assets/claude-gmail-permissions.png" alt="Claude for Gmail의 Google 계정 접근 권한을 선택하는 화면">
+      </div>
+      <div>
+        <strong>2. Gmail 연결 완료 → 체크 표시 확인</strong>
+        <img src="assets/claude-gmail-connected.png" alt="Claude 커넥터 목록에서 Gmail 연결 완료 체크 표시가 보이는 화면">
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">10</span><span class="sep">/</span><span>10</span></div>
+</section>
+
+<section class="slide connector-slide" data-cat="expand/connector-permission">
+  <div class="slide-content">
+    <div class="connector-layout">
+      <img class="connector-shot" src="assets/claude-gmail-tool-permission.png" alt="Claude Code에서 Gmail 읽기 도구 사용 권한을 묻는 화면">
+      <div class="connector-copy">
+        <h2>Gmail 읽어달라고 요청하기</h2>
+        <div class="steps">
+          <div><span>01</span><strong>말로 요청</strong><p>“Gmail 연결 확인하고 최근 메일 3개 읽어줘”</p></div>
+          <div><span>02</span><strong>도구와 권한 확인</strong><p>무엇을 읽고 실행하는지 확인</p></div>
+          <div><span>03</span><strong>이상하면 중단</strong><p>맞으면 Yes · 이상하면 No 또는 Esc</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">11</span><span class="sep">/</span><span>11</span></div>
+</section>
+
+<section class="slide gmail-result-slide" data-cat="expand/gmail-read-result">
+  <div class="slide-content">
+    <h2>메일 읽은 결과</h2>
+    <div class="gmail-result-layout">
+      <div>
+        <strong>Claude Code 조회 결과</strong>
+        <img class="gmail-result-terminal" src="assets/claude-gmail-read-result.png" alt="Claude Code가 Gmail 최근 메일 3개를 읽고 정리한 결과">
+      </div>
+      <div class="connector-copy gmail-result-copy">
+        <strong>실제 Gmail과 대조</strong>
+        <img class="gmail-inbox-verify" src="assets/gmail-inbox-verify.png" alt="실제 Gmail 받은편지함의 최근 메일 3개">
+        <div class="steps">
+          <div><span>01</span><strong>최근 메일 3개 조회</strong></div>
+          <div><span>02</span><strong>보낸 사람 · 제목 · 날짜 · 핵심 내용 정리</strong></div>
+          <div><span>03</span><strong>실제 받은편지함과 일치 확인</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">12</span><span class="sep">/</span><span>12</span></div>
+</section>
+
+<section class="slide connector-slide" data-cat="expand/google-drive">
+  <div class="slide-content">
+    <div class="connector-layout">
+      <img class="connector-shot" src="assets/claude-google-drive-connector.png" alt="Claude 디렉터리의 Google Drive 커넥터 상세 화면">
+      <div class="connector-copy">
+        <h2>Google Drive 커넥터 추가하기</h2>
+        <div class="steps">
+          <div><span>01</span><strong>Google Drive 선택 → 연결</strong></div>
+          <div><span>02</span><strong>Google 계정 로그인 · 권한 승인</strong></div>
+          <div><span>03</span><strong>파일 검색 · 읽기 · 생성 · 업로드</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">17</span><span class="sep">/</span><span>17</span></div>
+</section>
+
+<section class="slide connector-login-slide" data-cat="expand/google-drive-read">
+  <div class="slide-content">
+    <h2>Google Drive 자료 읽기</h2>
+    <div class="connector-login-layout">
+      <div>
+        <strong>1. 요청 · “구글드라이브에 /강의자료 폴더 읽어줘”</strong>
+        <img src="assets/claude-google-drive-read-request.png" alt="Claude Code에 Google Drive 강의자료 폴더를 읽어달라고 요청한 화면">
+      </div>
+      <div>
+        <strong>2. 결과 · 강의자료 PDF 4개 확인</strong>
+        <img src="assets/google-drive-lecture-files.png" alt="Google Drive 강의자료 폴더에서 Week 1부터 Week 4까지 PDF를 확인한 결과">
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">18</span><span class="sep">/</span><span>18</span></div>
+</section>
+
+<section class="slide connector-slide" data-cat="expand/browse-connectors">
+  <div class="slide-content">
+    <div class="connector-layout">
+      <img class="connector-shot" src="assets/claude-browse-connectors.png" alt="Claude 커넥터 화면의 추가 메뉴와 커넥터 둘러보기 항목">
+      <div class="connector-copy">
+        <h2>더 많은 커넥터 둘러보기</h2>
+        <div class="steps">
+          <div><span>01</span><strong>오른쪽 위 추가 클릭</strong></div>
+          <div><span>02</span><strong>커넥터 둘러보기 선택</strong></div>
+          <div><span>03</span><strong>필요한 서비스 검색 · 연결</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">13</span><span class="sep">/</span><span>13</span></div>
+</section>
+
+<section class="slide section-divider" data-cat="expand/slack-notion-connectors">
+  <div class="slide-content">
+    <h2 class="section-title">Slack · Notion 연결하기</h2>
+  </div>
+  <div class="footer-mark"><span class="index">23</span><span class="sep">/</span><span>23</span></div>
+</section>
+
+<section class="slide connector-slide" data-cat="expand/add-notion">
+  <div class="slide-content">
+    <div class="connector-layout">
+      <img class="connector-shot" src="assets/claude-add-notion-connector.png" alt="Claude 커넥터 디렉터리에서 Notion을 검색한 화면">
+      <div class="connector-copy">
+        <h2>Notion 커넥터 추가하기</h2>
+        <div class="steps">
+          <div><span>01</span><strong>검색창에 Notion 입력</strong></div>
+          <div><span>02</span><strong>공식 Notion 커넥터 확인</strong></div>
+          <div><span>03</span><strong>+ 클릭 → 로그인 · 권한 승인</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">14</span><span class="sep">/</span><span>14</span></div>
+</section>
+
+<section class="slide connector-login-slide" data-cat="expand/notion-result">
+  <div class="slide-content">
+    <h2>Notion 연결된 결과</h2>
+    <div class="connector-login-layout">
+      <div>
+        <strong>1. 워크스페이스 선택 → 계속하기</strong>
+        <img src="assets/claude-notion-permission.png" alt="Notion MCP에 연결할 워크스페이스와 권한을 확인하는 화면">
+      </div>
+      <div>
+        <strong>2. Notion 연결 완료 → 체크 표시 확인</strong>
+        <img src="assets/claude-notion-connected.png" alt="Claude 커넥터 목록에서 Notion 연결 완료 체크 표시가 보이는 화면">
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">15</span><span class="sep">/</span><span>15</span></div>
+</section>
+
+<section class="slide connector-login-slide" data-cat="expand/notion-read">
+  <div class="slide-content">
+    <h2>Notion 회의록 읽어달라고 요청하기</h2>
+    <div class="connector-login-layout">
+      <div>
+        <strong>1. “Notion 연결 확인하고 회의록 표 읽어줘”</strong>
+        <img src="assets/claude-notion-read-request.png" alt="Claude Code에 Notion 회의록 표를 읽어달라고 요청하는 과정">
+      </div>
+      <div>
+        <strong>2. 회의록 데이터베이스 8건 조회</strong>
+        <img src="assets/claude-notion-read-result.png" alt="Claude Code가 Notion 회의록 데이터베이스 8건을 읽은 결과">
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">16</span><span class="sep">/</span><span>16</span></div>
+</section>
+
+<section class="slide connector-slide" data-cat="expand/notion-update-request">
+  <div class="slide-content">
+    <div class="connector-layout">
+      <img class="connector-shot" src="assets/claude-notion-update-request.png" alt="Claude Code에 Week 6 강의자료 링크를 Notion에 추가해달라고 요청한 화면">
+      <div class="connector-copy">
+        <h2>Claude에게 Notion 수정 요청하기</h2>
+        <div class="steps">
+          <div><span>01</span><strong>문제 찾기</strong><p>누락된 Week 6 강의자료 링크 확인</p></div>
+          <div><span>02</span><strong>수정 규칙 말하기</strong><p>1–5주차와 같은 형식으로 링크 추가</p></div>
+          <div><span>03</span><strong>Notion에 바로 반영</strong><p>회의록 표 업데이트 완료</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">17</span><span class="sep">/</span><span>17</span></div>
+</section>
+
+<section class="slide notion-before-after-slide" data-cat="expand/notion-before-after">
+  <div class="slide-content">
+    <h2>Notion 업무 · Before / After</h2>
+    <div class="notion-before-after-layout">
+      <div>
+        <strong>Before</strong>
+        <img src="assets/notion-before.png" alt="Claude 작업 전 Notion 회의록 데이터베이스">
+      </div>
+      <div>
+        <strong>After</strong>
+        <img src="assets/notion-after.png" alt="Claude 요청 후 Week 6 강의자료 링크가 추가된 Notion 회의록 데이터베이스">
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">17</span><span class="sep">/</span><span>17</span></div>
+</section>
+
+<section class="slide connector-login-slide" data-cat="expand/slack-connect">
+  <div class="slide-content">
+    <h2>Slack 커넥터 추가하기</h2>
+    <div class="connector-login-layout">
+      <div>
+        <strong>1. Slack 선택 → 연결</strong>
+        <img src="assets/claude-slack-connector.png" alt="Claude 디렉터리에서 Slack 커넥터를 선택하고 연결하는 화면">
+      </div>
+      <div>
+        <strong>2. 워크스페이스 선택 · 권한 확인 → 허용</strong>
+        <img src="assets/claude-slack-permissions.png" alt="Claude 앱의 Slack 워크스페이스 접근 권한을 확인하고 허용하는 화면">
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">18</span><span class="sep">/</span><span>18</span></div>
+</section>
+
+<section class="slide connector-login-slide" data-cat="expand/slack-read">
+  <div class="slide-content">
+    <h2>Slack 채널 읽기</h2>
+    <div class="connector-login-layout">
+      <div>
+        <strong>1. 요청 · “dongju-research-status 채널 읽어줘”</strong>
+        <img src="assets/claude-slack-read-result.png" alt="Claude Code가 Slack 연구 현황 채널을 읽고 내용을 요약한 화면">
+      </div>
+      <div>
+        <strong>2. 결과 · 실제 Slack 메시지와 같은 내용 확인</strong>
+        <img src="assets/slack-channel-source.png" alt="Slack dongju-research-status 채널의 실제 메시지 화면">
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">19</span><span class="sep">/</span><span>19</span></div>
+</section>
+
+<section class="slide connector-slide" data-cat="expand/connector-directory">
+  <div class="slide-content">
+    <div class="connector-layout">
+      <img class="connector-shot" src="assets/claude-connector-directory.png" alt="Claude 커넥터 디렉터리에 다양한 업무 도구가 표시된 화면">
+      <div class="connector-copy">
+        <h2>필요한 커넥터 골라 쓰기</h2>
+        <div class="steps">
+          <div><span>01</span><strong>업무 도구 검색</strong><p>Slack · Notion · Google Drive · Gmail · Calendar</p></div>
+          <div><span>02</span><strong>필요한 서비스만 연결</strong><p>+ 클릭 → 로그인 · 권한 승인</p></div>
+          <div><span>03</span><strong>Claude Code에 말로 요청</strong><p>읽기 · 검색 · 정리 · 업데이트</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">27</span><span class="sep">/</span><span>27</span></div>
+</section>
+
+<section class="slide" data-cat="expand/evolving-assistant">
+  <div class="slide-content">
+    <p class="lead">외부 업무 도구의 실행 능력과 Obsidian의 장기 기억 결합</p>
+    <div class="cards four">
+      <div class="card">
+        <span>CONNECT</span>
+        <strong>업무 시스템 연결</strong>
+        <p>Slack · Gmail · Drive · Notion 접근</p>
+      </div>
+      <div class="card">
+        <span>ORCHESTRATE</span>
+        <strong>업무 오케스트레이션</strong>
+        <p>검색 · 판단 · 작성 · 반영을 연속 수행</p>
+      </div>
+      <div class="card">
+        <span>MEMORY</span>
+        <strong>지식 자산화</strong>
+        <p>결과 · 출처 · 판단 근거를 Obsidian에 축적</p>
+      </div>
+      <div class="card">
+        <span>EVOLVE</span>
+        <strong>맥락 기반 고도화</strong>
+        <p>축적된 지식과 작업 방식을 다음 업무에 재사용</p>
+      </div>
+    </div>
+    <p class="one-line-rule">Connector로 실행 범위 확장 → Obsidian으로 장기 기억 형성 → 사용할수록 고도화</p>
+  </div>
+  <div class="footer-mark"><span class="index">32</span><span class="sep">/</span><span>32</span></div>
+</section>
+
+<section class="slide section-divider" data-cat="remote-control">
+  <div class="slide-content">
+    <h2 class="section-title">리모트 컨트롤</h2>
+  </div>
+  <div class="footer-mark"><span class="index">33</span><span class="sep">/</span><span>33</span></div>
+</section>
+
+<section class="slide remote-control-hero-slide" data-cat="remote-control/anywhere">
+  <div class="slide-content">
+    <img class="remote-control-hero-image" src="assets/remote-control-anywhere.png" alt="휴대폰과 태블릿에서 어디서나 Claude Code에 연결하는 Remote Control 화면">
+  </div>
+  <div class="footer-mark"><span class="index">34</span><span class="sep">/</span><span>34</span></div>
+</section>
+
+<section class="slide" data-cat="remote-control/benefits">
+  <div class="slide-content">
+    <h2>리모트 컨트롤이란?</h2>
+    <p class="lead">휴대폰에서 내 컴퓨터의 Claude Code 세션을 원격으로 이어서 사용하는 방식</p>
+    <div class="cards three">
+      <div class="card">
+        <span>ANYWHERE</span>
+        <strong>컴퓨터 앞이 아니어도 작업</strong>
+        <p>이동 중에도 휴대폰에서 요청 전달</p>
+      </div>
+      <div class="card">
+        <span>LOCAL</span>
+        <strong>로컬 환경 그대로 사용</strong>
+        <p>내 파일 · 프로젝트 규칙 · 연결 도구 유지</p>
+      </div>
+      <div class="card">
+        <span>CONTROL</span>
+        <strong>확인과 승인까지 원격 처리</strong>
+        <p>진행 상황 확인 · 추가 지시 · 실행 승인</p>
+      </div>
+    </div>
+    <p class="one-line-rule">컴퓨터 앞에 없어도 내 컴퓨터의 Claude Code로 업무 계속</p>
+  </div>
+  <div class="footer-mark"><span class="index">35</span><span class="sep">/</span><span>35</span></div>
+</section>
+
+<section class="slide connector-slide mobile-app-install-slide" data-cat="remote-control/mobile-app">
+  <div class="slide-content">
+    <div class="connector-layout">
+      <img class="connector-shot" src="assets/claude-mobile-app-install.png" alt="Google Play에서 Claude by Anthropic 공식 앱을 설치하는 화면">
+      <div class="connector-copy">
+        <h2>휴대폰에 Claude 앱 설치</h2>
+        <div class="steps">
+          <div><span>01</span><strong>App Store · Google Play에서 Claude 검색</strong></div>
+          <div><span>02</span><strong>Anthropic PBC 공식 앱 확인 → 설치</strong></div>
+          <div><span>03</span><strong>컴퓨터와 같은 Claude 계정으로 로그인</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">36</span><span class="sep">/</span><span>36</span></div>
+</section>
+
+<section class="slide connector-login-slide remote-control-steps-slide" data-cat="mobile/remote-control">
+  <div class="slide-content">
+    <h2>리모트 컨트롤 절차</h2>
+    <div class="connector-login-layout">
+      <div>
+        <strong>1. Claude Code에서 <code>/remote-control</code> 입력 → Show QR code</strong>
+        <img src="assets/claude-remote-control-command.png" alt="Claude Code에서 remote-control 명령을 입력하고 Show QR code를 선택하는 화면">
+      </div>
+      <div>
+        <strong>2. 생성된 QR 코드를 휴대폰 Claude 앱으로 스캔</strong>
+        <img src="assets/claude-remote-control-qr.png" alt="Claude Code Remote Control 접속용 QR 코드가 표시된 화면">
+      </div>
+    </div>
+    <p class="one-line-rule">QR 스캔 → 휴대폰에서 같은 Claude Code 세션 접속</p>
+  </div>
+  <div class="footer-mark"><span class="index">34</span><span class="sep">/</span><span>34</span></div>
+</section>
+
+<section class="slide connector-login-slide remote-control-request-slide" data-cat="remote-control/request">
+  <div class="slide-content">
+    <h2>휴대폰에서 컴퓨터에 작업 요청</h2>
+    <div class="connector-login-layout">
+      <div>
+        <strong>1. 휴대폰 Claude 앱에서 작업 요청</strong>
+        <img src="assets/remote-control-phone-request.png" alt="휴대폰 Claude 앱에서 현재 컴퓨터의 실행 중인 프로세스를 확인해달라고 요청한 화면">
+      </div>
+      <div>
+        <strong>2. 컴퓨터의 Claude Code가 요청 실행 · 결과 반환</strong>
+        <img src="assets/remote-control-computer-result.png" alt="컴퓨터의 Claude Code가 휴대폰 요청을 받아 실행 중인 프로세스를 확인한 결과">
+      </div>
+    </div>
+    <p class="one-line-rule">휴대폰 요청 → 내 컴퓨터에서 실행 → 결과를 휴대폰에서 확인</p>
+  </div>
+  <div class="footer-mark"><span class="index">39</span><span class="sep">/</span><span>39</span></div>
+</section>
+
+<section class="slide connector-slide remote-control-workflow-slide" data-cat="remote-control/slack-obsidian">
+  <div class="slide-content">
+    <div class="connector-layout">
+      <img class="connector-shot" src="assets/remote-control-slack-to-obsidian.png" alt="휴대폰에서 Slack 회의록을 찾아 Obsidian에 정리해달라고 요청한 Claude Remote Control 화면">
+      <div class="connector-copy">
+        <h2>휴대폰에서 회의록 정리 요청</h2>
+        <div class="steps">
+          <div><span>01</span><strong>휴대폰에서 업무 지시</strong><p>“Slack 최근 한 달 회의록을 Obsidian에 정리해줘”</p></div>
+          <div><span>02</span><strong>컴퓨터가 Slack 자료 조회</strong><p>Claude Code가 채널과 메시지를 직접 검색 · 읽기</p></div>
+          <div><span>03</span><strong>Obsidian에 결과 기록</strong><p>회의 내용 · 결정 사항 · 후속 행동을 지식으로 저장</p></div>
+        </div>
+        <p class="one-line-rule">폰은 지시 · 컴퓨터는 실행 · Obsidian은 기억</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">40</span><span class="sep">/</span><span>40</span></div>
+</section>
+
+<section class="slide connector-login-slide obsidian-meeting-result-slide" data-cat="remote-control/obsidian-result">
+  <div class="slide-content">
+    <h2>Obsidian에 정리된 결과</h2>
+    <div class="connector-login-layout">
+      <div>
+        <strong>1. 월간 핵심 흐름 · 메타데이터 · 최신 회의 정리</strong>
+        <img src="assets/obsidian-meeting-summary-result-1.png" alt="Slack 회의록을 기반으로 생성된 Obsidian 월간 연구 회의록 요약">
+      </div>
+      <div>
+        <strong>2. 회의별 Action Items · 주요 결과 구조화</strong>
+        <img src="assets/obsidian-meeting-summary-result-2.png" alt="Obsidian에 날짜별로 정리된 연구 회의 Action Items와 주요 결과">
+      </div>
+    </div>
+    <p class="one-line-rule">Slack 대화 → 구조화된 회의 기록 → 다음 업무에 재사용</p>
+  </div>
+  <div class="footer-mark"><span class="index">41</span><span class="sep">/</span><span>41</span></div>
+</section>
+
+<section class="slide connector-slide gmail-unread-slide" data-cat="expand/gmail-unread">
+  <div class="slide-content">
+    <div class="connector-layout">
+      <img class="connector-shot" src="assets/gmail-unread-inbox.png" alt="Gmail 받은편지함에 읽지 않은 메일 2개가 표시된 화면">
+      <div class="connector-copy">
+        <h2>안 읽은 메일 확인</h2>
+        <div class="steps">
+          <div><span>01</span><strong>받은편지함의 안 읽은 메일 확인</strong><p>현재 안 읽은 메일 2개</p></div>
+          <div><span>02</span><strong>요약할 메일 범위 결정</strong><p>보낸 사람 · 제목 · 도착 시간 확인</p></div>
+          <div><span>03</span><strong>Claude에 처리 요청</strong><p>내용 요약 · 중요도 분류 · 답장 초안 작성</p></div>
+        </div>
+        <p class="one-line-rule">다음 · 안 읽은 메일 요약하고 답장 초안 만들기</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">44</span><span class="sep">/</span><span>44</span></div>
+</section>
+
+<section class="slide connector-slide gmail-phone-request-slide" data-cat="expand/gmail-unread-request">
+  <div class="slide-content">
+    <div class="connector-layout">
+      <img class="connector-shot" src="assets/gmail-unread-summary-phone-request.png" alt="휴대폰 Claude 앱에서 안 읽은 Gmail 요약과 회신 초안을 요청하고 Gmail 검색 권한을 확인하는 화면">
+      <div class="connector-copy">
+        <h2>안 읽은 Gmail 요약 요청</h2>
+        <div class="steps">
+          <div><span>01</span><strong>휴대폰에서 업무 요청</strong><p>“안 읽은 Gmail 요약하고 회신이 필요하면 초안 써줘”</p></div>
+          <div><span>02</span><strong>Gmail 검색 권한 확인</strong><p>Claude가 실행하려는 도구와 범위 검토</p></div>
+          <div><span>03</span><strong>허용 후 메일 조회</strong><p>한 번만 허용 · 세션 동안 허용 · 거부 중 선택</p></div>
+        </div>
+        <p class="one-line-rule">권한 확인 → 안 읽은 메일 검색 → 요약 · 회신 초안 생성</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">45</span><span class="sep">/</span><span>45</span></div>
+</section>
+
+<section class="slide connector-slide" data-cat="expand/gmail-unread-result">
+  <div class="slide-content">
+    <div class="connector-layout">
+      <img class="connector-shot" src="assets/gmail-unread-summary-result.png" alt="Claude Code가 Gmail의 안 읽은 메일 2건을 요약하고 회신 필요 여부를 판단한 결과">
+      <div class="connector-copy">
+        <h2>안 읽은 메일 요약 결과</h2>
+        <div class="steps">
+          <div><span>01</span><strong>안 읽은 메일 2건 확인</strong><p>발신자 · 제목 · 핵심 내용 표로 정리</p></div>
+          <div><span>02</span><strong>메일 성격 자동 분류</strong><p>Claude 계정 보안 관련 자동 알림</p></div>
+          <div><span>03</span><strong>회신 필요 여부 판단</strong><p>사람에게 회신할 메일이 아니므로 초안 생략</p></div>
+        </div>
+        <p class="one-line-rule">요약 → 중요도 분류 → 회신 필요 여부 판단 → 필요한 경우에만 초안 작성</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">46</span><span class="sep">/</span><span>46</span></div>
+</section>
+
+<section class="slide section-divider" data-cat="scheduled-run">
+  <div class="slide-content">
+    <h2 class="section-title">예약 실행</h2>
+  </div>
+  <div class="footer-mark"><span class="index">44</span><span class="sep">/</span><span>44</span></div>
+</section>
+
+<section class="slide connector-slide scheduled-run-definition-slide" data-cat="scheduled-run/definition">
+  <div class="slide-content">
+    <div class="connector-layout">
+      <img class="connector-shot" src="assets/scheduled-run-concept.png" alt="정해진 시간에 반복 업무를 실행하는 예약 실행 개념 그림">
+      <div class="connector-copy">
+        <h2>예약 실행이란?</h2>
+        <p class="lead">주기적으로 반복하거나 정해진 시점에 해야 하는 업무를 자동으로 시작</p>
+        <div class="steps">
+          <div><span>01</span><strong>매일 오전 9시</strong><p>안 읽은 메일 확인 · 요약 · 회신 초안</p></div>
+          <div><span>02</span><strong>회의 종료 후</strong><p>회의 내용 · 결정 사항 · Action Items 정리</p></div>
+          <div><span>03</span><strong>매주 업무 마감 전</strong><p>진행 현황 수집 · 주간 보고서 작성</p></div>
+        </div>
+        <p class="one-line-rule">사람이 매번 시작하지 않아도 반복 업무 자동 처리</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">45</span><span class="sep">/</span><span>45</span></div>
+</section>
+
+<section class="slide" data-cat="remote-control/gmail-schedule">
+  <div class="slide-content">
+    <h2>매일 오전 9시 · 메일 브리핑 자동화</h2>
+    <p class="lead">업무 시작 시간에 전날 도착한 안 읽은 메일을 자동 조회 · 요약 · 회신 초안 준비</p>
+    <div class="flow wide-flow">
+      <div>09:00 실행</div><span>→</span><div>어제 온 안 읽은 메일</div><span>→</span><div>핵심 내용 요약</div><span>→</span><div>회신 초안 작성</div><span>→</span><div>사용자 확인</div>
+    </div>
+    <div class="prompt-box compact-prompt command-box">매일 아침 9시, 어제 도착한 안 읽은 메일을 요약해줘.
+회신이 필요한 메일은 답장 초안을 작성하고, 실제 전송 전에는 나에게 확인해줘.</div>
+    <p class="one-line-rule">반복 업무는 예약 실행 · 외부 전송은 사용자 승인</p>
+  </div>
+  <div class="footer-mark"><span class="index">44</span><span class="sep">/</span><span>44</span></div>
+</section>
+
+<section class="slide" data-cat="scheduled-run/meeting-followup">
+  <div class="slide-content">
+    <h2>회의 종료 후 · 후속 업무 자동화</h2>
+    <p class="lead">회의가 끝나는 시점을 기준으로 정리 · 공유 · 업로드 작업 자동 시작</p>
+    <div class="cards two">
+      <div class="card">
+        <span>MINUTES</span>
+        <strong>회의록 작성 · 공유</strong>
+        <p>회의 내용 요약 → 결정 사항·Action Items 추출 → Notion 기록 → Slack 공유</p>
+      </div>
+      <div class="card">
+        <span>VIDEO</span>
+        <strong>회의 영상 정리 · 업로드</strong>
+        <p>녹화 영상 확인 → 용량 압축 → 파일명 정리 → Drive 업로드 · 링크 공유</p>
+      </div>
+    </div>
+    <div class="prompt-box compact-prompt command-box">회의가 끝나면 회의 내용과 녹화 영상을 정리해줘.
+결정 사항과 Action Items를 포함한 회의록을 작성해 Notion에 기록하고 Slack 공유 초안을 만들어줘.
+영상은 압축해 Drive에 업로드하고, 외부 공유 전에는 나에게 확인해줘.</div>
+    <p class="one-line-rule">회의 종료 → 후속 정리 업무 자동 시작</p>
+  </div>
+  <div class="footer-mark"><span class="index">47</span><span class="sep">/</span><span>47</span></div>
+</section>
+
+<section class="slide" data-cat="scheduled-run/weekly-report">
+  <div class="slide-content">
+    <h2>매주 업무 마감 전 · 주간 보고서 자동화</h2>
+    <p class="lead">한 주 동안 쌓인 업무 기록을 모아 정해진 형식의 보고서 초안 생성</p>
+    <div class="cards three">
+      <div class="card">
+        <span>COLLECT</span>
+        <strong>업무 기록 수집</strong>
+        <p>Slack · Notion · Obsidian · 일정에서 이번 주 활동 확인</p>
+      </div>
+      <div class="card">
+        <span>SUMMARIZE</span>
+        <strong>보고서 구조화</strong>
+        <p>완료 업무 · 진행 상황 · 문제점 · 다음 주 계획 정리</p>
+      </div>
+      <div class="card">
+        <span>SHARE</span>
+        <strong>확인 후 공유</strong>
+        <p>초안 검토 → 수정 → Notion 기록 · Slack 공유</p>
+      </div>
+    </div>
+    <div class="prompt-box compact-prompt command-box">매주 금요일 오후 5시, Slack · Notion · Obsidian에서 이번 주 업무 기록을 모아줘.
+완료 업무 · 진행 상황 · 문제점 · 다음 주 계획으로 주간 보고서 초안을 작성하고, 공유 전에는 나에게 확인해줘.</div>
+    <p class="one-line-rule">매주 반복되는 취합과 정리를 자동화 · 최종 판단은 사람이 확인</p>
+  </div>
+  <div class="footer-mark"><span class="index">48</span><span class="sep">/</span><span>48</span></div>
+</section>
+
+<section class="slide" data-cat="closing/six-week-journey">
+  <div class="slide-content">
+    <h2>1–6주 전체 여정</h2>
+    <div class="timeline six-week-summary">
+      <div><span>WEEK 1</span><strong>만들기</strong><p>말로 목표 설명<br />결과물 직접 제작</p></div>
+      <div><span>WEEK 2</span><strong>일시키기</strong><p>Claude Code로<br />파일과 업무 처리</p></div>
+      <div><span>WEEK 3</span><strong>기억하기</strong><p>Obsidian에<br />지식과 맥락 축적</p></div>
+      <div><span>WEEK 4</span><strong>논문 연결하기</strong><p>Zotero와 논문을<br />지식베이스로 연결</p></div>
+      <div><span>WEEK 5</span><strong>도구 만들기</strong><p>엑셀 수작업을<br />맞춤형 도구로 전환</p></div>
+      <div><span>WEEK 6</span><strong>업무 확장하기</strong><p>외부 도구 연결<br />원격·예약 실행</p></div>
+    </div>
+  </div>
+  <div class="footer-mark"><span class="index">49</span><span class="sep">/</span><span>52</span></div>
+</section>
+
+<section class="slide section-divider" data-cat="closing/summary-divider">
+  <div class="slide-content">
+    <h2 class="section-title">정리</h2>
+  </div>
+  <div class="footer-mark"><span class="index">50</span><span class="sep">/</span><span>53</span></div>
+</section>
+
+<section class="slide" data-cat="closing/system">
+  <div class="slide-content">
+    <h2>완성된 AI 업무 시스템</h2>
+    <div class="cards four">
+      <div class="card"><span>WORK</span><strong>Claude Code</strong><p>내 컴퓨터에서 파일을 읽고 수정하며 직접 작업</p></div>
+      <div class="card"><span>MEMORY</span><strong>Obsidian</strong><p>결과 · 출처 · 판단 근거 · 다음 행동을 축적</p></div>
+      <div class="card"><span>CONNECT</span><strong>Connector</strong><p>Gmail · Drive · Slack · Notion까지 업무 범위 확장</p></div>
+      <div class="card"><span>AUTO</span><strong>Remote · 예약 실행</strong><p>휴대폰에서 지시하고 필요한 시간에 반복 업무 실행</p></div>
+    </div>
+    <p class="one-line-rule">손발 · 기억 · 외부 도구 · 실행 시간을 하나의 시스템으로 연결</p>
+  </div>
+  <div class="footer-mark"><span class="index">50</span><span class="sep">/</span><span>52</span></div>
+</section>
+
+<section class="slide" data-cat="closing/workflow">
+  <div class="slide-content">
+    <h2>하나의 업무가 처리되는 방식</h2>
+    <div class="flow final-workflow">
+      <div>목표와 자료 설명</div>
+      <span>→</span>
+      <div>Claude Code 실행</div>
+      <span>→</span>
+      <div>외부 도구 사용</div>
+      <span>→</span>
+      <div>사람의 확인</div>
+      <span>→</span>
+      <div>Obsidian 기록</div>
+      <span>→</span>
+      <div>다음 업무에 재사용</div>
+    </div>
+    <p class="closing-line">요청 한 번으로 탐색 · 처리 · 검증 · 기록까지 연결</p>
+  </div>
+  <div class="footer-mark"><span class="index">51</span><span class="sep">/</span><span>52</span></div>
+</section>
+
+<section class="slide" data-cat="closing/final">
+  <div class="slide-content final-summary-content">
+    <p class="section-kicker">VIBE CODING WORKSHOP · WEEK 1–6</p>
+    <h2>AI에게 묻기에서<br />AI와 함께 일하기로</h2>
+    <div class="cards three">
+      <div class="card"><span>REQUEST</span><strong>목표를 구체적으로 설명</strong><p>원하는 결과 · 자료 · 범위 · 확인 기준</p></div>
+      <div class="card"><span>VERIFY</span><strong>중요한 변경은 직접 확인</strong><p>근거 검토 · 최종 승인 · 외부 공유 확인</p></div>
+      <div class="card"><span>REUSE</span><strong>결과를 기록하고 재사용</strong><p>한 번 한 일을 다음 업무의 출발점으로 전환</p></div>
+    </div>
+    <p class="closing-line">일하는 AI · 기억하는 지식베이스 · 연결된 업무 도구</p>
+  </div>
+  <div class="footer-mark"><span class="index">52</span><span class="sep">/</span><span>52</span></div>
+</section>
+
+<script src="navigator.js" defer></script>
+
+</body>
+</html>

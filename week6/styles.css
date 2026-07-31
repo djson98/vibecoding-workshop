@@ -1,0 +1,438 @@
+@charset "UTF-8";
+
+/* Week 5의 “바이브코딩 업무자동화 가이드” 디자인을 그대로 사용 */
+@import url("../week5/styles.css");
+
+.card,
+.panel,
+.flow div,
+.steps > div,
+.prompt-box,
+.note-template,
+.timeline,
+.timeline > div,
+.one-line-rule,
+.callout,
+.warning-callout,
+.fallback-strip,
+.agent-box,
+.adapter-box,
+.service-stack,
+.service-stack span,
+.capability-lanes > div,
+.scope-table,
+.scope-table > div,
+.scope-table > div > *,
+.check-row span,
+.trouble-list > div,
+.safe-sequence > div,
+.document-snippet,
+.policy-snippet,
+.practice-setup > div,
+.vault-tree,
+.equation-card > div,
+.mission-grid > div,
+.mission-grid ol,
+.final-checklist > div {
+  border: 0;
+  box-shadow: none;
+}
+
+.card,
+.panel,
+.flow div,
+.steps > div,
+.prompt-box,
+.note-template,
+.timeline,
+.one-line-rule,
+.callout,
+.warning-callout,
+.fallback-strip,
+.agent-box,
+.adapter-box,
+.service-stack,
+.service-stack span,
+.capability-lanes > div,
+.scope-table > div,
+.check-row span,
+.trouble-list > div,
+.safe-sequence > div,
+.document-snippet,
+.policy-snippet,
+.practice-setup > div,
+.equation-card > div,
+.mission-grid > div,
+.mission-grid ol,
+.final-checklist > div {
+  background: var(--bg-elev);
+}
+
+.card > span:first-child,
+.panel-label,
+.section-kicker {
+  display: none;
+}
+
+.card strong {
+  margin-top: 0;
+}
+
+.adapter-box {
+  color: var(--ink);
+}
+
+.adapter-box span {
+  color: var(--muted);
+}
+
+.scope-table .table-head {
+  background: var(--bg-elev);
+  color: var(--ink);
+}
+
+.vault-tree span {
+  background: var(--bg-elev);
+  color: var(--ink);
+}
+
+.five-week-timeline {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.six-week-summary {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.six-week-summary > div {
+  min-height: 12rem;
+}
+
+.final-workflow {
+  grid-template-columns:
+    minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr)
+    auto minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr);
+}
+
+.final-workflow div {
+  min-width: 0;
+  text-align: center;
+}
+
+.final-summary-content {
+  justify-content: center;
+}
+
+.final-summary-content h2 {
+  font-size: clamp(3rem, 5.8vw, 5.8rem);
+  line-height: 1.08;
+}
+
+.mcp-hub-slide .slide-content {
+  justify-content: center;
+  padding-top: clamp(1.1rem, 2vh, 1.7rem);
+  padding-bottom: clamp(1.1rem, 2vh, 1.7rem);
+}
+
+.mcp-hub-image {
+  display: block;
+  width: 100%;
+  max-height: calc(100vh - 100px);
+  object-fit: contain;
+}
+
+.connector-slide .slide-content {
+  justify-content: center;
+  padding-top: clamp(1.1rem, 2vh, 1.7rem);
+  padding-bottom: clamp(1.1rem, 2vh, 1.7rem);
+}
+
+.connector-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: center;
+  width: min(100%, 1320px);
+  margin: 0 auto;
+}
+
+.connector-copy h2 {
+  font-size: clamp(2.4rem, 4vw, 4rem);
+  line-height: 1.18;
+}
+
+.connector-copy .steps {
+  margin-top: var(--content-title-gap);
+}
+
+.connector-copy .steps > div {
+  grid-template-columns: 3rem minmax(0, 1fr);
+  gap: 0.25rem 0.8rem;
+  padding: 0.85rem 0;
+  background: transparent;
+}
+
+.connector-copy .steps p {
+  font-size: 0.92rem;
+}
+
+.connector-shot {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  max-height: calc(100vh - 100px);
+  margin: 0;
+  object-fit: contain;
+}
+
+.connector-steps-slide .slide-content {
+  padding-top: clamp(1.1rem, 2vh, 1.7rem);
+  padding-bottom: clamp(1.1rem, 2vh, 1.7rem);
+}
+
+.connector-steps-slide h2 {
+  font-size: clamp(2rem, 3.2vw, 3rem);
+}
+
+.connector-steps-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.68fr) minmax(0, 1.45fr);
+  gap: clamp(1.4rem, 2.8vw, 2.8rem);
+  align-items: start;
+  width: min(100%, 1380px);
+  margin-top: 1rem;
+}
+
+.connector-steps-layout > div {
+  min-width: 0;
+}
+
+.connector-steps-layout strong {
+  display: block;
+  margin-bottom: 0.65rem;
+  font-size: clamp(1rem, 1.45vw, 1.3rem);
+}
+
+.connector-steps-layout img {
+  display: block;
+  width: 100%;
+  max-height: calc(100vh - 185px);
+  object-fit: contain;
+  object-position: top;
+}
+
+.connector-login-slide .slide-content {
+  padding-top: clamp(1.1rem, 2vh, 1.7rem);
+  padding-bottom: clamp(1.1rem, 2vh, 1.7rem);
+}
+
+.connector-login-slide h2 {
+  font-size: clamp(2rem, 3.2vw, 3rem);
+}
+
+.connector-login-layout {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.4rem, 2.8vw, 2.8rem);
+  align-items: start;
+  width: min(100%, 1380px);
+  margin-top: 1rem;
+}
+
+.connector-login-layout > div {
+  min-width: 0;
+}
+
+.connector-login-layout strong {
+  display: block;
+  margin-bottom: 0.65rem;
+  font-size: clamp(1rem, 1.45vw, 1.3rem);
+}
+
+.connector-login-layout img {
+  display: block;
+  width: 100%;
+  max-height: calc(100vh - 185px);
+  object-fit: contain;
+  object-position: top;
+}
+
+.gmail-result-slide .slide-content {
+  padding-top: clamp(1.1rem, 2vh, 1.7rem);
+  padding-bottom: clamp(1.1rem, 2vh, 1.7rem);
+}
+
+.gmail-result-slide h2 {
+  font-size: clamp(2rem, 3.2vw, 3rem);
+}
+
+.gmail-result-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
+  gap: clamp(1.6rem, 3vw, 3rem);
+  align-items: start;
+  width: min(100%, 1380px);
+  margin-top: 1rem;
+}
+
+.gmail-result-layout > div {
+  min-width: 0;
+}
+
+.gmail-result-layout > div > strong {
+  display: block;
+  margin-bottom: 0.65rem;
+  font-size: clamp(1rem, 1.45vw, 1.3rem);
+}
+
+.gmail-result-terminal {
+  display: block;
+  width: 100%;
+  max-height: calc(100vh - 185px);
+  object-fit: contain;
+  object-position: top;
+}
+
+.gmail-inbox-verify {
+  display: block;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.gmail-result-copy .steps {
+  margin-top: 0.5rem;
+}
+
+.notion-before-after-slide .slide-content {
+  padding-top: clamp(1.1rem, 2vh, 1.7rem);
+  padding-bottom: clamp(1.1rem, 2vh, 1.7rem);
+}
+
+.notion-before-after-slide h2 {
+  font-size: clamp(2rem, 3.2vw, 3rem);
+}
+
+.notion-before-after-layout {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.4rem, 2.8vw, 2.8rem);
+  width: min(100%, 1380px);
+  margin-top: 1rem;
+}
+
+.notion-before-after-layout > div {
+  min-width: 0;
+}
+
+.notion-before-after-layout strong {
+  display: block;
+  margin-bottom: 0.65rem;
+  font-size: clamp(1.1rem, 1.6vw, 1.4rem);
+}
+
+.notion-before-after-layout img {
+  display: block;
+  width: 100%;
+  max-height: calc(100vh - 185px);
+  object-fit: contain;
+  object-position: top;
+}
+
+.tool-card-icon {
+  display: block;
+  width: clamp(2rem, 3vw, 2.8rem);
+  height: clamp(2rem, 3vw, 2.8rem);
+  margin-bottom: 0.7rem;
+  object-fit: contain;
+}
+
+.remote-control-hero-slide {
+  background: #000;
+}
+
+.remote-control-hero-slide .slide-content {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  padding: clamp(2rem, 5vw, 4.5rem);
+}
+
+.remote-control-hero-image {
+  display: block;
+  width: auto;
+  max-width: 88%;
+  height: auto;
+  max-height: 86vh;
+  object-fit: contain;
+}
+
+.remote-control-hero-slide .footer-mark {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.mobile-app-install-slide .connector-layout {
+  grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
+}
+
+.mobile-app-install-slide .connector-shot {
+  max-height: calc(100vh - 90px);
+}
+
+.remote-control-steps-slide .connector-login-layout img {
+  max-height: calc(100vh - 270px);
+}
+
+.remote-control-steps-slide .one-line-rule {
+  margin-top: 0.8rem;
+}
+
+.remote-control-request-slide .connector-login-layout {
+  grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
+}
+
+.remote-control-request-slide .connector-login-layout img {
+  max-height: calc(100vh - 270px);
+}
+
+.remote-control-request-slide .one-line-rule {
+  margin-top: 0.8rem;
+}
+
+.remote-control-workflow-slide .connector-layout {
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+}
+
+.remote-control-workflow-slide .connector-shot {
+  max-height: calc(100vh - 90px);
+}
+
+.remote-control-workflow-slide .one-line-rule {
+  margin-top: 1rem;
+}
+
+.obsidian-meeting-result-slide .connector-login-layout img {
+  max-height: calc(100vh - 270px);
+}
+
+.obsidian-meeting-result-slide .one-line-rule {
+  margin-top: 0.8rem;
+}
+
+.gmail-phone-request-slide .connector-layout {
+  grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
+}
+
+.gmail-phone-request-slide .connector-shot {
+  max-height: calc(100vh - 90px);
+}
+
+.gmail-phone-request-slide .one-line-rule {
+  margin-top: 1rem;
+}
+
+.prompt-box.command-box {
+  background: #111827;
+  color: #f8fafc;
+}

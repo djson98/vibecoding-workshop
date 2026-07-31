@@ -3,154 +3,723 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Vibe Coding Workshop</title>
+<meta name="description" content="Claude Code, Obsidian, Zotero, Connector로 완성하는 6주 바이브코딩 업무자동화 워크숍" />
+<title>Vibe Coding Workshop · HAI Lab</title>
 <style>
 :root {
-  --bg: #fcfcfb;
-  --ink: #111827;
-  --muted: #5c6470;
-  --line: #e5e7eb;
-  --accent: #1f3a6b;
-  --accent-soft: #e8edf6;
+  --paper: #f5f2e9;
+  --surface: #fffdf8;
+  --ink: #14213d;
+  --ink-soft: #566078;
+  --line: rgba(20, 33, 61, 0.15);
+  --orange: #e9693f;
+  --orange-soft: #f7d9ca;
+  --blue: #2958a7;
+  --blue-soft: #dce7f8;
+  --green: #237a63;
+  --green-soft: #dceee7;
+  --yellow: #e1a92a;
+  --yellow-soft: #f5e9bf;
+  --shadow: 0 22px 70px rgba(20, 33, 61, 0.09);
 }
-* { box-sizing: border-box; }
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
-  min-height: 100vh;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: var(--bg);
+  background: var(--paper);
   color: var(--ink);
+  font-family: Pretendard, "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif;
 }
-main {
-  width: min(920px, calc(100vw - 40px));
+
+a {
+  color: inherit;
+}
+
+.site-shell {
+  width: min(1180px, calc(100% - 40px));
   margin: 0 auto;
-  padding: 72px 0;
 }
-.eyebrow {
-  margin: 0 0 14px;
-  color: var(--accent);
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 82px;
+  border-bottom: 1px solid var(--line);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 850;
+  letter-spacing: 0.04em;
+}
+
+.brand-mark {
+  display: grid;
+  grid-template-columns: repeat(2, 7px);
+  gap: 3px;
+}
+
+.brand-mark i {
+  width: 7px;
+  height: 7px;
+  background: var(--orange);
+}
+
+.site-nav {
+  display: flex;
+  gap: 26px;
+  color: var(--ink-soft);
   font-size: 14px;
   font-weight: 700;
-  letter-spacing: 0.04em;
+}
+
+.site-nav a {
+  text-decoration: none;
+}
+
+.site-nav a:hover {
+  color: var(--orange);
+}
+
+.hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(340px, 0.7fr);
+  gap: clamp(40px, 5vw, 68px);
+  align-items: center;
+  min-height: 670px;
+  padding: 90px 0 100px;
+}
+
+.hero > * {
+  min-width: 0;
+}
+
+.hero::before {
+  position: absolute;
+  top: 66px;
+  right: -80px;
+  width: 310px;
+  height: 310px;
+  border: 1px solid rgba(233, 105, 63, 0.22);
+  border-radius: 50%;
+  content: "";
+  pointer-events: none;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 28px;
+  color: var(--orange);
+  font-size: 13px;
+  font-weight: 850;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
 }
+
+.eyebrow::before {
+  width: 30px;
+  height: 2px;
+  background: currentColor;
+  content: "";
+}
+
 h1 {
+  max-width: 760px;
   margin: 0;
-  font-size: clamp(34px, 7vw, 72px);
+  font-size: clamp(48px, 6vw, 78px);
   line-height: 0.98;
-  letter-spacing: 0;
+  letter-spacing: -0.065em;
 }
-.lead {
-  max-width: 680px;
-  margin: 24px 0 44px;
-  color: var(--muted);
-  font-size: clamp(17px, 2vw, 21px);
-  line-height: 1.6;
+
+h1 em {
+  color: var(--orange);
+  font-style: normal;
 }
+
+.hero-copy {
+  max-width: 660px;
+  margin: 30px 0 0;
+  color: var(--ink-soft);
+  font-size: clamp(18px, 2vw, 22px);
+  line-height: 1.7;
+  word-break: keep-all;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 38px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding: 0 22px;
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 850;
+}
+
+.button.primary {
+  background: var(--ink);
+  color: #fff;
+}
+
+.button:hover {
+  border-color: var(--orange);
+  background: var(--orange);
+  color: #fff;
+}
+
+.system-card {
+  position: relative;
+  z-index: 1;
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: 26px;
+  background: rgba(255, 253, 248, 0.88);
+  box-shadow: var(--shadow);
+}
+
+.system-title {
+  margin: 0 0 22px;
+  font-size: 13px;
+  font-weight: 850;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.system-node {
+  display: grid;
+  grid-template-columns: 46px minmax(0, 1fr);
+  gap: 14px;
+  align-items: center;
+  padding: 17px 0;
+}
+
+.system-node + .system-node {
+  border-top: 1px solid var(--line);
+}
+
+.node-number {
+  display: grid;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  border-radius: 15px;
+  background: var(--orange-soft);
+  color: var(--orange);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.system-node:nth-of-type(3) .node-number {
+  background: var(--blue-soft);
+  color: var(--blue);
+}
+
+.system-node:nth-of-type(4) .node-number {
+  background: var(--green-soft);
+  color: var(--green);
+}
+
+.system-node strong,
+.system-node span {
+  display: block;
+}
+
+.system-node strong {
+  font-size: 18px;
+}
+
+.system-node span {
+  margin-top: 4px;
+  color: var(--ink-soft);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.system-result {
+  margin: 18px 0 0;
+  padding: 17px 18px;
+  border-radius: 16px;
+  background: var(--ink);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 750;
+  line-height: 1.55;
+}
+
+.journey {
+  padding: 94px 0 32px;
+  border-top: 1px solid var(--line);
+}
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  align-items: end;
+  margin-bottom: 38px;
+}
+
+.section-label {
+  margin: 0 0 10px;
+  color: var(--orange);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+h2 {
+  margin: 0;
+  font-size: clamp(34px, 5vw, 58px);
+  line-height: 1.08;
+  letter-spacing: -0.045em;
+}
+
+.section-desc {
+  max-width: 440px;
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 16px;
+  line-height: 1.65;
+  word-break: keep-all;
+}
+
+.journey-line {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.journey-step {
+  position: relative;
+  padding: 24px 12px 24px 0;
+}
+
+.journey-step:not(:last-child)::after {
+  position: absolute;
+  top: 32px;
+  right: 12px;
+  color: var(--orange);
+  content: "→";
+}
+
+.journey-step span,
+.journey-step strong {
+  display: block;
+}
+
+.journey-step span {
+  color: var(--ink-soft);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.journey-step strong {
+  margin-top: 11px;
+  font-size: 16px;
+}
+
+.curriculum {
+  padding: 96px 0 120px;
+}
+
 .weeks {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
 }
-.week {
-  display: block;
-  min-height: 180px;
-  padding: 24px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  color: inherit;
-  text-decoration: none;
-  background: #fff;
-}
-.week:hover {
-  border-color: var(--accent);
-  background: var(--accent-soft);
-}
+
 .week-card {
-  background: #fff;
-  border: 1px solid var(--line);
-  border-radius: 8px;
+  position: relative;
+  display: flex;
+  min-height: 270px;
+  flex-direction: column;
   overflow: hidden;
-}
-.week-card:hover {
-  border-color: var(--accent);
-}
-.week-card .week {
-  min-height: 132px;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-}
-.week-card .week:hover {
-  border-color: transparent;
-  background: transparent;
-}
-.week-pdf {
-  display: block;
-  margin: 0 24px 24px;
-  padding: 11px 12px;
+  padding: 30px;
   border: 1px solid var(--line);
-  border-radius: 6px;
-  color: var(--accent);
-  font-size: 14px;
-  font-weight: 800;
+  border-radius: 24px;
+  background: var(--surface);
   text-decoration: none;
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
 }
-.week-pdf:hover {
-  border-color: var(--accent);
-  background: var(--accent-soft);
+
+.week-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(233, 105, 63, 0.55);
+  box-shadow: var(--shadow);
 }
-.week-num {
-  display: block;
-  margin-bottom: 34px;
-  color: var(--accent);
-  font-size: 13px;
-  font-weight: 800;
+
+.week-card::after {
+  position: absolute;
+  top: -36px;
+  right: -36px;
+  width: 130px;
+  height: 130px;
+  border-radius: 42px;
+  background: var(--week-soft, var(--orange-soft));
+  content: "";
+  transform: rotate(18deg);
+}
+
+.week-top {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.week-number {
+  color: var(--week-color, var(--orange));
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 12px;
+  font-weight: 900;
   letter-spacing: 0.08em;
 }
-.week-title {
-  display: block;
-  margin-bottom: 10px;
-  font-size: 24px;
+
+.week-action {
+  color: var(--ink-soft);
+  font-size: 13px;
   font-weight: 800;
-  line-height: 1.25;
 }
+
+.week-title {
+  position: relative;
+  z-index: 1;
+  max-width: 82%;
+  margin: 52px 0 0;
+  font-size: clamp(25px, 3vw, 36px);
+  line-height: 1.16;
+  letter-spacing: -0.035em;
+}
+
 .week-desc {
-  display: block;
-  color: var(--muted);
+  position: relative;
+  z-index: 1;
+  max-width: 88%;
+  margin: 14px 0 0;
+  color: var(--ink-soft);
   font-size: 15px;
-  line-height: 1.5;
+  line-height: 1.6;
+  word-break: keep-all;
+}
+
+.week-links {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 26px;
+  font-size: 13px;
+  font-weight: 850;
+}
+
+.week-links a {
+  text-decoration: none;
+}
+
+.week-links a:hover {
+  color: var(--week-color, var(--orange));
+}
+
+.week-card[data-week="2"],
+.week-card[data-week="6"] {
+  --week-color: var(--blue);
+  --week-soft: var(--blue-soft);
+}
+
+.week-card[data-week="3"],
+.week-card[data-week="4"] {
+  --week-color: var(--green);
+  --week-soft: var(--green-soft);
+}
+
+.week-card[data-week="5"] {
+  --week-color: #9a6a00;
+  --week-soft: var(--yellow-soft);
+}
+
+.closing {
+  padding: 94px 0;
+  background: var(--ink);
+  color: #fff;
+}
+
+.closing-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+  gap: 60px;
+  align-items: end;
+}
+
+.closing h2 {
+  max-width: 780px;
+  font-size: clamp(42px, 6.4vw, 78px);
+}
+
+.closing h2 em {
+  color: #ff936e;
+  font-style: normal;
+}
+
+.closing-note {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 17px;
+  line-height: 1.7;
+  word-break: keep-all;
+}
+
+.site-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 28px 0 38px;
+  color: var(--ink-soft);
+  font-size: 13px;
+}
+
+@media (max-width: 860px) {
+  .site-nav {
+    display: none;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding: 74px 0 84px;
+  }
+
+  .system-card {
+    max-width: 620px;
+  }
+
+  .section-head,
+  .closing-grid {
+    display: block;
+  }
+
+  .section-desc,
+  .closing-note {
+    margin-top: 20px;
+  }
+
+  .journey-line {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .journey-step:nth-child(3)::after {
+    display: none;
+  }
+}
+
+@media (max-width: 620px) {
+  .site-shell {
+    width: min(100% - 28px, 1180px);
+  }
+
+  h1 {
+    font-size: clamp(36px, 10.3vw, 46px);
+    line-height: 1.04;
+    word-break: keep-all;
+  }
+
+  .hero::before {
+    display: none;
+  }
+
+  .journey-line,
+  .weeks {
+    grid-template-columns: 1fr;
+  }
+
+  .journey-step {
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .journey-step:not(:last-child)::after {
+    top: 22px;
+    right: 0;
+  }
+
+  .week-card {
+    min-height: 250px;
+    padding: 25px;
+  }
+
+  .site-footer {
+    display: block;
+  }
+
+  .site-footer span {
+    display: block;
+    margin-top: 6px;
+  }
 }
 </style>
 </head>
 <body>
-<main>
-  <p class="eyebrow">HAI Lab Workshop</p>
-  <h1>Vibe Coding Workshop</h1>
-  <p class="lead">바이브 코딩으로 연구실 홈페이지 만들기 워크샵 자료입니다. 주차별 슬라이드를 선택해 열 수 있습니다.</p>
-  <div class="weeks">
-    <div class="week-card">
-      <a class="week" href="./week1/">
-        <span class="week-num">WEEK 1</span>
-        <span class="week-title">연구실 홈페이지 만들기</span>
-        <span class="week-desc">Codex와 바이브 코딩 흐름을 이용한 홈페이지 제작 실습</span>
-      </a>
-      <a class="week-pdf" href="./week1/week1.pdf" download>PDF 다운로드</a>
-    </div>
-    <a class="week" href="./week2/">
-      <span class="week-num">WEEK 2</span>
-      <span class="week-title">Claude Code 자동화</span>
-      <span class="week-desc">GitHub 기반 협업과 자동화 워크플로우 실습</span>
+<div class="site-shell">
+  <header class="site-header">
+    <a class="brand" href="./" aria-label="Vibe Coding Workshop 홈">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <span>HAI LAB · VIBE CODING</span>
     </a>
-    <div class="week-card">
-      <a class="week" href="./week3/">
-        <span class="week-num">WEEK 3</span>
-        <span class="week-title">Obsidian 지식베이스</span>
-        <span class="week-desc">Markdown, 링크, 태그, 그래프 뷰와 Claude Code를 활용한 지식베이스 구축</span>
-      </a>
-      <a class="week-pdf" href="./week3-2/week3-2.pdf" download>PDF 다운로드</a>
-    </div>
+    <nav class="site-nav" aria-label="주요 메뉴">
+      <a href="#journey">6주 과정</a>
+      <a href="#curriculum">강의자료</a>
+      <a href="./week6/">Week 6 총집편</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <p class="eyebrow">6-week workshop · 2026</p>
+        <h1>AI에게 묻기에서<br /><em>AI와 함께 일하기로</em></h1>
+        <p class="hero-copy">
+          말로 결과물을 만들고, Claude Code가 직접 일하고,
+          Obsidian이 기억하며, 외부 업무 도구와 실행 시간까지 연결하는 6주 과정
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="./week6/">Week 6 총집편 보기 →</a>
+          <a class="button" href="#curriculum">1주차부터 보기</a>
+        </div>
+      </div>
+
+      <aside class="system-card" aria-label="과정에서 완성하는 AI 업무 시스템">
+        <p class="system-title">The system we built</p>
+        <div class="system-node">
+          <div class="node-number">01</div>
+          <div><strong>Claude Code · 손발</strong><span>내 컴퓨터에서 파일과 도구를 사용해 직접 작업</span></div>
+        </div>
+        <div class="system-node">
+          <div class="node-number">02</div>
+          <div><strong>Obsidian · 제2의 뇌</strong><span>결과와 출처, 판단 근거, 다음 행동을 축적</span></div>
+        </div>
+        <div class="system-node">
+          <div class="node-number">03</div>
+          <div><strong>Connector · 외부 업무</strong><span>Gmail, Drive, Slack, Notion까지 업무 범위 확장</span></div>
+        </div>
+        <p class="system-result">Remote Control과 예약 실행으로<br />장소와 시간을 넘어 반복 업무까지 처리</p>
+      </aside>
+    </section>
+
+    <section class="journey" id="journey">
+      <div class="section-head">
+        <div>
+          <p class="section-label">Learning journey</p>
+          <h2>6주 동안 하나씩 연결</h2>
+        </div>
+        <p class="section-desc">매주 새로운 도구 하나를 배우는 과정이 아니라, 마지막에는 하나의 업무 시스템으로 합쳐지는 구성</p>
+      </div>
+      <div class="journey-line" aria-label="6주 학습 과정">
+        <div class="journey-step"><span>WEEK 1</span><strong>만들기</strong></div>
+        <div class="journey-step"><span>WEEK 2</span><strong>일시키기</strong></div>
+        <div class="journey-step"><span>WEEK 3</span><strong>기억하기</strong></div>
+        <div class="journey-step"><span>WEEK 4</span><strong>연결하기</strong></div>
+        <div class="journey-step"><span>WEEK 5</span><strong>도구화하기</strong></div>
+        <div class="journey-step"><span>WEEK 6</span><strong>확장하기</strong></div>
+      </div>
+    </section>
+
+    <section class="curriculum" id="curriculum">
+      <div class="section-head">
+        <div>
+          <p class="section-label">Curriculum</p>
+          <h2>주차별 강의자료</h2>
+        </div>
+        <p class="section-desc">카드를 선택하면 각 주차의 HTML 슬라이드가 바로 열림</p>
+      </div>
+
+      <div class="weeks">
+        <article class="week-card" data-week="1">
+          <div class="week-top"><span class="week-number">WEEK 01</span><span class="week-action">말로 만들기</span></div>
+          <h3 class="week-title">연구실 홈페이지 만들기</h3>
+          <p class="week-desc">바이브코딩의 기본 흐름과 사람·AI의 역할을 익히고 실제 홈페이지 제작</p>
+          <div class="week-links"><a href="./week1/">슬라이드 열기 →</a><a href="./week1/week1.pdf" download>PDF</a></div>
+        </article>
+
+        <article class="week-card" data-week="2">
+          <div class="week-top"><span class="week-number">WEEK 02</span><span class="week-action">직접 일시키기</span></div>
+          <h3 class="week-title">Claude Code 자동화</h3>
+          <p class="week-desc">파일 읽기·수정·명령 실행·검증으로 이어지는 반복 가능한 업무 루프</p>
+          <div class="week-links"><a href="./week2/">슬라이드 열기 →</a><a href="./pdf-모음/week2.pdf" download>PDF</a></div>
+        </article>
+
+        <article class="week-card" data-week="3">
+          <div class="week-top"><span class="week-number">WEEK 03</span><span class="week-action">지식 기억하기</span></div>
+          <h3 class="week-title">Obsidian 지식베이스</h3>
+          <p class="week-desc">Markdown·내부 링크·백링크·Graph View로 나만의 제2의 뇌 구축</p>
+          <div class="week-links"><a href="./week3-2/">Obsidian 슬라이드 →</a><a href="./week3/">Claude Code 확장</a><a href="./week3-2/week3-2.pdf" download>PDF</a></div>
+        </article>
+
+        <article class="week-card" data-week="4">
+          <div class="week-top"><span class="week-number">WEEK 04</span><span class="week-action">논문 연결하기</span></div>
+          <h3 class="week-title">Zotero 지식베이스 확장</h3>
+          <p class="week-desc">논문·서지정보·하이라이트를 Obsidian으로 가져와 연구 지식망으로 연결</p>
+          <div class="week-links"><a href="./week4/">슬라이드 열기 →</a><a href="./week4/week4.pdf" download>PDF</a></div>
+        </article>
+
+        <article class="week-card" data-week="5">
+          <div class="week-top"><span class="week-number">WEEK 05</span><span class="week-action">수작업 도구화</span></div>
+          <h3 class="week-title">Excel과 맞춤형 업무 도구</h3>
+          <p class="week-desc">데이터 품질을 점검하고 논문 스크리닝 같은 반복 업무를 전용 도구로 전환</p>
+          <div class="week-links"><a href="./week5/">슬라이드 열기 →</a></div>
+        </article>
+
+        <article class="week-card" data-week="6">
+          <div class="week-top"><span class="week-number">WEEK 06</span><span class="week-action">업무 범위 확장</span></div>
+          <h3 class="week-title">Connector · Remote · 예약 실행</h3>
+          <p class="week-desc">Gmail·Drive·Slack·Notion 연결부터 휴대폰 원격 지시와 반복 업무 실행까지</p>
+          <div class="week-links"><a href="./week6/">총집편 열기 →</a></div>
+        </article>
+      </div>
+    </section>
+  </main>
+</div>
+
+<section class="closing">
+  <div class="site-shell closing-grid">
+    <h2>일하는 AI.<br />기억하는 지식베이스.<br /><em>연결된 업무 도구.</em></h2>
+    <p class="closing-note">목표와 기준은 사람이 정하고, 반복 작업은 AI에게 맡기고, 결과는 다시 사용할 수 있는 지식으로 남김</p>
   </div>
-</main>
+</section>
+
+<footer class="site-shell site-footer">
+  <strong>VIBE CODING WORKSHOP</strong>
+  <span>손동주 · 강원대학교 HAI Lab · 2026</span>
+</footer>
 </body>
 </html>
