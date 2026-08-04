@@ -95,12 +95,7 @@ a {
 
 .hero {
   position: relative;
-  display: grid;
-  grid-template-columns: minmax(0, 1.3fr) minmax(340px, 0.7fr);
-  gap: clamp(40px, 5vw, 68px);
-  align-items: center;
-  min-height: 670px;
-  padding: 90px 0 100px;
+  padding: 82px 0 58px;
 }
 
 .hero > * {
@@ -151,131 +146,6 @@ h1 em {
   font-style: normal;
 }
 
-.hero-copy {
-  max-width: 660px;
-  margin: 30px 0 0;
-  color: var(--ink-soft);
-  font-size: clamp(18px, 2vw, 22px);
-  line-height: 1.7;
-  word-break: keep-all;
-}
-
-.hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 38px;
-}
-
-.button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 52px;
-  padding: 0 22px;
-  border: 1px solid var(--ink);
-  border-radius: 999px;
-  text-decoration: none;
-  font-size: 15px;
-  font-weight: 850;
-}
-
-.button.primary {
-  background: var(--ink);
-  color: #fff;
-}
-
-.button:hover {
-  border-color: var(--orange);
-  background: var(--orange);
-  color: #fff;
-}
-
-.system-card {
-  position: relative;
-  z-index: 1;
-  padding: 28px;
-  border: 1px solid var(--line);
-  border-radius: 26px;
-  background: rgba(255, 253, 248, 0.88);
-  box-shadow: var(--shadow);
-}
-
-.system-title {
-  margin: 0 0 22px;
-  font-size: 13px;
-  font-weight: 850;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-}
-
-.system-node {
-  display: grid;
-  grid-template-columns: 46px minmax(0, 1fr);
-  gap: 14px;
-  align-items: center;
-  padding: 17px 0;
-}
-
-.system-node + .system-node {
-  border-top: 1px solid var(--line);
-}
-
-.node-number {
-  display: grid;
-  width: 46px;
-  height: 46px;
-  place-items: center;
-  border-radius: 15px;
-  background: var(--orange-soft);
-  color: var(--orange);
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 13px;
-  font-weight: 900;
-}
-
-.system-node:nth-of-type(3) .node-number {
-  background: var(--blue-soft);
-  color: var(--blue);
-}
-
-.system-node:nth-of-type(4) .node-number {
-  background: var(--green-soft);
-  color: var(--green);
-}
-
-.system-node strong,
-.system-node span {
-  display: block;
-}
-
-.system-node strong {
-  font-size: 18px;
-}
-
-.system-node span {
-  margin-top: 4px;
-  color: var(--ink-soft);
-  font-size: 14px;
-  line-height: 1.45;
-}
-
-.system-result {
-  margin: 18px 0 0;
-  padding: 17px 18px;
-  border-radius: 16px;
-  background: var(--ink);
-  color: #fff;
-  font-size: 14px;
-  font-weight: 750;
-  line-height: 1.55;
-}
-
-.journey {
-  padding: 94px 0 32px;
-  border-top: 1px solid var(--line);
-}
-
 .section-head {
   display: flex;
   justify-content: space-between;
@@ -309,45 +179,8 @@ h2 {
   word-break: keep-all;
 }
 
-.journey-line {
-  display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-}
-
-.journey-step {
-  position: relative;
-  padding: 24px 12px 24px 0;
-}
-
-.journey-step:not(:last-child)::after {
-  position: absolute;
-  top: 32px;
-  right: 12px;
-  color: var(--orange);
-  content: "→";
-}
-
-.journey-step span,
-.journey-step strong {
-  display: block;
-}
-
-.journey-step span {
-  color: var(--ink-soft);
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 11px;
-  font-weight: 800;
-}
-
-.journey-step strong {
-  margin-top: 11px;
-  font-size: 16px;
-}
-
 .curriculum {
-  padding: 96px 0 120px;
+  padding: 0 0 120px;
 }
 
 .weeks {
@@ -515,13 +348,7 @@ h2 {
   }
 
   .hero {
-    grid-template-columns: 1fr;
-    min-height: auto;
-    padding: 74px 0 84px;
-  }
-
-  .system-card {
-    max-width: 620px;
+    padding: 66px 0 48px;
   }
 
   .section-head,
@@ -534,13 +361,6 @@ h2 {
     margin-top: 20px;
   }
 
-  .journey-line {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .journey-step:nth-child(3)::after {
-    display: none;
-  }
 }
 
 @media (max-width: 620px) {
@@ -558,19 +378,8 @@ h2 {
     display: none;
   }
 
-  .journey-line,
   .weeks {
     grid-template-columns: 1fr;
-  }
-
-  .journey-step {
-    padding: 18px 0;
-    border-bottom: 1px solid var(--line);
-  }
-
-  .journey-step:not(:last-child)::after {
-    top: 22px;
-    right: 0;
   }
 
   .week-card {
@@ -597,7 +406,6 @@ h2 {
       <span>HAI LAB · VIBE CODING</span>
     </a>
     <nav class="site-nav" aria-label="주요 메뉴">
-      <a href="#journey">6주 과정</a>
       <a href="#curriculum">강의자료</a>
       <a href="./week6/">Week 6 총집편</a>
     </nav>
@@ -605,53 +413,8 @@ h2 {
 
   <main>
     <section class="hero">
-      <div>
-        <p class="eyebrow">6-week workshop · 2026</p>
-        <h1>AI에게 묻기에서<br /><em>AI와 함께 일하기로</em></h1>
-        <p class="hero-copy">
-          말로 결과물을 만들고, Claude Code가 직접 일하고,
-          Obsidian이 기억하며, 외부 업무 도구와 실행 시간까지 연결하는 6주 과정
-        </p>
-        <div class="hero-actions">
-          <a class="button primary" href="./week6/">Week 6 총집편 보기 →</a>
-          <a class="button" href="#curriculum">1주차부터 보기</a>
-        </div>
-      </div>
-
-      <aside class="system-card" aria-label="과정에서 완성하는 AI 업무 시스템">
-        <p class="system-title">The system we built</p>
-        <div class="system-node">
-          <div class="node-number">01</div>
-          <div><strong>Claude Code · 손발</strong><span>내 컴퓨터에서 파일과 도구를 사용해 직접 작업</span></div>
-        </div>
-        <div class="system-node">
-          <div class="node-number">02</div>
-          <div><strong>Obsidian · 제2의 뇌</strong><span>결과와 출처, 판단 근거, 다음 행동을 축적</span></div>
-        </div>
-        <div class="system-node">
-          <div class="node-number">03</div>
-          <div><strong>Connector · 외부 업무</strong><span>Gmail, Drive, Slack, Notion까지 업무 범위 확장</span></div>
-        </div>
-        <p class="system-result">Remote Control과 예약 실행으로<br />장소와 시간을 넘어 반복 업무까지 처리</p>
-      </aside>
-    </section>
-
-    <section class="journey" id="journey">
-      <div class="section-head">
-        <div>
-          <p class="section-label">Learning journey</p>
-          <h2>6주 동안 하나씩 연결</h2>
-        </div>
-        <p class="section-desc">매주 새로운 도구 하나를 배우는 과정이 아니라, 마지막에는 하나의 업무 시스템으로 합쳐지는 구성</p>
-      </div>
-      <div class="journey-line" aria-label="6주 학습 과정">
-        <div class="journey-step"><span>WEEK 1</span><strong>만들기</strong></div>
-        <div class="journey-step"><span>WEEK 2</span><strong>일시키기</strong></div>
-        <div class="journey-step"><span>WEEK 3</span><strong>기억하기</strong></div>
-        <div class="journey-step"><span>WEEK 4</span><strong>연결하기</strong></div>
-        <div class="journey-step"><span>WEEK 5</span><strong>도구화하기</strong></div>
-        <div class="journey-step"><span>WEEK 6</span><strong>확장하기</strong></div>
-      </div>
+      <p class="eyebrow">6-week workshop · 2026</p>
+      <h1>AI에게 묻기에서<br /><em>AI와 함께 일하기로</em></h1>
     </section>
 
     <section class="curriculum" id="curriculum">
